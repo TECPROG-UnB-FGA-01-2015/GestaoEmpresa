@@ -1,7 +1,7 @@
 package model;
 
-
-public class Produto {
+public class Produto
+{
     
     private String codigo;
     private String descricao;
@@ -9,7 +9,8 @@ public class Produto {
     private double precoVenda;
     private double quantidade;
 
-    public Produto(String codigo, String descricao, double precoCompra, double quantidade, double precoVenda) {
+    public Produto(String codigo, String descricao, double precoCompra, double quantidade, double precoVenda)
+    {
         this.codigo = codigo;
         this.descricao = descricao;
         this.precoCompra = precoCompra;
@@ -17,51 +18,59 @@ public class Produto {
         this.precoVenda = precoVenda;
     }
 
-    public Produto() {
+    public Produto()
+    {
         
     }
 
-    public String getCodigo() {
+    public String getCodigo()
+    {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(String codigo)
+    {
         this.codigo = codigo;
     }
 
-    public String getDescricao() {
+    public String getDescricao()
+    {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
+    public void setDescricao(String descricao)
+    {
         this.descricao = descricao;
     }
 
-    public double getPrecoCompra() {
+    public double getPrecoCompra()
+    {
         return precoCompra;
     }
 
-    public void setPreco(double precoCompra) {
+    public void setPreco(double precoCompra)
+    {
         this.precoCompra = precoCompra;
     }
 
-    public double getQuantidade() {
+    public double getQuantidade()
+    {
         return quantidade;
     }
 
-    public void setQuantidade(double quantidade) {
+    public void setQuantidade(double quantidade)
+    {
         this.quantidade = quantidade;
     }
 
-    public double getPrecoVenda() {
+    public double getPrecoVenda()
+    {
         return precoVenda;
     }
 
-    public void setPrecoVenda(double precoVenda) {
+    public void setPrecoVenda(double precoVenda)
+    {
         this.precoVenda = precoVenda;
     }
-    
-    
-    
     
 }

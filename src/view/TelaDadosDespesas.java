@@ -13,14 +13,15 @@ import java.util.Date;
 import java.text.DateFormat; 
 import java.text.SimpleDateFormat; 
 
-public class TelaDadosDespesas extends javax.swing.JFrame {
-
+public class TelaDadosDespesas extends javax.swing.JFrame
+{
     Despesa umaDespesa;
     Date date = new Date();
     DateFormat dateFormat;
     static ControleDespesa umControleDespesa = new ControleDespesa();
     
-    public TelaDadosDespesas() {
+    public TelaDadosDespesas()
+    {
         initComponents();
         jTextField_Nome.requestFocus();
         jComboBox_Dia.setSelectedIndex(Integer.parseInt(getDia())-1);
@@ -28,7 +29,8 @@ public class TelaDadosDespesas extends javax.swing.JFrame {
         jComboBox_Ano.setSelectedItem(getAno());
     }
     
-    public void exibirInformacao(String info){
+    public void exibirInformacao(String info)
+    {
         JOptionPane.showMessageDialog(this, info,"Atenção" ,JOptionPane.INFORMATION_MESSAGE);
     }
     
@@ -52,7 +54,8 @@ public class TelaDadosDespesas extends javax.swing.JFrame {
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jButton_Sair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -74,8 +77,10 @@ public class TelaDadosDespesas extends javax.swing.JFrame {
         setBounds(new java.awt.Rectangle(450, 300, 0, 0));
 
         jButton_Sair.setText("Sair");
-        jButton_Sair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton_Sair.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton_SairActionPerformed(evt);
             }
         });
@@ -91,8 +96,10 @@ public class TelaDadosDespesas extends javax.swing.JFrame {
         jLabel4.setText("Observação:");
 
         jButton_Salvar.setText("Salvar");
-        jButton_Salvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton_Salvar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton_SalvarActionPerformed(evt);
             }
         });
@@ -184,12 +191,14 @@ public class TelaDadosDespesas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SairActionPerformed
+    private void jButton_SairActionPerformed(java.awt.event.ActionEvent evt)
+    {//GEN-FIRST:event_jButton_SairActionPerformed
       this.dispose();
       new TelaDespesas().setVisible(true);
     }//GEN-LAST:event_jButton_SairActionPerformed
 
-    private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalvarActionPerformed
+    private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt)
+    {//GEN-FIRST:event_jButton_SalvarActionPerformed
         String nome = jTextField_Nome.getText();
         String descricao = jTextField_Descricao.getText();
         int mes = jComboBox_Mes.getSelectedIndex()+1;
@@ -198,11 +207,15 @@ public class TelaDadosDespesas extends javax.swing.JFrame {
         double valor = Double.parseDouble(jTextField_Valor.getText());
             
         if(jTextField_Nome.getText().equals(""))
+        {
             exibirInformacao("Digite o histórico da despesa");
+        }
         
         else if(Double.parseDouble(jTextField_Valor.getText())==0.0)
+        {
             exibirInformacao("Digite um valor para a despesa");
-            
+        }
+        
         else
         {
             umaDespesa = new Despesa(nome, descricao, valor, dia, mes, ano);
@@ -215,15 +228,19 @@ public class TelaDadosDespesas extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -240,8 +257,10 @@ public class TelaDadosDespesas extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new TelaDadosDespesas().setVisible(true);
             }
         });

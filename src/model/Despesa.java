@@ -1,6 +1,7 @@
 package model;
 
-public class Despesa {
+public class Despesa
+{
     protected String nome;
     protected String descricao;
     protected double valor;
@@ -9,7 +10,8 @@ public class Despesa {
     protected int ano;
     
 
-    public Despesa(String nome, String descricao, double valor, int dia, int mes, int ano) {
+    public Despesa(String nome, String descricao, double valor, int dia, int mes, int ano)
+    {
         this.nome = nome;
         this.descricao = descricao;
         this.valor = valor;
@@ -18,54 +20,64 @@ public class Despesa {
         this.ano = ano;
     }
 
-    public String getNome() {
+    public String getNome()
+    {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome)
+    {
         this.nome = nome;
     }
 
-    public String getDescricao() {
+    public String getDescricao()
+    {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
+    public void setDescricao(String descricao)
+    {
         this.descricao = descricao;
     }
 
-    public double getValor() {
+    public double getValor()
+    {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(double valor)
+    {
         this.valor = valor;
     }
 
-    public int getMes() {
+    public int getMes()
+    {
         return mes;
     }
 
-    public void setMes(int mes) {
+    public void setMes(int mes)
+    {
         this.mes = mes;
     }
 
-    public int getAno() {
+    public int getAno()
+    {
         return ano;
     }
 
-    public void setAno(int ano) {
+    public void setAno(int ano)
+    {
         this.ano = ano;
     }
 
-    public int getDia() {
+    public int getDia()
+    {
         return dia;
     }
 
-    public void setDia(int dia) {
+    public void setDia(int dia)
+    {
         this.dia = dia;
     }
-
-
     
 }

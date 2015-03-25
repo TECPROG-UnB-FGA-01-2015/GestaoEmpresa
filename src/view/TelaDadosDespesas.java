@@ -56,7 +56,6 @@ public class TelaDadosDespesas extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents()
     {
-
         jButton_Sair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextField_Nome = new javax.swing.JTextField();
@@ -245,13 +244,21 @@ public class TelaDadosDespesas extends javax.swing.JFrame
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        }
+        
+        catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(TelaDadosDespesas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        }
+        
+        catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(TelaDadosDespesas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        }
+        
+        catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(TelaDadosDespesas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        }
+        
+        catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(TelaDadosDespesas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>

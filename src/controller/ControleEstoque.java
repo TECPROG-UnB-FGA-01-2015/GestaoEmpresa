@@ -39,6 +39,7 @@ public class ControleEstoque
         int i=0;
         Produto volta = null;
         Produto voltaExata = null;
+        
         for(Produto p:listaProdutos)
         {
             if(p.getCodigo().toLowerCase().contains(nome.toLowerCase())&&pesquisa==true)

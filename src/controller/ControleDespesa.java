@@ -41,8 +41,12 @@ public class ControleDespesa
     public Despesa pesquisarGasto(String nome)
     {
         for(Despesa g: listaGasto)
+        {
             if(g.getNome().equalsIgnoreCase(nome))
+            {
                 return g;
+            }
+        }
         return null;
     }
    

@@ -2,7 +2,6 @@ package model;
 
 public class Produto
 {
-    
     private String codigo;
     private String descricao;
     private double precoCompra;

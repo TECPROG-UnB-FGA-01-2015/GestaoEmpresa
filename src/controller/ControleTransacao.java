@@ -3,27 +3,33 @@ package controller;
 import java.util.ArrayList;
 import model.Transacao;
 
-public class ControleTransacao {
-    private ArrayList<Transacao> listaVenda;
+public class ControleTransacao
+{
+	private ArrayList<Transacao> listaVenda;
 
-    public ControleTransacao() {
-        this.listaVenda = new ArrayList<Transacao>();
-    }
+	public ControleTransacao()
+	{
+		this.listaVenda = new ArrayList<Transacao>();
+	}
 
-    public ArrayList<Transacao> getListaVenda() {
-        return listaVenda;
-    }
+	public ArrayList<Transacao> getListaVenda()
+	{
+		return listaVenda;
+	}
 
-    public void setListaVendas(ArrayList<Transacao> listaVendas) {
-        this.listaVenda = listaVendas;
-    }
-     public void adicionarVenda(Transacao v){
-        listaVenda.add(v);
-    }
-    
-    public void removerVenda(Transacao v){
-        listaVenda.remove(v);
-    }
-    
-    
+	public void setListaVendas(ArrayList<Transacao> listaVendas)
+	{
+		this.listaVenda = listaVendas;
+	}
+
+	public void adicionarVenda(Transacao v)
+	{
+		listaVenda.add(v);
+	}
+
+	public void removerVenda(Transacao v)
+	{
+		listaVenda.remove(v);
+	}
+
 }

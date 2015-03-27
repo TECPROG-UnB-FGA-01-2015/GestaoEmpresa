@@ -1,62 +1,66 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package controller;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import model.Funcionario;
-import view.TelaContatos;
+import model.Employee;
+import view.ContactView;
 
-public class ControleFuncionario {
-    
-    private static ArrayList<Funcionario> listaFuncionario;
+public class EmployeeController 
+{
+    private static ArrayList<Employee> employeeList;
     TelaContatos telaContatos;
 
-    public ControleFuncionario() {
-        listaFuncionario = new ArrayList<Funcionario>();
+    public EmployeeController() 
+    {
+        employeeList = new ArrayList<Employee>();
     }
 
-    public ArrayList<Funcionario> getListaFuncionario() {
-        return listaFuncionario;
+    public ArrayList<Employee> getEmployeeList() 
+    {
+        return employeeList;
     }
 
-    public void setListaFuncionario(ArrayList<Funcionario> listaFuncionario) {
-        this.listaFuncionario = listaFuncionario;
+    public void setEmployeeList(ArrayList<Employee> employeeList) 
+    {
+        this.employeeList = employeeList;
     }
     
-    public void adicionarFuncionario(Funcionario f){
-        listaFuncionario.add(f);
+    public void adicionarEmployee(Employee f)
+    {
+        employeeList.add(f);
     }
-    public void removerFuncionario(Funcionario f){
-        listaFuncionario.remove(f);
+    public void removerEmployee(Employee f)
+    {
+        employeeList.remove(f);
     }
     
-    public Funcionario pesquisarFuncionario(String nome,boolean pesquisa){
-        Funcionario volta = null;
-        Funcionario voltaExata = null;
+    public Employee pesquisarEmployee(String nome, boolean pesquisa)
+    {
+        Employee volta = null;
+        Employee voltaExata = null;
         int i=0;
-        for(Funcionario f: listaFuncionario)
+        for(Employee f: employeeList)
         {
             if((f.getNome().equalsIgnoreCase(nome)))
             {
                 voltaExata = f;
-                i++;
+                i = i + 1;
             }
-            else if((f.getNome().toLowerCase().contains(nome.toLowerCase()))&&pesquisa==true)
+            else if((f.getNome().toLowerCase().contains(nome.toLowerCase())) && pesquisa == true)
             {
                 volta = f;
-                i++;
+                i = i + 1;
             }
         }
 
         if(voltaExata!=null)
+        {
             return voltaExata;
+        }
         else if(volta!=null)
+        {
             return volta;
+        }
         return null;
     }
 }

@@ -1,79 +1,86 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package model;
 
-/**
- *
- * @author Ricardo
- */
-public class Endereco {
-    private String logradouro;
-    private String numero;
-    private String cidade;
-    private String estado;
-    private String pais;
-    private String complemento;
+public class Address
+{
+    private String street;
+    private String number;
+    private String city;
+    private String state;
+    private String country;
+    private String complement;
 
-    public Endereco(String logradouro, String numero, String cidade, String estado, String pais, String complemento) {
-        this.logradouro = logradouro;
-        this.numero = numero;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.pais = pais;
-        this.complemento = complemento;
+    public Address(String street,
+                   String number,
+                   String city,
+                   String state,
+                   String country,
+                   String complement)
+    {
+        this.street = street;
+        this.number = number;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+        this.complement = complement;
     }
 
-    public String getLogradouro() {
-        return logradouro;
+    public String getStreet()
+    {
+        return street;
     }
 
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
+    public void setStreet(String street)
+    {
+        this.street = street;
     }
 
-    public String getNumero() {
-        return numero;
+    public String getNumber()
+    {
+        return number;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public void setNumber(String number)
+    {
+        this.number = number;
     }
 
-    public String getCidade() {
-        return cidade;
+    public String getCity()
+    {
+        return city;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
+    public void setCity(String city)
+    {
+        this.city = city;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getState()
+    {
+        return state;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setState(String state)
+    {
+        this.state = state;
     }
 
-    public String getPais() {
-        return pais;
+    public String getCountry()
+    {
+        return country;
     }
 
-    public void setPais(String pais) {
-        this.pais = pais;
+    public void setCountry(String country)
+    {
+        this.country = country;
     }
 
-    public String getComplemento() {
-        return complemento;
+    public String getComplement()
+    {
+        return complement;
     }
 
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
+    public void setComplement(String complement)
+    {
+        this.complement = complement;
     }
-
-    
 }

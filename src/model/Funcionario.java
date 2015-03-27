@@ -1,95 +1,112 @@
-
 package model;
 
-
-public class Funcionario {
-    private String nome;
-    private String telefone;
-    private String celular;
+public class Employee
+{
+    private String name;
+    private String telephone;
+    private String cellphone;
     private String cpf;
     private String rg;
-    private String cargo;
-    private double salario;
-    private Endereco endereco;
+    private String role;
+    private double salary;
+    private Address address;
 
-    public Funcionario(String nome, String telefone, String celular, String cpf, String rg, String cargo, double salario, Endereco endereco) {
-        this.nome = nome;
-        this.telefone = telefone;
-        this.celular = celular;
+    public Employee(String name,
+                       String telephone,
+                       String cellphone,
+                       String cpf,
+                       String rg,
+                       String role,
+                       double salary,
+                       Address address)
+    {
+        this.name = name;
+        this.telephone = telephone;
+        this.cellphone = cellphone;
         this.cpf = cpf;
         this.rg = rg;
-        this.cargo = cargo;
-        this.salario = salario;
-        this.endereco = endereco;
+        this.role = role;
+        this.salary = salary;
+        this.address = address;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public Address getAddress()
+    {
+        return address;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setAddress(Address address)
+    {
+        this.address = address;
     }
 
-    
-    
-    public String getTelefone() {
-        return telefone;
+    public String getTelephone()
+    {
+        return telephone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setTelephone(String telephone)
+    {
+        this.telephone = telephone;
     }
 
-    public String getCelular() {
-        return celular;
+    public String getCellphone()
+    {
+        return cellphone;
     }
 
-    public void setCelular(String celular) {
-        this.celular = celular;
+    public void setCellphone(String cellphone)
+    {
+        this.cellphone = cellphone;
     }
 
-    public String getCpf() {
+    public String getCpf()
+    {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(String cpf)
+    {
         this.cpf = cpf;
     }
 
-    public String getRg() {
+    public String getRg()
+    {
         return rg;
     }
 
-    public void setRg(String rg) {
+    public void setRg(String rg)
+    {
         this.rg = rg;
     }
-
     
-
-    public String getNome() {
-        return nome;
+    public String getName()
+    {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name)
+    {
+        this.name = name;
     }
 
-    public String getCargo() {
-        return cargo;
+    public String getRole()
+    {
+        return role;
     }
 
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
+    public void setRole(String role)
+    {
+        this.role = role;
     }
 
-    public double getSalario() {
-        return salario;
+    public double getSalary()
+    {
+        return salary;
     }
 
-    public void setSalario(double salario) {
-        this.salario = salario;
+    public void setSalary(double salary)
+    {
+        this.salary = salary;
     }
-    
-    
 }

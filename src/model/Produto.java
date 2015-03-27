@@ -23,7 +23,7 @@ public class Produto
         this.precoVenda = precoVenda;
     }
 
-    // Java constructor default
+    // Java default constructor
     public Produto()
     {
         // Nothing to do

@@ -8,7 +8,7 @@ import view.ContactView;
 public class EmployeeController 
 {
     private static ArrayList<Employee> employeeList;
-    TelaContatos telaContatos;
+    ContactView contactView;
 
     public EmployeeController() 
     {
@@ -25,41 +25,41 @@ public class EmployeeController
         this.employeeList = employeeList;
     }
     
-    public void adicionarEmployee(Employee f)
+    public void addEmployee(Employee employee)
     {
-        employeeList.add(f);
+        employeeList.add(employee);
     }
-    public void removerEmployee(Employee f)
+    public void removeEmployee(Employee employee)
     {
-        employeeList.remove(f);
+        employeeList.remove(employee);
     }
     
-    public Employee pesquisarEmployee(String nome, boolean pesquisa)
+    public Employee searchEmployee(String nome, boolean pesquisa)
     {
-        Employee volta = null;
-        Employee voltaExata = null;
+        Employee returned = null;
+        Employee exactReturned = null;
         int i=0;
-        for(Employee f: employeeList)
+        for(Employee employee: employeeList)
         {
             if((f.getNome().equalsIgnoreCase(nome)))
             {
-                voltaExata = f;
+                exactReturned = employee;
                 i = i + 1;
             }
-            else if((f.getNome().toLowerCase().contains(nome.toLowerCase())) && pesquisa == true)
+            else if((employee.getNome().toLowerCase().contains(nome.toLowerCase())) && pesquisa == true)
             {
-                volta = f;
+                returned = employee;
                 i = i + 1;
             }
         }
 
-        if(voltaExata!=null)
+        if(exactReturned!=null)
         {
-            return voltaExata;
+            return exactReturned;
         }
-        else if(volta!=null)
+        else if(returned!=null)
         {
-            return volta;
+            return returned;
         }
         return null;
     }

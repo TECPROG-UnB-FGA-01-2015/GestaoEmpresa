@@ -1,61 +1,60 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package model;
 
-/**
- *
- * @author Ricardo
- */
-public class Cliente {
-    
-    protected String nome;
-    protected Endereco endereco;
-    protected String telefone;
-    protected String celular;
+public class Client
+{
+    protected String name;
+    protected Address address;
+    protected String telephone;
+    protected String cellphone;
 
-    public Cliente(String nome, Endereco endereco, String telefone, String celular) {
-        this.nome = nome;
-        this.endereco = endereco;
-        this.telefone = telefone;
-        this.celular = celular;
+    public Client(String name, 
+    		  Address address, 
+    		  String telephone, 
+    		  String cellphone)
+    {
+        this.name = name;
+        this.address = address;
+        this.telephone = telephone;
+        this.cellphone = cellphone;
     }
 
-    public String getNome() {
-        return nome;
+    public String getname()
+    {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setname(String name)
+    {
+        this.name = name;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public Address getAddress()
+    {
+        return address;
     }
 
-    public void setEndereco(Endereco umEndereco) {
-        this.endereco = umEndereco;
+    public void setAddress(Address address)
+    {
+        this.address = address;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getTelephone()
+    {
+        return telephone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setTelephone(String telephone)
+    {
+        this.telephone = telephone;
     }
 
-    public String getCelular() {
-        return celular;
+    public String getCellphone()
+    {
+        return cellphone;
     }
 
-    public void setCelular(String celular) {
-        this.celular = celular;
+    public void setCellphone(String cellphone)
+    {
+        this.cellphone = cellphone;
     }
-
-    
-    
 }

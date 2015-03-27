@@ -1,65 +1,67 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package controller;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import model.Cliente;
-import view.TelaContatos;
+import model.Client;
+import view.ContactView;
 
-
-public class ControleCliente {
+public class ClientController
+{
+    ContactView contactView;
+    private static ArrayList<Client> clientList;
     
-    TelaContatos telaContatos;
-    private static ArrayList<Cliente> listaCliente;
-    
-
-    public ControleCliente() {
-        listaCliente = new ArrayList<Cliente>();
-        
+    public ClientController()
+    {
+        clientList = new ArrayList<Client>();
     }
 
-    public static ArrayList<Cliente> getListaCliente() {
-        return listaCliente;
+    public static ArrayList<Client> getListaClient()
+    {
+        return clientList;
     }
 
-    public static void setListaCliente(ArrayList<Cliente> listaCliente) {
-        ControleCliente.listaCliente = listaCliente;
-    }
-    
-    public void adicionarCliente (Cliente c){
-        listaCliente.add(c);
-    }
-    public void removerCliente (Cliente c){
-        listaCliente.remove(c);
+    public static void setListaClient(ArrayList<Client> clientList)
+    {
+        ClientController.clientList = clientList;
     }
     
-    public Cliente pesquisarCliente(String nome,boolean pesquisa){
-        Cliente volta = null;
-        Cliente voltaExata = null;
-        int i=0;
-        for(Cliente c: listaCliente)
+    public void addClient (Client client)
+    {
+        clientList.add(client);
+    }
+    
+    public void removeClient (Client client)
+    {
+        clientList.remove(client);
+    }
+    
+    public Client searchClient(String name, boolean search)
+    {
+        Client return = null;
+        Client exactReturn = null;
+        int i = 0;
+        for(Client client: clientList)
         {
-            if((c.getNome().equalsIgnoreCase(nome)))
+            if((client.getNome().equalsIgnoreCase(name)))
             {
-                voltaExata = c;
-                i++;
+                exactReturn = client;
+                i = i + 1;
             }
-            else if((c.getNome().toLowerCase().contains(nome.toLowerCase()))&&pesquisa==true)
+            else if((client.getNome().toLowerCase().contains(name.toLowerCase())) && search==true)
             {
-                volta = c;
-                i++;
+                return = client;
+                i = i + 1;
             }
         }
         
-        if(voltaExata!=null)
-            return voltaExata;
-        else if(volta!=null)
-            return volta;
+        if(exactReturn != null)
+        {
+            return exactReturn;
+        }
+        else if(return != null)
+        {
+            return return;
+        }
         return null;
     }
     

@@ -1,32 +1,39 @@
 package model;
 
-public class ClienteJuridico extends Cliente {
-    private String razaoSocial;
+public class JuridicalClient extends Client
+{
+    private String socialReason;
     private String cnpj;
 
-    public ClienteJuridico(String razaoSocial, String cnpj, String nome, Endereco umEndereco, String telefone, String celular) {
-        super(nome, umEndereco, telefone, celular);
-        this.razaoSocial = razaoSocial;
+    public JuridicalClient(String socialReason,
+                           String cnpj,
+                           String nome,
+                           Address address,
+                           String telephone,
+                           String cellphone)
+    {
+        super(name, address, telephone, cellphone);
+        this.socialReason = socialReason;
         this.cnpj = cnpj;
     }
 
-
-    public String getRazaoSocial() {
-        return razaoSocial;
+    public String getSocialReason()
+    {
+        return socialReason;
     }
 
-    public void setRazaoSocial(String razaoSocial) {
-        this.razaoSocial = razaoSocial;
+    public void setSocialReason(String socialReason)
+    {
+        this.socialReason = socialReason;
     }
 
-    public String getCnpj() {
+    public String getCnpj()
+    {
         return cnpj;
     }
 
-    public void setCnpj(String cnpj) {
+    public void setCnpj(String cnpj)
+    {
         this.cnpj = cnpj;
     }
-    
-    
-    
 }

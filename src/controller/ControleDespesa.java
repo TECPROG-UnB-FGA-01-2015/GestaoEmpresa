@@ -44,7 +44,8 @@ public class ControleDespesa
     }
     
     /* Method to search an element which is a Despesa type by passing as a parameter a
-     * name */
+     * name
+     */
     public Despesa pesquisarGasto(String nome)
     {
         for(Despesa g: listaGasto)

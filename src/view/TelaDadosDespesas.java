@@ -20,6 +20,7 @@ public class TelaDadosDespesas extends javax.swing.JFrame
     DateFormat dateFormat;
     static ControleDespesa umControleDespesa = new ControleDespesa();
     
+    // Constructor to initialize components on TelaDadosDespesas
     public TelaDadosDespesas()
     {
         initComponents();
@@ -29,23 +30,28 @@ public class TelaDadosDespesas extends javax.swing.JFrame
         jComboBox_Ano.setSelectedItem(getAno());
     }
     
+    // Method to show a message to user by passing as a parameter a String info
     public void exibirInformacao(String info)
     {
-        JOptionPane.showMessageDialog(this, info,"Atenção" ,JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, info,"Atenção" ,JOptionPane.
+        		INFORMATION_MESSAGE);
     }
     
+    // Method to return the content of attribute dia
     public String getDia() 
     { 
         dateFormat = new SimpleDateFormat("dd"); 
         return dateFormat.format(date);
     }
     
+    // Method to return the content of attribute mes
     public String getMes() 
     { 
         dateFormat = new SimpleDateFormat("MM"); 
         return dateFormat.format(date);
     }
     
+    // Method to return the content of attribute ano
     public String getAno()
     {
         dateFormat = new SimpleDateFormat("yyyy"); 

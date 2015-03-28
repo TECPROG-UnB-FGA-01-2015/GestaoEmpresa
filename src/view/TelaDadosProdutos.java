@@ -20,6 +20,7 @@ public class TelaDadosProdutos extends javax.swing.JFrame
     TelaEstoque telaEstoque;
     static boolean infoCarregar=false;
     
+    // Constructor to initialize components on TelaDadosProdutos
     public TelaDadosProdutos()
     {
         initComponents();
@@ -193,11 +194,13 @@ public class TelaDadosProdutos extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Method to show a message to user by passing as a parameter a String info
     public void exibirInformacao(String info)
     {
         JOptionPane.showMessageDialog(this, info,"Atenção" ,JOptionPane.INFORMATION_MESSAGE);
     }
     
+    // Method to add one more on the attribute codigo if it would be a new Product
     private void preencherCodigo()
     {
         if(novoProduto==true)
@@ -218,8 +221,14 @@ public class TelaDadosProdutos extends javax.swing.JFrame
                                              +1));
             }
         }
+        
+        else
+        {
+        	// Nothing to do
+        }
     }
     
+    // Method to add one more on the attribute codigo if there is already a Product
     private void preencherCampos()
     {
         if(novoProduto==false)
@@ -231,9 +240,16 @@ public class TelaDadosProdutos extends javax.swing.JFrame
 	        jTextField_PrecoVenda.setText(Double.toString(editProduto.getPrecoVenda()));
 	        jTextField_QuantidadeProduto.setText(Double.toString(editProduto.getQuantidade()));
         }
+        
+        else
+        {
+        	// Nothing to do
+        }
     }
     
-    private void limparCampos()
+
+    // Method to clean up the textBox
+        private void limparCampos()
     {
         jTextField_NomeProduto.setText("");
         jTextField_DescricaoProduto.setText("");
@@ -242,6 +258,9 @@ public class TelaDadosProdutos extends javax.swing.JFrame
         jTextField_QuantidadeProduto.setText("0.0");
     }
     
+    /* Method to cancel the action to add another product giving returning an
+     * information to user
+     */
     private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_CancelarActionPerformed
         if(!jTextField_DescricaoProduto.getText().equals(""))
@@ -254,6 +273,9 @@ public class TelaDadosProdutos extends javax.swing.JFrame
         infoCarregar=true;
     }//GEN-LAST:event_jButton_CancelarActionPerformed
 
+    /* Method to save all the informations provided by the user on a new object
+     * Produto
+     */
     private void jButton_SalvarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalvarProdutoActionPerformed
         if(!jTextField_NomeProduto.getText().equals("")&&!jTextField_DescricaoProduto.getText().equals("")&&!jTextField_PrecoCompra.getText().equals(""))
         {
@@ -283,6 +305,11 @@ public class TelaDadosProdutos extends javax.swing.JFrame
                 {
                     exibirInformacao("Produto com essa Descrição já existente no estoque!");
                 }
+                
+                else
+                {
+                	// Nothing to do
+                }
             }
             
             else if(TelaEstoque.novoProduto==false)
@@ -300,6 +327,11 @@ public class TelaDadosProdutos extends javax.swing.JFrame
                     editProduto.setQuantidade(estoque);   
                     exibirInformacao("Produto Editado!");
                 }
+            }
+            
+            else
+            {
+            	// Nothing to do
             }
             
             limparCampos();
@@ -330,6 +362,11 @@ public class TelaDadosProdutos extends javax.swing.JFrame
             exibirInformacao("Digite um preço de venda para o produto");
             jTextField_PrecoCompra.requestFocus();
         }
+        
+        else
+        {
+        	// Nothing to do
+        }
     }//GEN-LAST:event_jButton_SalvarProdutoActionPerformed
 
     /**
@@ -350,6 +387,11 @@ public class TelaDadosProdutos extends javax.swing.JFrame
                 {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+                }
+                
+                else
+                {
+                	// Nothing to do
                 }
             }
         }

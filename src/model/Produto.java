@@ -9,7 +9,7 @@ public class Produto
     private double quantidade;
 
     /* Constructor to receive all the attributes as parameters and initialize the
-    object */
+     * object Produto*/
     public Produto(String codigo,
     				String descricao,
     				double precoCompra,

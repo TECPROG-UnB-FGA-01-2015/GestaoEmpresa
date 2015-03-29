@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package view;
 
 import java.util.ArrayList;
@@ -19,13 +13,29 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 	private int statusVendaCompra = 0;
 	Venda umaVenda;
 	Compra umaCompra;
+	
+	// Variables declaration (do not modify) - GEN-BEGIN:variables
+	private javax.swing.JButton jButton_sair;
+	private javax.swing.JComboBox jComboBox_VendaCompra;
+	private javax.swing.JLabel jLabel1;
+	private javax.swing.JPanel jPanel1;
+	private javax.swing.JScrollPane jScrollPane1;
+	private javax.swing.JTable jTable_Historico;
+	// End of variables declaration - GEN-END:variables
 
+	/* This method is responsible to load Shopping/Selling list on
+	 * the GUI (Graphical User Interface) screen
+	 */
 	public TelaHistoricoVendaCompra()
 	{
 		initComponents();
 		carregarLista();
 	}
 
+	/* This method is responsible to show the Shopping/Selling list info, as:
+	*  Client/Provider name, responsible worker, transaction value and date 
+	*  (date/month/year)
+	*/
 	private void carregarLista()
 	{
 		ArrayList<Transacao> listaTransacao = umControleTransacao
@@ -67,8 +77,9 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 	}
 
 	@SuppressWarnings("unchecked")
-	// <editor-fold defaultstate="collapsed"
-	// desc="Generated Code">//GEN-BEGIN:initComponents
+	/* This method is responsible to create and show all the GUI's components/frameworks
+	 * (with buttons, texts, lists ...) about the Shopping/Selling info on the screen
+	 */
 	private void initComponents()
 	{
 
@@ -80,16 +91,16 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 		jButton_sair = new javax.swing.JButton();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-		setTitle("Histórico de Vendas");
+		setTitle("Historico de Vendas");
 		setBounds(new java.awt.Rectangle(450, 300, 0, 0));
 
 		jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-		jLabel1.setText("Histórico de Vendas");
+		jLabel1.setText("Historico de Vendas");
 
 		jTable_Historico.setModel(new javax.swing.table.DefaultTableModel(null,
 				new String[]
-				{ "Nome Cliente/Fornecedor", "Funcionário Responsável",
-						"Valor da Transação", "Data" })
+				{ "Nome Cliente/Fornecedor", "Funcionario Responsavel",
+						"Valor da Transacao", "Data" })
 		{
 			@Override
 			public boolean isCellEditable(int rowIndex, int mColIndex)
@@ -238,43 +249,39 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 						.addContainerGap()));
 
 		pack();
-	}// </editor-fold>//GEN-END:initComponents
+	}
 
+	// This method is responsible to confirm the Screen's Exit Button Action
 	private void jButton_sairActionPerformed(java.awt.event.ActionEvent evt)
-	{// GEN-FIRST:event_jButton_sairActionPerformed
+	{
 		this.dispose();
-	}// GEN-LAST:event_jButton_sairActionPerformed
+	}
 
+	/* This method is responsible to display two choose options on the same button:
+	 * Shopping/Selling list info (Client/Provider name, responsible worker, transaction value
+	 * and date (date/month/year)
+	 */
 	private void jComboBox_VendaCompraItemStateChanged(
 			java.awt.event.ItemEvent evt)
-	{// GEN-FIRST:event_jComboBox_VendaCompraItemStateChanged
+	{
 		if (jComboBox_VendaCompra.getSelectedIndex() == 0)
 		{
 			statusVendaCompra = 0;
-			jLabel1.setText("Histórico de Vendas");
+			jLabel1.setText("Historico de Vendas");
 		} else if (jComboBox_VendaCompra.getSelectedIndex() == 1)
 		{
 			statusVendaCompra = 1;
-			jLabel1.setText("Histórico de Compras");
+			jLabel1.setText("Historico de Compras");
 		}
 		carregarLista();
-	}// GEN-LAST:event_jComboBox_VendaCompraItemStateChanged
+	}
 
-	/**
-	 * @param args
-	 *            the command line arguments
+	/* This main method is responsible to enable the Nimbus (GUI) Interface
+	 * and display all the Shopping/Selling list info with a log system
 	 */
 	public static void main(String args[])
 	{
-		/* Set the Nimbus look and feel */
-		// <editor-fold defaultstate="collapsed"
-		// desc=" Look and feel setting code (optional) ">
-		/*
-		 * If Nimbus (introduced in Java SE 6) is not available, stay with the
-		 * default look and feel. For details see
-		 * http://download.oracle.com/javase
-		 * /tutorial/uiswing/lookandfeel/plaf.html
-		 */
+	
 		try
 		{
 			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
@@ -307,9 +314,8 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 					TelaHistoricoVendaCompra.class.getName()).log(
 					java.util.logging.Level.SEVERE, null, ex);
 		}
-		// </editor-fold>
-
-		/* Create and display the form */
+		
+		// Create and display the form 
 		java.awt.EventQueue.invokeLater(new Runnable()
 		{
 			public void run()
@@ -319,12 +325,4 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 		});
 	}
 
-	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private javax.swing.JButton jButton_sair;
-	private javax.swing.JComboBox jComboBox_VendaCompra;
-	private javax.swing.JLabel jLabel1;
-	private javax.swing.JPanel jPanel1;
-	private javax.swing.JScrollPane jScrollPane1;
-	private javax.swing.JTable jTable_Historico;
-	// End of variables declaration//GEN-END:variables
 }

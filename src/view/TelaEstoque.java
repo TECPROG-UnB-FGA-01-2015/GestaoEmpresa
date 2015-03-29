@@ -27,6 +27,7 @@ public class TelaEstoque extends javax.swing.JFrame
 	static String descricaoTabela;
 	static boolean returnProduto = false;
 
+	// Constructor to initialize components on TelaEstoque
 	public TelaEstoque()
 	{
 		initComponents();
@@ -63,11 +64,13 @@ public class TelaEstoque extends javax.swing.JFrame
 		jTextField_NomeProduto.requestFocus();
 	}
 
+	// Method to display a warning message to the user
 	public void exibirInformacao(String info)
 	{
 		JOptionPane.showMessageDialog(this, info, "Atenção", JOptionPane.INFORMATION_MESSAGE);
 	}
 
+	// Method to load the table with product information
 	public void carregarLista()
 	{
 			
@@ -238,6 +241,7 @@ public class TelaEstoque extends javax.swing.JFrame
 		pack();
 	}// </editor-fold>//GEN-END:initComponents
 
+	// Method to search for a product from the name
 	private void jButton_PesquisarProdutoActionPerformed(java.awt.event.ActionEvent evt)
 	{// GEN-FIRST:event_jButton_PesquisarProdutoActionPerformed
 		if("".equals(jTextField_NomeProduto.getText()))
@@ -272,12 +276,14 @@ public class TelaEstoque extends javax.swing.JFrame
 		}
 	}// GEN-LAST:event_jButton_PesquisarProdutoActionPerformed
 
+	// Method to open the view TelaDadosProdutos for add a new product
 	private void jButton_AdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt)
 	{// GEN-FIRST:event_jButton_AdicionarProdutoActionPerformed
 		new TelaDadosProdutos().setVisible(true);
 		this.setVisible(false);
 	}// GEN-LAST:event_jButton_AdicionarProdutoActionPerformed
 
+	// Method to cancel the operation and close the screen
 	private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt)
 	{// GEN-FIRST:event_jButton_CancelarActionPerformed
 		this.dispose();
@@ -285,12 +291,14 @@ public class TelaEstoque extends javax.swing.JFrame
 			new TelaVendaCompra().setVisible(true);
 	}// GEN-LAST:event_jButton_CancelarActionPerformed
 
+	// Method to open the view TelaDadosProdutos for edit the product information
 	private void jButton_EditarProdutoActionPerformed(java.awt.event.ActionEvent evt)
 	{// GEN-FIRST:event_jButton_EditarProdutoActionPerformed
 		novoProduto = false;
 		new TelaDadosProdutos().setVisible(true);
 	}// GEN-LAST:event_jButton_EditarProdutoActionPerformed
 
+	// Method for Selecting an item in the table and enable the options edit, delete and confirms
 	private void jTable2MouseClicked(java.awt.event.MouseEvent evt)
 	{// GEN-FIRST:event_jTable2MouseClicked
 		DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
@@ -301,6 +309,7 @@ public class TelaEstoque extends javax.swing.JFrame
 		jButton_ConfirmarProduto.setEnabled(true);
 	}// GEN-LAST:event_jTable2MouseClicked
 
+	// Method for removing a product from the table
 	private void jButton_ExcluirProdutoActionPerformed(java.awt.event.ActionEvent evt)
 	{// GEN-FIRST:event_jButton_ExcluirProdutoActionPerformed
 		umControleEstoque.removerProduto(umControleEstoque.pesquisarProduto(codigoTabela, false));
@@ -309,6 +318,7 @@ public class TelaEstoque extends javax.swing.JFrame
 		jButton_ExcluirProduto.setEnabled(false);
 	}// GEN-LAST:event_jButton_ExcluirProdutoActionPerformed
 
+	// Method to confirm the operation
 	private void jButton_ConfirmarProdutoActionPerformed(java.awt.event.ActionEvent evt)
 	{// GEN-FIRST:event_jButton_ConfirmarProdutoActionPerformed
 		returnProduto = true;

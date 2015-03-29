@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package model;
 
 import java.util.ArrayList;
@@ -12,6 +6,10 @@ public class Compra extends Transacao
 {
 	private Fornecedor fornecedor;
 
+	/* This constructor method is responsible to receive some attributes
+	 * as parameters to initialize the Compra's objects and to call the parent
+	 * constructor (superclass) from Transacao class with its arguments 
+	 */
 	public Compra(Fornecedor fornecedor, ArrayList<Produto> listaVenda,
 			double preco, Funcionario funcionario, int dia, int mes, int ano)
 	{
@@ -19,11 +17,13 @@ public class Compra extends Transacao
 		this.fornecedor = fornecedor;
 	}
 
+	// This method is responsible to access the fornecedor's private value
 	public Fornecedor getFornecedor()
 	{
 		return fornecedor;
 	}
 
+	// This method is responsible to modify the fornecedor's private value
 	public void setFornecedor(Fornecedor fornecedor)
 	{
 		this.fornecedor = fornecedor;

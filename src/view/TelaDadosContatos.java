@@ -34,11 +34,13 @@ public class TelaDadosContatos extends javax.swing.JFrame
 	FornecedorJuridico editFornecedorJuridico;
 	Funcionario editFuncionario;
 
+	// Method to display a warning message to the user
 	public void exibirInformacao(String info)
 	{
 		JOptionPane.showMessageDialog(this, info, "Atenção", JOptionPane.INFORMATION_MESSAGE);
 	}
 
+	// Constructor to initialize components on TelaDadosContatos
 	public TelaDadosContatos()
 	{
 		initComponents();
@@ -93,6 +95,7 @@ public class TelaDadosContatos extends javax.swing.JFrame
 		jTextField_Nome.requestFocus();
 	}
 
+	// Method to populate text fields with customer information
 	private void preencherCampos()
 	{
 		if(TelaContatos.modoEditar == true)
@@ -189,6 +192,7 @@ public class TelaDadosContatos extends javax.swing.JFrame
 		}
 	}
 
+	// Method to clear the text fields
 	private void limparCampos()
 	{
 		jTextField_Nome.setText("");
@@ -416,6 +420,7 @@ public class TelaDadosContatos extends javax.swing.JFrame
 		pack();
 	}// </editor-fold>//GEN-END:initComponents
 
+	// Method to enable the text fields according to the type of contact
 	private void jComboBox_TipoContatoItemStateChanged(java.awt.event.ItemEvent evt)
 	{// GEN-FIRST:event_jComboBox_TipoContatoItemStateChanged
 		if(jComboBox_TipoContato.getSelectedIndex() == 0f)
@@ -451,6 +456,7 @@ public class TelaDadosContatos extends javax.swing.JFrame
 		}
 	}// GEN-LAST:event_jComboBox_TipoContatoItemStateChanged
 
+	// Method to scan the information of text field and save on the customer object attributes
 	private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt)
 	{// GEN-FIRST:event_jButton_SalvarActionPerformed
 		if(jTextField_Nome.getText().isEmpty() == true)
@@ -661,12 +667,14 @@ public class TelaDadosContatos extends javax.swing.JFrame
 
 	}// GEN-LAST:event_jButton_SalvarActionPerformed
 
+	// Method to cancel the operation and close the screen
 	private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt)
 	{// GEN-FIRST:event_jButton_CancelarActionPerformed
 		new TelaContatos().setVisible(true);
 		this.dispose();
 	}// GEN-LAST:event_jButton_CancelarActionPerformed
 
+	// Method to enable the text fields according to the type of person
 	private void jComboBox_TipoPessoaItemStateChanged(java.awt.event.ItemEvent evt)
 	{// GEN-FIRST:event_jComboBox_TipoPessoaItemStateChanged
 		if(jComboBox_TipoPessoa.getSelectedItem() == "Pessoa Física")

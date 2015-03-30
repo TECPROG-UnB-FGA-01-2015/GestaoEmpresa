@@ -1,3 +1,4 @@
+
 package model;
 
 import java.util.ArrayList;
@@ -7,6 +8,8 @@ public class FornecedorFisico extends Fornecedor
 	private String cpf;
 	private String rg;
 
+	/* Constructor to receive all the attributes as parameters and initialize the
+	 * object FornecedorFisico*/
 	public FornecedorFisico(String cpf,
 							String rg,
 							String nome,
@@ -20,21 +23,25 @@ public class FornecedorFisico extends Fornecedor
 		this.rg = rg;
 	}
 
+	// Method to return the content of attribute cpf
 	public String getCpf()
 	{
 		return cpf;
 	}
 
+	// Method to set a content on variable cpf
 	public void setCpf(String cpf)
 	{
 		this.cpf = cpf;
 	}
 
+	// Method to return the content of attribute rg
 	public String getRg()
 	{
 		return rg;
 	}
 
+	// Method to set a content on variable rg
 	public void setRg(String rg)
 	{
 		this.rg = rg;

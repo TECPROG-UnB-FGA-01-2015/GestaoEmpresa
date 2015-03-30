@@ -17,31 +17,37 @@ public class ControleFornecedor
 	private static ArrayList<Fornecedor> listaFornecedor;
 	TelaContatos telaContatos;
 
+	// Constructor to instance ControleFornecedor with the attribute listaFornecedor
 	public ControleFornecedor()
 	{
 		this.listaFornecedor = new ArrayList<Fornecedor>();
 	}
 
+	// Method to return the content of attribute listaFornecedor
 	public ArrayList<Fornecedor> getListaFornecedor()
 	{
 		return listaFornecedor;
 	}
 
+	// Method to set a content on variable listaForncedor
 	public void setListaFornecedor(ArrayList<Fornecedor> listaFornecedor)
 	{
 		this.listaFornecedor = listaFornecedor;
 	}
 
+	// Method to insert a supplier to attribute listaFornecedor
 	public void adicionarFornecedor(Fornecedor f)
 	{
 		listaFornecedor.add(f);
 	}
 
+	// Method for removing an attribute provider listaFornecedor
 	public void removerFornecedor(Fornecedor f)
 	{
 		listaFornecedor.remove(f);
 	}
 
+	// Method to find a supplier from the parameter name
 	public Fornecedor pesquisarFornecedor(String nome, boolean pesquisa)
 	{
 		Fornecedor volta = null;

@@ -20,6 +20,7 @@ public class TelaDespesas extends javax.swing.JFrame
     int mes2=7;
     int ano2=2014;
     
+    // Constructor to initialize components on TelaDadosProdutos
     public TelaDespesas()
     {
         initComponents();
@@ -28,6 +29,7 @@ public class TelaDespesas extends javax.swing.JFrame
         jComboBox_Ano2.setSelectedItem("2014");
     }
     
+    // Method to show all the despesas added
     private void carregarLista()
     {
         boolean permissao;
@@ -58,6 +60,10 @@ public class TelaDespesas extends javax.swing.JFrame
             {
                 permissao=true;
             }
+            else
+            {
+            	// Nothing to do
+            }
             
             if(d.getAno()<ano1)
             {
@@ -79,9 +85,19 @@ public class TelaDespesas extends javax.swing.JFrame
                 permissao=false;
             }
             
+            else
+            {
+            	// Nothing to do
+            }
+            
             if(permissao==true)
             {
                 model.addRow(new String[]{d.getNome(),Integer.toString(d.getDia()),Integer.toString(d.getMes()),Integer.toString(d.getAno()),d.getDescricao(),Double.toString(d.getValor())});
+            }
+            
+            else
+            {
+            	// Nothing to do
             }
         }
         

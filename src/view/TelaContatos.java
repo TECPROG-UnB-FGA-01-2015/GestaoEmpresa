@@ -44,8 +44,8 @@ public class ContactView extends javax.swing.JFrame
     static boolean returnFuncionario;
     static String nomeClienteFornecedor;
     static String nomeFuncionario;
-    
-    
+
+    // Constructor of the ContactView's class
     public ContactView()
     {
         initComponents();
@@ -55,27 +55,28 @@ public class ContactView extends javax.swing.JFrame
         jButton_ConfirmarContato.setVisible(false);
         jButton_ConfirmarContato.setEnabled(false);
         this.jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        if(modoVendaCompra==true)
+        if(modoVendaCompra == true)
         {
-            if(TelaVendaCompra.modoFuncionario==true)
+            if(TelaVendaCompra.modoFuncionario == true)
                 jComboBox1.setSelectedIndex(2);
             
-            else if(statusVendaCompra==0)
+            else if(statusVendaCompra == 0)
                 jComboBox1.setSelectedIndex(0);
             
-            else if(statusVendaCompra==1)
+            else if(statusVendaCompra == 1)
                 jComboBox1.setSelectedIndex(1);
                 
             jComboBox1.setEnabled(false);
             jButton_ConfirmarContato.setVisible(true);
         }
-        if(TelaVendaCompra.modoFuncionario==true)
+        if(TelaVendaCompra.modoFuncionario == true)
         {
             jButton_AdicionarContato.setEnabled(false);
         }
         jTextField_NomeBusca.requestFocus();
     }
 
+    // Auto-generated function to initialize components of the form
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents()
@@ -289,16 +290,19 @@ public class ContactView extends javax.swing.JFrame
             pack();
         }// </editor-fold>//GEN-END:initComponents
 
+    // Shows message on screen with given string
     public void exibirInformacao(String info)
     {
-        JOptionPane.showMessageDialog(this, info,"Atenção" ,JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, info, "Atenção", JOptionPane.INFORMATION_MESSAGE);
     }
-    
+
+    // Access and returns the property clieteFisico
     public ClienteFisico getClienteFisico()
     {
         return umClienteFisico;
     }
     
+    // Loads the clientList
     private void carregarLista()
     {
         if(contactType==0)
@@ -365,24 +369,28 @@ public class ContactView extends javax.swing.JFrame
             jTable1.setModel(model);
         }
     }
+    
+    // Cancels the client edit
     private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_CancelarActionPerformed
          this.dispose();
-         if(modoClienteFornecedor==true)
+         if(modoClienteFornecedor == true)
          {
              new TelaVendaCompra().setVisible(true);
          }
-         modoClienteFornecedor=false;
-         TelaVendaCompra.modoFuncionario=false;
+         modoClienteFornecedor = false;
+         TelaVendaCompra.modoFuncionario = false;
     }//GEN-LAST:event_jButton_CancelarActionPerformed
 
+    // Calls the form to register new contact
     private void jButton_AdicionarContatoActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_AdicionarContatoActionPerformed
-        editMode=false;
+        editMode = false;
         new TelaDadosContatos().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton_AdicionarContatoActionPerformed
 
+    // Search for the contacts
     private void jButton_PesquisarActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_PesquisarActionPerformed
         String nomeBusca = jTextField_NomeBusca.getText();
@@ -464,9 +472,9 @@ public class ContactView extends javax.swing.JFrame
                         buscaFuncionario.getTelefone(), "Física"});
                 }
             }
-            if((umControleCliente.pesquisarCliente(nomeBusca,true)==null)
-                    &&(umControleFornecedor.pesquisarFornecedor(nomeBusca,true)==null)
-                    &&(umControleFuncionario.pesquisarFuncionario(nomeBusca,true)==null))
+            if((umControleCliente.pesquisarCliente(nomeBusca,true) == null)
+                    &&(umControleFornecedor.pesquisarFornecedor(nomeBusca,true) == null)
+                    &&(umControleFuncionario.pesquisarFuncionario(nomeBusca,true) == null))
             {
                 exibirInformacao("A pesquisa não retornou nenhum resultado!");
                 jTextField_NomeBusca.setText(null);
@@ -486,6 +494,7 @@ public class ContactView extends javax.swing.JFrame
         }
     }//GEN-LAST:event_jButton_PesquisarActionPerformed
 
+    // Changes de variable contactType depending on which contact type was chosen
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt)
     {//GEN-FIRST:event_jComboBox1ItemStateChanged
         if(jComboBox1.getSelectedIndex()==0)
@@ -507,6 +516,7 @@ public class ContactView extends javax.swing.JFrame
         carregarLista();
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
+    // Opens contact register form to edit contact
     private void jButton_EditarActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_EditarActionPerformed
         if(newPhysicalClient==true&&newJuridicalClient==true
@@ -522,6 +532,7 @@ public class ContactView extends javax.swing.JFrame
         }
     }//GEN-LAST:event_jButton_EditarActionPerformed
 
+    // Select contact depending on which contact was clicked
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt)
     {//GEN-FIRST:event_jTable1MouseClicked
         newPhysicalClient=true;
@@ -558,6 +569,7 @@ public class ContactView extends javax.swing.JFrame
         editMode=true;
     }//GEN-LAST:event_jTable1MouseClicked
 
+    // Exclude contact selected
     private void jButton_ExcluirActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_ExcluirActionPerformed
         
@@ -587,33 +599,36 @@ public class ContactView extends javax.swing.JFrame
         jButton_Excluir.setEnabled(false);
     }//GEN-LAST:event_jButton_ExcluirActionPerformed
 
+    // Disable the Confirm Contact button
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt)
     {//GEN-FIRST:event_jPanel1MouseClicked
         jButton_ConfirmarContato.setEnabled(false);
     }//GEN-LAST:event_jPanel1MouseClicked
 
+    // Confirm Contact chosen to TelaVendaCompra's view
     private void jButton_ConfirmarContatoActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_ConfirmarContatoActionPerformed
         this.dispose();
-        if(TelaVendaCompra.modoClienteFornecedor==true)
-            returnClienteFornecedor=true;
+        if(TelaVendaCompra.modoClienteFornecedor == true)
+            returnClienteFornecedor = true;
         
-        if(TelaVendaCompra.modoFuncionario==true)
-            returnFuncionario=true;
+        if(TelaVendaCompra.modoFuncionario == true)
+            returnFuncionario = true;
         
-        if(TelaVendaCompra.modoClienteFornecedor==true&&nomeClienteFornecedor==null)
-            nomeClienteFornecedor=tableName;
+        if(TelaVendaCompra.modoClienteFornecedor == true && nomeClienteFornecedor == null)
+            nomeClienteFornecedor = tableName;
             
-        if(TelaVendaCompra.modoFuncionario==true&&nomeFuncionario==null)
+        if(TelaVendaCompra.modoFuncionario == true && nomeFuncionario == null)
             nomeFuncionario=tableName;
         
-        modoVendaCompra=false;
-        TelaVendaCompra.modoClienteFornecedor=false;
-        TelaVendaCompra.modoFuncionario=false;
+        modoVendaCompra = false;
+        TelaVendaCompra.modoClienteFornecedor = false;
+        TelaVendaCompra.modoFuncionario = false;
         
         new TelaVendaCompra().setVisible(true);
     }//GEN-LAST:event_jButton_ConfirmarContatoActionPerformed
 
+    // Main function
     public static void main(String args[])
     {
         /* Set the Nimbus look and feel */

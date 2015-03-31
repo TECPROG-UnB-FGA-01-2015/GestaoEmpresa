@@ -1,34 +1,44 @@
-
 package model;
 
-
-public class ClienteFisico extends Cliente {
-    
+public class PhysicalClient extends Client
+{
     private String cpf;
     private String rg;
 
-    public ClienteFisico(String cpf, String rg, String nome, Endereco endereco, String telefone, String celular) {
-        super(nome, endereco, telefone, celular);
+    // Constructor of the PhysicalClient's class
+    public PhysicalClient(String cpf, 
+    			  String rg, 
+    			  String nome, 
+    			  Address address, 
+    			  String telephone, 
+    			  String cellphone)
+    {
+        super(nome, address, telephone, cellphone);
         this.cpf = cpf;
         this.rg = rg;
     }
-    
-    public String getCpf() {
+
+    // Access and returns the property cpf
+    public String getCpf()
+    {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    // Sets a new value for the cpf property
+    public void setCpf(String cpf)
+    {
         this.cpf = cpf;
     }
 
-    public String getRg() {
+    // Access and returns the property rg
+    public String getRg()
+    {
         return rg;
     }
 
-    public void setRg(String rg) {
+    // Sets a new value for the rg property
+    public void setRg(String rg)
+    {
         this.rg = rg;
-    }
-
-    
-    
+    } 
 }

@@ -1,65 +1,73 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package controller;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import model.Cliente;
-import view.TelaContatos;
+import model.Client;
+import view.ContactView;
 
+public class ClientController
+{
+    ContactView contactView;
+    private static ArrayList<Client> clientList;
 
-public class ControleCliente {
-    
-    TelaContatos telaContatos;
-    private static ArrayList<Cliente> listaCliente;
-    
-
-    public ControleCliente() {
-        listaCliente = new ArrayList<Cliente>();
-        
+    // Constructor of the ClientController's class
+    public ClientController()
+    {
+        clientList = new ArrayList<Client>();
     }
 
-    public static ArrayList<Cliente> getListaCliente() {
-        return listaCliente;
+    // Access and returns the property clientList
+    public static ArrayList<Client> getListaClient()
+    {
+        return clientList;
     }
 
-    public static void setListaCliente(ArrayList<Cliente> listaCliente) {
-        ControleCliente.listaCliente = listaCliente;
-    }
-    
-    public void adicionarCliente (Cliente c){
-        listaCliente.add(c);
-    }
-    public void removerCliente (Cliente c){
-        listaCliente.remove(c);
+    // Sets a new value for the clientList property
+    public static void setListaClient(ArrayList<Client> clientList)
+    {
+        ClientController.clientList = clientList;
     }
     
-    public Cliente pesquisarCliente(String nome,boolean pesquisa){
-        Cliente volta = null;
-        Cliente voltaExata = null;
-        int i=0;
-        for(Cliente c: listaCliente)
+    // Adds a client to the clientList
+    public void addClient (Client client)
+    {
+        clientList.add(client);
+    }
+    
+    // Removes a client of the clientList
+    public void removeClient (Client client)
+    {
+        clientList.remove(client);
+    }
+    
+    // Search for a client in the clientList with a given name
+    public Client searchClient(String name, boolean search)
+    {
+        Client returned = null;
+        Client exactReturned = null;
+        int i = 0;
+        for(Client client: clientList)
         {
-            if((c.getNome().equalsIgnoreCase(nome)))
+            if((client.getName().equalsIgnoreCase(name)))
             {
-                voltaExata = c;
-                i++;
+                exactReturned = client;
+                i = i + 1;
             }
-            else if((c.getNome().toLowerCase().contains(nome.toLowerCase()))&&pesquisa==true)
+            else if((client.getName().toLowerCase().contains(name.toLowerCase())) && search == true)
             {
-                volta = c;
-                i++;
+                returned = client;
+                i = i + 1;
             }
         }
         
-        if(voltaExata!=null)
-            return voltaExata;
-        else if(volta!=null)
-            return volta;
+        if(exactReturned != null)
+        {
+            return exactReturned;
+        }
+        else if(returned != null)
+        {
+            return returned;
+        }
         return null;
     }
     

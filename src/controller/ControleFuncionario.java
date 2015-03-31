@@ -1,62 +1,73 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package controller;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import model.Funcionario;
-import view.TelaContatos;
+import model.Employee;
+import view.ContactView;
 
-public class ControleFuncionario {
+public class EmployeeController 
+{
+    private static ArrayList<Employee> employeeList;
+    ContactView contactView;
+
+    // Constructor of the EmployeeController's class
+    public EmployeeController() 
+    {
+        employeeList = new ArrayList<Employee>();
+    }
+
+    // Access and returns the property employeeList
+    public ArrayList<Employee> getEmployeeList() 
+    {
+        return employeeList;
+    }
+
+    // Sets a new value for the employeeList property
+    public void setEmployeeList(ArrayList<Employee> employeeList) 
+    {
+        this.employeeList = employeeList;
+    }
     
-    private static ArrayList<Funcionario> listaFuncionario;
-    TelaContatos telaContatos;
-
-    public ControleFuncionario() {
-        listaFuncionario = new ArrayList<Funcionario>();
-    }
-
-    public ArrayList<Funcionario> getListaFuncionario() {
-        return listaFuncionario;
-    }
-
-    public void setListaFuncionario(ArrayList<Funcionario> listaFuncionario) {
-        this.listaFuncionario = listaFuncionario;
+    // Adds an employee to the employeeList 
+    public void addEmployee(Employee employee)
+    {
+        employeeList.add(employee);
     }
     
-    public void adicionarFuncionario(Funcionario f){
-        listaFuncionario.add(f);
+    // Removes an employee of the employeeList
+    public void removeEmployee(Employee employee)
+    {
+        employeeList.remove(employee);
     }
-    public void removerFuncionario(Funcionario f){
-        listaFuncionario.remove(f);
-    }
-    
-    public Funcionario pesquisarFuncionario(String nome,boolean pesquisa){
-        Funcionario volta = null;
-        Funcionario voltaExata = null;
+
+    // Search for an employee in the clientList with a given name
+    public Employee searchEmployee(String nome, boolean pesquisa)
+    {
+        Employee returned = null;
+        Employee exactReturned = null;
         int i=0;
-        for(Funcionario f: listaFuncionario)
+        for(Employee employee: employeeList)
         {
             if((f.getNome().equalsIgnoreCase(nome)))
             {
-                voltaExata = f;
-                i++;
+                exactReturned = employee;
+                i = i + 1;
             }
-            else if((f.getNome().toLowerCase().contains(nome.toLowerCase()))&&pesquisa==true)
+            else if((employee.getNome().toLowerCase().contains(nome.toLowerCase())) && pesquisa == true)
             {
-                volta = f;
-                i++;
+                returned = employee;
+                i = i + 1;
             }
         }
 
-        if(voltaExata!=null)
-            return voltaExata;
-        else if(volta!=null)
-            return volta;
+        if(exactReturned!=null)
+        {
+            return exactReturned;
+        }
+        else if(returned!=null)
+        {
+            return returned;
+        }
         return null;
     }
 }

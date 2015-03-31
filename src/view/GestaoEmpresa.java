@@ -19,7 +19,8 @@ public class EnterpriseManagement extends javax.swing.JFrame
     Fornecedor umFornecedor;
     Produto umProduto;
     ArrayList<Produto> listaProduto;
-    
+
+    // Constructor of the EnterpriseManagement's class
     public EnterpriseManagement()
     {
         initComponents();
@@ -160,37 +161,44 @@ public class EnterpriseManagement extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Shows a message on screen with a given string
     public void exibirInformacao(String info)
     {
         JOptionPane.showMessageDialog(this, info,"Atenção" ,JOptionPane.INFORMATION_MESSAGE);
     }
     
+    // Opens Despesas' form
     private void jButton_DespesasActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_DespesasActionPerformed
         new TelaDespesas().setVisible(true);
     }//GEN-LAST:event_jButton_DespesasActionPerformed
 
+    // Opens Estoque's form
     private void jButton_EstoqueActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_EstoqueActionPerformed
        new TelaEstoque().setVisible(true);
     }//GEN-LAST:event_jButton_EstoqueActionPerformed
 
+    // Opens Contatos' form
     private void jButton_ContatosActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_ContatosActionPerformed
         TelaVendaCompra.modoVendaCompra=false;
         new ContactView().setVisible(true);
     }//GEN-LAST:event_jButton_ContatosActionPerformed
 
+    // Opens VendaCompra's form
     private void jButton_VendaCompraActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_VendaCompraActionPerformed
         new TelaVendaCompra().setVisible(true);
     }//GEN-LAST:event_jButton_VendaCompraActionPerformed
 
+    // Opens HistoricoVendaCompra's form
     private void jButton_HistoricoCompraVendaActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_HistoricoCompraVendaActionPerformed
         new TelaHistoricoVendaCompra().setVisible(true);
     }//GEN-LAST:event_jButton_HistoricoCompraVendaActionPerformed
 
+    // Main function of EnterpriseManagement
     public static void main(String args[])
     {
         /* Set the Nimbus look and feel */

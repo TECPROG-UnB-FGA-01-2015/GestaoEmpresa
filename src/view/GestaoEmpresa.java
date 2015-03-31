@@ -11,11 +11,24 @@ import model.Produto;
 import model.Transacao;
 import model.Venda;
 
-public class GestaoEmpresa extends javax.swing.JFrame {
+public class EnterpriseManagement extends javax.swing.JFrame
+{
     
+    Cliente umCliente;
+    Funcionario umFuncionario;
+    Fornecedor umFornecedor;
+    Produto umProduto;
+    ArrayList<Produto> listaProduto;
     
-    public GestaoEmpresa(){
-        initComponents();   
+    public EnterpriseManagement()
+    {
+        initComponents();
+        umProduto = new Produto("Produto", null, 10.0, WIDTH);
+        listaProduto = new ArrayList<Produto>();
+        listaProduto.add(umProduto);
+        umCliente = new Cliente("Cliente", null, null, null);
+        umFuncionario = new Funcionario("Funcionario", null, null, null, null, null, WIDTH, null);
+        umFornecedor = new Fornecedor("Fornecedor", null, null, null, null);
     }
     
     /**
@@ -25,8 +38,8 @@ public class GestaoEmpresa extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents()
+    {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton_Contatos = new javax.swing.JButton();
@@ -60,40 +73,50 @@ public class GestaoEmpresa extends javax.swing.JFrame {
 
         jButton_Contatos.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jButton_Contatos.setText("Contatos");
-        jButton_Contatos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton_Contatos.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton_ContatosActionPerformed(evt);
             }
         });
 
         jButton_Estoque.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jButton_Estoque.setText("Estoque");
-        jButton_Estoque.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton_Estoque.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton_EstoqueActionPerformed(evt);
             }
         });
 
         jButton_VendaCompra.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jButton_VendaCompra.setText("Venda/Compra");
-        jButton_VendaCompra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton_VendaCompra.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton_VendaCompraActionPerformed(evt);
             }
         });
 
         jButton_Despesas.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jButton_Despesas.setText("Despesas");
-        jButton_Despesas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton_Despesas.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton_DespesasActionPerformed(evt);
             }
         });
 
         jButton_HistoricoCompraVenda.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jButton_HistoricoCompraVenda.setText("Histórico Venda/Compra");
-        jButton_HistoricoCompraVenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton_HistoricoCompraVenda.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton_HistoricoCompraVendaActionPerformed(evt);
             }
         });
@@ -137,59 +160,78 @@ public class GestaoEmpresa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void exibirInformacao(String info){
+    public void exibirInformacao(String info)
+    {
         JOptionPane.showMessageDialog(this, info,"Atenção" ,JOptionPane.INFORMATION_MESSAGE);
     }
     
-    private void jButton_DespesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DespesasActionPerformed
+    private void jButton_DespesasActionPerformed(java.awt.event.ActionEvent evt)
+    {//GEN-FIRST:event_jButton_DespesasActionPerformed
         new TelaDespesas().setVisible(true);
     }//GEN-LAST:event_jButton_DespesasActionPerformed
 
-    private void jButton_EstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EstoqueActionPerformed
+    private void jButton_EstoqueActionPerformed(java.awt.event.ActionEvent evt)
+    {//GEN-FIRST:event_jButton_EstoqueActionPerformed
        new TelaEstoque().setVisible(true);
     }//GEN-LAST:event_jButton_EstoqueActionPerformed
 
-    private void jButton_ContatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ContatosActionPerformed
+    private void jButton_ContatosActionPerformed(java.awt.event.ActionEvent evt)
+    {//GEN-FIRST:event_jButton_ContatosActionPerformed
         TelaVendaCompra.modoVendaCompra=false;
-        new TelaContatos().setVisible(true);
+        new ContactView().setVisible(true);
     }//GEN-LAST:event_jButton_ContatosActionPerformed
 
-    private void jButton_VendaCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_VendaCompraActionPerformed
+    private void jButton_VendaCompraActionPerformed(java.awt.event.ActionEvent evt)
+    {//GEN-FIRST:event_jButton_VendaCompraActionPerformed
         new TelaVendaCompra().setVisible(true);
     }//GEN-LAST:event_jButton_VendaCompraActionPerformed
 
-    private void jButton_HistoricoCompraVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_HistoricoCompraVendaActionPerformed
+    private void jButton_HistoricoCompraVendaActionPerformed(java.awt.event.ActionEvent evt)
+    {//GEN-FIRST:event_jButton_HistoricoCompraVendaActionPerformed
         new TelaHistoricoVendaCompra().setVisible(true);
     }//GEN-LAST:event_jButton_HistoricoCompraVendaActionPerformed
 
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestaoEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestaoEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestaoEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestaoEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        catch (ClassNotFoundException ex)
+        {
+            java.util.logging.Logger.getLogger(EnterpriseManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        catch (InstantiationException ex)
+        {
+            java.util.logging.Logger.getLogger(EnterpriseManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        catch (IllegalAccessException ex)
+        {
+            java.util.logging.Logger.getLogger(EnterpriseManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
+            java.util.logging.Logger.getLogger(EnterpriseManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GestaoEmpresa().setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
+                new EnterpriseManagement().setVisible(true);
             }
         });
     }

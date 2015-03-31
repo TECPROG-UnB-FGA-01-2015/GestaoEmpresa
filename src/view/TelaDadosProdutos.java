@@ -12,15 +12,17 @@ import javax.swing.JOptionPane;
 import model.Produto;
 import static view.TelaEstoque.novoProduto;
 
-public class TelaDadosProdutos extends javax.swing.JFrame {
-
+public class TelaDadosProdutos extends javax.swing.JFrame
+{
     Produto umProduto;
     static ControleEstoque umControleEstoque = new ControleEstoque();
     Produto editProduto;
     TelaEstoque telaEstoque;
     static boolean infoCarregar=false;
     
-    public TelaDadosProdutos() {
+    // Constructor to initialize components on TelaDadosProdutos
+    public TelaDadosProdutos()
+    {
         initComponents();
         preencherCampos();
         jTextField_QuantidadeProduto.setEnabled(false);
@@ -35,8 +37,8 @@ public class TelaDadosProdutos extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents()
+    {
         jPanel1 = new javax.swing.JPanel();
         jButton_Cancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -59,8 +61,10 @@ public class TelaDadosProdutos extends javax.swing.JFrame {
         setBounds(new java.awt.Rectangle(450, 300, 0, 0));
 
         jButton_Cancelar.setText("Sair");
-        jButton_Cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton_Cancelar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton_CancelarActionPerformed(evt);
             }
         });
@@ -78,8 +82,10 @@ public class TelaDadosProdutos extends javax.swing.JFrame {
         jLabel4.setText("Quantidade:");
 
         jButton_SalvarProduto.setText("Salvar");
-        jButton_SalvarProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton_SalvarProduto.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton_SalvarProdutoActionPerformed(evt);
             }
         });
@@ -188,56 +194,88 @@ public class TelaDadosProdutos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void exibirInformacao(String info){
+    // Method to show a message to user by passing as a parameter a String info
+    public void exibirInformacao(String info)
+    {
         JOptionPane.showMessageDialog(this, info,"Atenção" ,JOptionPane.INFORMATION_MESSAGE);
     }
     
+    // Method to add one more on the attribute codigo if it would be a new Product
     private void preencherCodigo()
     {
         if(novoProduto==true)
         {
             ArrayList<Produto> listaTeste = umControleEstoque.getListaProdutos();
             if(listaTeste.isEmpty())
+            {
                 jTextField_NomeProduto.setText("1");
+            }
+            
             else
+            {
                 jTextField_NomeProduto.setText(Integer.toString
                                             (Integer.parseInt
                                             (listaTeste.get
                                             (listaTeste.size()-1)
                                             .getCodigo())
                                              +1));
+            }
+        }
+        
+        else
+        {
+        	// Nothing to do
         }
     }
     
+    // Method to add one more on the attribute codigo if there is already a Product
     private void preencherCampos()
     {
         if(novoProduto==false)
         {
-        editProduto = umControleEstoque.pesquisarProduto(TelaEstoque.codigoTabela,false);
-        jTextField_NomeProduto.setText(editProduto.getCodigo());
-        jTextField_DescricaoProduto.setText(editProduto.getDescricao());
-        jTextField_PrecoCompra.setText(Double.toString(editProduto.getPrecoCompra()));
-        jTextField_PrecoVenda.setText(Double.toString(editProduto.getPrecoVenda()));
-        jTextField_QuantidadeProduto.setText(Double.toString(editProduto.getQuantidade()));
+	        editProduto = umControleEstoque.pesquisarProduto(TelaEstoque.codigoTabela,false);
+	        jTextField_NomeProduto.setText(editProduto.getCodigo());
+	        jTextField_DescricaoProduto.setText(editProduto.getDescricao());
+	        jTextField_PrecoCompra.setText(Double.toString(editProduto.getPrecoCompra()));
+	        jTextField_PrecoVenda.setText(Double.toString(editProduto.getPrecoVenda()));
+	        jTextField_QuantidadeProduto.setText(Double.toString(editProduto.getQuantidade()));
+        }
+        
+        else
+        {
+        	// Nothing to do
         }
     }
     
-    private void limparCampos(){
+
+    // Method to clean up the textBox
+        private void limparCampos()
+    {
         jTextField_NomeProduto.setText("");
         jTextField_DescricaoProduto.setText("");
         jTextField_PrecoCompra.setText("0.00");
         jTextField_PrecoVenda.setText("0.00");
         jTextField_QuantidadeProduto.setText("0.0");
     }
-    private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CancelarActionPerformed
+    
+    /* Method to cancel the action to add another product giving returning an
+     * information to user
+     */
+    private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt)
+    {//GEN-FIRST:event_jButton_CancelarActionPerformed
         if(!jTextField_DescricaoProduto.getText().equals(""))
+        {
             exibirInformacao("Produto não adicionado");
+        }
             
         new TelaEstoque().setVisible(true);
         this.dispose();
         infoCarregar=true;
     }//GEN-LAST:event_jButton_CancelarActionPerformed
 
+    /* Method to save all the informations provided by the user on a new object
+     * Produto
+     */
     private void jButton_SalvarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalvarProdutoActionPerformed
         if(!jTextField_NomeProduto.getText().equals("")&&!jTextField_DescricaoProduto.getText().equals("")&&!jTextField_PrecoCompra.getText().equals(""))
         {
@@ -257,16 +295,30 @@ public class TelaDadosProdutos extends javax.swing.JFrame {
                     umControleEstoque.adicionarProduto(umProduto);
                     exibirInformacao("Produto Adicionado!");
                 }
+                
                 else if(umControleEstoque.pesquisarProduto(umProduto.getCodigo(),false)!=null)
+                {
                     exibirInformacao("Produto com esse código já existente no estoque!");
+                }
+                
                 else if(umControleEstoque.pesquisarProduto(umProduto.getDescricao(),false)!=null)
+                {
                     exibirInformacao("Produto com essa Descrição já existente no estoque!");
+                }
+                
+                else
+                {
+                	// Nothing to do
+                }
             }
+            
             else if(TelaEstoque.novoProduto==false)
             {    
-                if(!editProduto.getCodigo().equals(jTextField_NomeProduto.getText())){
+                if(!editProduto.getCodigo().equals(jTextField_NomeProduto.getText()))
+                {
                     exibirInformacao("Não é permitido a alteração do código do produto!");
                 }
+                
                 else{
                     editProduto.setCodigo(codigo);
                     editProduto.setDescricao(descricao);
@@ -276,62 +328,100 @@ public class TelaDadosProdutos extends javax.swing.JFrame {
                     exibirInformacao("Produto Editado!");
                 }
             }
+            
+            else
+            {
+            	// Nothing to do
+            }
+            
             limparCampos();
             preencherCodigo();
             novoProduto=true;
         }
+        
         else if(jTextField_NomeProduto.getText().equals(""))
         {
             exibirInformacao("Digite um código para o produto");
             jTextField_NomeProduto.requestFocus();
         }
+        
         else if(jTextField_DescricaoProduto.getText().equals(""))
         {
             exibirInformacao("Digite uma descrição para o produto");
             jTextField_DescricaoProduto.requestFocus();
         }
+        
         else if(jTextField_PrecoCompra.getText().equals(""))
         {
             exibirInformacao("Digite um preço de compra para o produto");
             jTextField_PrecoCompra.requestFocus();
         }
+        
         else if(jTextField_PrecoVenda.getText().equals(""))
         {
             exibirInformacao("Digite um preço de venda para o produto");
             jTextField_PrecoCompra.requestFocus();
+        }
+        
+        else
+        {
+        	// Nothing to do
         }
     }//GEN-LAST:event_jButton_SalvarProdutoActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
+                
+                else
+                {
+                	// Nothing to do
+                }
             }
-        } catch (ClassNotFoundException ex) {
+        }
+        
+        catch (ClassNotFoundException ex)
+        {
             java.util.logging.Logger.getLogger(TelaDadosProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        }
+        
+        catch (InstantiationException ex)
+        {
             java.util.logging.Logger.getLogger(TelaDadosProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        }
+        
+        catch (IllegalAccessException ex)
+        {
             java.util.logging.Logger.getLogger(TelaDadosProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        }
+        
+        catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util.logging.Logger.getLogger(TelaDadosProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new TelaDadosProdutos().setVisible(true);
             }
         });

@@ -1,61 +1,69 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package model;
 
-/**
- *
- * @author Ricardo
- */
-public class Cliente {
-    
-    protected String nome;
-    protected Endereco endereco;
-    protected String telefone;
-    protected String celular;
+public class Client
+{
+    protected String name;
+    protected Address address;
+    protected String telephone;
+    protected String cellphone;
 
-    public Cliente(String nome, Endereco endereco, String telefone, String celular) {
-        this.nome = nome;
-        this.endereco = endereco;
-        this.telefone = telefone;
-        this.celular = celular;
+    // Constructor of the Client's class
+    public Client(String name, 
+    		  Address address, 
+    		  String telephone, 
+    		  String cellphone)
+    {
+        this.name = name;
+        this.address = address;
+        this.telephone = telephone;
+        this.cellphone = cellphone;
     }
 
-    public String getNome() {
-        return nome;
+    // Access and returns the property name
+    public String getName()
+    {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    // Sets a new value for the name property
+    public void setName(String name)
+    {
+        this.name = name;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    // Access and returns the property address
+    public Address getAddress()
+    {
+        return address;
     }
 
-    public void setEndereco(Endereco umEndereco) {
-        this.endereco = umEndereco;
+    // Sets a new value for the address property
+    public void setAddress(Address address)
+    {
+        this.address = address;
     }
 
-    public String getTelefone() {
-        return telefone;
+    // Access and returns the property telephone
+    public String getTelephone()
+    {
+        return telephone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    // Sets a new value for the telephone property
+    public void setTelephone(String telephone)
+    {
+        this.telephone = telephone;
     }
 
-    public String getCelular() {
-        return celular;
+    // Access and returns the property cellphone
+    public String getCellphone()
+    {
+        return cellphone;
     }
 
-    public void setCelular(String celular) {
-        this.celular = celular;
+    // Sets a new value for the cellphone property
+    public void setCellphone(String cellphone)
+    {
+        this.cellphone = cellphone;
     }
-
-    
-    
 }

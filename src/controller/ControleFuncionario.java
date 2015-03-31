@@ -10,30 +10,37 @@ public class EmployeeController
     private static ArrayList<Employee> employeeList;
     ContactView contactView;
 
+    // Constructor of the EmployeeController's class
     public EmployeeController() 
     {
         employeeList = new ArrayList<Employee>();
     }
 
+    // Access and returns the property employeeList
     public ArrayList<Employee> getEmployeeList() 
     {
         return employeeList;
     }
 
+    // Sets a new value for the employeeList property
     public void setEmployeeList(ArrayList<Employee> employeeList) 
     {
         this.employeeList = employeeList;
     }
     
+    // Adds an employee to the employeeList 
     public void addEmployee(Employee employee)
     {
         employeeList.add(employee);
     }
+    
+    // Removes an employee of the employeeList
     public void removeEmployee(Employee employee)
     {
         employeeList.remove(employee);
     }
-    
+
+    // Search for an employee in the clientList with a given name
     public Employee searchEmployee(String nome, boolean pesquisa)
     {
         Employee returned = null;

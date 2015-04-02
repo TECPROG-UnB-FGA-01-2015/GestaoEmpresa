@@ -2,7 +2,6 @@
  * File: Produto.java
  * Purpose: Hold all the attributes and methods of Produto
 **********************************************************/
-		
 package model;
 
 public class Produto

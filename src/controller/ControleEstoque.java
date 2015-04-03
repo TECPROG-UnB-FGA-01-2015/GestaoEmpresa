@@ -1,3 +1,7 @@
+/**********************************************************
+ * File: ControleEstoque.java
+ * Purpose: Contains the Produtos maintenance methods
+**********************************************************/		
 package controller;
 
 import java.util.ArrayList;

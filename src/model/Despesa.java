@@ -1,3 +1,7 @@
+/**********************************************************
+ * File: Despesa.java
+ * Purpose: Hold all the attributes and methods of Despesa
+**********************************************************/		
 package model;
 
 public class Despesa

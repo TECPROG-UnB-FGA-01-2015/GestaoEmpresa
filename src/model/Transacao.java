@@ -2,7 +2,7 @@
  * File: Transacao.java
  * Purpose: Responsible to get the Transaction's info 
  * 			to sell Products
-***********************************************************/
+ **********************************************************/
 package model;
 
 import java.util.ArrayList;

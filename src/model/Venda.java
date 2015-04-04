@@ -2,7 +2,7 @@
  * File: Venda.java
  * Purpose: Responsible to get the Client's info to
  * 			sell Products with a given Date
-***********************************************************/
+ **********************************************************/
 package model;
 
 import java.util.ArrayList;

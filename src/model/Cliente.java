@@ -9,9 +9,9 @@ public class Cliente
 
     // Constructor of the Client's class
     public Cliente(String name, 
-    		Endereco address, 
-    		  String telephone, 
-    		  String cellphone)
+    		       Endereco address, 
+    		       String telephone, 
+    		       String cellphone)
     {
         this.name = name;
         this.address = address;

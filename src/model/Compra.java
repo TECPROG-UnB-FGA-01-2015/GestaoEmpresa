@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+=======
+/***********************************************************
+ * File: Compra.java
+ * Purpose: Responsible to get the Supplier's info to
+ * 			buy Products with a given Date
+***********************************************************/
+>>>>>>> ca1449ce7df2f0ba1257870b3b63935b87622719
 package model;
 
 import java.util.ArrayList;

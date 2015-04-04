@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+/***********************************************************
+ * File: TelaHistoricoVendaCompra.java
+ * Purpose: Responsible to get the Product's Buying and Selling Historic info
+***********************************************************/
+>>>>>>> ca1449ce7df2f0ba1257870b3b63935b87622719
 package view;
 
 import java.util.ArrayList;

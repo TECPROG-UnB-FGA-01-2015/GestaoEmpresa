@@ -1,3 +1,8 @@
+/***********************************************************
+ * File: ControleTransacao.java
+ * Purpose: Responsible to get the Transaction's info to
+ * 			add, remove and list Products sales
+***********************************************************/
 package controller;
 
 import java.util.ArrayList;

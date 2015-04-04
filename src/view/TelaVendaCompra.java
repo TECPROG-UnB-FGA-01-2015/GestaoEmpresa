@@ -817,9 +817,9 @@ public class TelaVendaCompra extends javax.swing.JFrame
 			if (statusVendaCompra == 0)
 			{
 				Cliente c = TelaDadosContatos.umControleCliente
-						.pesquisarCliente(nomeClienteFornecedor, false);
+						.searchClient(nomeClienteFornecedor, false);
 				Funcionario f = TelaDadosContatos.umControleFuncionario
-						.pesquisarFuncionario(nomeFuncionario, false);
+						.searchEmployee(nomeFuncionario, false);
 				umaVenda = new Venda(c, listaTabelaProduto, valor, f,
 						Integer.parseInt(dia), Integer.parseInt(mes),
 						Integer.parseInt(ano));
@@ -832,14 +832,14 @@ public class TelaVendaCompra extends javax.swing.JFrame
 				Fornecedor c = TelaDadosContatos.umControleFornecedor
 						.pesquisarFornecedor(nomeClienteFornecedor, false);
 				Funcionario f = TelaDadosContatos.umControleFuncionario
-						.pesquisarFuncionario(nomeFuncionario, false);
+						.searchEmployee(nomeFuncionario, false);
 				umaCompra = new Compra(c, listaTabelaProduto, valor, f,
 						Integer.parseInt(dia), Integer.parseInt(mes),
 						Integer.parseInt(ano));
 				umControleTransacao.adicionarVenda(umaCompra);
 
 				Despesa despesa = new Despesa(
-						"Compra de Produto do Fornecedor'" + f.getNome() + "'",
+						"Compra de Produto do Fornecedor'" + f.getName() + "'",
 						null, valor, Integer.parseInt(dia),
 						Integer.parseInt(mes), Integer.parseInt(ano));
 				TelaDadosDespesas.umControleDespesa.adicionarGasto(despesa);

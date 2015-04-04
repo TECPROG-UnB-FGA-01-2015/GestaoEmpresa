@@ -18,7 +18,7 @@ import static view.TelaVendaCompra.modoClienteFornecedor;
 import static view.TelaVendaCompra.modoVendaCompra;
 import static view.TelaVendaCompra.statusVendaCompra;
 
-public class ContactView extends javax.swing.JFrame
+public class TelaContatos extends javax.swing.JFrame
 {
     
     GestaoEmpresa principal;
@@ -29,7 +29,7 @@ public class ContactView extends javax.swing.JFrame
     static boolean newEmployee = true;
     static boolean editMode = false;
     static String tableName;
-    static int contactType;
+    static int tipoContato;
     static ArrayList<Cliente> listClient;
     public ClienteFisico umClienteFisico;
     public ClienteJuridico umClienteJuridico;
@@ -305,7 +305,7 @@ public class ContactView extends javax.swing.JFrame
     // Loads the clientList
     private void carregarLista()
     {
-        if(contactType==0)
+        if(tipoContato==0)
         {
             listClient = umControleCliente.getlistClient();
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -329,7 +329,7 @@ public class ContactView extends javax.swing.JFrame
             }
             jTable1.setModel(model);
         }
-        else if(contactType==1)
+        else if(tipoContato==1)
         {
             listSupplier = umControleFornecedor.getListaFornecedor();
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -354,7 +354,7 @@ public class ContactView extends javax.swing.JFrame
             }
             jTable1.setModel(model);
         }
-        else if(contactType==2)
+        else if(tipoContato==2)
         {
             listEmployee = umControleFuncionario.getListaFuncionario();
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();

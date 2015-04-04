@@ -11,7 +11,7 @@ import model.Produto;
 import model.Transacao;
 import model.Venda;
 
-public class EnterpriseManagement extends javax.swing.JFrame
+public class GestaoEmpresa extends javax.swing.JFrame
 {
     
     Cliente umCliente;
@@ -21,7 +21,7 @@ public class EnterpriseManagement extends javax.swing.JFrame
     ArrayList<Produto> listaProduto;
 
     // Constructor of the EnterpriseManagement's class
-    public EnterpriseManagement()
+    public GestaoEmpresa()
     {
         initComponents();
         umProduto = new Produto("Produto", null, 10.0, WIDTH);

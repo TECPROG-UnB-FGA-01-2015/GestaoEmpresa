@@ -1,6 +1,6 @@
 package model;
 
-public class Client
+public class Cliente
 {
     protected String name;
     protected Address address;
@@ -8,7 +8,7 @@ public class Client
     protected String cellphone;
 
     // Constructor of the Client's class
-    public Client(String name, 
+    public Cliente(String name, 
     		  Address address, 
     		  String telephone, 
     		  String cellphone)

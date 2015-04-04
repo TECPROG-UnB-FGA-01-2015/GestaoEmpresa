@@ -1,6 +1,6 @@
 package model;
 
-public class Employee
+public class Funcionario
 {
     private String name;
     private String telephone;
@@ -12,7 +12,7 @@ public class Employee
     private Address address;
 
     // Constructor of the Employee's class
-    public Employee(String name,
+    public Funcionario(String name,
                     String telephone,
                     String cellphone,
                     String cpf,

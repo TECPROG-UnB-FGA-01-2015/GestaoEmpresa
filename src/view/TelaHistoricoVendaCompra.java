@@ -1,6 +1,6 @@
 /***********************************************************
  * File: TelaHistoricoVendaCompra.java
- * Purpose: Responsible to get the Product's Selling Historic info
+ * Purpose: Responsible to get the Product's Buying and Selling Historic info
 ***********************************************************/
 package view;
 

@@ -9,7 +9,7 @@ public class Funcionario
     private String rg;
     private String role;
     private double salary;
-    private Address address;
+    private Endereco address;
 
     // Constructor of the Employee's class
     public Funcionario(String name,
@@ -19,7 +19,7 @@ public class Funcionario
                     String rg,
                     String role,
                     double salary,
-                    Address address)
+                    Endereco address)
     {
         this.name = name;
         this.telephone = telephone;
@@ -32,13 +32,13 @@ public class Funcionario
     }
 
     // Access and returns the property address
-    public Address getAddress()
+    public Endereco getAddress()
     {
         return address;
     }
 
     // Sets a new value for the address property
-    public void setAddress(Address address)
+    public void setAddress(Endereco address)
     {
         this.address = address;
     }

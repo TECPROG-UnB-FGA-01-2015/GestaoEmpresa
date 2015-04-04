@@ -3,13 +3,13 @@ package model;
 public class Cliente
 {
     protected String name;
-    protected Address address;
+    protected Endereco address;
     protected String telephone;
     protected String cellphone;
 
     // Constructor of the Client's class
     public Cliente(String name, 
-    		  Address address, 
+    		Endereco address, 
     		  String telephone, 
     		  String cellphone)
     {
@@ -32,13 +32,13 @@ public class Cliente
     }
 
     // Access and returns the property address
-    public Address getAddress()
+    public Endereco getAddress()
     {
         return address;
     }
 
     // Sets a new value for the address property
-    public void setAddress(Address address)
+    public void setAddress(Endereco address)
     {
         this.address = address;
     }

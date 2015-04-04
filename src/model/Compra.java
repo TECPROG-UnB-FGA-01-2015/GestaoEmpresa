@@ -1,9 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+/***********************************************************
+ * File: Compra.java
+ * Purpose: Responsible to get the Supplier's info to
+ * 			buy Products with a given Date
+***********************************************************/
 package model;
 
 import java.util.ArrayList;

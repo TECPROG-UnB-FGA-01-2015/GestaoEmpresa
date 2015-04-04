@@ -1,19 +1,19 @@
 package model;
 
-public class PhysicalClient extends Client
+public class ClienteFisico extends Cliente
 {
     private String cpf;
     private String rg;
 
     // Constructor of the PhysicalClient's class
-    public PhysicalClient(String cpf, 
+    public ClienteFisico(String cpf, 
     			  String rg, 
-    			  String nome, 
-    			  Address address, 
+    			  String name, 
+    			  Endereco address, 
     			  String telephone, 
     			  String cellphone)
     {
-        super(nome, address, telephone, cellphone);
+        super(name, address, telephone, cellphone);
         this.cpf = cpf;
         this.rg = rg;
     }

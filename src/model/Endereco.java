@@ -1,6 +1,6 @@
 package model;
 
-public class Address
+public class Endereco
 {
     private String street;
     private String number;
@@ -10,7 +10,7 @@ public class Address
     private String complement;
 
     // Constructor of the Address' class
-    public Address(String street,
+    public Endereco(String street,
                    String number,
                    String city,
                    String state,

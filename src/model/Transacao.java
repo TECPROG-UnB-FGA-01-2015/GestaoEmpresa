@@ -7,10 +7,6 @@ package model;
 
 import java.util.ArrayList;
 
-/**
- * 
- * @author Ricardo
- */
 public class Transacao
 {
 	protected ArrayList<Produto> listaVenda;

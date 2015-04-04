@@ -1,15 +1,15 @@
 package model;
 
-public class JuridicalClient extends Client
+public class ClienteJuridico extends Cliente
 {
     private String socialReason;
     private String cnpj;
 
     // Constructor of the JuridicalClient's class
-    public JuridicalClient(String socialReason,
+    public ClienteJuridico(String socialReason,
                            String cnpj,
                            String name,
-                           Address address,
+                           Endereco address,
                            String telephone,
                            String cellphone)
     {

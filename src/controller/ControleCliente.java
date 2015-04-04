@@ -2,60 +2,60 @@ package controller;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import model.Client;
-import view.ContactView;
+import model.Cliente;
+import view.TelaContatos;
 
-public class ClientController
+public class ControleCliente
 {
-    ContactView contactView;
-    private static ArrayList<Client> clientList;
+    TelaContatos telaContatos;
+    private static ArrayList<Cliente> clientList;
 
     // Constructor of the ClientController's class
-    public ClientController()
+    public ControleCliente()
     {
-        clientList = new ArrayList<Client>();
+        clientList = new ArrayList<Cliente>();
     }
 
     // Access and returns the property clientList
-    public static ArrayList<Client> getListaClient()
+    public static ArrayList<Cliente> getListaClient()
     {
         return clientList;
     }
 
     // Sets a new value for the clientList property
-    public static void setListaClient(ArrayList<Client> clientList)
+    public static void setListaClient(ArrayList<Cliente> clientList)
     {
-        ClientController.clientList = clientList;
+    	ControleCliente.clientList = clientList;
     }
     
     // Adds a client to the clientList
-    public void addClient (Client client)
+    public void addClient (Cliente cliente)
     {
-        clientList.add(client);
+        clientList.add(cliente);
     }
     
     // Removes a client of the clientList
-    public void removeClient (Client client)
+    public void removeClient (Cliente cliente)
     {
-        clientList.remove(client);
+        clientList.remove(cliente);
     }
     
     // Search for a client in the clientList with a given name
-    public Client searchClient(String name, boolean search)
+    public Cliente searchClient(String name, boolean search)
     {
-        Client returned = null;
-        Client exactReturned = null;
+        Cliente returned = null;
+        Cliente exactReturned = null;
         int i = 0;
-        for(Client client: clientList)
+        for(Cliente cliente: clientList)
         {
-            if((client.getName().equalsIgnoreCase(name)))
+            if((cliente.getName().equalsIgnoreCase(name)))
             {
-                exactReturned = client;
+                exactReturned = cliente;
                 i = i + 1;
             }
-            else if((client.getName().toLowerCase().contains(name.toLowerCase())) && search == true)
+            else if((cliente.getName().toLowerCase().contains(name.toLowerCase())) && search == true)
             {
-                returned = client;
+                returned = cliente;
                 i = i + 1;
             }
         }

@@ -61,8 +61,8 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 							+ Integer.toString(umaVenda.getMes())
 							+ Integer.toString(umaVenda.getAno());
 					model.addRow(new String[]
-					{ umaVenda.getCliente().getNome(),
-							umaVenda.getFuncionario().getNome(),
+					{ umaVenda.getCliente().getName(),
+							umaVenda.getFuncionario().getName(),
 							Double.toString(umaVenda.getPreco()), data });
 				}
 			} else if (statusVendaCompra == 1)
@@ -75,7 +75,7 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 							+ Integer.toString(umaCompra.getAno());
 					model.addRow(new String[]
 					{ umaCompra.getFornecedor().getNome(),
-							umaCompra.getFuncionario().getNome(),
+							umaCompra.getFuncionario().getName(),
 							Double.toString(umaCompra.getPreco()), data });
 				}
 			}

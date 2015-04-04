@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates and open the template
- * in the editor.
- */
-
 package view;
 
 import java.util.ArrayList;
@@ -14,10 +8,6 @@ import static view.TelaDadosProdutos.umControleEstoque;
 import static view.TelaVendaCompra.modoProduto;
 import static view.TelaVendaCompra.modoVendaCompra;
 
-/**
- * 
- * @author Ricardo
- */
 public class TelaEstoque extends javax.swing.JFrame
 {
 
@@ -73,7 +63,6 @@ public class TelaEstoque extends javax.swing.JFrame
 	// Method to load the table with product information
 	public void carregarLista()
 	{
-			
 		DefaultTableModel model1 = (DefaultTableModel) jTable2.getModel();  
 																			
 		model1.setRowCount(0);
@@ -99,7 +88,6 @@ public class TelaEstoque extends javax.swing.JFrame
 	// desc="Generated Code">//GEN-BEGIN:initComponents
 	private void initComponents()
 	{
-
 		jPanel1 = new javax.swing.JPanel();
 		jTextField_NomeProduto = new javax.swing.JTextField();
 		jButton_PesquisarProduto = new javax.swing.JButton();
@@ -248,7 +236,9 @@ public class TelaEstoque extends javax.swing.JFrame
 		{
 			carregarLista();
 			if(jTable2.getRowCount() == 0)
+			{
 				exibirInformacao("Nenhum produto fora cadastrado até o momento.");
+			}
 		}
 		else
 		{
@@ -264,9 +254,10 @@ public class TelaEstoque extends javax.swing.JFrame
 			{
 				exibirInformacao("Nenhum produto fora cadastrado até o momento.");
 			}
-
 			else if(outroProduto == null)
+			{
 				exibirInformacao("Produto não encontrado!");
+			}
 			else
 			{
 				model1.addRow(new String[] {outroProduto.getCodigo(), outroProduto.getDescricao(), Double.toString(outroProduto.getPrecoCompra()), Double.toString(outroProduto.getPrecoVenda()),

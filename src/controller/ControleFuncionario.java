@@ -2,60 +2,60 @@ package controller;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import model.Employee;
-import view.ContactView;
+import model.Funcionario;
+import view.TelaContatos;
 
-public class EmployeeController 
+public class ControleFuncionario 
 {
-    private static ArrayList<Employee> employeeList;
-    ContactView contactView;
+    private static ArrayList<Funcionario> employeeList;
+    TelaContatos telaContatos;
 
     // Constructor of the EmployeeController's class
-    public EmployeeController() 
+    public ControleFuncionario() 
     {
-        employeeList = new ArrayList<Employee>();
+        employeeList = new ArrayList<Funcionario>();
     }
 
     // Access and returns the property employeeList
-    public ArrayList<Employee> getEmployeeList() 
+    public ArrayList<Funcionario> getEmployeeList() 
     {
         return employeeList;
     }
 
     // Sets a new value for the employeeList property
-    public void setEmployeeList(ArrayList<Employee> employeeList) 
+    public void setEmployeeList(ArrayList<Funcionario> employeeList) 
     {
         this.employeeList = employeeList;
     }
     
     // Adds an employee to the employeeList 
-    public void addEmployee(Employee employee)
+    public void addEmployee(Funcionario funcionario)
     {
-        employeeList.add(employee);
+        employeeList.add(funcionario);
     }
     
     // Removes an employee of the employeeList
-    public void removeEmployee(Employee employee)
+    public void removeEmployee(Funcionario funcionario)
     {
-        employeeList.remove(employee);
+        employeeList.remove(funcionario);
     }
 
     // Search for an employee in the clientList with a given name
-    public Employee searchEmployee(String nome, boolean pesquisa)
+    public Funcionario searchEmployee(String nome, boolean pesquisa)
     {
-        Employee returned = null;
-        Employee exactReturned = null;
+    	Funcionario returned = null;
+    	Funcionario exactReturned = null;
         int i=0;
-        for(Employee employee: employeeList)
+        for(Funcionario funcionario: employeeList)
         {
             if((f.getNome().equalsIgnoreCase(nome)))
             {
-                exactReturned = employee;
+                exactReturned = funcionario;
                 i = i + 1;
             }
-            else if((employee.getNome().toLowerCase().contains(nome.toLowerCase())) && pesquisa == true)
+            else if((funcionario.getName().toLowerCase().contains(nome.toLowerCase())) && pesquisa == true)
             {
-                returned = employee;
+                returned = funcionario;
                 i = i + 1;
             }
         }

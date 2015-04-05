@@ -1,6 +1,6 @@
 /**********************************************************
  * File: ControleFornecedor.java
- * Purpose: Contains the Suppliers maintenance methods
+ * Purpose: Contains the Suppliers maintenance methods.
 **********************************************************/
 
 package controller;

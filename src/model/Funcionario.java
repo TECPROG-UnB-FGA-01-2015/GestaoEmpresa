@@ -1,3 +1,9 @@
+/**********************************************************
+ * File: Funcionario.java
+ * Purpose: Holds all the attributes and methods of the
+ * 		    class Funcionario.
+ *********************************************************/	
+
 package model;
 
 public class Funcionario
@@ -13,13 +19,13 @@ public class Funcionario
 
     // Constructor of the Employee's class
     public Funcionario(String name,
-                    String telephone,
-                    String cellphone,
-                    String cpf,
-                    String rg,
-                    String role,
-                    double salary,
-                    Endereco address)
+                       String telephone,
+                       String cellphone,
+                       String cpf,
+                       String rg,
+                       String role,
+                       double salary,
+                       Endereco address)
     {
         this.name = name;
         this.telephone = telephone;

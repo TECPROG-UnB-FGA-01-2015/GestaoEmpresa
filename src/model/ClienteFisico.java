@@ -1,3 +1,9 @@
+/**********************************************************
+ * File: ClienteFisico.java
+ * Purpose: Holds all the attributes and methods of the
+ * 		    subclass ClienteFisico.
+ *********************************************************/		
+
 package model;
 
 public class ClienteFisico extends Cliente

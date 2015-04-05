@@ -1,5 +1,5 @@
 /**********************************************************
- * File: Cliente.java
+ * File: FornecedorFisico.java
  * Purpose: Holds all the attributes and methods of the
  * 		    subclass FornecedorFisico.
  *********************************************************/

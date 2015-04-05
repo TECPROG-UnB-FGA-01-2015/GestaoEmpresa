@@ -1,5 +1,5 @@
 /**********************************************************
- * File: Cliente.java
+ * File: Fornecedor.java
  * Purpose: Holds all the attributes and methods of the
  * 		    superclass Fornecedor.
  *********************************************************/

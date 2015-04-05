@@ -1,3 +1,8 @@
+/**********************************************************
+ * File: GestaoEmpresa.java
+ * Purpose: Main menu of the program.
+ *********************************************************/
+
 package view;
 
 import controller.ControleTransacao;

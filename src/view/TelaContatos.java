@@ -1,3 +1,9 @@
+/**********************************************************
+ * File: TelaContatos.java
+ * Purpose: Lists the contacts of the system and permits
+ *          to create, edit and remove a contact
+ *********************************************************/
+
 package view;
 
 import java.util.ArrayList;

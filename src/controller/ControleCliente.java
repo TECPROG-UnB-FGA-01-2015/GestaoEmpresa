@@ -1,3 +1,8 @@
+/**********************************************************
+ * File: ControleCliente.java
+ * Purpose: Contains the Clients maintenance methods
+**********************************************************/		
+
 package controller;
 
 import java.util.ArrayList;

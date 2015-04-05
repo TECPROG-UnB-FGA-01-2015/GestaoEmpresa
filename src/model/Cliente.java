@@ -1,8 +1,14 @@
+/**********************************************************
+ * File: Cliente.java
+ * Purpose: Holds all the attributes and methods of the
+ * 		    superclass Cliente.
+ *********************************************************/		
+
 package model;
 
 public class Cliente
 {
-    protected String name;
+    protected String name; 
     protected Endereco address;
     protected String telephone;
     protected String cellphone;

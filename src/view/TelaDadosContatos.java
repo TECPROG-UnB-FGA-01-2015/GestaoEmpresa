@@ -1,3 +1,7 @@
+/**********************************************************
+ * File: TelaDadosContatos.java
+ * Purpose: Permits to add, edit and remove a contacts.
+ *********************************************************/
 
 package view;
 

@@ -1,3 +1,9 @@
+/**********************************************************
+ * File: ClienteJuridico.java
+ * Purpose: Holds all the attributes and methods of the
+ * 		    subclass ClienteJuridico.
+ *********************************************************/		
+
 package model;
 
 public class ClienteJuridico extends Cliente

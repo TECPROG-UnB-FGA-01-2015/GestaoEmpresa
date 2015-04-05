@@ -1,3 +1,9 @@
+/**********************************************************
+ * File: Endereco.java
+ * Purpose: Holds all the attributes and methods of the
+ * 		    class Endereco.
+ *********************************************************/	
+
 package model;
 
 public class Endereco

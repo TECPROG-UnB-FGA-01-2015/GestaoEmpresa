@@ -1,7 +1,7 @@
 /***********************************************************
  * File: TelaVendaCompra.java
  * Purpose: Responsible to get the Product's Buying and Selling info
-***********************************************************/
+ **********************************************************/
 package view;
 
 import controller.ControleTransacao;

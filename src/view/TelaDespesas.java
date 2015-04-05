@@ -1,7 +1,7 @@
 /**********************************************************
  * File: TelaDespesas.java
  * Purpose: Responsible to show Despesa's informations
-**********************************************************/
+ *********************************************************/
 package view;
 
 import java.util.ArrayList;

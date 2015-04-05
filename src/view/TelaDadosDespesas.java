@@ -1,7 +1,7 @@
 /**********************************************************
  * File: TelaDadosDespesas.java
  * Purpose: Responsible to get the Despesas' informations from user
-**********************************************************/
+ *********************************************************/
 package view;
 
 import controller.ControleDespesa;

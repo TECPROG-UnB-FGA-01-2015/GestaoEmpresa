@@ -1,3 +1,8 @@
+/**********************************************************
+ * File: ControleFuncionario.java
+ * Purpose: Contains the Employees maintenance methods
+**********************************************************/		
+
 package controller;
 
 import java.util.ArrayList;

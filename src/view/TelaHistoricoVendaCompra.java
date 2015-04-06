@@ -1,6 +1,6 @@
 /***********************************************************
  * File: TelaHistoricoVendaCompra.java
- * Purpose: Responsible to get the Product's Buying and Selling Historic info
+ * Purpose: Responsible to get the Product's Buying and Selling Historic info.
  **********************************************************/
 
 package view;
@@ -18,7 +18,7 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 	private int statusVendaCompra = 0;
 	Venda umaVenda;
 	Compra umaCompra;
-	
+
 	// Variables declaration (do not modify) - GEN-BEGIN:variables
 	private javax.swing.JButton jButton_sair;
 	private javax.swing.JComboBox jComboBox_VendaCompra;
@@ -26,11 +26,11 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 	private javax.swing.JPanel jPanel1;
 	private javax.swing.JScrollPane jScrollPane1;
 	private javax.swing.JTable jTable_Historico;
+
 	// End of variables declaration - GEN-END:variables
 
-	/* This method is responsible to load Shopping/Selling list on
-	 * the GUI (Graphical User Interface) screen
-	 */
+	/* This method is responsible to load Shopping/Selling list on the GUI
+	 * (Graphical User Interface) screen */
 	public TelaHistoricoVendaCompra()
 	{
 		initComponents();
@@ -38,15 +38,14 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 	}
 
 	/* This method is responsible to show the Shopping/Selling list info, as:
-	*  Client/Provider name, responsible worker, transaction value and date 
-	*  (date/month/year)
-	*/
+	 * Client/Provider name, responsible worker, transaction value and date
+	 * (date/month/year) */
 	private void carregarLista()
 	{
 		ArrayList<Transacao> listaTransacao = umControleTransacao
-				.getListaVenda();
+		        .getListaVenda();
 		DefaultTableModel model = (DefaultTableModel) jTable_Historico
-				.getModel();
+		        .getModel();
 		model.setRowCount(0);
 		for (Transacao t : listaTransacao)
 		{
@@ -56,35 +55,49 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 				{
 					umaVenda = (Venda) t;
 					String data = Integer.toString(umaVenda.getDia()) + "/"
-							+ Integer.toString(umaVenda.getMes())
-							+ Integer.toString(umaVenda.getAno());
+					        + Integer.toString(umaVenda.getMes()) + "/"
+					        + Integer.toString(umaVenda.getAno());
 					model.addRow(new String[]
 					{ umaVenda.getCliente().getName(),
-							umaVenda.getFuncionario().getName(),
-							Double.toString(umaVenda.getPreco()), data });
+					        umaVenda.getFuncionario().getName(),
+					        Double.toString(umaVenda.getPreco()), data });
 				}
-			} else if (statusVendaCompra == 1)
+				else
+				{
+					// Nothing to Do
+				}
+			}
+			else if (statusVendaCompra == 1)
 			{
 				if (t.getClass().equals(Compra.class))
 				{
 					umaCompra = (Compra) t;
 					String data = Integer.toString(umaCompra.getDia()) + "/"
-							+ Integer.toString(umaCompra.getMes()) + "/"
-							+ Integer.toString(umaCompra.getAno());
+					        + Integer.toString(umaCompra.getMes()) + "/"
+					        + Integer.toString(umaCompra.getAno());
 					model.addRow(new String[]
 					{ umaCompra.getFornecedor().getNome(),
-							umaCompra.getFuncionario().getName(),
-							Double.toString(umaCompra.getPreco()), data });
+					        umaCompra.getFuncionario().getName(),
+					        Double.toString(umaCompra.getPreco()), data });
+				}
+				else
+				{
+					// Nothing to Do
 				}
 			}
+			else
+			{
+				// Nothing to Do
+			}
+
 		}
 		jTable_Historico.setModel(model);
 	}
 
 	@SuppressWarnings("unchecked")
-	/* This method is responsible to create and show all the GUI's components/frameworks
-	 * (with buttons, texts, lists ...) about the Shopping/Selling info on the screen
-	 */
+	/* This method is responsible to create and show all the GUI's
+	 * components/frameworks (with buttons, texts, lists ...) about the
+	 * Shopping/Selling info on the screen */
 	private void initComponents()
 	{
 
@@ -102,22 +115,26 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 		jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
 		jLabel1.setText("Historico de Vendas");
 
-		jTable_Historico.setModel(new javax.swing.table.DefaultTableModel(null,
-				new String[]
-				{ "Nome Cliente/Fornecedor", "Funcionario Responsavel",
-						"Valor da Transacao", "Data" })
-		{
-			@Override
-			public boolean isCellEditable(int rowIndex, int mColIndex)
-			{
-				return false;
-			}
-		});
+		jTable_Historico
+		        .setModel(new javax.swing.table.DefaultTableModel(null,
+		                                                          new String[]
+		                                                          {
+		                                                                  "Nome Cliente/Fornecedor",
+		                                                                  "Funcionario Responsavel",
+		                                                                  "Valor da Transacao",
+		                                                                  "Data" })
+		        {
+			        @Override
+			        public boolean isCellEditable(int rowIndex, int mColIndex)
+			        {
+				        return false;
+			        }
+		        });
 		jScrollPane1.setViewportView(jTable_Historico);
 
-		jComboBox_VendaCompra.setModel(new javax.swing.DefaultComboBoxModel(
-				new String[]
-				{ "Venda", "Compra" }));
+		jComboBox_VendaCompra
+		        .setModel(new javax.swing.DefaultComboBoxModel(new String[]
+		        { "Venda", "Compra" }));
 		jComboBox_VendaCompra.addItemListener(new java.awt.event.ItemListener()
 		{
 			public void itemStateChanged(java.awt.event.ItemEvent evt)
@@ -135,123 +152,90 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 			}
 		});
 
-		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(
-				jPanel1);
+		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
 		jPanel1.setLayout(jPanel1Layout);
 		jPanel1Layout
-				.setHorizontalGroup(jPanel1Layout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
-						.addGap(0, 673, Short.MAX_VALUE)
-						.addGroup(
-								jPanel1Layout
-										.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
-										.addGroup(
-												jPanel1Layout
-														.createSequentialGroup()
-														.addContainerGap()
-														.addGroup(
-																jPanel1Layout
-																		.createParallelGroup(
-																				javax.swing.GroupLayout.Alignment.LEADING)
-																		.addGroup(
-																				jPanel1Layout
-																						.createSequentialGroup()
-																						.addComponent(
-																								jButton_sair)
-																						.addGap(159,
-																								159,
-																								159)
-																						.addComponent(
-																								jLabel1))
-																		.addGroup(
-																				jPanel1Layout
-																						.createSequentialGroup()
-																						.addGap(50,
-																								50,
-																								50)
-																						.addGroup(
-																								jPanel1Layout
-																										.createParallelGroup(
-																												javax.swing.GroupLayout.Alignment.LEADING)
-																										.addComponent(
-																												jComboBox_VendaCompra,
-																												javax.swing.GroupLayout.PREFERRED_SIZE,
-																												javax.swing.GroupLayout.DEFAULT_SIZE,
-																												javax.swing.GroupLayout.PREFERRED_SIZE)
-																										.addComponent(
-																												jScrollPane1,
-																												javax.swing.GroupLayout.PREFERRED_SIZE,
-																												611,
-																												javax.swing.GroupLayout.PREFERRED_SIZE))))
-														.addContainerGap(
-																javax.swing.GroupLayout.DEFAULT_SIZE,
-																Short.MAX_VALUE))));
+		        .setHorizontalGroup(jPanel1Layout
+		                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		                .addGap(0, 673, Short.MAX_VALUE)
+		                .addGroup(jPanel1Layout
+		                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		                        .addGroup(jPanel1Layout
+		                                .createSequentialGroup()
+		                                .addContainerGap()
+		                                .addGroup(jPanel1Layout
+		                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		                                        .addGroup(jPanel1Layout
+		                                                .createSequentialGroup()
+		                                                .addComponent(jButton_sair)
+		                                                .addGap(159, 159, 159)
+		                                                .addComponent(jLabel1))
+		                                        .addGroup(jPanel1Layout
+		                                                .createSequentialGroup()
+		                                                .addGap(50, 50, 50)
+		                                                .addGroup(jPanel1Layout
+		                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		                                                        .addComponent(jComboBox_VendaCompra,
+		                                                                      javax.swing.GroupLayout.PREFERRED_SIZE,
+		                                                                      javax.swing.GroupLayout.DEFAULT_SIZE,
+		                                                                      javax.swing.GroupLayout.PREFERRED_SIZE)
+		                                                        .addComponent(jScrollPane1,
+		                                                                      javax.swing.GroupLayout.PREFERRED_SIZE,
+		                                                                      611,
+		                                                                      javax.swing.GroupLayout.PREFERRED_SIZE))))
+		                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
+		                                                 Short.MAX_VALUE))));
 		jPanel1Layout
-				.setVerticalGroup(jPanel1Layout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
-						.addGap(0, 299, Short.MAX_VALUE)
-						.addGroup(
-								jPanel1Layout
-										.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
-										.addGroup(
-												jPanel1Layout
-														.createSequentialGroup()
-														.addContainerGap()
-														.addGroup(
-																jPanel1Layout
-																		.createParallelGroup(
-																				javax.swing.GroupLayout.Alignment.BASELINE)
-																		.addComponent(
-																				jButton_sair)
-																		.addComponent(
-																				jLabel1))
-														.addPreferredGap(
-																javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-														.addComponent(
-																jComboBox_VendaCompra,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																javax.swing.GroupLayout.DEFAULT_SIZE,
-																javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addPreferredGap(
-																javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-																javax.swing.GroupLayout.DEFAULT_SIZE,
-																Short.MAX_VALUE)
-														.addComponent(
-																jScrollPane1,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																207,
-																javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addContainerGap())));
+		        .setVerticalGroup(jPanel1Layout
+		                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		                .addGap(0, 299, Short.MAX_VALUE)
+		                .addGroup(jPanel1Layout
+		                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		                        .addGroup(jPanel1Layout
+		                                .createSequentialGroup()
+		                                .addContainerGap()
+		                                .addGroup(jPanel1Layout
+		                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+		                                        .addComponent(jButton_sair)
+		                                        .addComponent(jLabel1))
+		                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+		                                .addComponent(jComboBox_VendaCompra,
+		                                              javax.swing.GroupLayout.PREFERRED_SIZE,
+		                                              javax.swing.GroupLayout.DEFAULT_SIZE,
+		                                              javax.swing.GroupLayout.PREFERRED_SIZE)
+		                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+		                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
+		                                                 Short.MAX_VALUE)
+		                                .addComponent(jScrollPane1,
+		                                              javax.swing.GroupLayout.PREFERRED_SIZE,
+		                                              207,
+		                                              javax.swing.GroupLayout.PREFERRED_SIZE)
+		                                .addContainerGap())));
 
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
-				getContentPane());
+		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(
-				javax.swing.GroupLayout.Alignment.LEADING).addGroup(
-				javax.swing.GroupLayout.Alignment.TRAILING,
-				layout.createSequentialGroup()
-						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
-								Short.MAX_VALUE)
-						.addComponent(jPanel1,
-								javax.swing.GroupLayout.PREFERRED_SIZE,
-								javax.swing.GroupLayout.DEFAULT_SIZE,
-								javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addContainerGap()));
-		layout.setVerticalGroup(layout.createParallelGroup(
-				javax.swing.GroupLayout.Alignment.LEADING).addGroup(
-				javax.swing.GroupLayout.Alignment.TRAILING,
-				layout.createSequentialGroup()
-						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
-								Short.MAX_VALUE)
-						.addComponent(jPanel1,
-								javax.swing.GroupLayout.PREFERRED_SIZE,
-								javax.swing.GroupLayout.DEFAULT_SIZE,
-								javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addContainerGap()));
+		layout.setHorizontalGroup(layout
+		        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+		                  layout.createSequentialGroup()
+		                          .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
+		                                           Short.MAX_VALUE)
+		                          .addComponent(jPanel1,
+		                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+		                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+		                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+		                          .addContainerGap()));
+		layout.setVerticalGroup(layout
+		        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+		                  layout.createSequentialGroup()
+		                          .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
+		                                           Short.MAX_VALUE)
+		                          .addComponent(jPanel1,
+		                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+		                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+		                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+		                          .addContainerGap()));
 
 		pack();
 	}
@@ -262,65 +246,80 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 		this.dispose();
 	}
 
-	/* This method is responsible to display two choose options on the same button:
-	 * Shopping/Selling list info (Client/Provider name, responsible worker, transaction value
-	 * and date (date/month/year)
+	/*
+	 * This method is responsible to display two choose options on the same
+	 * button: Shopping/Selling list info (Client/Provider name, responsible
+	 * worker, transaction value and date (date/month/year)
 	 */
 	private void jComboBox_VendaCompraItemStateChanged(
-			java.awt.event.ItemEvent evt)
+	        java.awt.event.ItemEvent evt)
 	{
 		if (jComboBox_VendaCompra.getSelectedIndex() == 0)
 		{
 			statusVendaCompra = 0;
 			jLabel1.setText("Historico de Vendas");
-		} else if (jComboBox_VendaCompra.getSelectedIndex() == 1)
+		}
+		else if (jComboBox_VendaCompra.getSelectedIndex() == 1)
 		{
 			statusVendaCompra = 1;
 			jLabel1.setText("Historico de Compras");
 		}
+		else
+		{
+			// Nothing to Do
+		}
 		carregarLista();
 	}
 
-	/* This main method is responsible to enable the Nimbus (GUI) Interface
-	 * and display all the Shopping/Selling list info with a log system
+	/*
+	 * This main method is responsible to enable the Nimbus (GUI) Interface and
+	 * display all the Shopping/Selling list info with a log system
 	 */
 	public static void main(String args[])
 	{
-	
+
 		try
 		{
 			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
-					.getInstalledLookAndFeels())
+			        .getInstalledLookAndFeels())
 			{
 				if ("Nimbus".equals(info.getName()))
 				{
 					javax.swing.UIManager.setLookAndFeel(info.getClassName());
 					break;
 				}
+				else
+				{
+					// Nothing to Do
+				}
 			}
-		} catch (ClassNotFoundException ex)
-		{
-			java.util.logging.Logger.getLogger(
-					TelaHistoricoVendaCompra.class.getName()).log(
-					java.util.logging.Level.SEVERE, null, ex);
-		} catch (InstantiationException ex)
-		{
-			java.util.logging.Logger.getLogger(
-					TelaHistoricoVendaCompra.class.getName()).log(
-					java.util.logging.Level.SEVERE, null, ex);
-		} catch (IllegalAccessException ex)
-		{
-			java.util.logging.Logger.getLogger(
-					TelaHistoricoVendaCompra.class.getName()).log(
-					java.util.logging.Level.SEVERE, null, ex);
-		} catch (javax.swing.UnsupportedLookAndFeelException ex)
-		{
-			java.util.logging.Logger.getLogger(
-					TelaHistoricoVendaCompra.class.getName()).log(
-					java.util.logging.Level.SEVERE, null, ex);
 		}
-		
-		// Create and display the form 
+		catch (ClassNotFoundException ex)
+		{
+			java.util.logging.Logger
+			        .getLogger(TelaHistoricoVendaCompra.class.getName())
+			        .log(java.util.logging.Level.SEVERE, null, ex);
+		}
+		catch (InstantiationException ex)
+		{
+			java.util.logging.Logger
+			        .getLogger(TelaHistoricoVendaCompra.class.getName())
+			        .log(java.util.logging.Level.SEVERE, null, ex);
+		}
+		catch (IllegalAccessException ex)
+		{
+			java.util.logging.Logger
+			        .getLogger(TelaHistoricoVendaCompra.class.getName())
+			        .log(java.util.logging.Level.SEVERE, null, ex);
+		}
+		catch (javax.swing.UnsupportedLookAndFeelException ex)
+		{
+			java.util.logging.Logger
+			        .getLogger(TelaHistoricoVendaCompra.class.getName())
+			        .log(java.util.logging.Level.SEVERE, null, ex);
+		}
+
+		// Create and display the form
 		java.awt.EventQueue.invokeLater(new Runnable()
 		{
 			public void run()

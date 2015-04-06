@@ -1,8 +1,9 @@
 /***********************************************************
  * File: ControleTransacao.java
  * Purpose: Responsible to get the Transaction's info to
- * 			add, remove and list Products sales
-***********************************************************/
+ * 			add, remove and list Products sales.
+ ***********************************************************/
+
 package controller;
 
 import java.util.ArrayList;
@@ -12,9 +13,8 @@ public class ControleTransacao
 {
 	private ArrayList<Transacao> listaVenda;
 
-	/* This method is responsible to create a new ArrayList
-	 * called listaVenda from the model class Transacao
-	 */
+	/* This method is responsible to create a new ArrayList called listaVenda
+	 * from the model class Transacao */
 	public ControleTransacao()
 	{
 		this.listaVenda = new ArrayList<Transacao>();
@@ -32,17 +32,15 @@ public class ControleTransacao
 		this.listaVenda = listaVendas;
 	}
 
-	/* This method is responsible to add sales on the listaVenda's arraylist
-	 * on the model class Transacao
-	 */
+	/* This method is responsible to add sales on the listaVenda's arraylist on
+	 * the model class Transacao */
 	public void adicionarVenda(Transacao v)
 	{
 		listaVenda.add(v);
 	}
 
-	/* This method is responsible to delete the added sales on the listaVenda's arraylist
-	 * on the model class Transacao
-	 */
+	/* This method is responsible to delete the added sales on the listaVenda's
+	 * arraylist on the model class Transacao */
 	public void removerVenda(Transacao v)
 	{
 		listaVenda.remove(v);

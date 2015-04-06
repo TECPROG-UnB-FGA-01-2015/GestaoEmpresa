@@ -64,14 +64,17 @@ public class TelaContatos extends javax.swing.JFrame
         if(modoVendaCompra == true)
         {
             if(TelaVendaCompra.modoFuncionario == true)
+            {
                 jComboBox1.setSelectedIndex(2);
-            
+            }
             else if(statusVendaCompra == 0)
+            {
                 jComboBox1.setSelectedIndex(0);
-            
+            }
             else if(statusVendaCompra == 1)
+            {
                 jComboBox1.setSelectedIndex(1);
-                
+            }   
             jComboBox1.setEnabled(false);
             jButton_ConfirmarContato.setVisible(true);
         }
@@ -557,16 +560,24 @@ public class TelaContatos extends javax.swing.JFrame
         if(contactType == 0)
         {
             if((String) model.getValueAt(jTable1.getSelectedRow(), 4) == "Física")
+            {
                 newPhysicalClient = false;
+            }
             else if((String) model.getValueAt(jTable1.getSelectedRow(), 4) == "Jurídica")
+            {
                 newJuridicalClient = false;
+            }
         }
         else if(contactType == 1)
         {
             if((String) model.getValueAt(jTable1.getSelectedRow(), 4) == "Física")
+            {
                 newPhysicalSupplier = false;
+            }
             else if((String) model.getValueAt(jTable1.getSelectedRow(), 4) == "Jurídica")
+            {
                 newJuridicalSupplier = false;
+            }
         }
         else if(contactType == 2)
         {
@@ -620,17 +631,21 @@ public class TelaContatos extends javax.swing.JFrame
     {//GEN-FIRST:event_jButton_ConfirmarContatoActionPerformed
         this.dispose();
         if(TelaVendaCompra.modoClienteFornecedor == true)
+        {
             returnClienteFornecedor = true;
-        
+        }
         if(TelaVendaCompra.modoFuncionario == true)
+        {
             returnFuncionario = true;
-        
+        }
         if(TelaVendaCompra.modoClienteFornecedor == true && nomeClienteFornecedor == null)
+        {
             nomeClienteFornecedor = tableName;
-            
+        }   
         if(TelaVendaCompra.modoFuncionario == true && nomeFuncionario == null)
+        {
             nomeFuncionario=tableName;
-        
+        }
         modoVendaCompra = false;
         TelaVendaCompra.modoClienteFornecedor = false;
         TelaVendaCompra.modoFuncionario = false;

@@ -316,22 +316,25 @@ public class TelaContatos extends javax.swing.JFrame
             listClient = umControleCliente.getListaCliente();
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
-            for (Cliente c : listClient) {
-                if(c.getClass().equals(ClienteFisico.class))
-                {
-                    umClienteFisico=(ClienteFisico) c;
-                    model.addRow(new String[]{umClienteFisico.getName(), 
-                        umClienteFisico.getCpf(), umClienteFisico.getName(), 
-                        umClienteFisico.getTelephone(), "Física"});
-                }
-                else if(c.getClass().equals(ClienteJuridico.class))
-                {
-                    umClienteJuridico=(ClienteJuridico) c;
-                    model.addRow(new String[]{umClienteJuridico.getName(), 
-                        umClienteJuridico.getCnpj(), umClienteJuridico.getCellphone(), 
-                        umClienteJuridico.getTelephone(), "Jurídica"});
-                }
-                    
+            if (listClient != null)
+            {
+	            for (Cliente c : listClient) {
+	                if(c.getClass().equals(ClienteFisico.class))
+	                {
+	                    umClienteFisico=(ClienteFisico) c;
+	                    model.addRow(new String[]{umClienteFisico.getName(), 
+	                        umClienteFisico.getCpf(), umClienteFisico.getName(), 
+	                        umClienteFisico.getTelephone(), "Física"});
+	                }
+	                else if(c.getClass().equals(ClienteJuridico.class))
+	                {
+	                    umClienteJuridico=(ClienteJuridico) c;
+	                    model.addRow(new String[]{umClienteJuridico.getName(), 
+	                        umClienteJuridico.getCnpj(), umClienteJuridico.getCellphone(), 
+	                        umClienteJuridico.getTelephone(), "Jurídica"});
+	                }
+	                    
+	            }
             }
             jTable1.setModel(model);
         }

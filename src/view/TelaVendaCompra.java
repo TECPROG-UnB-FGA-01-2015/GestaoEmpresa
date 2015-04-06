@@ -729,9 +729,9 @@ public class TelaVendaCompra extends javax.swing.JFrame
 		modoVendaCompra = true;
 		modoClienteFornecedor = true;
 		if (statusVendaCompra == 0)
-			TelaContatos.tipoContato = 0;
+			TelaContatos.contactType = 0;
 		else if (statusVendaCompra == 1)
-			TelaContatos.tipoContato = 1;
+			TelaContatos.contactType = 1;
 		TelaContatos.nomeClienteFornecedor = null;
 		new TelaContatos().setVisible(true);
 		this.dispose();
@@ -778,7 +778,7 @@ public class TelaVendaCompra extends javax.swing.JFrame
 	{
 		modoVendaCompra = true;
 		modoFuncionario = true;
-		TelaContatos.tipoContato = 2;
+		TelaContatos.contactType = 2;
 		TelaContatos.nomeFuncionario = null;
 		new TelaContatos().setVisible(true);
 		this.dispose();
@@ -821,9 +821,9 @@ public class TelaVendaCompra extends javax.swing.JFrame
 			if (statusVendaCompra == 0)
 			{
 				Cliente c = TelaDadosContatos.umControleCliente
-						.searchClient(nomeClienteFornecedor, false);
+						.pesquisarCliente(nomeClienteFornecedor, false);
 				Funcionario f = TelaDadosContatos.umControleFuncionario
-						.searchEmployee(nomeFuncionario, false);
+						.pesquisarFuncionario(nomeFuncionario, false);
 				umaVenda = new Venda(c, listaTabelaProduto, valor, f,
 						Integer.parseInt(dia), Integer.parseInt(mes),
 						Integer.parseInt(ano));
@@ -836,7 +836,7 @@ public class TelaVendaCompra extends javax.swing.JFrame
 				Fornecedor c = TelaDadosContatos.umControleFornecedor
 						.pesquisarFornecedor(nomeClienteFornecedor, false);
 				Funcionario f = TelaDadosContatos.umControleFuncionario
-						.searchEmployee(nomeFuncionario, false);
+						.pesquisarFuncionario(nomeFuncionario, false);
 				umaCompra = new Compra(c, listaTabelaProduto, valor, f,
 						Integer.parseInt(dia), Integer.parseInt(mes),
 						Integer.parseInt(ano));

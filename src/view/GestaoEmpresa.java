@@ -29,7 +29,7 @@ public class GestaoEmpresa extends javax.swing.JFrame
     public GestaoEmpresa()
     {
         initComponents();
-        umProduto = new Produto("Produto", null, 10.0, WIDTH);
+        umProduto = new Produto("Produto", null, 10.0, WIDTH, 0);
         listaProduto = new ArrayList<Produto>();
         listaProduto.add(umProduto);
         umCliente = new Cliente("Cliente", null, null, null);
@@ -188,7 +188,7 @@ public class GestaoEmpresa extends javax.swing.JFrame
     private void jButton_ContatosActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_ContatosActionPerformed
         TelaVendaCompra.modoVendaCompra=false;
-        new ContactView().setVisible(true);
+        new TelaContatos().setVisible(true);
     }//GEN-LAST:event_jButton_ContatosActionPerformed
 
     // Opens VendaCompra's form

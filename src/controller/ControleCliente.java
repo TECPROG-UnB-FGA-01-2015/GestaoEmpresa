@@ -6,7 +6,6 @@
 package controller;
 
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import model.Cliente;
 import view.TelaContatos;
 
@@ -22,31 +21,31 @@ public class ControleCliente
     }
 
     // Access and returns the property clientList
-    public static ArrayList<Cliente> getListaClient()
+    public static ArrayList<Cliente> getListaCliente()
     {
         return clientList;
     }
 
     // Sets a new value for the clientList property
-    public static void setListaClient(ArrayList<Cliente> clientList)
+    public static void setListaCliente(ArrayList<Cliente> clientList)
     {
     	ControleCliente.clientList = clientList;
     }
     
     // Adds a client to the clientList
-    public void addClient (Cliente cliente)
+    public void addCliente(Cliente cliente)
     {
         clientList.add(cliente);
     }
     
     // Removes a client of the clientList
-    public void removeClient (Cliente cliente)
+    public void removerCliente(Cliente cliente)
     {
         clientList.remove(cliente);
     }
     
     // Search for a client in the clientList with a given name
-    public Cliente searchClient(String name, boolean search)
+    public Cliente pesquisarCliente(String name, boolean search)
     {
         Cliente returned = null;
         Cliente exactReturned = null;

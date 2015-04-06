@@ -1,8 +1,8 @@
 /***********************************************************
  * File: Transacao.java
- * Purpose: Responsible to get the Transaction's info 
- * 			to sell Products
+ * Purpose: Gets the Transaction's info to sell Products.
  **********************************************************/
+
 package model;
 
 import java.util.ArrayList;
@@ -16,11 +16,14 @@ public class Transacao
 	protected int mes;
 	protected int ano;
 
-	/* This constructor method is responsible to receive some attributes
-	 * as parameters to initialize the Transacao's objects as self references
-	 */
-	public Transacao(ArrayList<Produto> listaVenda, double preco,
-			Funcionario funcionario, int dia, int mes, int ano)
+	/* This constructor method is responsible to receive some attributes as
+	 * parameters to initialize the Transacao's objects as self references */
+	public Transacao(ArrayList<Produto> listaVenda,
+	                 double preco,
+	                 Funcionario funcionario,
+	                 int dia,
+	                 int mes,
+	                 int ano)
 	{
 		this.listaVenda = listaVenda;
 		this.preco = preco;

@@ -15,10 +15,10 @@ public class Produto
     /* Constructor to receive all the attributes as parameters and initialize the
      * object Produto*/
     public Produto(String codigo,
-    				String descricao,
-    				double precoCompra,
-    				double quantidade,
-    				double precoVenda)
+    			   String descricao,
+    			   double precoCompra,
+    			   double quantidade,
+    			   double precoVenda)
     {
         this.codigo = codigo;
         this.descricao = descricao;

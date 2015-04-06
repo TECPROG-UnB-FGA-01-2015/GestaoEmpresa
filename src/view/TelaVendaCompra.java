@@ -843,7 +843,7 @@ public class TelaVendaCompra extends javax.swing.JFrame
 				umControleTransacao.adicionarVenda(umaCompra);
 
 				Despesa despesa = new Despesa(
-						"Compra de Produto do Fornecedor'" + f.getName() + "'",
+						"Compra de Produto do Fornecedor'" + c.getNome() + "'",
 						null, valor, Integer.parseInt(dia),
 						Integer.parseInt(mes), Integer.parseInt(ano));
 				TelaDadosDespesas.umControleDespesa.adicionarGasto(despesa);

@@ -1,3 +1,9 @@
+/**********************************************************
+ * File: TelaEstoque.java
+ * Purpose: Lists the products and permits
+ *          to add, edit and remove a product.
+ *********************************************************/
+
 package view;
 
 import java.util.ArrayList;

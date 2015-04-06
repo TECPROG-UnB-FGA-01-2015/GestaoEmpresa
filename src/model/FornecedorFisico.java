@@ -1,3 +1,9 @@
+/**********************************************************
+ * File: FornecedorFisico.java
+ * Purpose: Holds all the attributes and methods of the
+ * 		    subclass FornecedorFisico.
+ *********************************************************/
+
 package model;
 
 import java.util.ArrayList;

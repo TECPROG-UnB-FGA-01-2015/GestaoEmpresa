@@ -1,3 +1,8 @@
+/**********************************************************
+ * File: ControleFornecedor.java
+ * Purpose: Contains the Suppliers maintenance methods.
+**********************************************************/
+
 package controller;
 
 import java.util.ArrayList;

@@ -313,7 +313,7 @@ public class TelaContatos extends javax.swing.JFrame
     {
         if(contactType == 0)
         {
-            listClient = umControleCliente.getlistClient();
+            listClient = umControleCliente.getListaCliente();
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
             for (Cliente c : listClient) {
@@ -335,7 +335,7 @@ public class TelaContatos extends javax.swing.JFrame
             }
             jTable1.setModel(model);
         }
-        else if(tipoContato == 1)
+        else if(contactType == 1)
         {
             listSupplier = umControleFornecedor.getListaFornecedor();
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -360,7 +360,7 @@ public class TelaContatos extends javax.swing.JFrame
             }
             jTable1.setModel(model);
         }
-        else if(tipoContato==2)
+        else if(contactType==2)
         {
             listEmployee = umControleFuncionario.getListaFuncionario();
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -407,9 +407,9 @@ public class TelaContatos extends javax.swing.JFrame
         if(!nomeBusca.equals(""))
         {
             i=0;
-            if(umControleCliente.pesquisarCliente(nomeBusca,true)!=null)
+            if(umControleCliente.pesquisarCliente(nomeBusca,true) != null)
             {
-                if((modoVendaCompra==false)||(modoVendaCompra==true&&contactType==0))
+                if((modoVendaCompra == false) || (modoVendaCompra == true && contactType == 0))
                 {
                     Cliente buscaCliente = umControleCliente.pesquisarCliente(nomeBusca,true);
                     jComboBox1.setSelectedIndex(0);
@@ -418,7 +418,8 @@ public class TelaContatos extends javax.swing.JFrame
                     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();  //Funçao para limpar a tabela
                     model.setRowCount(0);
 
-                    i++;
+                    i = i + 1;
+                    
                     if(buscaCliente.getClass().equals(ClienteFisico.class))
                     {
                         ClienteFisico buscaContato=(ClienteFisico) umControleCliente.pesquisarCliente(nomeBusca,true);
@@ -433,11 +434,11 @@ public class TelaContatos extends javax.swing.JFrame
                     }
                 }
             }
-            if(umControleFornecedor.pesquisarFornecedor(nomeBusca,true)!=null)
+            if(umControleFornecedor.pesquisarFornecedor(nomeBusca,true) != null)
             {
-                if((modoVendaCompra==false)||(modoVendaCompra==true&&contactType==1))
+                if((modoVendaCompra == false) || (modoVendaCompra == true && contactType == 1))
                 {
-                    i++;
+                    i = i + 1;
                     Fornecedor buscaFornecedor = umControleFornecedor.pesquisarFornecedor(nomeBusca,true);
                     jComboBox1.setSelectedIndex(1);
                     jTextField_NomeBusca.setText(buscaFornecedor.getNome());
@@ -463,9 +464,9 @@ public class TelaContatos extends javax.swing.JFrame
             }
             if(umControleFuncionario.pesquisarFuncionario(nomeBusca,true)!=null)
             {
-                if((modoVendaCompra==false)||(modoVendaCompra==true&&contactType==2))
+                if((modoVendaCompra == false) || (modoVendaCompra == true && contactType == 2))
                 {
-                    i++;
+                    i = i + 1;
                     Funcionario buscaFuncionario = umControleFuncionario.pesquisarFuncionario(nomeBusca,true);
                     jComboBox1.setSelectedIndex(2);
                     jTextField_NomeBusca.setText(buscaFuncionario.getName());
@@ -490,30 +491,30 @@ public class TelaContatos extends javax.swing.JFrame
         else
         {
             carregarLista();
-            if(jTable1.getRowCount()==0)
+            if(jTable1.getRowCount() == 0)
                 exibirInformacao("A pesquisa não retornou nenhum resultado!");
         }
 
-        if(i>1)
+        if(i > 1)
         {
-            exibirInformacao("Mais de um resultado foi encontrando com o nome '"+ nomeBusca + "'" );
+            exibirInformacao("Mais de um resultado foi encontrando com o nome '" + nomeBusca + "'" );
         }
     }//GEN-LAST:event_jButton_PesquisarActionPerformed
 
     // Changes de variable contactType depending on which contact type was chosen
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt)
     {//GEN-FIRST:event_jComboBox1ItemStateChanged
-        if(jComboBox1.getSelectedIndex()==0)
+        if(jComboBox1.getSelectedIndex() == 0)
         {
-            contactType=0;
+            contactType = 0;
         }
-        else if(jComboBox1.getSelectedIndex()==1)
+        else if(jComboBox1.getSelectedIndex() == 1)
         {
-            contactType=1;
+            contactType = 1;
         }
-        else if(jComboBox1.getSelectedIndex()==2)
+        else if(jComboBox1.getSelectedIndex() == 2)
         {
-            contactType=2;
+            contactType = 2;
         }
         
         jButton_Editar.setEnabled(false);
@@ -541,11 +542,11 @@ public class TelaContatos extends javax.swing.JFrame
     // Select contact depending on which contact was clicked
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt)
     {//GEN-FIRST:event_jTable1MouseClicked
-        newPhysicalClient=true;
-        newJuridicalClient=true;
-        newPhysicalSupplier=true;
-        newJuridicalSupplier=true;
-        newEmployee=true;
+        newPhysicalClient = true;
+        newJuridicalClient = true;
+        newPhysicalSupplier = true;
+        newJuridicalSupplier = true;
+        newEmployee = true;
                 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         tableName = (String) model.getValueAt(jTable1.getSelectedRow(), 0);
@@ -583,19 +584,19 @@ public class TelaContatos extends javax.swing.JFrame
         {
             umControleCliente.removerCliente(umControleCliente.pesquisarCliente(tableName,false));
         }
-        else if(newJuridicalClient==false)
+        else if(newJuridicalClient == false)
         {
             umControleCliente.removerCliente(umControleCliente.pesquisarCliente(tableName,false));
         }
-        else if(newPhysicalSupplier==false)
+        else if(newPhysicalSupplier == false)
         {
             umControleFornecedor.removerFornecedor(umControleFornecedor.pesquisarFornecedor(tableName,false));
         }
-        else if(newJuridicalSupplier==false)
+        else if(newJuridicalSupplier == false)
         {
             umControleFornecedor.removerFornecedor(umControleFornecedor.pesquisarFornecedor(tableName,false));
         }
-        else if(newEmployee==false)
+        else if(newEmployee == false)
         {
             umControleFuncionario.removerFuncionario(umControleFuncionario.pesquisarFuncionario(tableName,false));
         }

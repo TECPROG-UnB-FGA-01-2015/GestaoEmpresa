@@ -20,9 +20,9 @@ import model.Funcionario;
 import static view.TelaDadosContatos.umControleCliente;
 import static view.TelaDadosContatos.umControleFornecedor;
 import static view.TelaDadosContatos.umControleFuncionario;
-import static view.TelaVendaCompra.modoClienteFornecedor;
-import static view.TelaVendaCompra.modoVendaCompra;
-import static view.TelaVendaCompra.statusVendaCompra;
+import static view.SalePurchaseView.clientSupplierMode;
+import static view.SalePurchaseView.purchaseSaleMode;
+import static view.SalePurchaseView.salePurchaseStatus;
 
 public class TelaContatos extends javax.swing.JFrame
 {
@@ -45,7 +45,7 @@ public class TelaContatos extends javax.swing.JFrame
     static ArrayList<Funcionario> listEmployee;
     public Funcionario umFuncionario;
     int i;
-    TelaVendaCompra telaVendaCompra;
+    SalePurchaseView salePurchaseView;
     static boolean returnClienteFornecedor;
     static boolean returnFuncionario;
     static String nomeClienteFornecedor;
@@ -61,24 +61,24 @@ public class TelaContatos extends javax.swing.JFrame
         jButton_ConfirmarContato.setVisible(false);
         jButton_ConfirmarContato.setEnabled(false);
         this.jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        if(modoVendaCompra == true)
+        if(purchaseSaleMode == true)
         {
-            if(TelaVendaCompra.modoFuncionario == true)
+            if(SalePurchaseView.employeeMode == true)
             {
                 jComboBox1.setSelectedIndex(2);
             }
-            else if(statusVendaCompra == 0)
+            else if(salePurchaseStatus == 0)
             {
                 jComboBox1.setSelectedIndex(0);
             }
-            else if(statusVendaCompra == 1)
+            else if(salePurchaseStatus == 1)
             {
                 jComboBox1.setSelectedIndex(1);
             }   
             jComboBox1.setEnabled(false);
             jButton_ConfirmarContato.setVisible(true);
         }
-        if(TelaVendaCompra.modoFuncionario == true)
+        if(SalePurchaseView.employeeMode == true)
         {
             jButton_AdicionarContato.setEnabled(false);
         }
@@ -386,12 +386,12 @@ public class TelaContatos extends javax.swing.JFrame
     private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_CancelarActionPerformed
          this.dispose();
-         if(modoClienteFornecedor == true)
+         if(clientSupplierMode == true)
          {
-             new TelaVendaCompra().setVisible(true);
+             new SalePurchaseView().setVisible(true);
          }
-         modoClienteFornecedor = false;
-         TelaVendaCompra.modoFuncionario = false;
+         clientSupplierMode = false;
+         SalePurchaseView.employeeMode = false;
     }//GEN-LAST:event_jButton_CancelarActionPerformed
 
     // Calls the form to register new contact
@@ -415,7 +415,7 @@ public class TelaContatos extends javax.swing.JFrame
             i=0;
             if(umControleCliente.pesquisarCliente(nomeBusca,true) != null)
             {
-                if((modoVendaCompra == false) || (modoVendaCompra == true && contactType == 0))
+                if((purchaseSaleMode == false) || (purchaseSaleMode == true && contactType == 0))
                 {
                     Cliente buscaCliente = umControleCliente.pesquisarCliente(nomeBusca,true);
                     jComboBox1.setSelectedIndex(0);
@@ -442,7 +442,7 @@ public class TelaContatos extends javax.swing.JFrame
             }
             if(umControleFornecedor.pesquisarFornecedor(nomeBusca,true) != null)
             {
-                if((modoVendaCompra == false) || (modoVendaCompra == true && contactType == 1))
+                if((purchaseSaleMode == false) || (purchaseSaleMode == true && contactType == 1))
                 {
                     i = i + 1;
                     Fornecedor buscaFornecedor = umControleFornecedor.pesquisarFornecedor(nomeBusca,true);
@@ -470,7 +470,7 @@ public class TelaContatos extends javax.swing.JFrame
             }
             if(umControleFuncionario.pesquisarFuncionario(nomeBusca,true)!=null)
             {
-                if((modoVendaCompra == false) || (modoVendaCompra == true && contactType == 2))
+                if((purchaseSaleMode == false) || (purchaseSaleMode == true && contactType == 2))
                 {
                     i = i + 1;
                     Funcionario buscaFuncionario = umControleFuncionario.pesquisarFuncionario(nomeBusca,true);
@@ -630,27 +630,27 @@ public class TelaContatos extends javax.swing.JFrame
     private void jButton_ConfirmarContatoActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_ConfirmarContatoActionPerformed
         this.dispose();
-        if(TelaVendaCompra.modoClienteFornecedor == true)
+        if(SalePurchaseView.clientSupplierMode == true)
         {
             returnClienteFornecedor = true;
         }
-        if(TelaVendaCompra.modoFuncionario == true)
+        if(SalePurchaseView.employeeMode == true)
         {
             returnFuncionario = true;
         }
-        if(TelaVendaCompra.modoClienteFornecedor == true && nomeClienteFornecedor == null)
+        if(SalePurchaseView.clientSupplierMode == true && nomeClienteFornecedor == null)
         {
             nomeClienteFornecedor = tableName;
         }   
-        if(TelaVendaCompra.modoFuncionario == true && nomeFuncionario == null)
+        if(SalePurchaseView.employeeMode == true && nomeFuncionario == null)
         {
             nomeFuncionario=tableName;
         }
-        modoVendaCompra = false;
-        TelaVendaCompra.modoClienteFornecedor = false;
-        TelaVendaCompra.modoFuncionario = false;
+        purchaseSaleMode = false;
+        SalePurchaseView.clientSupplierMode = false;
+        SalePurchaseView.employeeMode = false;
         
-        new TelaVendaCompra().setVisible(true);
+        new SalePurchaseView().setVisible(true);
     }//GEN-LAST:event_jButton_ConfirmarContatoActionPerformed
 
     // Main function

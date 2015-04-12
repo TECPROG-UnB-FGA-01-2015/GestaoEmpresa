@@ -15,10 +15,10 @@ import model.Endereco;
 import model.FornecedorFisico;
 import model.FornecedorJuridico;
 import model.Funcionario;
-import static view.TelaVendaCompra.modoClienteFornecedor;
-import static view.TelaVendaCompra.modoFuncionario;
-import static view.TelaVendaCompra.modoVendaCompra;
-import static view.TelaVendaCompra.statusVendaCompra;
+import static view.SalePurchaseView.clientSupplierMode;
+import static view.SalePurchaseView.employeeMode;
+import static view.SalePurchaseView.purchaseSaleMode;
+import static view.SalePurchaseView.salePurchaseStatus;
 
 public class TelaDadosContatos extends javax.swing.JFrame
 {
@@ -56,17 +56,17 @@ public class TelaDadosContatos extends javax.swing.JFrame
 		limparCampos();
 		preencherCampos();
 
-		if(modoVendaCompra == true)
+		if(purchaseSaleMode == true)
 		{
-			if(TelaVendaCompra.modoFuncionario == true)
+			if(SalePurchaseView.employeeMode == true)
 			{
 				jComboBox_TipoContato.setSelectedIndex(2);
 			}
-			else if(statusVendaCompra == 0)
+			else if(salePurchaseStatus == 0)
 			{
 				jComboBox_TipoContato.setSelectedIndex(0);
 			}
-			else if(statusVendaCompra == 1)
+			else if(salePurchaseStatus == 1)
 			{
 				jComboBox_TipoContato.setSelectedIndex(1);
 			}

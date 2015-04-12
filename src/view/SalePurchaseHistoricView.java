@@ -1,5 +1,5 @@
 /***********************************************************
- * File: TelaHistoricoVendaCompra.java
+ * File: SalePurchaseHistoricView.java
  * Purpose: Responsible to get the Product's Buying and Selling Historic info.
  **********************************************************/
 
@@ -7,78 +7,78 @@ package view;
 
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import model.Compra;
-import model.Transacao;
-import model.Venda;
-import static view.TelaVendaCompra.umControleTransacao;
+import model.Purchase;
+import model.Transaction;
+import model.Sale;
+import static view.SalePurchaseView.umControleTransacao;
 
-public class TelaHistoricoVendaCompra extends javax.swing.JFrame
+public class SalePurchaseHistoricView extends javax.swing.JFrame
 {
 
-	private int statusVendaCompra = 0;
-	Venda umaVenda;
-	Compra umaCompra;
+	private int salePurchaseStatus = 0;
+	Sale oneSale;
+	Purchase onePurchase;
 
 	// Variables declaration (do not modify) - GEN-BEGIN:variables
-	private javax.swing.JButton jButton_sair;
-	private javax.swing.JComboBox jComboBox_VendaCompra;
-	private javax.swing.JLabel jLabel1;
-	private javax.swing.JPanel jPanel1;
-	private javax.swing.JScrollPane jScrollPane1;
-	private javax.swing.JTable jTable_Historico;
+	private javax.swing.JButton jButton_exitScreen;
+	private javax.swing.JComboBox jComboBox_showSalePurchase;
+	private javax.swing.JLabel jLabel_showSalePurchaseHistoricWord;
+	private javax.swing.JPanel jPanel_showEntireHistoricScreen;
+	private javax.swing.JScrollPane jScrollPane_showSalePurchaseHistoricScreenScroll;
+	private javax.swing.JTable jTable_showPurchaseSaleHistoricInfoTable;
 
 	// End of variables declaration - GEN-END:variables
 
 	/* This method is responsible to load Shopping/Selling list on the GUI
 	 * (Graphical User Interface) screen */
-	public TelaHistoricoVendaCompra()
+	public SalePurchaseHistoricView()
 	{
 		initComponents();
-		carregarLista();
+		loadList();
 	}
 
 	/* This method is responsible to show the Shopping/Selling list info, as:
-	 * Client/Provider name, responsible worker, transaction value and date
+	 * Client/Provider name, responsible employee, transaction value and date
 	 * (date/month/year) */
-	private void carregarLista()
+	private void loadList()
 	{
-		ArrayList<Transacao> listaTransacao = umControleTransacao
-		        .getListaVenda();
-		DefaultTableModel model = (DefaultTableModel) jTable_Historico
+		ArrayList<Transaction> transactionList = umControleTransacao
+		        .getSaleList();
+		DefaultTableModel model = (DefaultTableModel) jTable_showPurchaseSaleHistoricInfoTable
 		        .getModel();
 		model.setRowCount(0);
-		for (Transacao t : listaTransacao)
+		for (Transaction t : transactionList)
 		{
-			if (statusVendaCompra == 0)
+			if (salePurchaseStatus == 0)
 			{
-				if (t.getClass().equals(Venda.class))
+				if (t.getClass().equals(Sale.class))
 				{
-					umaVenda = (Venda) t;
-					String data = Integer.toString(umaVenda.getDia()) + "/"
-					        + Integer.toString(umaVenda.getMes()) + "/"
-					        + Integer.toString(umaVenda.getAno());
+					oneSale = (Sale) t;
+					String data = Integer.toString(oneSale.getTransactionDay()) + "/"
+					        + Integer.toString(oneSale.getTransactionMonth()) + "/"
+					        + Integer.toString(oneSale.getTransactionYear());
 					model.addRow(new String[]
-					{ umaVenda.getCliente().getName(),
-					        umaVenda.getFuncionario().getName(),
-					        Double.toString(umaVenda.getPreco()), data });
+					{ oneSale.getClient().getName(),
+							oneSale.getEmployee().getName(),
+					        Double.toString(oneSale.getTransactionPrice()), data });
 				}
 				else
 				{
 					// Nothing to Do
 				}
 			}
-			else if (statusVendaCompra == 1)
+			else if (salePurchaseStatus == 1)
 			{
-				if (t.getClass().equals(Compra.class))
+				if (t.getClass().equals(Purchase.class))
 				{
-					umaCompra = (Compra) t;
-					String data = Integer.toString(umaCompra.getDia()) + "/"
-					        + Integer.toString(umaCompra.getMes()) + "/"
-					        + Integer.toString(umaCompra.getAno());
+					onePurchase = (Purchase) t;
+					String data = Integer.toString(onePurchase.getTransactionDay()) + "/"
+					        + Integer.toString(onePurchase.getTransactionMonth()) + "/"
+					        + Integer.toString(onePurchase.getTransactionYear());
 					model.addRow(new String[]
-					{ umaCompra.getFornecedor().getNome(),
-					        umaCompra.getFuncionario().getName(),
-					        Double.toString(umaCompra.getPreco()), data });
+					{ onePurchase.getFornecedor().getNome(),
+							onePurchase.getEmployee().getName(),
+					        Double.toString(onePurchase.getTransactionPrice()), data });
 				}
 				else
 				{
@@ -91,7 +91,7 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 			}
 
 		}
-		jTable_Historico.setModel(model);
+		jTable_showPurchaseSaleHistoricInfoTable.setModel(model);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -101,21 +101,21 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 	private void initComponents()
 	{
 
-		jPanel1 = new javax.swing.JPanel();
-		jLabel1 = new javax.swing.JLabel();
-		jScrollPane1 = new javax.swing.JScrollPane();
-		jTable_Historico = new javax.swing.JTable();
-		jComboBox_VendaCompra = new javax.swing.JComboBox();
-		jButton_sair = new javax.swing.JButton();
+		jPanel_showEntireHistoricScreen = new javax.swing.JPanel();
+		jLabel_showSalePurchaseHistoricWord = new javax.swing.JLabel();
+		jScrollPane_showSalePurchaseHistoricScreenScroll = new javax.swing.JScrollPane();
+		jTable_showPurchaseSaleHistoricInfoTable = new javax.swing.JTable();
+		jComboBox_showSalePurchase = new javax.swing.JComboBox();
+		jButton_exitScreen = new javax.swing.JButton();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 		setTitle("Historico de Vendas");
 		setBounds(new java.awt.Rectangle(450, 300, 0, 0));
 
-		jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-		jLabel1.setText("Historico de Vendas");
+		jLabel_showSalePurchaseHistoricWord.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+		jLabel_showSalePurchaseHistoricWord.setText("Historico de Vendas");
 
-		jTable_Historico
+		jTable_showPurchaseSaleHistoricInfoTable
 		        .setModel(new javax.swing.table.DefaultTableModel(null,
 		                                                          new String[]
 		                                                          {
@@ -130,83 +130,83 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 				        return false;
 			        }
 		        });
-		jScrollPane1.setViewportView(jTable_Historico);
+		jScrollPane_showSalePurchaseHistoricScreenScroll.setViewportView(jTable_showPurchaseSaleHistoricInfoTable);
 
-		jComboBox_VendaCompra
+		jComboBox_showSalePurchase
 		        .setModel(new javax.swing.DefaultComboBoxModel(new String[]
 		        { "Venda", "Compra" }));
-		jComboBox_VendaCompra.addItemListener(new java.awt.event.ItemListener()
+		jComboBox_showSalePurchase.addItemListener(new java.awt.event.ItemListener()
 		{
 			public void itemStateChanged(java.awt.event.ItemEvent evt)
 			{
-				jComboBox_VendaCompraItemStateChanged(evt);
+				jComboBox_showSalePurchaseItemStateChanged(evt);
 			}
 		});
 
-		jButton_sair.setText("Sair");
-		jButton_sair.addActionListener(new java.awt.event.ActionListener()
+		jButton_exitScreen.setText("Sair");
+		jButton_exitScreen.addActionListener(new java.awt.event.ActionListener()
 		{
 			public void actionPerformed(java.awt.event.ActionEvent evt)
 			{
-				jButton_sairActionPerformed(evt);
+				jButton_exitScreenActionPerformed(evt);
 			}
 		});
 
-		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-		jPanel1.setLayout(jPanel1Layout);
-		jPanel1Layout
-		        .setHorizontalGroup(jPanel1Layout
+		javax.swing.GroupLayout jPanel_showEntireHistoricScreenLayout = new javax.swing.GroupLayout(jPanel_showEntireHistoricScreen);
+		jPanel_showEntireHistoricScreen.setLayout(jPanel_showEntireHistoricScreenLayout);
+		jPanel_showEntireHistoricScreenLayout
+		        .setHorizontalGroup(jPanel_showEntireHistoricScreenLayout
 		                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 		                .addGap(0, 673, Short.MAX_VALUE)
-		                .addGroup(jPanel1Layout
+		                .addGroup(jPanel_showEntireHistoricScreenLayout
 		                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-		                        .addGroup(jPanel1Layout
+		                        .addGroup(jPanel_showEntireHistoricScreenLayout
 		                                .createSequentialGroup()
 		                                .addContainerGap()
-		                                .addGroup(jPanel1Layout
+		                                .addGroup(jPanel_showEntireHistoricScreenLayout
 		                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-		                                        .addGroup(jPanel1Layout
+		                                        .addGroup(jPanel_showEntireHistoricScreenLayout
 		                                                .createSequentialGroup()
-		                                                .addComponent(jButton_sair)
+		                                                .addComponent(jButton_exitScreen)
 		                                                .addGap(159, 159, 159)
-		                                                .addComponent(jLabel1))
-		                                        .addGroup(jPanel1Layout
+		                                                .addComponent(jLabel_showSalePurchaseHistoricWord))
+		                                        .addGroup(jPanel_showEntireHistoricScreenLayout
 		                                                .createSequentialGroup()
 		                                                .addGap(50, 50, 50)
-		                                                .addGroup(jPanel1Layout
+		                                                .addGroup(jPanel_showEntireHistoricScreenLayout
 		                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-		                                                        .addComponent(jComboBox_VendaCompra,
+		                                                        .addComponent(jComboBox_showSalePurchase,
 		                                                                      javax.swing.GroupLayout.PREFERRED_SIZE,
 		                                                                      javax.swing.GroupLayout.DEFAULT_SIZE,
 		                                                                      javax.swing.GroupLayout.PREFERRED_SIZE)
-		                                                        .addComponent(jScrollPane1,
+		                                                        .addComponent(jScrollPane_showSalePurchaseHistoricScreenScroll,
 		                                                                      javax.swing.GroupLayout.PREFERRED_SIZE,
 		                                                                      611,
 		                                                                      javax.swing.GroupLayout.PREFERRED_SIZE))))
 		                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
 		                                                 Short.MAX_VALUE))));
-		jPanel1Layout
-		        .setVerticalGroup(jPanel1Layout
+		jPanel_showEntireHistoricScreenLayout
+		        .setVerticalGroup(jPanel_showEntireHistoricScreenLayout
 		                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 		                .addGap(0, 299, Short.MAX_VALUE)
-		                .addGroup(jPanel1Layout
+		                .addGroup(jPanel_showEntireHistoricScreenLayout
 		                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-		                        .addGroup(jPanel1Layout
+		                        .addGroup(jPanel_showEntireHistoricScreenLayout
 		                                .createSequentialGroup()
 		                                .addContainerGap()
-		                                .addGroup(jPanel1Layout
+		                                .addGroup(jPanel_showEntireHistoricScreenLayout
 		                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-		                                        .addComponent(jButton_sair)
-		                                        .addComponent(jLabel1))
+		                                        .addComponent(jButton_exitScreen)
+		                                        .addComponent(jLabel_showSalePurchaseHistoricWord))
 		                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-		                                .addComponent(jComboBox_VendaCompra,
+		                                .addComponent(jComboBox_showSalePurchase,
 		                                              javax.swing.GroupLayout.PREFERRED_SIZE,
 		                                              javax.swing.GroupLayout.DEFAULT_SIZE,
 		                                              javax.swing.GroupLayout.PREFERRED_SIZE)
 		                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
 		                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
 		                                                 Short.MAX_VALUE)
-		                                .addComponent(jScrollPane1,
+		                                .addComponent(jScrollPane_showSalePurchaseHistoricScreenScroll,
 		                                              javax.swing.GroupLayout.PREFERRED_SIZE,
 		                                              207,
 		                                              javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -220,7 +220,7 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 		                  layout.createSequentialGroup()
 		                          .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
 		                                           Short.MAX_VALUE)
-		                          .addComponent(jPanel1,
+		                          .addComponent(jPanel_showEntireHistoricScreen,
 		                                        javax.swing.GroupLayout.PREFERRED_SIZE,
 		                                        javax.swing.GroupLayout.DEFAULT_SIZE,
 		                                        javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -231,7 +231,7 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 		                  layout.createSequentialGroup()
 		                          .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
 		                                           Short.MAX_VALUE)
-		                          .addComponent(jPanel1,
+		                          .addComponent(jPanel_showEntireHistoricScreen,
 		                                        javax.swing.GroupLayout.PREFERRED_SIZE,
 		                                        javax.swing.GroupLayout.DEFAULT_SIZE,
 		                                        javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -241,7 +241,7 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 	}
 
 	// This method is responsible to confirm the Screen's Exit Button Action
-	private void jButton_sairActionPerformed(java.awt.event.ActionEvent evt)
+	private void jButton_exitScreenActionPerformed(java.awt.event.ActionEvent evt)
 	{
 		this.dispose();
 	}
@@ -249,26 +249,26 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 	/*
 	 * This method is responsible to display two choose options on the same
 	 * button: Shopping/Selling list info (Client/Provider name, responsible
-	 * worker, transaction value and date (date/month/year)
+	 * employee, transaction value and date (date/month/year)
 	 */
-	private void jComboBox_VendaCompraItemStateChanged(
+	private void jComboBox_showSalePurchaseItemStateChanged(
 	        java.awt.event.ItemEvent evt)
 	{
-		if (jComboBox_VendaCompra.getSelectedIndex() == 0)
+		if (jComboBox_showSalePurchase.getSelectedIndex() == 0)
 		{
-			statusVendaCompra = 0;
-			jLabel1.setText("Historico de Vendas");
+			salePurchaseStatus = 0;
+			jLabel_showSalePurchaseHistoricWord.setText("Historico de Vendas");
 		}
-		else if (jComboBox_VendaCompra.getSelectedIndex() == 1)
+		else if (jComboBox_showSalePurchase.getSelectedIndex() == 1)
 		{
-			statusVendaCompra = 1;
-			jLabel1.setText("Historico de Compras");
+			salePurchaseStatus = 1;
+			jLabel_showSalePurchaseHistoricWord.setText("Historico de Compras");
 		}
 		else
 		{
 			// Nothing to Do
 		}
-		carregarLista();
+		loadList();
 	}
 
 	/*
@@ -297,25 +297,25 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 		catch (ClassNotFoundException ex)
 		{
 			java.util.logging.Logger
-			        .getLogger(TelaHistoricoVendaCompra.class.getName())
+			        .getLogger(SalePurchaseHistoricView.class.getName())
 			        .log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		catch (InstantiationException ex)
 		{
 			java.util.logging.Logger
-			        .getLogger(TelaHistoricoVendaCompra.class.getName())
+			        .getLogger(SalePurchaseHistoricView.class.getName())
 			        .log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		catch (IllegalAccessException ex)
 		{
 			java.util.logging.Logger
-			        .getLogger(TelaHistoricoVendaCompra.class.getName())
+			        .getLogger(SalePurchaseHistoricView.class.getName())
 			        .log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		catch (javax.swing.UnsupportedLookAndFeelException ex)
 		{
 			java.util.logging.Logger
-			        .getLogger(TelaHistoricoVendaCompra.class.getName())
+			        .getLogger(SalePurchaseHistoricView.class.getName())
 			        .log(java.util.logging.Level.SEVERE, null, ex);
 		}
 
@@ -324,7 +324,7 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 		{
 			public void run()
 			{
-				new TelaHistoricoVendaCompra().setVisible(true);
+				new SalePurchaseHistoricView().setVisible(true);
 			}
 		});
 	}

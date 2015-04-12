@@ -5,16 +5,16 @@
 
 package view;
 
-import controller.ControleTransacao;
+import controller.TransactionController;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.Cliente;
-import model.Compra;
+import model.Purchase;
 import model.Fornecedor;
 import model.Funcionario;
 import model.Produto;
-import model.Transacao;
-import model.Venda;
+import model.Transaction;
+import model.Sale;
 
 public class GestaoEmpresa extends javax.swing.JFrame
 {
@@ -187,20 +187,20 @@ public class GestaoEmpresa extends javax.swing.JFrame
     // Opens Contatos' form
     private void jButton_ContatosActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_ContatosActionPerformed
-        TelaVendaCompra.modoVendaCompra=false;
+        SalePurchaseView.purchaseSaleMode=false;
         new TelaContatos().setVisible(true);
     }//GEN-LAST:event_jButton_ContatosActionPerformed
 
     // Opens VendaCompra's form
     private void jButton_VendaCompraActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_VendaCompraActionPerformed
-        new TelaVendaCompra().setVisible(true);
+        new SalePurchaseView().setVisible(true);
     }//GEN-LAST:event_jButton_VendaCompraActionPerformed
 
     // Opens HistoricoVendaCompra's form
     private void jButton_HistoricoCompraVendaActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_HistoricoCompraVendaActionPerformed
-        new TelaHistoricoVendaCompra().setVisible(true);
+        new SalePurchaseHistoricView().setVisible(true);
     }//GEN-LAST:event_jButton_HistoricoCompraVendaActionPerformed
 
     // Main function of EnterpriseManagement

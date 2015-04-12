@@ -1,5 +1,5 @@
 /***********************************************************
- * File: Transacao.java
+ * File: Transaction.java
  * Purpose: Gets the Transaction's info to sell Products.
  **********************************************************/
 
@@ -17,7 +17,7 @@ public class Transaction
 	protected int year;
 
 	/* This constructor method is responsible to receive some attributes as
-	 * parameters to initialize the Transacao's objects as self references */
+	 * parameters to initialize the Transaction's objects as self references */
 	public Transaction(ArrayList<Produto> saleList,
 	                 double price,
 	                 Funcionario employee,
@@ -33,73 +33,73 @@ public class Transaction
 		this.year = year;
 	}
 
-	// This method is responsible to access the listaVenda's protected value from the Produto's ArrayList
+	// This method is responsible to access the saleList's protected value from the Produtc's ArrayList
 	public ArrayList<Produto> getSaleList()
 	{
 		return saleList;
 	}
 
-	// This method is responsible to modify the listaVenda's protected value from the Produto's ArrayList
+	// This method is responsible to modify the saleList's protected value from the Product's ArrayList
 	public void setsaleList(ArrayList<Produto> saleList)
 	{
 		this.saleList = saleList;
 	}
 
-	// This method is responsible to access the preco's value
+	// This method is responsible to access the price's value
 	public double getPrice()
 	{
 		return price;
 	}
 
-	// This method is responsible to modify the preco's value
+	// This method is responsible to modify the price's value
 	public void setPrice(double price)
 	{
 		this.price = price;
 	}
 
-	// This method is responsible to access the funcionario's value
+	// This method is responsible to access the employee's value
 	public Funcionario getEmployee()
 	{
 		return employee;
 	}
 
-	// This method is responsible to modify the funcionario's value
+	// This method is responsible to modify the employee's value
 	public void setEmployee(Funcionario employee)
 	{
 		this.employee = employee;
 	}
 
-	// This method is responsible to access the dia's value
+	// This method is responsible to access the day's value
 	public int getDay()
 	{
 		return day;
 	}
 
-	// This method is responsible to modify the dia's value
+	// This method is responsible to modify the day's value
 	public void setDay(int day)
 	{
 		this.day = day;
 	}
 
-	// This method is responsible to access the mes's value
+	// This method is responsible to access the month's value
 	public int getMonth()
 	{
 		return month;
 	}
 
-	// This method is responsible to modify the mes's value
+	// This method is responsible to modify the month's value
 	public void setMonth(int month)
 	{
 		this.month = month;
 	}
 
-	// This method is responsible to access the ano's value
+	// This method is responsible to access the year's value
 	public int getYear()
 	{
 		return year;
 	}
 
-	// This method is responsible to modify the ano's value
+	// This method is responsible to modify the year's value
 	public void setYear(int year)
 	{
 		this.year = year;

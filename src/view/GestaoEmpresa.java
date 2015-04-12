@@ -200,7 +200,7 @@ public class GestaoEmpresa extends javax.swing.JFrame
     // Opens HistoricoVendaCompra's form
     private void jButton_HistoricoCompraVendaActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_HistoricoCompraVendaActionPerformed
-        new TelaHistoricoVendaCompra().setVisible(true);
+        new SalePurchaseHistoricView().setVisible(true);
     }//GEN-LAST:event_jButton_HistoricoCompraVendaActionPerformed
 
     // Main function of EnterpriseManagement

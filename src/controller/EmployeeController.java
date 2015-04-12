@@ -1,5 +1,5 @@
 /**********************************************************
- * File: ControleFuncionario.java
+ * File: ControleEmployee.java
  * Purpose: Contains the Employees maintenance methods
 **********************************************************/		
 
@@ -7,12 +7,10 @@ package controller;
 
 import java.util.ArrayList;
 import model.Employee;
-import view.TelaContatos;
 
 public class EmployeeController 
 {
     private static ArrayList<Employee> employeeList;
-    TelaContatos telaContatos;
 
     // Constructor of the EmployeeController's class
     public EmployeeController() 
@@ -21,35 +19,35 @@ public class EmployeeController
     }
 
     // Access and returns the property employeeList
-    public ArrayList<Employee> getListaFuncionario() 
+    public ArrayList<Employee> getEmployeeList() 
     {
         return employeeList;
     }
 
     // Sets a new value for the employeeList property
-    public void setListaFuncionario(ArrayList<Employee> employeeList) 
+    public void setEmployeeList(ArrayList<Employee> employeeList) 
     {
         this.employeeList = employeeList;
     }
     
     // Adds an employee to the employeeList 
-    public void addFuncionario(Employee funcionario)
+    public void addEmployee(Employee employee)
     {
-        employeeList.add(funcionario);
+        employeeList.add(employee);
     }
     
     // Removes an employee of the employeeList
-    public void removerFuncionario(Employee funcionario)
+    public void removeEmployee(Employee employee)
     {
-        employeeList.remove(funcionario);
+        employeeList.remove(employee);
     }
 
     // Search for an employee in the clientList with a given name
-    public Employee searchFuncionario(String nome, boolean pesquisa)
+    public Employee searchEmployee(String nome, boolean search)
     {
     	Employee returned = null;
     	Employee exactReturned = null;
-        int i=0;
+        int i = 0;
         for(Employee employee: employeeList)
         {
             if((employee.getName().equalsIgnoreCase(nome)))
@@ -57,18 +55,18 @@ public class EmployeeController
                 exactReturned = employee;
                 i = i + 1;
             }
-            else if((employee.getName().toLowerCase().contains(nome.toLowerCase())) && pesquisa == true)
+            else if((employee.getName().toLowerCase().contains(nome.toLowerCase())) && search == true)
             {
                 returned = employee;
                 i = i + 1;
             }
         }
 
-        if(exactReturned!=null)
+        if(exactReturned != null)
         {
             return exactReturned;
         }
-        else if(returned!=null)
+        else if(returned != null)
         {
             return returned;
         }

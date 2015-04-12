@@ -1,7 +1,6 @@
 /**********************************************************
- * File: TelaContatos.java
- * Purpose: Lists the contacts of the system and permits
- *          to create, edit and remove a contact
+ * File: ContactView.java
+ * Purpose: Lists the contacts of the system
  *********************************************************/
 
 package view;
@@ -10,24 +9,23 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-import model.Cliente;
-import model.ClienteFisico;
-import model.ClienteJuridico;
-import model.Fornecedor;
-import model.FornecedorFisico;
-import model.FornecedorJuridico;
-import model.Funcionario;
-import static view.TelaDadosContatos.umControleCliente;
-import static view.TelaDadosContatos.umControleFornecedor;
-import static view.TelaDadosContatos.umControleFuncionario;
+import model.Client;
+import model.PhysicalClient;
+import model.JuridicalClient;
+import model.Supplier;
+import model.PhysicalSupplier;
+import model.JuridicalSupplier;
+import model.Employee;
+import static view.ContactDataView.objectClientController;
+import static view.ContactDataView.objectSupplierController;
+import static view.ContactDataView.objectEmployeeController;
 import static view.SalePurchaseView.clientSupplierMode;
 import static view.SalePurchaseView.purchaseSaleMode;
 import static view.SalePurchaseView.salePurchaseStatus;
 
-public class TelaContatos extends javax.swing.JFrame
+public class ContactView extends javax.swing.JFrame
 {
-    
-    GestaoEmpresa principal;
+    EnterpriseManagement mainMenu;
     static boolean newPhysicalClient = true;
     static boolean newJuridicalClient = true;
     static boolean newPhysicalSupplier = true;
@@ -36,28 +34,28 @@ public class TelaContatos extends javax.swing.JFrame
     static boolean editMode = false;
     static String tableName;
     static int contactType;
-    static ArrayList<Cliente> listClient;
-    public ClienteFisico umClienteFisico;
-    public ClienteJuridico umClienteJuridico;
-    static ArrayList<Fornecedor> listSupplier;
-    public FornecedorFisico umFornecedorFisico;
-    public FornecedorJuridico umFornecedorJuridico;
-    static ArrayList<Funcionario> listEmployee;
-    public Funcionario umFuncionario;
-    int i;
+    static ArrayList<Client> listClient;
+    public PhysicalClient objectPhysicalClient;
+    public JuridicalClient objectJuridicalClient;
+    static ArrayList<Supplier> listSupplier;
+    public PhysicalSupplier objectPhysicalSupplier;
+    public JuridicalSupplier objectJuridicalSupplier;
+    static ArrayList<Employee> listEmployee;
+    public Employee umEmployee;
+    int quantitySearchResult;
     SalePurchaseView salePurchaseView;
-    static boolean returnClienteFornecedor;
-    static boolean returnFuncionario;
-    static String nomeClienteFornecedor;
-    static String nomeFuncionario;
+    static boolean returnClientSupplier;
+    static boolean returnEmployee;
+    static String nameClientSupplier;
+    static String nameEmployee;
 
     // Constructor of the ContactView's class
-    public TelaContatos()
+    public ContactView()
     {
         initComponents();
         jButton_Editar.setEnabled(false);
         jButton_Excluir.setEnabled(false);
-        carregarLista();
+        loadContactList();
         jButton_ConfirmarContato.setVisible(false);
         jButton_ConfirmarContato.setEnabled(false);
         this.jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -300,41 +298,41 @@ public class TelaContatos extends javax.swing.JFrame
         }// </editor-fold>//GEN-END:initComponents
 
     // Shows message on screen with given string
-    public void exibirInformacao(String info)
+    public void showMessage(String info)
     {
         JOptionPane.showMessageDialog(this, info, "Atenção", JOptionPane.INFORMATION_MESSAGE);
     }
 
     // Access and returns the property clieteFisico
-    public ClienteFisico getClienteFisico()
+    public PhysicalClient getPhysicalClient()
     {
-        return umClienteFisico;
+        return objectPhysicalClient;
     }
     
-    // Loads the clientList
-    private void carregarLista()
+    // Loads the contact list
+    private void loadContactList()
     {
         if(contactType == 0)
         {
-            listClient = umControleCliente.getListaCliente();
+            listClient = objectClientController.getListaCliente();
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
             if (listClient != null)
             {
-	            for (Cliente c : listClient) {
-	                if(c.getClass().equals(ClienteFisico.class))
+	            for (Client client : listClient) {
+	                if(client.getClass().equals(PhysicalClient.class))
 	                {
-	                    umClienteFisico=(ClienteFisico) c;
-	                    model.addRow(new String[]{umClienteFisico.getName(), 
-	                        umClienteFisico.getCpf(), umClienteFisico.getName(), 
-	                        umClienteFisico.getTelephone(), "Física"});
+	                    objectPhysicalClient=(PhysicalClient) client;
+	                    model.addRow(new String[]{objectPhysicalClient.getName(), 
+	                        objectPhysicalClient.getCpf(), objectPhysicalClient.getName(), 
+	                        objectPhysicalClient.getTelephone(), "Física"});
 	                }
-	                else if(c.getClass().equals(ClienteJuridico.class))
+	                else if(client.getClass().equals(JuridicalClient.class))
 	                {
-	                    umClienteJuridico=(ClienteJuridico) c;
-	                    model.addRow(new String[]{umClienteJuridico.getName(), 
-	                        umClienteJuridico.getCnpj(), umClienteJuridico.getCellphone(), 
-	                        umClienteJuridico.getTelephone(), "Jurídica"});
+	                    objectJuridicalClient = (JuridicalClient) client;
+	                    model.addRow(new String[]{objectJuridicalClient.getName(), 
+	                        objectJuridicalClient.getCnpj(), objectJuridicalClient.getCellphone(), 
+	                        objectJuridicalClient.getTelephone(), "Jurídica"});
 	                }
 	                    
 	            }
@@ -343,40 +341,39 @@ public class TelaContatos extends javax.swing.JFrame
         }
         else if(contactType == 1)
         {
-            listSupplier = umControleFornecedor.getListaFornecedor();
+            listSupplier = objectSupplierController.getListaFornecedor();
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
-            for (Fornecedor c : listSupplier)
+            for (Supplier supplier : listSupplier)
             {
-                if(c.getClass().equals(FornecedorFisico.class))
+                if(supplier.getClass().equals(PhysicalSupplier.class))
                 {
-                    umFornecedorFisico=(FornecedorFisico) c;
-                    model.addRow(new String[]{umFornecedorFisico.getNome(), 
-                        umFornecedorFisico.getCpf(), umFornecedorFisico.getCelular(), 
-                        umFornecedorFisico.getTelefone(), "Física"});
+                    objectPhysicalSupplier = (PhysicalSupplier) supplier;
+                    model.addRow(new String[]{objectPhysicalSupplier.getName(), 
+                        objectPhysicalSupplier.getCpf(), objectPhysicalSupplier.getCellphone(), 
+                        objectPhysicalSupplier.getTelephone(), "Física"});
                 }
-                else if(c.getClass().equals(FornecedorJuridico.class))
+                else if(supplier.getClass().equals(JuridicalSupplier.class))
                 {
-                    umFornecedorJuridico=(FornecedorJuridico) c;
-                    model.addRow(new String[]{umFornecedorJuridico.getNome(), 
-                        umFornecedorJuridico.getCnpj(), umFornecedorJuridico.getCelular(), 
-                        umFornecedorJuridico.getTelefone(), "Jurídica"});
-                }
-                    
+                    objectJuridicalSupplier = (JuridicalSupplier) supplier;
+                    model.addRow(new String[]{objectJuridicalSupplier.getName(), 
+                        objectJuridicalSupplier.getCnpj(), objectJuridicalSupplier.getCellphone(), 
+                        objectJuridicalSupplier.getTelephone(), "Jurídica"});
+                }   
             }
             jTable1.setModel(model);
         }
-        else if(contactType==2)
+        else if(contactType == 2)
         {
-            listEmployee = umControleFuncionario.getListaFuncionario();
+            listEmployee = objectEmployeeController.getListaEmployee();
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
-            for (Funcionario c : listEmployee)
+            for (Employee employee : listEmployee)
             {
-                umFuncionario=(Funcionario) c;
-                model.addRow(new String[]{umFuncionario.getName(), 
-                umFuncionario.getCpf(), umFuncionario.getCellphone(), 
-                umFuncionario.getTelephone(), "Física"});   
+                objectEmployee = (Employee) employee;
+                model.addRow(new String[]{objectEmployee.getName(), 
+                objectEmployee.getCpf(), objectEmployee.getCellphone(), 
+                objectEmployee.getTelephone(), "Física"});   
             }
             jTable1.setModel(model);
         }
@@ -398,112 +395,112 @@ public class TelaContatos extends javax.swing.JFrame
     private void jButton_AdicionarContatoActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_AdicionarContatoActionPerformed
         editMode = false;
-        new TelaDadosContatos().setVisible(true);
+        new ContactDataView().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton_AdicionarContatoActionPerformed
 
     // Search for the contacts
     private void jButton_PesquisarActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_PesquisarActionPerformed
-        String nomeBusca = jTextField_NomeBusca.getText();
+        String searchName = jTextField_NomeBusca.getText();
         DefaultTableModel model1 = (DefaultTableModel) jTable1.getModel();  //Funçao para limpar a tabela
         model1.setRowCount(0);
         jTable1.setModel(model1);
            
-        if(!nomeBusca.equals(""))
+        if(!searchName.equals(""))
         {
-            i=0;
-            if(umControleCliente.pesquisarCliente(nomeBusca,true) != null)
+            quantitySearchResult = 0;
+            if(objectClientController.searchClient(searchName,true) != null)
             {
                 if((purchaseSaleMode == false) || (purchaseSaleMode == true && contactType == 0))
                 {
-                    Cliente buscaCliente = umControleCliente.pesquisarCliente(nomeBusca,true);
+                    Cliente buscaCliente = objectClientController.searchClient(searchName,true);
                     jComboBox1.setSelectedIndex(0);
                     jTextField_NomeBusca.setText(buscaCliente.getName());
 
                     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();  //Funçao para limpar a tabela
                     model.setRowCount(0);
 
-                    i = i + 1;
+                    quantitySearchResult = quantitySearchResult + 1;
                     
-                    if(buscaCliente.getClass().equals(ClienteFisico.class))
+                    if(buscaCliente.getClass().equals(PhysicalClient.class))
                     {
-                        ClienteFisico buscaContato=(ClienteFisico) umControleCliente.pesquisarCliente(nomeBusca,true);
-                        model.addRow(new String[]{buscaContato.getName(), buscaContato.getCpf(), buscaContato.getCellphone(), buscaContato.getTelephone(), "Física"});
+                        PhysicalClient contactSearch=(PhysicalClient) objectClientController.searchClient(searchName,true);
+                        model.addRow(new String[]{contactSearch.getName(), contactSearch.getCpf(), contactSearch.getCellphone(), contactSearch.getTelephone(), "Física"});
                     }
-                    else if(buscaCliente.getClass().equals(ClienteJuridico.class))
+                    else if(buscaCliente.getClass().equals(JuridicalClient.class))
                     {
-                        ClienteJuridico buscaContato = (ClienteJuridico) umControleCliente.pesquisarCliente(nomeBusca,true);
-                        model.addRow(new String[]{buscaContato.getName(), 
-                            buscaContato.getCnpj(), buscaContato.getCellphone(), 
-                            buscaContato.getTelephone(), "Jurídica"});
+                        JuridicalClient contactSearch = (JuridicalClient) objectClientController.searchClient(searchName,true);
+                        model.addRow(new String[]{contactSearch.getName(), 
+                            contactSearch.getCnpj(), contactSearch.getCellphone(), 
+                            contactSearch.getTelephone(), "Jurídica"});
                     }
                 }
             }
-            if(umControleFornecedor.pesquisarFornecedor(nomeBusca,true) != null)
+            if(objectSupplierController.searchSupplier(searchName,true) != null)
             {
                 if((purchaseSaleMode == false) || (purchaseSaleMode == true && contactType == 1))
                 {
-                    i = i + 1;
-                    Fornecedor buscaFornecedor = umControleFornecedor.pesquisarFornecedor(nomeBusca,true);
+                    quantitySearchResult = quantitySearchResult + 1;
+                    Supplier supplierSearch = objectSupplierController.searchSupplier(searchName,true);
                     jComboBox1.setSelectedIndex(1);
-                    jTextField_NomeBusca.setText(buscaFornecedor.getNome());
+                    jTextField_NomeBusca.setText(supplierSearch.getName());
 
                     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();  //Funçao para limpar a tabela
                     model.setRowCount(0);
 
-                    if(buscaFornecedor.getClass().equals(FornecedorFisico.class))
+                    if(supplierSearch.getClass().equals(PhysicalSupplier.class))
                     {
-                        FornecedorFisico buscaContato = (FornecedorFisico) umControleFornecedor.pesquisarFornecedor(nomeBusca,true);
-                        model.addRow(new String[]{buscaContato.getNome(), 
-                            buscaContato.getCpf(), buscaContato.getCelular(), 
-                            buscaContato.getTelefone(), "Físico"});
+                        PhysicalSupplier contactSearch = (PhysicalSupplier) objectSupplierController.searchSupplier(searchName,true);
+                        model.addRow(new String[]{contactSearch.getName(), 
+                            contactSearch.getCpf(), contactSearch.getCellphone(), 
+                            contactSearch.getTelephone(), "Físico"});
                     }
-                    else if(buscaFornecedor.getClass().equals(FornecedorJuridico.class))
+                    else if(supplierSearch.getClass().equals(JuridicalSupplier.class))
                     {
-                        FornecedorJuridico buscaContato = (FornecedorJuridico) umControleFornecedor.pesquisarFornecedor(nomeBusca,true);
-                        model.addRow(new String[]{buscaContato.getNome(), 
-                            buscaContato.getCnpj(), buscaContato.getCelular(), 
-                            buscaContato.getTelefone(), "Jurídica"});
+                        JuridicalSupplier contactSearch = (JuridicalSupplier) objectSupplierController.searchSupplier(searchName,true);
+                        model.addRow(new String[]{contactSearch.getName(), 
+                            contactSearch.getCnpj(), contactSearch.getCellphone(), 
+                            contactSearch.getTelephone(), "Jurídica"});
                     }
                 }
             }
-            if(umControleFuncionario.pesquisarFuncionario(nomeBusca,true)!=null)
+            if(objectEmployeeController.searchEmployee(searchName,true)!=null)
             {
                 if((purchaseSaleMode == false) || (purchaseSaleMode == true && contactType == 2))
                 {
-                    i = i + 1;
-                    Funcionario buscaFuncionario = umControleFuncionario.pesquisarFuncionario(nomeBusca,true);
+                    quantitySearchResult = quantitySearchResult + 1;
+                    Employee buscaEmployee = objectEmployeeController.searchEmployee(searchName,true);
                     jComboBox1.setSelectedIndex(2);
-                    jTextField_NomeBusca.setText(buscaFuncionario.getName());
+                    jTextField_NomeBusca.setText(buscaEmployee.getName());
 
                     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();  //Funçao para limpar a tabela
                     model.setRowCount(0);
 
-                    model.addRow(new String[]{buscaFuncionario.getName(), 
-                        buscaFuncionario.getCpf(), buscaFuncionario.getCellphone(), 
-                        buscaFuncionario.getTelephone(), "Física"});
+                    model.addRow(new String[]{buscaEmployee.getName(), 
+                        buscaEmployee.getCpf(), buscaEmployee.getCellphone(), 
+                        buscaEmployee.getTelephone(), "Física"});
                 }
             }
-            if((umControleCliente.pesquisarCliente(nomeBusca,true) == null)
-                    &&(umControleFornecedor.pesquisarFornecedor(nomeBusca,true) == null)
-                    &&(umControleFuncionario.pesquisarFuncionario(nomeBusca,true) == null))
+            if((objectClientController.searchClient(searchName,true) == null)
+                    &&(objectSupplierController.searchSupplier(searchName,true) == null)
+                    &&(objectEmployeeController.searchEmployee(searchName,true) == null))
             {
-                exibirInformacao("A pesquisa não retornou nenhum resultado!");
+                showMessage("A pesquisa não retornou nenhum resultado!");
                 jTextField_NomeBusca.setText(null);
                 jTextField_NomeBusca.requestFocus();
             }
         }
         else
         {
-            carregarLista();
+            loadContactList();
             if(jTable1.getRowCount() == 0)
-                exibirInformacao("A pesquisa não retornou nenhum resultado!");
+                showMessage("A pesquisa não retornou nenhum resultado!");
         }
 
-        if(i > 1)
+        if(quantitySearchResult > 1)
         {
-            exibirInformacao("Mais de um resultado foi encontrando com o nome '" + nomeBusca + "'" );
+            showMessage("Mais de um resultado foi encontrando com o nome '" + searchName + "'" );
         }
     }//GEN-LAST:event_jButton_PesquisarActionPerformed
 
@@ -526,7 +523,7 @@ public class TelaContatos extends javax.swing.JFrame
         jButton_Editar.setEnabled(false);
         jButton_Excluir.setEnabled(false);
         
-        carregarLista();
+        loadContactList();
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     // Opens contact register form to edit contact
@@ -536,11 +533,11 @@ public class TelaContatos extends javax.swing.JFrame
                 && newPhysicalSupplier == true && newJuridicalSupplier == true
                 && newEmployee == true)
         {
-            principal.exibirInformacao("Selecione um Contato da Tabela");
+            mainMenu.showMessage("Selecione um Contato da Tabela");
         }
         else
         {
-            new TelaDadosContatos().setVisible(true);
+            new ContactDataView().setVisible(true);
             this.setVisible(false);
         }
     }//GEN-LAST:event_jButton_EditarActionPerformed
@@ -596,26 +593,26 @@ public class TelaContatos extends javax.swing.JFrame
         
         if(newPhysicalClient == false)
         {
-            umControleCliente.removerCliente(umControleCliente.pesquisarCliente(tableName,false));
+            objectClientController.removeClient(objectClientController.searchClient(tableName, false));
         }
         else if(newJuridicalClient == false)
         {
-            umControleCliente.removerCliente(umControleCliente.pesquisarCliente(tableName,false));
+            objectClientController.removeClient(objectClientController.searchClient(tableName, false));
         }
         else if(newPhysicalSupplier == false)
         {
-            umControleFornecedor.removerFornecedor(umControleFornecedor.pesquisarFornecedor(tableName,false));
+        	objectSupplierController.removeSupplier(objectSupplierController.searchSupplier(tableName, false));
         }
         else if(newJuridicalSupplier == false)
         {
-            umControleFornecedor.removerFornecedor(umControleFornecedor.pesquisarFornecedor(tableName,false));
+            objectSupplierController.removeSupplier(objectSupplierController.searchSupplier(tableName, false));
         }
         else if(newEmployee == false)
         {
-            umControleFuncionario.removerFuncionario(umControleFuncionario.pesquisarFuncionario(tableName,false));
+            objectEmployeeController.removeEmployee(objectEmployeeController.searchEmployee(tableName, false));
         }
-        carregarLista();
-        exibirInformacao("Contato excluído com sucesso");
+        loadContactList();
+        showMessage("Contato excluído com sucesso");
         jButton_Editar.setEnabled(false);
         jButton_Excluir.setEnabled(false);
     }//GEN-LAST:event_jButton_ExcluirActionPerformed
@@ -632,19 +629,19 @@ public class TelaContatos extends javax.swing.JFrame
         this.dispose();
         if(SalePurchaseView.clientSupplierMode == true)
         {
-            returnClienteFornecedor = true;
+            returnClientSupplier = true;
         }
         if(SalePurchaseView.employeeMode == true)
         {
-            returnFuncionario = true;
+            returnEmployee = true;
         }
-        if(SalePurchaseView.clientSupplierMode == true && nomeClienteFornecedor == null)
+        if(SalePurchaseView.clientSupplierMode == true && nameClientSupplier == null)
         {
-            nomeClienteFornecedor = tableName;
+            nameClientSupplier = tableName;
         }   
-        if(SalePurchaseView.employeeMode == true && nomeFuncionario == null)
+        if(SalePurchaseView.employeeMode == true && nameEmployee == null)
         {
-            nomeFuncionario=tableName;
+            nameEmployee = tableName;
         }
         purchaseSaleMode = false;
         SalePurchaseView.clientSupplierMode = false;
@@ -674,19 +671,19 @@ public class TelaContatos extends javax.swing.JFrame
         }
         catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(TelaContatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContactView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(TelaContatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContactView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(TelaContatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContactView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(TelaContatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContactView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -695,7 +692,7 @@ public class TelaContatos extends javax.swing.JFrame
         {
             public void run()
             {
-                new TelaContatos().setVisible(true);
+                new ContactView().setVisible(true);
             }
         });
     }

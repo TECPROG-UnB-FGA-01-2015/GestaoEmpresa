@@ -13,7 +13,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
-import model.Compra;
+import model.Purchase;
 import model.Despesa;
 import model.Fornecedor;
 import model.Funcionario;
@@ -69,7 +69,7 @@ public class TelaVendaCompra extends javax.swing.JFrame
 	Produto vendaProduto = new Produto();
 	Produto compraProduto = new Produto();
 	Venda umaVenda;
-	Compra umaCompra;
+	Purchase umaCompra;
 	double valor = 0;
 	Date date = new Date();
 	DateFormat Dia = new SimpleDateFormat("dd");
@@ -806,7 +806,7 @@ public class TelaVendaCompra extends javax.swing.JFrame
 				        .pesquisarFornecedor(nomeClienteFornecedor, false);
 				Funcionario f = TelaDadosContatos.umControleFuncionario
 				        .pesquisarFuncionario(nomeFuncionario, false);
-				umaCompra = new Compra(c,
+				umaCompra = new Purchase(c,
 				                       listaTabelaProduto,
 				                       valor,
 				                       f,

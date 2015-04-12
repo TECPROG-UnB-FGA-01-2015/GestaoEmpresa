@@ -9,7 +9,7 @@ import controller.ControleTransacao;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.Cliente;
-import model.Compra;
+import model.Purchase;
 import model.Fornecedor;
 import model.Funcionario;
 import model.Produto;

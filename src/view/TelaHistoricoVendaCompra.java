@@ -7,7 +7,7 @@ package view;
 
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import model.Compra;
+import model.Purchase;
 import model.Transacao;
 import model.Venda;
 import static view.TelaVendaCompra.umControleTransacao;
@@ -17,7 +17,7 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 
 	private int statusVendaCompra = 0;
 	Venda umaVenda;
-	Compra umaCompra;
+	Purchase umaCompra;
 
 	// Variables declaration (do not modify) - GEN-BEGIN:variables
 	private javax.swing.JButton jButton_sair;
@@ -69,9 +69,9 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 			}
 			else if (statusVendaCompra == 1)
 			{
-				if (t.getClass().equals(Compra.class))
+				if (t.getClass().equals(Purchase.class))
 				{
-					umaCompra = (Compra) t;
+					umaCompra = (Purchase) t;
 					String data = Integer.toString(umaCompra.getDia()) + "/"
 					        + Integer.toString(umaCompra.getMes()) + "/"
 					        + Integer.toString(umaCompra.getAno());

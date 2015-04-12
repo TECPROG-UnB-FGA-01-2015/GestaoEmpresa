@@ -5,7 +5,7 @@
 
 package view;
 
-import controller.ControleTransacao;
+import controller.TransactionController;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -64,7 +64,7 @@ public class TelaVendaCompra extends javax.swing.JFrame
 	static boolean modoClienteFornecedor = false;
 	static boolean modoFuncionario = false;
 	static boolean modoProduto = false;
-	static ControleTransacao umControleTransacao = new ControleTransacao();
+	static TransactionController umControleTransacao = new TransactionController();
 	Produto editProduto;
 	Produto vendaProduto = new Produto();
 	Produto compraProduto = new Produto();
@@ -796,7 +796,7 @@ public class TelaVendaCompra extends javax.swing.JFrame
 				                     Integer.parseInt(dia),
 				                     Integer.parseInt(mes),
 				                     Integer.parseInt(ano));
-				umControleTransacao.adicionarVenda(umaVenda);
+				umControleTransacao.addSale(umaVenda);
 
 			}
 
@@ -813,7 +813,7 @@ public class TelaVendaCompra extends javax.swing.JFrame
 				                       Integer.parseInt(dia),
 				                       Integer.parseInt(mes),
 				                       Integer.parseInt(ano));
-				umControleTransacao.adicionarVenda(umaCompra);
+				umControleTransacao.addSale(umaCompra);
 
 				Despesa despesa = new Despesa("Compra de Produto do Fornecedor'"
 				                                      + c.getNome() + "'",

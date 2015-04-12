@@ -43,7 +43,7 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 	private void carregarLista()
 	{
 		ArrayList<Transaction> listaTransacao = umControleTransacao
-		        .getListaVenda();
+		        .getSaleList();
 		DefaultTableModel model = (DefaultTableModel) jTable_Historico
 		        .getModel();
 		model.setRowCount(0);

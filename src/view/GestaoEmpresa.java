@@ -5,7 +5,7 @@
 
 package view;
 
-import controller.ControleTransacao;
+import controller.TransactionController;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.Cliente;

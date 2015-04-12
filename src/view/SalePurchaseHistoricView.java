@@ -54,13 +54,13 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 				if (t.getClass().equals(Sale.class))
 				{
 					oneSale = (Sale) t;
-					String data = Integer.toString(oneSale.getDay()) + "/"
-					        + Integer.toString(oneSale.getMonth()) + "/"
-					        + Integer.toString(oneSale.getYear());
+					String data = Integer.toString(oneSale.getTransactionDay()) + "/"
+					        + Integer.toString(oneSale.getTransactionMonth()) + "/"
+					        + Integer.toString(oneSale.getTransactionYear());
 					model.addRow(new String[]
 					{ oneSale.getClient().getName(),
 							oneSale.getEmployee().getName(),
-					        Double.toString(oneSale.getPrice()), data });
+					        Double.toString(oneSale.getTransactionPrice()), data });
 				}
 				else
 				{
@@ -72,13 +72,13 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 				if (t.getClass().equals(Purchase.class))
 				{
 					onePurchase = (Purchase) t;
-					String data = Integer.toString(onePurchase.getDay()) + "/"
-					        + Integer.toString(onePurchase.getMonth()) + "/"
-					        + Integer.toString(onePurchase.getYear());
+					String data = Integer.toString(onePurchase.getTransactionDay()) + "/"
+					        + Integer.toString(onePurchase.getTransactionMonth()) + "/"
+					        + Integer.toString(onePurchase.getTransactionYear());
 					model.addRow(new String[]
 					{ onePurchase.getFornecedor().getNome(),
 							onePurchase.getEmployee().getName(),
-					        Double.toString(onePurchase.getPrice()), data });
+					        Double.toString(onePurchase.getTransactionPrice()), data });
 				}
 				else
 				{

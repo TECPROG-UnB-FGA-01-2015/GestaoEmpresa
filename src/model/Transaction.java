@@ -70,7 +70,7 @@ public class Transaction
 	}
 
 	// This method is responsible to access the day's value
-	public int getTranscationDay()
+	public int getTransactionDay()
 	{
 		return transactionDay;
 	}

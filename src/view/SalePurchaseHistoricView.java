@@ -34,13 +34,13 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 	public SalePurchaseHistoricView()
 	{
 		initComponents();
-		carregarLista();
+		loadList();
 	}
 
 	/* This method is responsible to show the Shopping/Selling list info, as:
 	 * Client/Provider name, responsible employee, transaction value and date
 	 * (date/month/year) */
-	private void carregarLista()
+	private void loadList()
 	{
 		ArrayList<Transaction> transactionList = umControleTransacao
 		        .getSaleList();
@@ -268,7 +268,7 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 		{
 			// Nothing to Do
 		}
-		carregarLista();
+		loadList();
 	}
 
 	/*

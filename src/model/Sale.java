@@ -17,13 +17,13 @@ public class Sale extends Transaction
 	 * constructor (superclass) from Transaction class with its arguments */
 	public Sale(Cliente client,
 	             ArrayList<Produto> saleList,
-	             double price,
+	             double salePrice,
 	             Funcionario employee,
-	             int day,
-	             int month,
-	             int year)
+	             int saleDay,
+	             int saleMonth,
+	             int saleYear)
 	{
-		super(saleList, price, employee, day, month, year);
+		super(saleList, salePrice, employee, saleDay, saleMonth, saleYear);
 		this.client = client;
 	}
 

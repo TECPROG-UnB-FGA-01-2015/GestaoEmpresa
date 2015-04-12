@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import model.Purchase;
 import model.Transacao;
-import model.Venda;
+import model.Sale;
 import static view.TelaVendaCompra.umControleTransacao;
 
 public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 {
 
 	private int statusVendaCompra = 0;
-	Venda umaVenda;
+	Sale umaVenda;
 	Purchase umaCompra;
 
 	// Variables declaration (do not modify) - GEN-BEGIN:variables
@@ -51,14 +51,14 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 		{
 			if (statusVendaCompra == 0)
 			{
-				if (t.getClass().equals(Venda.class))
+				if (t.getClass().equals(Sale.class))
 				{
-					umaVenda = (Venda) t;
+					umaVenda = (Sale) t;
 					String data = Integer.toString(umaVenda.getDia()) + "/"
 					        + Integer.toString(umaVenda.getMes()) + "/"
 					        + Integer.toString(umaVenda.getAno());
 					model.addRow(new String[]
-					{ umaVenda.getCliente().getName(),
+					{ umaVenda.getClient().getName(),
 					        umaVenda.getFuncionario().getName(),
 					        Double.toString(umaVenda.getPreco()), data });
 				}

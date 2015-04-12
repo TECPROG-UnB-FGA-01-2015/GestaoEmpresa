@@ -18,7 +18,7 @@ import model.Despesa;
 import model.Fornecedor;
 import model.Funcionario;
 import model.Produto;
-import model.Venda;
+import model.Sale;
 import static view.TelaContatos.nomeClienteFornecedor;
 import static view.TelaContatos.nomeFuncionario;
 import static view.TelaDadosProdutos.umControleEstoque;
@@ -68,7 +68,7 @@ public class TelaVendaCompra extends javax.swing.JFrame
 	Produto editProduto;
 	Produto vendaProduto = new Produto();
 	Produto compraProduto = new Produto();
-	Venda umaVenda;
+	Sale umaVenda;
 	Purchase umaCompra;
 	double valor = 0;
 	Date date = new Date();
@@ -789,7 +789,7 @@ public class TelaVendaCompra extends javax.swing.JFrame
 				        .pesquisarCliente(nomeClienteFornecedor, false);
 				Funcionario f = TelaDadosContatos.umControleFuncionario
 				        .pesquisarFuncionario(nomeFuncionario, false);
-				umaVenda = new Venda(c,
+				umaVenda = new Sale(c,
 				                     listaTabelaProduto,
 				                     valor,
 				                     f,

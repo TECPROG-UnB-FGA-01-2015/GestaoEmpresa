@@ -10,27 +10,27 @@ import java.util.ArrayList;
 public class Transaction
 {
 	protected ArrayList<Produto> saleList;
-	protected double price;
+	protected double transactionPrice;
 	protected Funcionario employee;
-	protected int day;
-	protected int month;
-	protected int year;
+	protected int transactionDay;
+	protected int transactionMonth;
+	protected int transactionYear;
 
 	/* This constructor method is responsible to receive some attributes as
 	 * parameters to initialize the Transaction's objects as self references */
 	public Transaction(ArrayList<Produto> saleList,
-	                 double price,
+	                 double transactionPrice,
 	                 Funcionario employee,
-	                 int day,
-	                 int month,
-	                 int year)
+	                 int transactionDay,
+	                 int transactionMonth,
+	                 int transactionYear)
 	{
 		this.saleList = saleList;
-		this.price = price;
+		this.transactionPrice = transactionPrice;
 		this.employee = employee;
-		this.day = day;
-		this.month = month;
-		this.year = year;
+		this.transactionDay = transactionDay;
+		this.transactionMonth = transactionMonth;
+		this.transactionYear = transactionYear;
 	}
 
 	// This method is responsible to access the saleList's protected value from the Produtc's ArrayList
@@ -40,21 +40,21 @@ public class Transaction
 	}
 
 	// This method is responsible to modify the saleList's protected value from the Product's ArrayList
-	public void setsaleList(ArrayList<Produto> saleList)
+	public void setSaleList(ArrayList<Produto> saleList)
 	{
 		this.saleList = saleList;
 	}
 
 	// This method is responsible to access the price's value
-	public double getPrice()
+	public double getTransactionPrice()
 	{
-		return price;
+		return transactionPrice;
 	}
 
 	// This method is responsible to modify the price's value
-	public void setPrice(double price)
+	public void setTranscationPrice(double transactionPrice)
 	{
-		this.price = price;
+		this.transactionPrice = transactionPrice;
 	}
 
 	// This method is responsible to access the employee's value
@@ -70,39 +70,39 @@ public class Transaction
 	}
 
 	// This method is responsible to access the day's value
-	public int getDay()
+	public int getTranscationDay()
 	{
-		return day;
+		return transactionDay;
 	}
 
 	// This method is responsible to modify the day's value
-	public void setDay(int day)
+	public void setTransactionDay(int transactionDay)
 	{
-		this.day = day;
+		this.transactionDay = transactionDay;
 	}
 
 	// This method is responsible to access the month's value
-	public int getMonth()
+	public int getTransactionMonth()
 	{
-		return month;
+		return transactionMonth;
 	}
 
 	// This method is responsible to modify the month's value
-	public void setMonth(int month)
+	public void setTransactionMonth(int transactionMonth)
 	{
-		this.month = month;
+		this.transactionMonth = transactionMonth;
 	}
 
 	// This method is responsible to access the year's value
-	public int getYear()
+	public int getTransactionYear()
 	{
-		return year;
+		return transactionYear;
 	}
 
 	// This method is responsible to modify the year's value
-	public void setYear(int year)
+	public void setTransactionYear(int transactionYear)
 	{
-		this.year = year;
+		this.transactionYear = transactionYear;
 	}
 
 }

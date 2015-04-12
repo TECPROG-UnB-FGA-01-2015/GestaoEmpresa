@@ -992,9 +992,9 @@ public class SalePurchaseView extends javax.swing.JFrame
 		else
 		{
 			double productValueWithDiscount = editProduct.getPrecoVenda();
-			double desconto = Double.parseDouble(jTextField_productDiscount.getText());
+			double productDiscount = Double.parseDouble(jTextField_productDiscount.getText());
 			jTextField_productValue.setText(Double.toString(productValueWithDiscount
-			        * (1 - desconto / 100)));
+			        * (1 - productDiscount / 100)));
 		}
 	}
 

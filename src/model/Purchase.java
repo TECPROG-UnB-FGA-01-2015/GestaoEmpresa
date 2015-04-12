@@ -17,13 +17,13 @@ public class Purchase extends Transaction
 	 * constructor (superclass) from Transaction class with its arguments */
 	public Purchase(Fornecedor supplier,
 	              ArrayList<Produto> saleList,
-	              double price,
+	              double purchasePrice,
 	              Funcionario employee,
-	              int day,
-	              int month,
-	              int year)
+	              int purchaseDay,
+	              int purchaseMonth,
+	              int purchaseYear)
 	{
-		super(saleList, price, employee, day, month, year);
+		super(saleList, purchasePrice, employee, purchaseDay, purchaseMonth, purchaseYear);
 		this.supplier = supplier;
 	}
 

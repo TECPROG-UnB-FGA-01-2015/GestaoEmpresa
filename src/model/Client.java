@@ -15,9 +15,9 @@ public class Client
 
     // Constructor of the Client's class
     public Client(String name, 
-    		       Address address, 
-    		       String telephone, 
-    		       String cellphone)
+    		      Address address, 
+    		      String telephone, 
+    		      String cellphone)
     {
         this.name = name;
         this.address = address;

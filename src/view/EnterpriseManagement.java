@@ -1,5 +1,5 @@
 /**********************************************************
- * File: GestaoEmpresa.java
+ * File: EnterpriseManagement.java
  * Purpose: Main menu of the program.
  *********************************************************/
 
@@ -8,33 +8,33 @@ package view;
 import controller.TransactionController;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import model.Cliente;
+import model.Client;
 import model.Purchase;
-import model.Fornecedor;
-import model.Funcionario;
-import model.Produto;
+import model.Supplier;
+import model.Employee;
+import model.Product;
 import model.Transaction;
 import model.Sale;
 
-public class GestaoEmpresa extends javax.swing.JFrame
+public class EnterpriseManagement extends javax.swing.JFrame
 {
     
-    Cliente umCliente;
-    Funcionario umFuncionario;
-    Fornecedor umFornecedor;
-    Produto umProduto;
-    ArrayList<Produto> listaProduto;
+    Client objectClient;
+    Employee objectEmployee;
+    Supplier objectSupplier;
+    Product objectProduct;
+    ArrayList<Product> productList;
 
     // Constructor of the EnterpriseManagement's class
-    public GestaoEmpresa()
+    public EnterpriseManagement()
     {
         initComponents();
-        umProduto = new Produto("Produto", null, 10.0, WIDTH, 0);
-        listaProduto = new ArrayList<Produto>();
-        listaProduto.add(umProduto);
-        umCliente = new Cliente("Cliente", null, null, null);
-        umFuncionario = new Funcionario("Funcionario", null, null, null, null, null, WIDTH, null);
-        umFornecedor = new Fornecedor("Fornecedor", null, null, null, null);
+        objectProduct = new productList("Produto", null, 10.0, WIDTH, 0);
+        productList = new ArrayList<Product>();
+        productList.add(objectProduct);
+        objectClient = new Client("Cliente", null, null, null);
+        objectEmployee = new Employee("Funcionario", null, null, null, null, null, WIDTH, null);
+        objectSupplier = new Supplier("Fornecedor", null, null, null, null);
     }
     
     /**
@@ -167,37 +167,37 @@ public class GestaoEmpresa extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     // Shows a message on screen with a given string
-    public void exibirInformacao(String info)
+    public void showMessage(String info)
     {
         JOptionPane.showMessageDialog(this, info,"Atenção" ,JOptionPane.INFORMATION_MESSAGE);
     }
     
-    // Opens Despesas' form
+    // Opens Expense's form
     private void jButton_DespesasActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_DespesasActionPerformed
-        new TelaDespesas().setVisible(true);
+        new ExpenseView().setVisible(true);
     }//GEN-LAST:event_jButton_DespesasActionPerformed
 
-    // Opens Estoque's form
+    // Opens Stock's form
     private void jButton_EstoqueActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_EstoqueActionPerformed
-       new TelaEstoque().setVisible(true);
+       new StockView().setVisible(true);
     }//GEN-LAST:event_jButton_EstoqueActionPerformed
 
-    // Opens Contatos' form
+    // Opens Contact's form
     private void jButton_ContatosActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_ContatosActionPerformed
-        SalePurchaseView.purchaseSaleMode=false;
-        new TelaContatos().setVisible(true);
+        SalePurchaseView.purchaseSaleMode = false;
+        new ContactView().setVisible(true);
     }//GEN-LAST:event_jButton_ContatosActionPerformed
 
-    // Opens VendaCompra's form
+    // Opens SalePurchase's form
     private void jButton_VendaCompraActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_VendaCompraActionPerformed
         new SalePurchaseView().setVisible(true);
     }//GEN-LAST:event_jButton_VendaCompraActionPerformed
 
-    // Opens HistoricoVendaCompra's form
+    // Opens SalePurchaseHistoric's form
     private void jButton_HistoricoCompraVendaActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_HistoricoCompraVendaActionPerformed
         new SalePurchaseHistoricView().setVisible(true);
@@ -223,19 +223,19 @@ public class GestaoEmpresa extends javax.swing.JFrame
         }
         catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(GestaoEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnterpriseManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(GestaoEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnterpriseManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(GestaoEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnterpriseManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(GestaoEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnterpriseManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -244,7 +244,7 @@ public class GestaoEmpresa extends javax.swing.JFrame
         {
             public void run()
             {
-                new GestaoEmpresa().setVisible(true);
+                new EnterpriseManagement().setVisible(true);
             }
         });
     }

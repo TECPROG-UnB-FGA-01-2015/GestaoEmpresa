@@ -7,11 +7,9 @@ package controller;
 
 import java.util.ArrayList;
 import model.Client;
-import view.TelaContatos;
 
 public class ClientController
 {
-    TelaContatos telaContatos;
     private static ArrayList<Client> clientList;
 
     // Constructor of the ClientController's class
@@ -27,39 +25,40 @@ public class ClientController
     }
 
     // Sets a new value for the clientList property
-    public static void setListaCliente(ArrayList<Client> clientList)
+    public static void setClientList(ArrayList<Client> clientList)
     {
     	ClientController.clientList = clientList;
     }
     
     // Adds a client to the clientList
-    public void addCliente(Client cliente)
+    public void addClient(Client client)
     {
-        clientList.add(cliente);
+        clientList.add(client);
     }
     
     // Removes a client of the clientList
-    public void removeCliente(Client cliente)
+    public void removeClient(Client client)
     {
-        clientList.remove(cliente);
+        clientList.remove(client);
     }
     
     // Search for a client in the clientList with a given name
-    public Client searchCliente(String name, boolean search)
+    public Client searchClient(String name, boolean search)
     {
         Client returned = null;
         Client exactReturned = null;
         int i = 0;
-        for(Client cliente: clientList)
+        
+        for(Client client: clientList)
         {
-            if((cliente.getName().equalsIgnoreCase(name)))
+            if((client.getName().equalsIgnoreCase(name)))
             {
-                exactReturned = cliente;
+                exactReturned = client;
                 i = i + 1;
             }
-            else if((cliente.getName().toLowerCase().contains(name.toLowerCase())) && search == true)
+            else if((client.getName().toLowerCase().contains(name.toLowerCase())) && search == true)
             {
-                returned = cliente;
+                returned = client;
                 i = i + 1;
             }
         }

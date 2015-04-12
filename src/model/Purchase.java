@@ -8,7 +8,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class Purchase extends Transacao
+public class Purchase extends Transaction
 {
 	private Fornecedor supplier;
 

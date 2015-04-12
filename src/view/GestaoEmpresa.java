@@ -13,7 +13,7 @@ import model.Purchase;
 import model.Fornecedor;
 import model.Funcionario;
 import model.Produto;
-import model.Transacao;
+import model.Transaction;
 import model.Sale;
 
 public class GestaoEmpresa extends javax.swing.JFrame

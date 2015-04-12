@@ -8,7 +8,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class Sale extends Transacao
+public class Sale extends Transaction
 {
 	private Cliente client;
 

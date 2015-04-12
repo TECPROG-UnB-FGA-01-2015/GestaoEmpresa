@@ -7,102 +7,102 @@ package model;
 
 import java.util.ArrayList;
 
-public class Transacao
+public class Transaction
 {
-	protected ArrayList<Produto> listaVenda;
-	protected double preco;
-	protected Funcionario funcionario;
-	protected int dia;
-	protected int mes;
-	protected int ano;
+	protected ArrayList<Produto> saleList;
+	protected double price;
+	protected Funcionario employee;
+	protected int day;
+	protected int month;
+	protected int year;
 
 	/* This constructor method is responsible to receive some attributes as
 	 * parameters to initialize the Transacao's objects as self references */
-	public Transacao(ArrayList<Produto> listaVenda,
-	                 double preco,
-	                 Funcionario funcionario,
-	                 int dia,
-	                 int mes,
-	                 int ano)
+	public Transaction(ArrayList<Produto> saleList,
+	                 double price,
+	                 Funcionario employee,
+	                 int day,
+	                 int month,
+	                 int year)
 	{
-		this.listaVenda = listaVenda;
-		this.preco = preco;
-		this.funcionario = funcionario;
-		this.dia = dia;
-		this.mes = mes;
-		this.ano = ano;
+		this.saleList = saleList;
+		this.price = price;
+		this.employee = employee;
+		this.day = day;
+		this.month = month;
+		this.year = year;
 	}
 
 	// This method is responsible to access the listaVenda's protected value from the Produto's ArrayList
-	public ArrayList<Produto> getListaVenda()
+	public ArrayList<Produto> getSaleList()
 	{
-		return listaVenda;
+		return saleList;
 	}
 
 	// This method is responsible to modify the listaVenda's protected value from the Produto's ArrayList
-	public void setListaVenda(ArrayList<Produto> listaVenda)
+	public void setsaleList(ArrayList<Produto> saleList)
 	{
-		this.listaVenda = listaVenda;
+		this.saleList = saleList;
 	}
 
 	// This method is responsible to access the preco's value
-	public double getPreco()
+	public double getPrice()
 	{
-		return preco;
+		return price;
 	}
 
 	// This method is responsible to modify the preco's value
-	public void setPreco(double preco)
+	public void setPrice(double price)
 	{
-		this.preco = preco;
+		this.price = price;
 	}
 
 	// This method is responsible to access the funcionario's value
-	public Funcionario getFuncionario()
+	public Funcionario getEmployee()
 	{
-		return funcionario;
+		return employee;
 	}
 
 	// This method is responsible to modify the funcionario's value
-	public void setFuncionario(Funcionario funcionario)
+	public void setEmployee(Funcionario employee)
 	{
-		this.funcionario = funcionario;
+		this.employee = employee;
 	}
 
 	// This method is responsible to access the dia's value
-	public int getDia()
+	public int getDay()
 	{
-		return dia;
+		return day;
 	}
 
 	// This method is responsible to modify the dia's value
-	public void setDia(int dia)
+	public void setDay(int day)
 	{
-		this.dia = dia;
+		this.day = day;
 	}
 
 	// This method is responsible to access the mes's value
-	public int getMes()
+	public int getMonth()
 	{
-		return mes;
+		return month;
 	}
 
 	// This method is responsible to modify the mes's value
-	public void setMes(int mes)
+	public void setMonth(int month)
 	{
-		this.mes = mes;
+		this.month = month;
 	}
 
 	// This method is responsible to access the ano's value
-	public int getAno()
+	public int getYear()
 	{
-		return ano;
+		return year;
 	}
 
 	// This method is responsible to modify the ano's value
-	public void setAno(int ano)
+	public void setYear(int year)
 	{
-		this.ano = ano;
+		this.year = year;
 	}
 
 }

@@ -7,41 +7,41 @@
 package controller;
 
 import java.util.ArrayList;
-import model.Transacao;
+import model.Transaction;
 
 public class ControleTransacao
 {
-	private ArrayList<Transacao> listaVenda;
+	private ArrayList<Transaction> listaVenda;
 
 	/* This method is responsible to create a new ArrayList called listaVenda
 	 * from the model class Transacao */
 	public ControleTransacao()
 	{
-		this.listaVenda = new ArrayList<Transacao>();
+		this.listaVenda = new ArrayList<Transaction>();
 	}
 
 	// This method is responsible to access the listaVenda's private value from the ArrayList
-	public ArrayList<Transacao> getListaVenda()
+	public ArrayList<Transaction> getListaVenda()
 	{
 		return listaVenda;
 	}
 
 	// This method is responsible to modify the listaVenda's private value from the ArrayList
-	public void setListaVendas(ArrayList<Transacao> listaVendas)
+	public void setListaVendas(ArrayList<Transaction> listaVendas)
 	{
 		this.listaVenda = listaVendas;
 	}
 
 	/* This method is responsible to add sales on the listaVenda's arraylist on
 	 * the model class Transacao */
-	public void adicionarVenda(Transacao v)
+	public void adicionarVenda(Transaction v)
 	{
 		listaVenda.add(v);
 	}
 
 	/* This method is responsible to delete the added sales on the listaVenda's
 	 * arraylist on the model class Transacao */
-	public void removerVenda(Transacao v)
+	public void removerVenda(Transaction v)
 	{
 		listaVenda.remove(v);
 	}

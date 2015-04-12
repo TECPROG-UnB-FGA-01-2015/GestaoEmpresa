@@ -8,7 +8,7 @@ package view;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import model.Purchase;
-import model.Transacao;
+import model.Transaction;
 import model.Sale;
 import static view.TelaVendaCompra.umControleTransacao;
 
@@ -42,25 +42,25 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 	 * (date/month/year) */
 	private void carregarLista()
 	{
-		ArrayList<Transacao> listaTransacao = umControleTransacao
+		ArrayList<Transaction> listaTransacao = umControleTransacao
 		        .getListaVenda();
 		DefaultTableModel model = (DefaultTableModel) jTable_Historico
 		        .getModel();
 		model.setRowCount(0);
-		for (Transacao t : listaTransacao)
+		for (Transaction t : listaTransacao)
 		{
 			if (statusVendaCompra == 0)
 			{
 				if (t.getClass().equals(Sale.class))
 				{
 					umaVenda = (Sale) t;
-					String data = Integer.toString(umaVenda.getDia()) + "/"
-					        + Integer.toString(umaVenda.getMes()) + "/"
-					        + Integer.toString(umaVenda.getAno());
+					String data = Integer.toString(umaVenda.getDay()) + "/"
+					        + Integer.toString(umaVenda.getMonth()) + "/"
+					        + Integer.toString(umaVenda.getYear());
 					model.addRow(new String[]
 					{ umaVenda.getClient().getName(),
-					        umaVenda.getFuncionario().getName(),
-					        Double.toString(umaVenda.getPreco()), data });
+					        umaVenda.getEmployee().getName(),
+					        Double.toString(umaVenda.getPrice()), data });
 				}
 				else
 				{
@@ -72,13 +72,13 @@ public class TelaHistoricoVendaCompra extends javax.swing.JFrame
 				if (t.getClass().equals(Purchase.class))
 				{
 					umaCompra = (Purchase) t;
-					String data = Integer.toString(umaCompra.getDia()) + "/"
-					        + Integer.toString(umaCompra.getMes()) + "/"
-					        + Integer.toString(umaCompra.getAno());
+					String data = Integer.toString(umaCompra.getDay()) + "/"
+					        + Integer.toString(umaCompra.getMonth()) + "/"
+					        + Integer.toString(umaCompra.getYear());
 					model.addRow(new String[]
 					{ umaCompra.getFornecedor().getNome(),
-					        umaCompra.getFuncionario().getName(),
-					        Double.toString(umaCompra.getPreco()), data });
+					        umaCompra.getEmployee().getName(),
+					        Double.toString(umaCompra.getPrice()), data });
 				}
 				else
 				{

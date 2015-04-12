@@ -11,8 +11,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Produto;
 import static view.TelaDadosProdutos.umControleEstoque;
-import static view.TelaVendaCompra.modoProduto;
-import static view.TelaVendaCompra.modoVendaCompra;
+import static view.SalePurchaseView.productMode;
+import static view.SalePurchaseView.purchaseSaleMode;
 
 public class TelaEstoque extends javax.swing.JFrame
 {
@@ -31,7 +31,7 @@ public class TelaEstoque extends javax.swing.JFrame
 		jButton_ExcluirProduto.setEnabled(false);
 		jButton_ConfirmarProduto.setVisible(false);
 		jButton_ConfirmarProduto.setEnabled(false);
-		if(TelaVendaCompra.modoProduto == true)
+		if(SalePurchaseView.productMode == true)
 		{
 			jButton_ConfirmarProduto.setVisible(novoProduto);
 		}
@@ -39,7 +39,7 @@ public class TelaEstoque extends javax.swing.JFrame
 		{
 			// Do nothing
 		}
-		if(modoVendaCompra == true)
+		if(purchaseSaleMode == true)
 		{
 			jButton_AdicionarProduto.setEnabled(false);
 		}
@@ -284,8 +284,8 @@ public class TelaEstoque extends javax.swing.JFrame
 	private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt)
 	{// GEN-FIRST:event_jButton_CancelarActionPerformed
 		this.dispose();
-		if(modoProduto == true)
-			new TelaVendaCompra().setVisible(true);
+		if(productMode == true)
+			new SalePurchaseView().setVisible(true);
 	}// GEN-LAST:event_jButton_CancelarActionPerformed
 
 	// Method to open the view TelaDadosProdutos for edit the product information
@@ -319,9 +319,9 @@ public class TelaEstoque extends javax.swing.JFrame
 	private void jButton_ConfirmarProdutoActionPerformed(java.awt.event.ActionEvent evt)
 	{// GEN-FIRST:event_jButton_ConfirmarProdutoActionPerformed
 		returnProduto = true;
-		modoProduto = false;
+		productMode = false;
 		this.dispose();
-		new TelaVendaCompra().setVisible(true);
+		new SalePurchaseView().setVisible(true);
 	}// GEN-LAST:event_jButton_ConfirmarProdutoActionPerformed
 
 	/**

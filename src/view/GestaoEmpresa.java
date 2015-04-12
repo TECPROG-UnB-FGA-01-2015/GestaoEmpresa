@@ -187,14 +187,14 @@ public class GestaoEmpresa extends javax.swing.JFrame
     // Opens Contatos' form
     private void jButton_ContatosActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_ContatosActionPerformed
-        TelaVendaCompra.modoVendaCompra=false;
+        SalePurchaseView.purchaseSaleMode=false;
         new TelaContatos().setVisible(true);
     }//GEN-LAST:event_jButton_ContatosActionPerformed
 
     // Opens VendaCompra's form
     private void jButton_VendaCompraActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_VendaCompraActionPerformed
-        new TelaVendaCompra().setVisible(true);
+        new SalePurchaseView().setVisible(true);
     }//GEN-LAST:event_jButton_VendaCompraActionPerformed
 
     // Opens HistoricoVendaCompra's form

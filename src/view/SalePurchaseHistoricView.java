@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Purchase;
 import model.Transaction;
 import model.Sale;
-import static view.TelaVendaCompra.umControleTransacao;
+import static view.SalePurchaseView.umControleTransacao;
 
 public class SalePurchaseHistoricView extends javax.swing.JFrame
 {

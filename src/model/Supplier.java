@@ -10,11 +10,11 @@ import java.util.ArrayList;
 
 public class Supplier
 {
-	protected String name;
-	protected String telephone;
-	protected String cellphone;
-	protected ArrayList<Product> productList;
-	protected Address address;
+	protected String name; // Holds the info of the supplier's name
+	protected String telephone; // Holds the info of the supplier's phone
+	protected String cellphone; // Holds the info of the supplier's cellphone
+	protected ArrayList<Product> productList; // Maintains a list of supplier's products
+	protected Address address; // Holds the info of the supplier's address
 	
 	
 	/* Constructor to receive all the attributes as parameters and initialize the

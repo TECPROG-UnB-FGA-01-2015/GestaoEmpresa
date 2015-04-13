@@ -16,7 +16,7 @@ public class Purchase extends Transaction
 	 * parameters to initialize the Purchase's objects and to call the parent
 	 * constructor (superclass) from Transaction class with its arguments */
 	public Purchase(Supplier supplier,
-	              ArrayList<Produto> saleList,
+	              ArrayList<Product> saleList,
 	              double price,
 	              Employee employee,
 	              int day,

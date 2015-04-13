@@ -16,14 +16,14 @@ public class Sale extends Transaction
 	 * parameters to initialize the Sale's objects and to call the parent
 	 * constructor (superclass) from Transaction class with its arguments */
 	public Sale(Client client,
-	             ArrayList<Produto> saleList,
-	             double salePrice,
+	             ArrayList<Product> saleList,
+	             double price,
 	             Employee employee,
-	             int saleDay,
-	             int saleMonth,
-	             int saleYear)
+	             int day,
+	             int month,
+	             int year)
 	{
-		super(saleList, salePrice, employee, saleDay, saleMonth, saleYear);
+		super(saleList, price, employee, day, month, year);
 		this.client = client;
 	}
 

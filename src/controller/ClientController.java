@@ -10,7 +10,7 @@ import model.Client;
 
 public class ClientController
 {
-    private static ArrayList<Client> clientList;
+    private static ArrayList<Client> clientList; // Holds all the clients registered on the system
 
     // Constructor of the ClientController's class
     public ClientController()
@@ -43,23 +43,20 @@ public class ClientController
     }
     
     // Search for a client in the clientList with a given name
-    public Client searchClient(String name, boolean search)
+    public Client searchClient(String name, boolean ignoreCase)
     {
-        Client returned = null;
-        Client exactReturned = null;
-        int i = 0;
+        Client returned = null; // Used to return the client matching the given name (not Case Sensitive)
+        Client exactReturned = null; // Used to return the client matching the given name (Case Sensitive)
         
         for(Client client: clientList)
         {
             if((client.getName().equalsIgnoreCase(name)))
             {
                 exactReturned = client;
-                i = i + 1;
             }
-            else if((client.getName().toLowerCase().contains(name.toLowerCase())) && search == true)
+            else if((client.getName().toLowerCase().contains(name.toLowerCase())) && ignoreCase == true)
             {
                 returned = client;
-                i = i + 1;
             }
         }
         

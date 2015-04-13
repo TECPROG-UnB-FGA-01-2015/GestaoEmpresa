@@ -8,13 +8,13 @@ package controller;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.Supplier;
-import view.TelaContatos;
+import view.ContactView;
 	
 public class SupplierController
 {
 
 	private static ArrayList<Supplier> supplierList; // maintains a list of objects of type Supplier
-	TelaContatos telaContatos;
+	ContactView contactView;
 
 	// Constructor to instance SupplierController with the attribute supplierList
 	public SupplierController()
@@ -35,13 +35,13 @@ public class SupplierController
 	}
 
 	// Method to insert a supplier to attribute supplierList
-	public void adicionarFornecedor(Supplier supplier)
+	public void addSupplier(Supplier supplier)
 	{
 		supplierList.add(supplier);
 	}
 
 	// Method for removing an attribute provider supplierList
-	public void removerFornecedor(Supplier supplier)
+	public void removeSupplier(Supplier supplier)
 	{
 		supplierList.remove(supplier);
 	}
@@ -52,15 +52,13 @@ public class SupplierController
 	 * receives the boolean info of search*/
 	
 	// Method to find a supplier from the parameter name
-	public Supplier pesquisarFornecedor(String name, boolean search)
+	public Supplier searchSupplier(String name, boolean search)
 	{
 		// Receives an object from the Fornecedor class if the name is equal to received name and the research equals true
 		Supplier returned = null;
 		
 		// Receives a Object from the Fornecedor Class if the name is equal to received name
 		Supplier exactReturned = null; 
-		
-		int i = 0;
 		
 		/* Parameter supplier:
 		 * Object from the Supplier Class that receives supplier's info and updates the list */
@@ -69,12 +67,12 @@ public class SupplierController
 			if((supplier.getName().equalsIgnoreCase(name)))
 			{
 				exactReturned = supplier;
-				i++;
+				
 			}
 			else if((supplier.getName().toLowerCase().contains(name.toLowerCase())) && search == true)
 			{
 				returned = supplier;
-				i++;
+				
 			}
 			else
 			{

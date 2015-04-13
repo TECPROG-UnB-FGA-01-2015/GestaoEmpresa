@@ -11,7 +11,7 @@ public class Transaction
 {
 	protected ArrayList<Produto> saleList;
 	protected double transactionPrice;
-	protected Funcionario employee;
+	protected Employee employee;
 	protected int transactionDay;
 	protected int transactionMonth;
 	protected int transactionYear;
@@ -20,7 +20,7 @@ public class Transaction
 	 * parameters to initialize the Transaction's objects as self references */
 	public Transaction(ArrayList<Produto> saleList,
 	                 double transactionPrice,
-	                 Funcionario employee,
+	                 Employee employee,
 	                 int transactionDay,
 	                 int transactionMonth,
 	                 int transactionYear)
@@ -58,13 +58,13 @@ public class Transaction
 	}
 
 	// This method is responsible to access the employee's value
-	public Funcionario getEmployee()
+	public Employee getEmployee()
 	{
 		return employee;
 	}
 
 	// This method is responsible to modify the employee's value
-	public void setEmployee(Funcionario employee)
+	public void setEmployee(Employee employee)
 	{
 		this.employee = employee;
 	}

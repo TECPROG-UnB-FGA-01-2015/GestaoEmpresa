@@ -10,7 +10,7 @@ import model.Employee;
 
 public class EmployeeController 
 {
-    private static ArrayList<Employee> employeeList;
+    private static ArrayList<Employee> employeeList; // Holds all the employees registered on the system
 
     // Constructor of the EmployeeController's class
     public EmployeeController() 
@@ -43,22 +43,21 @@ public class EmployeeController
     }
 
     // Search for an employee in the clientList with a given name
-    public Employee searchEmployee(String nome, boolean search)
+    public Employee searchEmployee(String name, boolean ignoreCase)
     {
-    	Employee returned = null;
-    	Employee exactReturned = null;
-        int i = 0;
+    	Employee returned = null; // Used to return the employee matching the given name (not Case Sensitive)
+    	Employee exactReturned = null; // Used to return the employee matching the given name (Case Sensitive)
+    	
+        // Search for the employee 
         for(Employee employee: employeeList)
         {
-            if((employee.getName().equalsIgnoreCase(nome)))
+            if((employee.getName().equalsIgnoreCase(name)))
             {
                 exactReturned = employee;
-                i = i + 1;
             }
-            else if((employee.getName().toLowerCase().contains(nome.toLowerCase())) && search == true)
+            else if((employee.getName().toLowerCase().contains(name.toLowerCase())) && ignoreCase == true)
             {
                 returned = employee;
-                i = i + 1;
             }
         }
 

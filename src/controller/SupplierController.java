@@ -13,7 +13,7 @@ import view.TelaContatos;
 public class SupplierController
 {
 
-	private static ArrayList<Supplier> supplierList;
+	private static ArrayList<Supplier> supplierList; // maintains a list of objects of type Supplier
 	TelaContatos telaContatos;
 
 	// Constructor to instance SupplierController with the attribute supplierList
@@ -46,20 +46,32 @@ public class SupplierController
 		supplierList.remove(supplier);
 	}
 
+	/* Parameter name:
+	 * receives the info of name of the Supplier class's object 
+	 * Parameter search:
+	 * receives the boolean info of search*/
+	
 	// Method to find a supplier from the parameter name
 	public Supplier pesquisarFornecedor(String name, boolean search)
 	{
+		// Receives an object from the Fornecedor class if the name is equal to received name and the research equals true
 		Supplier returned = null;
-		Supplier exactReturned = null;
+		
+		// Receives a Object from the Fornecedor Class if the name is equal to received name
+		Supplier exactReturned = null; 
+		
 		int i = 0;
+		
+		/* Parameter supplier:
+		 * Object from the Supplier Class that receives supplier's info and updates the list */
 		for(Supplier supplier : supplierList)
 		{
-			if((supplier.getNome().equalsIgnoreCase(name)))
+			if((supplier.getName().equalsIgnoreCase(name)))
 			{
 				exactReturned = supplier;
 				i++;
 			}
-			else if((supplier.getNome().toLowerCase().contains(name.toLowerCase())) && search == true)
+			else if((supplier.getName().toLowerCase().contains(name.toLowerCase())) && search == true)
 			{
 				returned = supplier;
 				i++;

@@ -12,15 +12,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Cliente;
+import model.Client;
 import model.Purchase;
 import model.Despesa;
 import model.Fornecedor;
-import model.Funcionario;
+import model.Employee;
 import model.Produto;
 import model.Sale;
-import static view.TelaContatos.nomeClienteFornecedor;
-import static view.TelaContatos.nomeFuncionario;
+import static view.ContactView.nameClientSupplier;
+import static view.ContactView.nameEmployee;
 import static view.TelaDadosProdutos.umControleEstoque;
 import static view.TelaEstoque.codigoTabela;
 import static view.TelaEstoque.descricaoTabela;
@@ -58,7 +58,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 	private javax.swing.JTextField jTextField_productValue;
 	// End of variables declaration - GEN-END:variables
 
-	GestaoEmpresa main;
+	EnterpriseManagement main;
 	public static int salePurchaseStatus = 0;
 	static boolean purchaseSaleMode = false;
 	static boolean clientSupplierMode = false;
@@ -105,18 +105,18 @@ public class SalePurchaseView extends javax.swing.JFrame
 		jTextField_productDescription.setEnabled(false);
 		jButton_addProduct.setEnabled(false);
 		jButton_removeProduct.setEnabled(false);
-		if (TelaContatos.returnClienteFornecedor == true)
+		if (ContactView.returnClientSupplier == true)
 		{
 			jTextField_clientSupplierName
-			        .setText(TelaContatos.nomeClienteFornecedor);
+			        .setText(ContactView.nameClientSupplier);
 		}
 		else 
 		{
 			// Nothing to Do
 		}
-		if (TelaContatos.returnFuncionario == true)
+		if (ContactView.returnEmployee == true)
 		{
-			jTextField_employeeName.setText(TelaContatos.nomeFuncionario);
+			jTextField_employeeName.setText(ContactView.nameEmployee);
 		}
 		else
 		{
@@ -180,7 +180,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		}
 		if (clientSupplierMode == true)
 		{
-			jTextField_clientSupplierName.setText(nomeClienteFornecedor);
+			jTextField_clientSupplierName.setText(nameClientSupplier);
 		}
 		else
 		{
@@ -188,7 +188,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		}
 		if (employeeMode == true)
 		{
-			jTextField_employeeName.setText(nomeFuncionario);
+			jTextField_employeeName.setText(nameEmployee);
 		carregarLista();
 		}
 		else
@@ -674,13 +674,13 @@ public class SalePurchaseView extends javax.swing.JFrame
 		clientSupplierMode = true;
 		if (salePurchaseStatus == 0)
 		{
-			TelaContatos.contactType = 0;
+			ContactView.contactType = 0;
 		}
 		else if (salePurchaseStatus == 1)
 		{
-			TelaContatos.contactType = 1;
-		TelaContatos.nomeClienteFornecedor = null;
-		new TelaContatos().setVisible(true);
+			ContactView.contactType = 1;
+		ContactView.nameClientSupplier = null;
+		new ContactView().setVisible(true);
 		this.dispose();
 		}
 	}
@@ -734,9 +734,9 @@ public class SalePurchaseView extends javax.swing.JFrame
 	{
 		purchaseSaleMode = true;
 		employeeMode = true;
-		TelaContatos.contactType = 2;
-		TelaContatos.nomeFuncionario = null;
-		new TelaContatos().setVisible(true);
+		ContactView.contactType = 2;
+		ContactView.nameEmployee = null;
+		new ContactView().setVisible(true);
 		this.dispose();
 	}
 
@@ -745,7 +745,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 	 * Provider and Product names */
 	private void jButton_finishFormActionPerformed(java.awt.event.ActionEvent evt)
 	{
-		if (nomeClienteFornecedor == null)
+		if (nameClientSupplier == null)
 		{
 			if (salePurchaseStatus == 0)
 			{
@@ -756,7 +756,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 				showInfo("Selecione o Fornecedor para operação");
 			}
 		}
-		else if (nomeFuncionario == null)
+		else if (nameEmployee == null)
 		{
 			showInfo("Selecione o Funcionario responsável pela operação");
 		}
@@ -785,10 +785,10 @@ public class SalePurchaseView extends javax.swing.JFrame
 
 			if (salePurchaseStatus == 0)
 			{
-				Cliente c = TelaDadosContatos.umControleCliente
-				        .pesquisarCliente(nomeClienteFornecedor, false);
-				Funcionario f = TelaDadosContatos.umControleFuncionario
-				        .pesquisarFuncionario(nomeFuncionario, false);
+				Client c = TelaDadosContatos.umControleCliente
+				        .pesquisarCliente(nameClientSupplier, false);
+				Employee f = TelaDadosContatos.umControleFuncionario
+				        .pesquisarFuncionario(nameEmployee, false);
 				oneSale = new Sale(c,
 				                   productTableList,
 				                     productValue,
@@ -803,9 +803,9 @@ public class SalePurchaseView extends javax.swing.JFrame
 			else if (salePurchaseStatus == 1)
 			{
 				Fornecedor c = TelaDadosContatos.umControleFornecedor
-				        .pesquisarFornecedor(nomeClienteFornecedor, false);
-				Funcionario f = TelaDadosContatos.umControleFuncionario
-				        .pesquisarFuncionario(nomeFuncionario, false);
+				        .pesquisarFornecedor(nameClientSupplier, false);
+				Employee f = TelaDadosContatos.umControleFuncionario
+				        .pesquisarFuncionario(nameEmployee, false);
 				onePurchase = new Purchase(c,
 				                           productTableList,
 				                       productValue,
@@ -830,8 +830,8 @@ public class SalePurchaseView extends javax.swing.JFrame
 			employeeMode = false;
 			clientSupplierMode = false;
 			TelaEstoque.returnProduto = false;
-			TelaContatos.returnFuncionario = false;
-			TelaContatos.returnClienteFornecedor = false;
+			ContactView.returnEmployee = false;
+			ContactView.returnClientSupplier = false;
 			purchaseSaleMode = false;
 
 		}

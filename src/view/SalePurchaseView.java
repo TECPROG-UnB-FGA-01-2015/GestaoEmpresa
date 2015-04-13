@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Client;
 import model.Purchase;
 import model.Despesa;
-import model.Fornecedor;
+import model.Supplier;
 import model.Employee;
 import model.Produto;
 import model.Sale;
@@ -68,16 +68,16 @@ public class SalePurchaseView extends javax.swing.JFrame
 	Produto editProduct;
 	Produto productSale = new Produto();
 	Produto productPurchase = new Produto();
-	Sale oneSale;
-	Purchase onePurchase;
+	Sale objectSale;
+	Purchase objectPurchase;
 	double productValue = 0;
 	Date date = new Date();
 	DateFormat Day = new SimpleDateFormat("dd");
-	String salePurchaseDay = Day.format(date);
+	String day = Day.format(date);
 	DateFormat Month = new SimpleDateFormat("MM");
-	String salePurchaseMonth = Month.format(date);
+	String month = Month.format(date);
 	DateFormat Year = new SimpleDateFormat("yyyy");
-	String salePurchaseYear = Year.format(date);
+	String year = Year.format(date);
 
 	static ArrayList<Produto> productTableList = new ArrayList<Produto>();
 
@@ -189,7 +189,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		if (employeeMode == true)
 		{
 			jTextField_employeeName.setText(nameEmployee);
-		carregarLista();
+			loadList();
 		}
 		else
 		{
@@ -627,7 +627,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 	/* This method is responsible to load and show on the screen the Product's
 	 * list info (Code, Description, Quantity, Shopping/Sale Price and Total
 	 * Price) */
-	private void carregarLista()
+	private void loadList()
 	{
 		productValue = 0;
 		DefaultTableModel model = (DefaultTableModel) jTable_showPurchaseSaleInfoTable.getModel();
@@ -725,7 +725,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 				// Nothing to Do
 			}
 		}
-		carregarLista();
+		loadList();
 	}
 
 	// This method is responsible to confirm the Screen's Search Provider Button Action
@@ -789,39 +789,39 @@ public class SalePurchaseView extends javax.swing.JFrame
 				        .pesquisarCliente(nameClientSupplier, false);
 				Employee f = TelaDadosContatos.umControleFuncionario
 				        .pesquisarFuncionario(nameEmployee, false);
-				oneSale = new Sale(c,
+				objectSale = new Sale(c,
 				                   productTableList,
 				                     productValue,
 				                     f,
-				                     Integer.parseInt(salePurchaseDay),
-				                     Integer.parseInt(salePurchaseMonth),
-				                     Integer.parseInt(salePurchaseYear));
-				umControleTransacao.addSale(oneSale);
+				                     Integer.parseInt(day),
+				                     Integer.parseInt(month),
+				                     Integer.parseInt(year));
+				umControleTransacao.addSale(objectSale);
 
 			}
 
 			else if (salePurchaseStatus == 1)
 			{
-				Fornecedor c = TelaDadosContatos.umControleFornecedor
+				Supplier c = TelaDadosContatos.umControleFornecedor
 				        .pesquisarFornecedor(nameClientSupplier, false);
 				Employee f = TelaDadosContatos.umControleFuncionario
 				        .pesquisarFuncionario(nameEmployee, false);
-				onePurchase = new Purchase(c,
+				objectPurchase = new Purchase(c,
 				                           productTableList,
 				                       productValue,
 				                       f,
-				                       Integer.parseInt(salePurchaseDay),
-				                       Integer.parseInt(salePurchaseMonth),
-				                       Integer.parseInt(salePurchaseYear));
-				umControleTransacao.addSale(onePurchase);
+				                       Integer.parseInt(day),
+				                       Integer.parseInt(month),
+				                       Integer.parseInt(year));
+				umControleTransacao.addSale(objectPurchase);
 
 				Despesa despesa = new Despesa("Compra de Produto do Fornecedor'"
-				                                      + c.getNome() + "'",
+				                                      + c.getName() + "'",
 				                              null,
 				                              productValue,
-				                              Integer.parseInt(salePurchaseDay),
-				                              Integer.parseInt(salePurchaseMonth),
-				                              Integer.parseInt(salePurchaseYear));
+				                              Integer.parseInt(day),
+				                              Integer.parseInt(month),
+				                              Integer.parseInt(year));
 				TelaDadosDespesas.umControleDespesa.adicionarGasto(despesa);
 			}
 
@@ -880,7 +880,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 							productSale.setPrecoVenda(Double
 							        .parseDouble(jTextField_productValue.getText()));
 							productTableList.add(productSale);
-							carregarLista();
+							loadList();
 							jButton_addProduct.setEnabled(false);
 							jTextField_productQuantity.setEnabled(false);
 							jTextField_productDiscount.setEditable(false);
@@ -902,7 +902,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 						productPurchase.setQuantidade(Double
 						        .parseDouble(jTextField_productQuantity.getText()));
 						productTableList.add(productPurchase);
-						carregarLista();
+						loadList();
 						jButton_addProduct.setEnabled(false);
 						jTextField_productQuantity.setEnabled(false);
 						jTextField_productDiscount.setEditable(false);
@@ -968,7 +968,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 	{
 
 		productTableList.remove(editProduct);
-		carregarLista();
+		loadList();
 		showInfo("Produto removido");
 		jButton_addProduct.setEnabled(true);
 		jTextField_productQuantity.setEnabled(true);

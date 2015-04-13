@@ -68,16 +68,16 @@ public class SalePurchaseView extends javax.swing.JFrame
 	Produto editProduct;
 	Produto productSale = new Produto();
 	Produto productPurchase = new Produto();
-	Sale oneSale;
-	Purchase onePurchase;
+	Sale objectSale;
+	Purchase objectPurchase;
 	double productValue = 0;
 	Date date = new Date();
 	DateFormat Day = new SimpleDateFormat("dd");
-	String salePurchaseDay = Day.format(date);
+	String day = Day.format(date);
 	DateFormat Month = new SimpleDateFormat("MM");
-	String salePurchaseMonth = Month.format(date);
+	String month = Month.format(date);
 	DateFormat Year = new SimpleDateFormat("yyyy");
-	String salePurchaseYear = Year.format(date);
+	String year = Year.format(date);
 
 	static ArrayList<Produto> productTableList = new ArrayList<Produto>();
 
@@ -789,14 +789,14 @@ public class SalePurchaseView extends javax.swing.JFrame
 				        .pesquisarCliente(nameClientSupplier, false);
 				Employee f = TelaDadosContatos.umControleFuncionario
 				        .pesquisarFuncionario(nameEmployee, false);
-				oneSale = new Sale(c,
+				objectSale = new Sale(c,
 				                   productTableList,
 				                     productValue,
 				                     f,
-				                     Integer.parseInt(salePurchaseDay),
-				                     Integer.parseInt(salePurchaseMonth),
-				                     Integer.parseInt(salePurchaseYear));
-				umControleTransacao.addSale(oneSale);
+				                     Integer.parseInt(day),
+				                     Integer.parseInt(month),
+				                     Integer.parseInt(year));
+				umControleTransacao.addSale(objectSale);
 
 			}
 
@@ -806,22 +806,22 @@ public class SalePurchaseView extends javax.swing.JFrame
 				        .pesquisarFornecedor(nameClientSupplier, false);
 				Employee f = TelaDadosContatos.umControleFuncionario
 				        .pesquisarFuncionario(nameEmployee, false);
-				onePurchase = new Purchase(c,
+				objectPurchase = new Purchase(c,
 				                           productTableList,
 				                       productValue,
 				                       f,
-				                       Integer.parseInt(salePurchaseDay),
-				                       Integer.parseInt(salePurchaseMonth),
-				                       Integer.parseInt(salePurchaseYear));
-				umControleTransacao.addSale(onePurchase);
+				                       Integer.parseInt(day),
+				                       Integer.parseInt(month),
+				                       Integer.parseInt(year));
+				umControleTransacao.addSale(objectPurchase);
 
 				Despesa despesa = new Despesa("Compra de Produto do Fornecedor'"
-				                                      + c.getNome() + "'",
+				                                      + c.getName() + "'",
 				                              null,
 				                              productValue,
-				                              Integer.parseInt(salePurchaseDay),
-				                              Integer.parseInt(salePurchaseMonth),
-				                              Integer.parseInt(salePurchaseYear));
+				                              Integer.parseInt(day),
+				                              Integer.parseInt(month),
+				                              Integer.parseInt(year));
 				TelaDadosDespesas.umControleDespesa.adicionarGasto(despesa);
 			}
 

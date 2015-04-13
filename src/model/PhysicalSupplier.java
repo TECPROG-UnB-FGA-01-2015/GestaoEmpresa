@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public class PhysicalSupplier extends Supplier
 {
-	private String cpf;
-	private String rg;
+	private String cpf; // Holds the info of the  physical supplier's  cpf
+	private String rg; // Holds the info of the  physical supplier's  rg
 
 	/* Constructor to receive all the attributes as parameters and initialize the
 	 * object PhysicalSupplier*/

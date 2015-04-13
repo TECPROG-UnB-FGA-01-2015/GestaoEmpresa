@@ -10,15 +10,15 @@ import java.util.ArrayList;
 
 public class Sale extends Transaction
 {
-	private Cliente client;
+	private Client client;
 
 	/* This constructor method is responsible to receive some attributes as
 	 * parameters to initialize the Sale's objects and to call the parent
 	 * constructor (superclass) from Transaction class with its arguments */
-	public Sale(Cliente client,
+	public Sale(Client client,
 	             ArrayList<Produto> saleList,
 	             double salePrice,
-	             Funcionario employee,
+	             Employee employee,
 	             int saleDay,
 	             int saleMonth,
 	             int saleYear)
@@ -28,13 +28,13 @@ public class Sale extends Transaction
 	}
 
 	// This method is responsible to access the Client's private value
-	public Cliente getClient()
+	public Client getClient()
 	{
 		return client;
 	}
 
 	// This method is responsible to modify the Client's private value
-	public void setClient(Cliente client)
+	public void setClient(Client client)
 	{
 		this.client = client;
 	}

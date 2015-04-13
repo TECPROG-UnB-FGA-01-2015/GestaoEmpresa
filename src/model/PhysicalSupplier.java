@@ -1,29 +1,29 @@
 /**********************************************************
- * File: FornecedorFisico.java
+ * File: PhysicalSupplier.java
  * Purpose: Holds all the attributes and methods of the
- * 		    subclass FornecedorFisico.
+ * 		    subclass PhysicalSupplier.
  *********************************************************/
 
 package model;
 
 import java.util.ArrayList;
 
-public class FornecedorFisico extends Fornecedor
+public class PhysicalSupplier extends Supplier
 {
-	private String cpf;
-	private String rg;
+	private String cpf; // Holds the info of the  physical supplier's  cpf
+	private String rg; // Holds the info of the  physical supplier's  rg
 
 	/* Constructor to receive all the attributes as parameters and initialize the
-	 * object FornecedorFisico*/
-	public FornecedorFisico(String cpf,
+	 * object PhysicalSupplier*/
+	public PhysicalSupplier(String cpf,
 							String rg,
-							String nome,
-							String telefone,
-							String celular,
-							ArrayList<Produto> listaProduto,
-							Endereco umEndereco)
+							String name,
+							String telephone,
+							String cellphone,
+							ArrayList<Product> productList,
+							Address objectAddress)
 	{
-		super(nome, telefone, celular, listaProduto, umEndereco);
+		super(name, telephone, cellphone, productList, objectAddress);
 		this.cpf = cpf;
 		this.rg = rg;
 	}

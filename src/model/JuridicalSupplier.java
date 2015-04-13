@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public class JuridicalSupplier extends Supplier
 {
-	private String socialReason;
-	private String cnpj;
+	private String socialReason; // Holds the info of the legal supplier's corporate name
+	private String cnpj; // Holds the info of the legal supplier's cnpj
 
 	/* Constructor to receive all the attributes as parameters and initialize the
 	 * object JuridicalSupplier*/

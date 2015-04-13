@@ -10,31 +10,31 @@ import java.util.ArrayList;
 
 public class Purchase extends Transaction
 {
-	private Fornecedor supplier;
+	private Supplier supplier;
 
 	/* This constructor method is responsible to receive some attributes as
 	 * parameters to initialize the Purchase's objects and to call the parent
 	 * constructor (superclass) from Transaction class with its arguments */
-	public Purchase(Fornecedor supplier,
+	public Purchase(Supplier supplier,
 	              ArrayList<Produto> saleList,
-	              double purchasePrice,
+	              double price,
 	              Employee employee,
-	              int purchaseDay,
-	              int purchaseMonth,
-	              int purchaseYear)
+	              int day,
+	              int month,
+	              int year)
 	{
-		super(saleList, purchasePrice, employee, purchaseDay, purchaseMonth, purchaseYear);
+		super(saleList, price, employee, day, month, year);
 		this.supplier = supplier;
 	}
 
 	// This method is responsible to access the Supplier's private value
-	public Fornecedor getFornecedor()
+	public Supplier getSupplier()
 	{
 		return supplier;
 	}
 
 	// This method is responsible to modify the Supplier's private value
-	public void setFornecedor(Fornecedor supplier)
+	public void setSupplier(Supplier supplier)
 	{
 		this.supplier = supplier;
 	}

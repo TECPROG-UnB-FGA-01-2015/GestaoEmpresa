@@ -18,7 +18,7 @@ public class Purchase extends Transaction
 	public Purchase(Fornecedor supplier,
 	              ArrayList<Produto> saleList,
 	              double purchasePrice,
-	              Funcionario employee,
+	              Employee employee,
 	              int purchaseDay,
 	              int purchaseMonth,
 	              int purchaseYear)

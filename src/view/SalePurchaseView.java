@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Client;
 import model.Purchase;
 import model.Despesa;
-import model.Fornecedor;
+import model.Supplier;
 import model.Employee;
 import model.Produto;
 import model.Sale;
@@ -189,7 +189,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		if (employeeMode == true)
 		{
 			jTextField_employeeName.setText(nameEmployee);
-		carregarLista();
+			loadList();
 		}
 		else
 		{
@@ -627,7 +627,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 	/* This method is responsible to load and show on the screen the Product's
 	 * list info (Code, Description, Quantity, Shopping/Sale Price and Total
 	 * Price) */
-	private void carregarLista()
+	private void loadList()
 	{
 		productValue = 0;
 		DefaultTableModel model = (DefaultTableModel) jTable_showPurchaseSaleInfoTable.getModel();
@@ -725,7 +725,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 				// Nothing to Do
 			}
 		}
-		carregarLista();
+		loadList();
 	}
 
 	// This method is responsible to confirm the Screen's Search Provider Button Action
@@ -802,7 +802,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 
 			else if (salePurchaseStatus == 1)
 			{
-				Fornecedor c = TelaDadosContatos.umControleFornecedor
+				Supplier c = TelaDadosContatos.umControleFornecedor
 				        .pesquisarFornecedor(nameClientSupplier, false);
 				Employee f = TelaDadosContatos.umControleFuncionario
 				        .pesquisarFuncionario(nameEmployee, false);
@@ -880,7 +880,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 							productSale.setPrecoVenda(Double
 							        .parseDouble(jTextField_productValue.getText()));
 							productTableList.add(productSale);
-							carregarLista();
+							loadList();
 							jButton_addProduct.setEnabled(false);
 							jTextField_productQuantity.setEnabled(false);
 							jTextField_productDiscount.setEditable(false);
@@ -902,7 +902,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 						productPurchase.setQuantidade(Double
 						        .parseDouble(jTextField_productQuantity.getText()));
 						productTableList.add(productPurchase);
-						carregarLista();
+						loadList();
 						jButton_addProduct.setEnabled(false);
 						jTextField_productQuantity.setEnabled(false);
 						jTextField_productDiscount.setEditable(false);
@@ -968,7 +968,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 	{
 
 		productTableList.remove(editProduct);
-		carregarLista();
+		loadList();
 		showInfo("Produto removido");
 		jButton_addProduct.setEnabled(true);
 		jTextField_productQuantity.setEnabled(true);

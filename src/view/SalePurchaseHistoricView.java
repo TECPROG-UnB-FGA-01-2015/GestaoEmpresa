@@ -16,8 +16,8 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 {
 
 	private int salePurchaseStatus = 0;
-	Sale oneSale;
-	Purchase onePurchase;
+	Sale objectSale;
+	Purchase objectPurchase;
 
 	// Variables declaration (do not modify) - GEN-BEGIN:variables
 	private javax.swing.JButton jButton_exitScreen;
@@ -53,14 +53,14 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 			{
 				if (t.getClass().equals(Sale.class))
 				{
-					oneSale = (Sale) t;
-					String data = Integer.toString(oneSale.getDay()) + "/"
-					        + Integer.toString(oneSale.getMonth()) + "/"
-					        + Integer.toString(oneSale.getYear());
+					objectSale = (Sale) t;
+					String data = Integer.toString(objectSale.getDay()) + "/"
+					        + Integer.toString(objectSale.getMonth()) + "/"
+					        + Integer.toString(objectSale.getYear());
 					model.addRow(new String[]
-					{ oneSale.getClient().getName(),
-							oneSale.getEmployee().getName(),
-					        Double.toString(oneSale.getPrice()), data });
+					{ objectSale.getClient().getName(),
+							objectSale.getEmployee().getName(),
+					        Double.toString(objectSale.getPrice()), data });
 				}
 				else
 				{
@@ -71,14 +71,14 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 			{
 				if (t.getClass().equals(Purchase.class))
 				{
-					onePurchase = (Purchase) t;
-					String data = Integer.toString(onePurchase.getDay()) + "/"
-					        + Integer.toString(onePurchase.getMonth()) + "/"
-					        + Integer.toString(onePurchase.getYear());
+					objectPurchase = (Purchase) t;
+					String data = Integer.toString(objectPurchase.getDay()) + "/"
+					        + Integer.toString(objectPurchase.getMonth()) + "/"
+					        + Integer.toString(objectPurchase.getYear());
 					model.addRow(new String[]
-					{ onePurchase.getSupplier().getName(),
-							onePurchase.getEmployee().getName(),
-					        Double.toString(onePurchase.getPrice()), data });
+					{ objectPurchase.getSupplier().getName(),
+							objectPurchase.getEmployee().getName(),
+					        Double.toString(objectPurchase.getPrice()), data });
 				}
 				else
 				{

@@ -13,9 +13,11 @@ import java.text.SimpleDateFormat;
 
 public class ExpenseDataView extends javax.swing.JFrame
 {
-    Expense objectExpense;
-    Date date = new Date();
-    DateFormat dateFormat;
+    Expense objectExpense; // Expense type object
+    Date date = new Date(); // Contains the date of an expense (dd/MM/yyyy)
+    DateFormat dateFormat; // Gets the expense date on format of date
+    
+    // ExpenseController type object
     static ExpenseController objectExpenseController = new ExpenseController();
     
     // Constructor to initialize components on TelaDadosDespesas

@@ -1,5 +1,5 @@
 /**********************************************************
- * File: TelaDespesas.java
+ * File: ExpenseView.java
  * Purpose: Responsible to show Despesa's informations
  *********************************************************/
 package view;
@@ -8,79 +8,79 @@ import java.util.ArrayList;
 import javax.swing.JTable;
 import static javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS;
 import javax.swing.table.DefaultTableModel;
-import model.Despesa;
-import static view.TelaDadosDespesas.umControleDespesa;
+import model.Expense;
+import static view.ExpenseDataView.objectExpenseController;
 
-public class TelaDespesas extends javax.swing.JFrame
+public class ExpenseView extends javax.swing.JFrame
 {
-    int mes1=1;
-    int ano1=2013;
-    int mes2=7;
-    int ano2=2014;
+    int firstMonth=1;
+    int firstYear=2013;
+    int secondMonth=7;
+    int secondYear=2014;
     
     // Constructor to initialize components on TelaDadosProdutos
-    public TelaDespesas()
+    public ExpenseView()
     {
         initComponents();
         carregarLista();
-        jComboBox_Mes2.setSelectedIndex(mes2-1);
+        jComboBox_Mes2.setSelectedIndex(secondMonth-1);
         jComboBox_Ano2.setSelectedItem("2014");
     }
     
-    // Method to show all the despesas added
+    // Method to show all the expenses added
     private void carregarLista()
     {
-        boolean permissao;
+        boolean permission;
         
-        ArrayList<Despesa> listaDespesas = umControleDespesa.getListaGasto();
+        ArrayList<Expense> expenseList = objectExpenseController.getListaGasto();
         DefaultTableModel model = (DefaultTableModel) jTable_Despesa.getModel();
         model.setRowCount(0);
-        for (Despesa d : listaDespesas) 
+        for (Expense expense : expenseList) 
         {
-            permissao=false;
+            permission=false;
             
-            if(d.getAno()>=ano1&&d.getAno()<=ano2)
+            if(expense.getYear()>=firstYear&&expense.getYear()<=secondYear)
             {
-                permissao=true;
+                permission=true;
             }
             
-            else if(d.getAno()==ano1&&d.getAno()==ano2&&d.getMes()>=mes1&&d.getMes()<=mes2)
+            else if(expense.getYear()==firstYear&&expense.getYear()==secondYear&&expense.getMonth()>=firstMonth&&expense.getMonth()<=secondMonth)
             {
-                permissao=true;
+                permission=true;
             }
             
-            else if(d.getAno()==ano1&&d.getAno()!=ano2&&d.getMes()>=mes1)
+            else if(expense.getYear()==firstYear&&expense.getYear()!=secondYear&&expense.getMonth()>=firstMonth)
             {
-                permissao=true;
+                permission=true;
             }
             
-            else if(d.getAno()!=ano1&&d.getAno()==ano2&&d.getMes()<=mes2)
+            else if(expense.getYear()!=firstYear&&expense.getYear()==secondYear&&expense.getMonth()<=secondMonth)
             {
-                permissao=true;
+                permission=true;
             }
             else
             {
             	// Nothing to do
             }
             
-            if(d.getAno()<ano1)
+            if(expense.getYear()<firstYear)
             {
-                permissao=false;
+                permission=false;
             }
             
-            else if(d.getAno()>ano2)
+            else if(expense.getYear()>secondYear)
             {
-                permissao=false;
+                permission=false;
             }
             
-            else if(d.getAno()==ano1&&d.getMes()<mes1)
+            else if(expense.getYear()==firstYear&&expense.getMonth()<firstMonth)
             {
-                permissao=false;
+                permission=false;
             }
             
-            else if(d.getAno()==ano2&&d.getMes()>mes2)
+            else if(expense.getYear()==secondYear&&expense.getMonth()>secondMonth)
             {
-                permissao=false;
+                permission=false;
             }
             
             else
@@ -88,9 +88,13 @@ public class TelaDespesas extends javax.swing.JFrame
             	// Nothing to do
             }
             
-            if(permissao==true)
+            if(permission==true)
             {
-                model.addRow(new String[]{d.getNome(),Integer.toString(d.getDia()),Integer.toString(d.getMes()),Integer.toString(d.getAno()),d.getDescricao(),Double.toString(d.getValor())});
+                model.addRow(new String[]{expense.getName(),Integer.toString(expense.getDay()),
+                									  Integer.toString(expense.getMonth()),
+                									  Integer.toString(expense.getYear()),
+                									  expense.getDescription(),
+                									  Double.toString(expense.getValue())});
             }
             
             else
@@ -174,7 +178,7 @@ public class TelaDespesas extends javax.swing.JFrame
         });
         jScrollPane1. setViewportView(jTable_Despesa);
 
-        jButton1.setText("Nova Despesa");
+        jButton1.setText("Nova Expense");
         jButton1.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -321,17 +325,17 @@ public class TelaDespesas extends javax.swing.JFrame
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-        new TelaDadosDespesas().setVisible(true);
+        new ExpenseDataView().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRadioButton1ItemStateChanged(java.awt.event.ItemEvent evt)
     {//GEN-FIRST:event_jRadioButton1ItemStateChanged
         if(jRadioButton1.isSelected())
         {
-            mes1=1;
-            mes2=12;
-            ano1=2013;
-            ano2=2017;
+            firstMonth=1;
+            secondMonth=12;
+            firstYear=2013;
+            secondYear=2017;
             jComboBox_Ano1.setEnabled(false);
             jComboBox_Ano2.setEnabled(false);
             jComboBox_Mes1.setEnabled(false);
@@ -340,10 +344,10 @@ public class TelaDespesas extends javax.swing.JFrame
         
         else
         {
-            mes1=jComboBox_Mes1.getSelectedIndex()+1;
-            mes2=jComboBox_Mes2.getSelectedIndex()+1;
-            ano1=Integer.parseInt((String) jComboBox_Ano1.getSelectedItem());
-            ano2=Integer.parseInt((String) jComboBox_Ano1.getSelectedItem());
+            firstMonth=jComboBox_Mes1.getSelectedIndex()+1;
+            secondMonth=jComboBox_Mes2.getSelectedIndex()+1;
+            firstYear=Integer.parseInt((String) jComboBox_Ano1.getSelectedItem());
+            secondYear=Integer.parseInt((String) jComboBox_Ano1.getSelectedItem());
             jComboBox_Ano1.setEnabled(true);
             jComboBox_Ano2.setEnabled(true);
             jComboBox_Mes1.setEnabled(true);
@@ -355,25 +359,25 @@ public class TelaDespesas extends javax.swing.JFrame
 
     private void jComboBox_Mes1ItemStateChanged(java.awt.event.ItemEvent evt)
     {//GEN-FIRST:event_jComboBox_Mes1ItemStateChanged
-        mes1=jComboBox_Mes1.getSelectedIndex()+1;
+        firstMonth=jComboBox_Mes1.getSelectedIndex()+1;
         carregarLista();
     }//GEN-LAST:event_jComboBox_Mes1ItemStateChanged
 
     private void jComboBox_Ano1ItemStateChanged(java.awt.event.ItemEvent evt)
     {//GEN-FIRST:event_jComboBox_Ano1ItemStateChanged
-        ano1=Integer.parseInt((String) jComboBox_Ano1.getSelectedItem());
+        firstYear=Integer.parseInt((String) jComboBox_Ano1.getSelectedItem());
         carregarLista();
     }//GEN-LAST:event_jComboBox_Ano1ItemStateChanged
 
     private void jComboBox_Mes2ItemStateChanged(java.awt.event.ItemEvent evt)
     {//GEN-FIRST:event_jComboBox_Mes2ItemStateChanged
-        mes2=jComboBox_Mes2.getSelectedIndex()+1;
+        secondMonth=jComboBox_Mes2.getSelectedIndex()+1;
         carregarLista();
     }//GEN-LAST:event_jComboBox_Mes2ItemStateChanged
 
     private void jComboBox_Ano2ItemStateChanged(java.awt.event.ItemEvent evt)
     {//GEN-FIRST:event_jComboBox_Ano2ItemStateChanged
-        ano2=Integer.parseInt((String) jComboBox_Ano2.getSelectedItem());
+        secondYear=Integer.parseInt((String) jComboBox_Ano2.getSelectedItem());
         carregarLista();
     }//GEN-LAST:event_jComboBox_Ano2ItemStateChanged
 
@@ -401,22 +405,22 @@ public class TelaDespesas extends javax.swing.JFrame
         
         catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(TelaDespesas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExpenseView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
         catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(TelaDespesas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExpenseView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
         catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(TelaDespesas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExpenseView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
         catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(TelaDespesas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExpenseView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -425,7 +429,7 @@ public class TelaDespesas extends javax.swing.JFrame
         {
             public void run()
             {
-                new TelaDespesas().setVisible(true);
+                new ExpenseView().setVisible(true);
             }
         });
     }

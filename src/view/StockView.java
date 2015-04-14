@@ -1,5 +1,5 @@
 /**********************************************************
- * File: TelaEstoque.java
+ * File: StockView.java
  * Purpose: Lists the products and permits
  *          to add, edit and remove a product.
  *********************************************************/
@@ -9,22 +9,22 @@ package view;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Produto;
-import static view.TelaDadosProdutos.umControleEstoque;
+import model.Product;
+import static view.ProductsDataView.objectStockController;
 import static view.SalePurchaseView.productMode;
 import static view.SalePurchaseView.purchaseSaleMode;
 
-public class TelaEstoque extends javax.swing.JFrame
+public class StockView extends javax.swing.JFrame
 {
 
 	GestaoEmpresa principal;
-	static boolean novoProduto = true;
-	static String codigoTabela;
-	static String descricaoTabela;
-	static boolean returnProduto = false;
+	static boolean newProduct = true;
+	static String codeTable;
+	static String tableDescription;
+	static boolean returnProduct = false;
 
-	// Constructor to initialize components on TelaEstoque
-	public TelaEstoque()
+	// Constructor to initialize components on StockView
+	public StockView()
 	{
 		initComponents();
 		jButton_EditarProduto.setEnabled(false);
@@ -33,7 +33,7 @@ public class TelaEstoque extends javax.swing.JFrame
 		jButton_ConfirmarProduto.setEnabled(false);
 		if(SalePurchaseView.productMode == true)
 		{
-			jButton_ConfirmarProduto.setVisible(novoProduto);
+			jButton_ConfirmarProduto.setVisible(newProduct);
 		}
 		else
 		{
@@ -47,39 +47,39 @@ public class TelaEstoque extends javax.swing.JFrame
 		{
 			// Do nothing
 		}
-		if(TelaDadosProdutos.infoCarregar == true)
+		if(ProductsDataView.infoCarregar == true)
 		{
-			carregarLista();
+			loadList();
 		}
 		else
 		{
 			// Do nothing
 		}
-		TelaDadosProdutos.infoCarregar = false;
-		carregarLista();
+		ProductsDataView.infoCarregar = false;
+		loadList();
 		jTextField_NomeProduto.requestFocus();
 	}
 
 	// Method to display a warning message to the user
-	public void exibirInformacao(String info)
+	public void showMessage(String info)
 	{
 		JOptionPane.showMessageDialog(this, info, "Atenção", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	// Method to load the table with product information
-	public void carregarLista()
+	public void loadList()
 	{
 		DefaultTableModel model1 = (DefaultTableModel) jTable2.getModel();  
 																			
 		model1.setRowCount(0);
 		jTable2.setModel(model1);
 
-		ArrayList<Produto> listaProdutos = umControleEstoque.getListaProdutos();
+		ArrayList<Product> productList = objectStockController.getProductList();
 		DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
 		model.setRowCount(0);
-		for(Produto p : listaProdutos)
+		for(Product product : productList)
 		{
-			model.addRow(new String[] {p.getCodigo(), p.getDescricao(), Double.toString(p.getPrecoCompra()), Double.toString(p.getPrecoVenda()), Double.toString(p.getQuantidade())});
+			model.addRow(new String[] {product.getCodigo(), product.getDescricao(), Double.toString(product.getPrecoCompra()), Double.toString(product.getPrecoVenda()), Double.toString(product.getQuantidade())});
 		}
 		jTable2.setModel(model);
 	}
@@ -240,43 +240,43 @@ public class TelaEstoque extends javax.swing.JFrame
 	{// GEN-FIRST:event_jButton_PesquisarProdutoActionPerformed
 		if("".equals(jTextField_NomeProduto.getText()))
 		{
-			carregarLista();
+			loadList();
 			if(jTable2.getRowCount() == 0)
 			{
-				exibirInformacao("Nenhum produto fora cadastrado até o momento.");
+				showMessage("Nenhum produto fora cadastrado até o momento.");
 			}
 		}
 		else
 		{
-			Produto outroProduto = umControleEstoque.pesquisarProduto(jTextField_NomeProduto.getText(), true);
+			Product otherProduct = objectStockController.searchProduct(jTextField_NomeProduto.getText(), true);
 			DefaultTableModel model1 = (DefaultTableModel) jTable2.getModel();  
 			
 			model1.setRowCount(0);
 			jTable2.setModel(model1);
 
-			ArrayList<Produto> listaTeste = umControleEstoque.getListaProdutos();
+			ArrayList<Product> testList = objectStockController.getProductList();
 
-			if(listaTeste.size() == 0)
+			if(testList.size() == 0)
 			{
-				exibirInformacao("Nenhum produto fora cadastrado até o momento.");
+				showMessage("Nenhum produto fora cadastrado até o momento.");
 			}
-			else if(outroProduto == null)
+			else if(otherProduct == null)
 			{
-				exibirInformacao("Produto não encontrado!");
+				showMessage("Produto não encontrado!");
 			}
 			else
 			{
-				model1.addRow(new String[] {outroProduto.getCodigo(), outroProduto.getDescricao(), Double.toString(outroProduto.getPrecoCompra()), Double.toString(outroProduto.getPrecoVenda()),
-						Double.toString(outroProduto.getQuantidade())});
-				jTextField_NomeProduto.setText(outroProduto.getCodigo());
+				model1.addRow(new String[] {otherProduct.getCodigo(), otherProduct.getDescricao(), Double.toString(otherProduct.getPrecoCompra()), Double.toString(otherProduct.getPrecoVenda()),
+						Double.toString(otherProduct.getQuantidade())});
+				jTextField_NomeProduto.setText(otherProduct.getCodigo());
 			}
 		}
 	}// GEN-LAST:event_jButton_PesquisarProdutoActionPerformed
 
-	// Method to open the view TelaDadosProdutos for add a new product
+	// Method to open the view ProductsDataView for add a new product
 	private void jButton_AdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt)
 	{// GEN-FIRST:event_jButton_AdicionarProdutoActionPerformed
-		new TelaDadosProdutos().setVisible(true);
+		new ProductsDataView().setVisible(true);
 		this.setVisible(false);
 	}// GEN-LAST:event_jButton_AdicionarProdutoActionPerformed
 
@@ -288,19 +288,19 @@ public class TelaEstoque extends javax.swing.JFrame
 			new SalePurchaseView().setVisible(true);
 	}// GEN-LAST:event_jButton_CancelarActionPerformed
 
-	// Method to open the view TelaDadosProdutos for edit the product information
+	// Method to open the view ProductsDataView for edit the product information
 	private void jButton_EditarProdutoActionPerformed(java.awt.event.ActionEvent evt)
 	{// GEN-FIRST:event_jButton_EditarProdutoActionPerformed
-		novoProduto = false;
-		new TelaDadosProdutos().setVisible(true);
+		newProduct = false;
+		new ProductsDataView().setVisible(true);
 	}// GEN-LAST:event_jButton_EditarProdutoActionPerformed
 
 	// Method for Selecting an item in the table and enable the options edit, delete and confirms
 	private void jTable2MouseClicked(java.awt.event.MouseEvent evt)
 	{// GEN-FIRST:event_jTable2MouseClicked
 		DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-		codigoTabela = (String) model.getValueAt(jTable2.getSelectedRow(), 0);
-		descricaoTabela = (String) model.getValueAt(jTable2.getSelectedRow(), 1);
+		codeTable = (String) model.getValueAt(jTable2.getSelectedRow(), 0);
+		tableDescription = (String) model.getValueAt(jTable2.getSelectedRow(), 1);
 		jButton_EditarProduto.setEnabled(true);
 		jButton_ExcluirProduto.setEnabled(true);
 		jButton_ConfirmarProduto.setEnabled(true);
@@ -309,8 +309,8 @@ public class TelaEstoque extends javax.swing.JFrame
 	// Method for removing a product from the table
 	private void jButton_ExcluirProdutoActionPerformed(java.awt.event.ActionEvent evt)
 	{// GEN-FIRST:event_jButton_ExcluirProdutoActionPerformed
-		umControleEstoque.removerProduto(umControleEstoque.pesquisarProduto(codigoTabela, false));
-		carregarLista();
+		objectStockController.removeProduct(objectStockController.searchProduct(codeTable, false));
+		loadList();
 		jButton_EditarProduto.setEnabled(false);
 		jButton_ExcluirProduto.setEnabled(false);
 	}// GEN-LAST:event_jButton_ExcluirProdutoActionPerformed
@@ -318,7 +318,7 @@ public class TelaEstoque extends javax.swing.JFrame
 	// Method to confirm the operation
 	private void jButton_ConfirmarProdutoActionPerformed(java.awt.event.ActionEvent evt)
 	{// GEN-FIRST:event_jButton_ConfirmarProdutoActionPerformed
-		returnProduto = true;
+		returnProduct = true;
 		productMode = false;
 		this.dispose();
 		new SalePurchaseView().setVisible(true);
@@ -352,19 +352,19 @@ public class TelaEstoque extends javax.swing.JFrame
 		}
 		catch (ClassNotFoundException ex)
 		{
-			java.util.logging.Logger.getLogger(TelaEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(StockView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		catch (InstantiationException ex)
 		{
-			java.util.logging.Logger.getLogger(TelaEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(StockView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		catch (IllegalAccessException ex)
 		{
-			java.util.logging.Logger.getLogger(TelaEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(StockView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		catch (javax.swing.UnsupportedLookAndFeelException ex)
 		{
-			java.util.logging.Logger.getLogger(TelaEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(StockView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		// </editor-fold>
 
@@ -373,7 +373,7 @@ public class TelaEstoque extends javax.swing.JFrame
 		{
 			public void run()
 			{
-				new TelaEstoque().setVisible(true);
+				new StockView().setVisible(true);
 			}
 		});
 	}

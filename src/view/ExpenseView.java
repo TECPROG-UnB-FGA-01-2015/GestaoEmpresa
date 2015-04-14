@@ -13,10 +13,10 @@ import static view.ExpenseDataView.objectExpenseController;
 
 public class ExpenseView extends javax.swing.JFrame
 {
-    int firstMonth=1;
-    int firstYear=2013;
-    int secondMonth=7;
-    int secondYear=2014;
+    int firstMonth=1; // Holds the despesa's month start
+    int firstYear=2013; // Holds the despesa's year start
+    int secondMonth=7; // Holds the despesa's month final
+    int secondYear=2014; // Holds the despesa's year final
     
     // Constructor to initialize components on TelaDadosProdutos
     public ExpenseView()
@@ -30,7 +30,7 @@ public class ExpenseView extends javax.swing.JFrame
     // Method to show all the expenses added
     private void carregarLista()
     {
-        boolean permission;
+        boolean permission; // Boolean to allow or not the sequence of the despesa creating
         
         ArrayList<Expense> expenseList = objectExpenseController.getListaGasto();
         DefaultTableModel model = (DefaultTableModel) jTable_Despesa.getModel();

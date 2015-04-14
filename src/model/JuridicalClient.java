@@ -8,8 +8,8 @@ package model;
 
 public class JuridicalClient extends Client
 {
-    private String socialReason;
-    private String cnpj;
+    private String socialReason; // Describes the socialReason of the company
+    private String cnpj; // Describes the CNPJ of the company
 
     // Constructor of the JuridicalClient's class
     public JuridicalClient(String socialReason,

@@ -11,8 +11,8 @@ import view.StockView;
 
 public class StockController
 {
-    StockView stockView;
-    private ArrayList<Product> productList;
+    StockView stockView; // Calls StockView view
+    private ArrayList<Product> productList; // Maintains a list of Product object
     
     // Constructor to instance ControleEstoque with the attribute productList
     public StockController()

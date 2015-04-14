@@ -4,22 +4,22 @@
  *********************************************************/
 package view;
 
-import controller.ControleDespesa;
+import controller.ExpenseController;
 import javax.swing.JOptionPane;
-import model.Despesa;
+import model.Expense;
 import java.util.Date; 
 import java.text.DateFormat; 
 import java.text.SimpleDateFormat; 
 
-public class TelaDadosDespesas extends javax.swing.JFrame
+public class ExpenseDataView extends javax.swing.JFrame
 {
-    Despesa umaDespesa;
+    Expense objectExpense;
     Date date = new Date();
     DateFormat dateFormat;
-    static ControleDespesa umControleDespesa = new ControleDespesa();
+    static ExpenseController objectExpenseController = new ExpenseController();
     
     // Constructor to initialize components on TelaDadosDespesas
-    public TelaDadosDespesas()
+    public ExpenseDataView()
     {
         initComponents();
         jTextField_Nome.requestFocus();
@@ -29,7 +29,7 @@ public class TelaDadosDespesas extends javax.swing.JFrame
     }
     
     // Method to show a message to user by passing as a parameter a String info
-    public void exibirInformacao(String info)
+    public void showMessage(String info)
     {
         JOptionPane.showMessageDialog(this, info,"Atenção" ,JOptionPane.
         		INFORMATION_MESSAGE);
@@ -76,7 +76,7 @@ public class TelaDadosDespesas extends javax.swing.JFrame
         jComboBox_Dia = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Nova Despesa");
+        setTitle("Nova Expense");
         setBounds(new java.awt.Rectangle(450, 300, 0, 0));
 
         jButton_Sair.setText("Sair");
@@ -108,7 +108,7 @@ public class TelaDadosDespesas extends javax.swing.JFrame
         });
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        jLabel5.setText("Nova Despesa");
+        jLabel5.setText("Nova Expense");
 
         jComboBox_Mes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
 
@@ -211,18 +211,18 @@ public class TelaDadosDespesas extends javax.swing.JFrame
             
         if(jTextField_Nome.getText().equals(""))
         {
-            exibirInformacao("Digite o histórico da despesa");
+            showMessage("Digite o histórico da despesa");
         }
         
         else if(Double.parseDouble(jTextField_Valor.getText())==0.0)
         {
-            exibirInformacao("Digite um valor para a despesa");
+            showMessage("Digite um valor para a despesa");
         }
         
         else
         {
-            umaDespesa = new Despesa(nome, descricao, valor, dia, mes, ano);
-            umControleDespesa.adicionarGasto(umaDespesa);
+            objectExpense = new Expense(nome, descricao, valor, dia, mes, ano);
+            objectExpenseController.addExpense(objectExpense);
             this.dispose();
             new TelaDespesas().setVisible(true);
         }
@@ -251,19 +251,19 @@ public class TelaDadosDespesas extends javax.swing.JFrame
         }
         
         catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaDadosDespesas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExpenseDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
         catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaDadosDespesas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExpenseDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
         catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaDadosDespesas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExpenseDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
         catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaDadosDespesas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExpenseDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -272,7 +272,7 @@ public class TelaDadosDespesas extends javax.swing.JFrame
         {
             public void run()
             {
-                new TelaDadosDespesas().setVisible(true);
+                new ExpenseDataView().setVisible(true);
             }
         });
     }

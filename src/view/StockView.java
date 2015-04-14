@@ -10,14 +10,14 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Product;
-import static view.ProductsDataView.objectStockController;
+import static view.ProductDataView.objectStockController;
 import static view.SalePurchaseView.productMode;
 import static view.SalePurchaseView.purchaseSaleMode;
 
 public class StockView extends javax.swing.JFrame
 {
 
-	GestaoEmpresa principal;
+	EnterpriseManagement principal;
 	static boolean newProduct = true;
 	static String codeTable;
 	static String tableDescription;
@@ -47,7 +47,7 @@ public class StockView extends javax.swing.JFrame
 		{
 			// Do nothing
 		}
-		if(ProductsDataView.infoCarregar == true)
+		if(ProductDataView.infoCarregar == true)
 		{
 			loadList();
 		}
@@ -55,7 +55,7 @@ public class StockView extends javax.swing.JFrame
 		{
 			// Do nothing
 		}
-		ProductsDataView.infoCarregar = false;
+		ProductDataView.infoCarregar = false;
 		loadList();
 		jTextField_NomeProduto.requestFocus();
 	}
@@ -79,7 +79,7 @@ public class StockView extends javax.swing.JFrame
 		model.setRowCount(0);
 		for(Product product : productList)
 		{
-			model.addRow(new String[] {product.getCodigo(), product.getDescricao(), Double.toString(product.getPrecoCompra()), Double.toString(product.getPrecoVenda()), Double.toString(product.getQuantidade())});
+			model.addRow(new String[] {product.getCode(), product.getDescription(), Double.toString(product.getPurchasePrice()), Double.toString(product.getSellingPrice()), Double.toString(product.getQuantity())});
 		}
 		jTable2.setModel(model);
 	}
@@ -266,17 +266,17 @@ public class StockView extends javax.swing.JFrame
 			}
 			else
 			{
-				model1.addRow(new String[] {otherProduct.getCodigo(), otherProduct.getDescricao(), Double.toString(otherProduct.getPrecoCompra()), Double.toString(otherProduct.getPrecoVenda()),
-						Double.toString(otherProduct.getQuantidade())});
-				jTextField_NomeProduto.setText(otherProduct.getCodigo());
+				model1.addRow(new String[] {otherProduct.getCode(), otherProduct.getDescription(), Double.toString(otherProduct.getPurchasePrice()), Double.toString(otherProduct.getSellingPrice()),
+						Double.toString(otherProduct.getQuantity())});
+				jTextField_NomeProduto.setText(otherProduct.getCode());
 			}
 		}
 	}// GEN-LAST:event_jButton_PesquisarProdutoActionPerformed
 
-	// Method to open the view ProductsDataView for add a new product
+	// Method to open the view ProductDataView for add a new product
 	private void jButton_AdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt)
 	{// GEN-FIRST:event_jButton_AdicionarProdutoActionPerformed
-		new ProductsDataView().setVisible(true);
+		new ProductDataView().setVisible(true);
 		this.setVisible(false);
 	}// GEN-LAST:event_jButton_AdicionarProdutoActionPerformed
 
@@ -288,11 +288,11 @@ public class StockView extends javax.swing.JFrame
 			new SalePurchaseView().setVisible(true);
 	}// GEN-LAST:event_jButton_CancelarActionPerformed
 
-	// Method to open the view ProductsDataView for edit the product information
+	// Method to open the view ProductDataView for edit the product information
 	private void jButton_EditarProdutoActionPerformed(java.awt.event.ActionEvent evt)
 	{// GEN-FIRST:event_jButton_EditarProdutoActionPerformed
 		newProduct = false;
-		new ProductsDataView().setVisible(true);
+		new ProductDataView().setVisible(true);
 	}// GEN-LAST:event_jButton_EditarProdutoActionPerformed
 
 	// Method for Selecting an item in the table and enable the options edit, delete and confirms

@@ -12,11 +12,11 @@ import static view.StockView.newProduct;
 
 public class ProductDataView extends javax.swing.JFrame
 {
-    Product objectProduct;
-    static StockController objectStockController = new StockController();
-    Product editProduct;
-    StockView stockView;
-    static boolean infoCarregar=false;
+    Product objectProduct; // Product type object
+    static StockController objectStockController = new StockController(); // ControleEstoque type object
+    Product editProduct; // Product type object that is being editing
+    StockView stockView; // Control the view visibility situation
+    static boolean infoCarregar=false; // Boolean to disposes the informations on view
     
     // Constructor to initialize components on ProductDataView
     public ProductDataView()

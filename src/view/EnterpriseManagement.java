@@ -19,11 +19,11 @@ import model.Sale;
 public class EnterpriseManagement extends javax.swing.JFrame
 {
     
-    Client objectClient;
-    Employee objectEmployee;
-    Supplier objectSupplier;
-    Product objectProduct;
-    ArrayList<Product> productList;
+    Client objectClient; // Instantiates objectClient
+    Employee objectEmployee; // Instantiates an object Employee
+    Supplier objectSupplier; // Instantiates an object Supplier
+    Product objectProduct; // Instantiates an object Product
+    ArrayList<Product> productList; // Instantiates a product List
 
     // Constructor of the EnterpriseManagement's class
     public EnterpriseManagement()

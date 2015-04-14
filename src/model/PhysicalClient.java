@@ -8,8 +8,8 @@ package model;
 
 public class PhysicalClient extends Client
 {
-    private String cpf;
-    private String rg;
+    private String cpf; // Describes the CPF of the Physical Client (example : 62354823611)
+    private String rg; // Describes the RG of the Physical Client (example: 3515236)
 
     // Constructor of the PhysicalClient's class
     public PhysicalClient(String cpf, 

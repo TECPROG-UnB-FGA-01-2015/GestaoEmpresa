@@ -25,29 +25,29 @@ import static view.SalePurchaseView.salePurchaseStatus;
 
 public class ContactView extends javax.swing.JFrame
 {
-    EnterpriseManagement mainMenu;
-    static boolean newPhysicalClient = true;
-    static boolean newJuridicalClient = true;
-    static boolean newPhysicalSupplier = true;
-    static boolean newJuridicalSupplier = true;
-    static boolean newEmployee = true;
-    static boolean editMode = false;
-    static String tableName;
-    static int contactType;
-    static ArrayList<Client> listClient;
-    public PhysicalClient objectPhysicalClient;
-    public JuridicalClient objectJuridicalClient;
-    static ArrayList<Supplier> listSupplier;
-    public PhysicalSupplier objectPhysicalSupplier;
-    public JuridicalSupplier objectJuridicalSupplier;
-    static ArrayList<Employee> listEmployee;
-    public Employee umEmployee;
-    int quantitySearchResult;
-    SalePurchaseView salePurchaseView;
-    static boolean returnClientSupplier;
-    static boolean returnEmployee;
-    static String nameClientSupplier;
-    static String nameEmployee;
+    EnterpriseManagement mainMenu; // Instantiate the main menu class
+    static boolean newPhysicalClient = true; // Indicates if form is loaded to add a new Physical Client
+    static boolean newJuridicalClient = true; // Indicates if form is loaded to add a new Juridical Client
+    static boolean newPhysicalSupplier = true; // Indicates if form is loaded to add a new Physical Supplier
+    static boolean newJuridicalSupplier = true; // Indicates if form is loaded to add a new Juridical Supplier
+    static boolean newEmployee = true; // Indicates if form is loaded to add a new Employee
+    static boolean editMode = false; // Indicates if form is loaded to edit some contact
+    static String tableName; // Holds the name of the table
+    static int contactType; // Indicates the type of contact (0 = client, 1 = supplier, 2 = employee)
+    static ArrayList<Client> listClient; // Instantiates a list of clients
+    public PhysicalClient objectPhysicalClient; // Instantiates an objectPhysicalClient
+    public JuridicalClient objectJuridicalClient; // Instantiates an object JuridicalClient
+    static ArrayList<Supplier> listSupplier; // Instantiates a list of suppliers
+    public PhysicalSupplier objectPhysicalSupplier; // Instantiates an object PhysicalSupplier
+    public JuridicalSupplier objectJuridicalSupplier; // Instantiates an object JuridicalSupplier
+    static ArrayList<Employee> listEmployee; // Instantiates a list of employees
+    public Employee objectEmployee; // Instantiates an object Employee
+    int quantitySearchResult; // Holds the quantity of contacts found after the search
+    SalePurchaseView salePurchaseView; // Instantiates the sale/purchase view
+    static boolean returnClientSupplier; // Indicates if client/supplier was returned to sale/purchase view
+    static boolean returnEmployee; // Indicates if employees was returned to sale/purchase view
+    static String nameClientSupplier; // Holds the name of the client/supplier to return to sale/purchase view
+    static String nameEmployee; // Holds the name of the employee to return to sale/purchase view
 
     // Constructor of the ContactView's class
     public ContactView()
@@ -403,7 +403,9 @@ public class ContactView extends javax.swing.JFrame
     private void jButton_PesquisarActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_PesquisarActionPerformed
         String searchName = jTextField_NomeBusca.getText();
-        DefaultTableModel model1 = (DefaultTableModel) jTable1.getModel();  //Funçao para limpar a tabela
+        
+        // Cleans the table
+        DefaultTableModel model1 = (DefaultTableModel) jTable1.getModel();
         model1.setRowCount(0);
         jTable1.setModel(model1);
            
@@ -414,21 +416,24 @@ public class ContactView extends javax.swing.JFrame
             {
                 if((purchaseSaleMode == false) || (purchaseSaleMode == true && contactType == 0))
                 {
-                    Cliente buscaCliente = objectClientController.searchClient(searchName,true);
+                	// Variable to receive the client returned of the search
+                    Client searchClient = objectClientController.searchClient(searchName,true);
+                    
                     jComboBox1.setSelectedIndex(0);
-                    jTextField_NomeBusca.setText(buscaCliente.getName());
+                    jTextField_NomeBusca.setText(searchClient.getName());
 
-                    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();  //Funçao para limpar a tabela
+                    // Cleans the table
+                    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
                     model.setRowCount(0);
 
                     quantitySearchResult = quantitySearchResult + 1;
                     
-                    if(buscaCliente.getClass().equals(PhysicalClient.class))
+                    if(searchClient.getClass().equals(PhysicalClient.class))
                     {
                         PhysicalClient contactSearch=(PhysicalClient) objectClientController.searchClient(searchName,true);
                         model.addRow(new String[]{contactSearch.getName(), contactSearch.getCpf(), contactSearch.getCellphone(), contactSearch.getTelephone(), "Física"});
                     }
-                    else if(buscaCliente.getClass().equals(JuridicalClient.class))
+                    else if(searchClient.getClass().equals(JuridicalClient.class))
                     {
                         JuridicalClient contactSearch = (JuridicalClient) objectClientController.searchClient(searchName,true);
                         model.addRow(new String[]{contactSearch.getName(), 
@@ -442,11 +447,15 @@ public class ContactView extends javax.swing.JFrame
                 if((purchaseSaleMode == false) || (purchaseSaleMode == true && contactType == 1))
                 {
                     quantitySearchResult = quantitySearchResult + 1;
+                    
+                    // Variable to receive the supplier returned of the search
                     Supplier supplierSearch = objectSupplierController.searchSupplier(searchName,true);
+                    
                     jComboBox1.setSelectedIndex(1);
                     jTextField_NomeBusca.setText(supplierSearch.getName());
 
-                    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();  //Funçao para limpar a tabela
+                    // Cleans the table
+                    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
                     model.setRowCount(0);
 
                     if(supplierSearch.getClass().equals(PhysicalSupplier.class))
@@ -470,11 +479,15 @@ public class ContactView extends javax.swing.JFrame
                 if((purchaseSaleMode == false) || (purchaseSaleMode == true && contactType == 2))
                 {
                     quantitySearchResult = quantitySearchResult + 1;
+                    
+                    // Variable to receive the employee returned of the search
                     Employee buscaEmployee = objectEmployeeController.searchEmployee(searchName,true);
+                    
                     jComboBox1.setSelectedIndex(2);
                     jTextField_NomeBusca.setText(buscaEmployee.getName());
 
-                    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();  //Funçao para limpar a tabela
+                    // Cleans the table
+                    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
                     model.setRowCount(0);
 
                     model.addRow(new String[]{buscaEmployee.getName(), 
@@ -482,6 +495,7 @@ public class ContactView extends javax.swing.JFrame
                         buscaEmployee.getTelephone(), "Física"});
                 }
             }
+            
             if((objectClientController.searchClient(searchName,true) == null)
                     &&(objectSupplierController.searchSupplier(searchName,true) == null)
                     &&(objectEmployeeController.searchEmployee(searchName,true) == null))

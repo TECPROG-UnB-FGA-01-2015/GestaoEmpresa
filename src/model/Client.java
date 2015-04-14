@@ -8,10 +8,10 @@ package model;
 
 public class Client
 {
-    protected String name; 
-    protected Address address;
-    protected String telephone;
-    protected String cellphone;
+    protected String name; // Describes the name of the client   
+    protected Address address; // Describes the address of the client
+    protected String telephone; // Describes the telephone of the client (example: 6132765432) 
+    protected String cellphone; // Describes the cellphone of the client (example: 6198765432)
 
     // Constructor of the Client's class
     public Client(String name, 

@@ -231,7 +231,7 @@ public class ProductDataView extends javax.swing.JFrame
     {
         if(newProduct==false)
         {
-	        editProduct = objectStockController.pesquisarProduto(stockView.codigoTabela,false);
+	        editProduct = objectStockController.searchProduct(stockView.codeTable,false);
 	        jTextField_NomeProduto.setText(editProduct.getCode());
 	        jTextField_DescricaoProduto.setText(editProduct.getDescription());
 	        jTextField_PrecoCompra.setText(Double.toString(editProduct.getPurchasePrice()));

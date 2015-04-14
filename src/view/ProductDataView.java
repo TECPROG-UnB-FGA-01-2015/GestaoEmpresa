@@ -1,25 +1,25 @@
 /**********************************************************
- * File: TelaDadosProdutos.java
- * Purpose: Responsible to get Produtos' informations from user
+ * File: ProductDataView.java
+ * Purpose: Responsible to get Products' informations from user
 **********************************************************/
 package view;
 
-import controller.ControleEstoque;
+import controller.StockController;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import model.Produto;
-import static view.TelaEstoque.novoProduto;
+import model.Product;
+import static view.StockView.newProduct;
 
-public class TelaDadosProdutos extends javax.swing.JFrame
+public class ProductDataView extends javax.swing.JFrame
 {
-    Produto umProduto;
-    static ControleEstoque umControleEstoque = new ControleEstoque();
-    Produto editProduto;
-    TelaEstoque telaEstoque;
+    Product objectProduct;
+    static StockController objectStockController = new StockController();
+    Product editProduct;
+    StockView stockView;
     static boolean infoCarregar=false;
     
-    // Constructor to initialize components on TelaDadosProdutos
-    public TelaDadosProdutos()
+    // Constructor to initialize components on ProductDataView
+    public ProductDataView()
     {
         initComponents();
         preencherCampos();
@@ -55,7 +55,7 @@ public class TelaDadosProdutos extends javax.swing.JFrame
         jTextField_PrecoVenda = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Novo Produto");
+        setTitle("Novo Product");
         setBounds(new java.awt.Rectangle(450, 300, 0, 0));
 
         jButton_Cancelar.setText("Sair");
@@ -89,7 +89,7 @@ public class TelaDadosProdutos extends javax.swing.JFrame
         });
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        jLabel5.setText("Novo Produto");
+        jLabel5.setText("Novo Product");
 
         jLabel6.setText("R$");
 
@@ -193,18 +193,18 @@ public class TelaDadosProdutos extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     // Method to show a message to user by passing as a parameter a String info
-    public void exibirInformacao(String info)
+    public void showMessage(String info)
     {
         JOptionPane.showMessageDialog(this, info,"Atenção" ,JOptionPane.INFORMATION_MESSAGE);
     }
     
-    // Method to add one more on the attribute codigo if it would be a new Product
+    // Method to add one more on the attribute code if it would be a new Product
     private void preencherCodigo()
     {
-        if(novoProduto==true)
+        if(newProduct==true)
         {
-            ArrayList<Produto> listaTeste = umControleEstoque.getListaProdutos();
-            if(listaTeste.isEmpty())
+            ArrayList<Product> productList = objectStockController.getProductList();
+            if(productList.isEmpty())
             {
                 jTextField_NomeProduto.setText("1");
             }
@@ -213,9 +213,9 @@ public class TelaDadosProdutos extends javax.swing.JFrame
             {
                 jTextField_NomeProduto.setText(Integer.toString
                                             (Integer.parseInt
-                                            (listaTeste.get
-                                            (listaTeste.size()-1)
-                                            .getCodigo())
+                                            (productList.get
+                                            (productList.size()-1)
+                                            .getCode())
                                              +1));
             }
         }
@@ -226,17 +226,17 @@ public class TelaDadosProdutos extends javax.swing.JFrame
         }
     }
     
-    // Method to add one more on the attribute codigo if there is already a Product
+    // Method to add one more on the attribute code if there is already a Product
     private void preencherCampos()
     {
-        if(novoProduto==false)
+        if(newProduct==false)
         {
-	        editProduto = umControleEstoque.pesquisarProduto(TelaEstoque.codigoTabela,false);
-	        jTextField_NomeProduto.setText(editProduto.getCodigo());
-	        jTextField_DescricaoProduto.setText(editProduto.getDescricao());
-	        jTextField_PrecoCompra.setText(Double.toString(editProduto.getPrecoCompra()));
-	        jTextField_PrecoVenda.setText(Double.toString(editProduto.getPrecoVenda()));
-	        jTextField_QuantidadeProduto.setText(Double.toString(editProduto.getQuantidade()));
+	        editProduct = objectStockController.pesquisarProduto(stockView.codigoTabela,false);
+	        jTextField_NomeProduto.setText(editProduct.getCode());
+	        jTextField_DescricaoProduto.setText(editProduct.getDescription());
+	        jTextField_PrecoCompra.setText(Double.toString(editProduct.getPurchasePrice()));
+	        jTextField_PrecoVenda.setText(Double.toString(editProduct.getSellingPrice()));
+	        jTextField_QuantidadeProduto.setText(Double.toString(editProduct.getQuantity()));
         }
         
         else
@@ -262,45 +262,45 @@ public class TelaDadosProdutos extends javax.swing.JFrame
     {//GEN-FIRST:event_jButton_CancelarActionPerformed
         if(!jTextField_DescricaoProduto.getText().equals(""))
         {
-            exibirInformacao("Produto não adicionado");
+            showMessage("Product não adicionado");
         }
             
-        new TelaEstoque().setVisible(true);
+        new StockView().setVisible(true);
         this.dispose();
         infoCarregar=true;
     }//GEN-LAST:event_jButton_CancelarActionPerformed
 
     /* Method to save all the informations provided by the user on a new object
-     * Produto
+     * Product
      */
     private void jButton_SalvarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalvarProdutoActionPerformed
         if(!jTextField_NomeProduto.getText().equals("")&&!jTextField_DescricaoProduto.getText().equals("")&&!jTextField_PrecoCompra.getText().equals(""))
         {
-            String codigo = jTextField_NomeProduto.getText();
-            String descricao = jTextField_DescricaoProduto.getText();
-            double precoCompra = Double.parseDouble(jTextField_PrecoCompra.getText());
-            double precoVenda = Double.parseDouble(jTextField_PrecoVenda.getText());
-            double estoque = Double.parseDouble(jTextField_QuantidadeProduto.getText());
+            String code = jTextField_NomeProduto.getText();
+            String description = jTextField_DescricaoProduto.getText();
+            double purchasePrice = Double.parseDouble(jTextField_PrecoCompra.getText());
+            double sellingPrice = Double.parseDouble(jTextField_PrecoVenda.getText());
+            double quantity = Double.parseDouble(jTextField_QuantidadeProduto.getText());
 
-            if(TelaEstoque.novoProduto==true)
+            if(stockView.newProduct==true)
             {
-                umProduto = new Produto(codigo, descricao, precoCompra, estoque, precoVenda);
+                objectProduct = new Product(code, description, purchasePrice, quantity, sellingPrice);
                 
-                if(umControleEstoque.pesquisarProduto(umProduto.getCodigo(),false)==null
-                        &&umControleEstoque.pesquisarProduto(umProduto.getDescricao(),false)==null)
+                if(objectStockController.searchProduct(objectProduct.getCode(),false)==null
+                        &&objectStockController.searchProduct(objectProduct.getDescription(),false)==null)
                 {
-                    umControleEstoque.adicionarProduto(umProduto);
-                    exibirInformacao("Produto Adicionado!");
+                    objectStockController.addProduct(objectProduct);
+                    showMessage("Product Adicionado!");
                 }
                 
-                else if(umControleEstoque.pesquisarProduto(umProduto.getCodigo(),false)!=null)
+                else if(objectStockController.searchProduct(objectProduct.getCode(),false)!=null)
                 {
-                    exibirInformacao("Produto com esse código já existente no estoque!");
+                    showMessage("Product com esse código já existente no quantity!");
                 }
                 
-                else if(umControleEstoque.pesquisarProduto(umProduto.getDescricao(),false)!=null)
+                else if(objectStockController.searchProduct(objectProduct.getDescription(),false)!=null)
                 {
-                    exibirInformacao("Produto com essa Descrição já existente no estoque!");
+                    showMessage("Product com essa Descrição já existente no quantity!");
                 }
                 
                 else
@@ -309,20 +309,20 @@ public class TelaDadosProdutos extends javax.swing.JFrame
                 }
             }
             
-            else if(TelaEstoque.novoProduto==false)
+            else if(stockView.newProduct==false)
             {    
-                if(!editProduto.getCodigo().equals(jTextField_NomeProduto.getText()))
+                if(!editProduct.getCode().equals(jTextField_NomeProduto.getText()))
                 {
-                    exibirInformacao("Não é permitido a alteração do código do produto!");
+                    showMessage("Não é permitido a alteração do código do produto!");
                 }
                 
                 else{
-                    editProduto.setCodigo(codigo);
-                    editProduto.setDescricao(descricao);
-                    editProduto.setPreco(precoCompra);
-                    editProduto.setPreco(precoVenda);
-                    editProduto.setQuantidade(estoque);   
-                    exibirInformacao("Produto Editado!");
+                    editProduct.setCode(code);
+                    editProduct.setDescription(description);
+                    editProduct.setPurchasePrice(purchasePrice);
+                    editProduct.setSellingPrice(sellingPrice);
+                    editProduct.setQuantity(quantity);   
+                    showMessage("Product Editado!");
                 }
             }
             
@@ -333,30 +333,30 @@ public class TelaDadosProdutos extends javax.swing.JFrame
             
             limparCampos();
             preencherCodigo();
-            novoProduto=true;
+            newProduct=true;
         }
         
         else if(jTextField_NomeProduto.getText().equals(""))
         {
-            exibirInformacao("Digite um código para o produto");
+            showMessage("Digite um código para o produto");
             jTextField_NomeProduto.requestFocus();
         }
         
         else if(jTextField_DescricaoProduto.getText().equals(""))
         {
-            exibirInformacao("Digite uma descrição para o produto");
+            showMessage("Digite uma descrição para o produto");
             jTextField_DescricaoProduto.requestFocus();
         }
         
         else if(jTextField_PrecoCompra.getText().equals(""))
         {
-            exibirInformacao("Digite um preço de compra para o produto");
+            showMessage("Digite um preço de compra para o produto");
             jTextField_PrecoCompra.requestFocus();
         }
         
         else if(jTextField_PrecoVenda.getText().equals(""))
         {
-            exibirInformacao("Digite um preço de venda para o produto");
+            showMessage("Digite um preço de venda para o produto");
             jTextField_PrecoCompra.requestFocus();
         }
         
@@ -395,22 +395,22 @@ public class TelaDadosProdutos extends javax.swing.JFrame
         
         catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(TelaDadosProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
         catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(TelaDadosProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
         catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(TelaDadosProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
         catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(TelaDadosProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -419,7 +419,7 @@ public class TelaDadosProdutos extends javax.swing.JFrame
         {
             public void run()
             {
-                new TelaDadosProdutos().setVisible(true);
+                new ProductDataView().setVisible(true);
             }
         });
     }

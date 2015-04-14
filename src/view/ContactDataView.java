@@ -1,42 +1,42 @@
 /**********************************************************
- * File: TelaDadosContatos.java
+ * File: ContactDataView.java
  * Purpose: Permits to add, edit and remove a contacts.
  *********************************************************/
 
 package view;
 
-import controller.ControleCliente;
-import controller.ControleFornecedor;
-import controller.ControleFuncionario;
+import controller.ClientController;
+import controller.SupplierController;
+import controller.EmployeeController;
 import javax.swing.JOptionPane;
-import model.ClienteFisico;
-import model.ClienteJuridico;
-import model.Endereco;
-import model.FornecedorFisico;
-import model.FornecedorJuridico;
-import model.Funcionario;
+import model.PhysicalClient;
+import model.JuridicalClient;
+import model.Address;
+import model.PhysicalSupplier;
+import model.JuridicalSupplier;
+import model.Employee;
 import static view.SalePurchaseView.clientSupplierMode;
 import static view.SalePurchaseView.employeeMode;
 import static view.SalePurchaseView.purchaseSaleMode;
 import static view.SalePurchaseView.salePurchaseStatus;
 
-public class TelaDadosContatos extends javax.swing.JFrame
+public class ContactDataView extends javax.swing.JFrame
 {
 
-	static ControleCliente umControleCliente = new ControleCliente();
-	static ControleFornecedor umControleFornecedor = new ControleFornecedor();
-	static ControleFuncionario umControleFuncionario = new ControleFuncionario();
-	GestaoEmpresa principal;
-	ClienteFisico umClienteFisico;
-	ClienteJuridico umClienteJuridico;
-	FornecedorFisico umFornecedorFisico;
-	FornecedorJuridico umFornecedorJuridico;
-	Funcionario umFuncionario;
-	ClienteFisico editClienteFisico;
-	ClienteJuridico editClienteJuridico;
-	FornecedorFisico editFornecedorFisico;
-	FornecedorJuridico editFornecedorJuridico;
-	Funcionario editFuncionario;
+	static ClientController objectClientController = new ClientController();
+	static SupplierController objectSupplierController = new SupplierController();
+	static EmployeeController objectEmployeeController = new EmployeeController();
+	EnterpriseManagement principal;
+	PhysicalClient objectPhysicalClient;
+	JuridicalClient objectJuridicalClient;
+	PhysicalSupplier objectPhysicalSupplier;
+	JuridicalSupplier objectJuridicalSupplier;
+	Employee objectEmployee;
+	PhysicalClient editPhysicalClient;
+	JuridicalClient editJuridicalClient;
+	PhysicalSupplier editPhysicalSupplier;
+	JuridicalSupplier editJuridicalSupplier;
+	Employee editEmployee;
 
 	// Method to display a warning message to the user
 	public void exibirInformacao(String info)
@@ -44,8 +44,8 @@ public class TelaDadosContatos extends javax.swing.JFrame
 		JOptionPane.showMessageDialog(this, info, "Atenção", JOptionPane.INFORMATION_MESSAGE);
 	}
 
-	// Constructor to initialize components on TelaDadosContatos
-	public TelaDadosContatos()
+	// Constructor to initialize components on ContactDataView
+	public ContactDataView()
 	{
 		initComponents();
 		jComboBox_TipoContato.setSelectedIndex(0);
@@ -78,17 +78,17 @@ public class TelaDadosContatos extends javax.swing.JFrame
 
 		else
 		{
-			if(TelaContatos.contactType == 0)
+			if(ContactView.contactType == 0)
 			{
 				jComboBox_TipoContato.setSelectedIndex(0);
 				jComboBox_TipoPessoa.setSelectedIndex(0);
 			}
-			else if(TelaContatos.contactType == 1)
+			else if(ContactView.contactType == 1)
 			{
 				jComboBox_TipoContato.setSelectedIndex(1);
 				jComboBox_TipoPessoa.setSelectedIndex(1);
 			}
-			else if(TelaContatos.contactType == 2)
+			else if(ContactView.contactType == 2)
 			{
 				jComboBox_TipoContato.setSelectedIndex(2);
 				jComboBox_TipoPessoa.setSelectedIndex(0);
@@ -102,96 +102,96 @@ public class TelaDadosContatos extends javax.swing.JFrame
 	// Method to populate text fields with customer information
 	private void preencherCampos()
 	{
-		if(TelaContatos.editMode == true)
+		if(ContactView.editMode == true)
 		{
 			jComboBox_TipoContato.setEnabled(false);
 			jComboBox_TipoPessoa.setEnabled(false);
-			if(TelaContatos.newPhysicalClient == false)
+			if(ContactView.newPhysicalClient == false)
 			{
 				jComboBox_TipoContato.setSelectedIndex(0);
 				jComboBox_TipoPessoa.setSelectedIndex(0);
-				editClienteFisico = (ClienteFisico) umControleCliente.pesquisarCliente(TelaContatos.tableName, false);
-				jTextField_Nome.setText(editClienteFisico.getName());
-				jTextField_Telefone.setText(editClienteFisico.getTelephone());
-				jTextField_Celular.setText(editClienteFisico.getCellphone());
-				jTextField_CpfCnpj.setText(editClienteFisico.getCpf());
-				jTextField_RgRazaoSocial.setText(editClienteFisico.getRg());
-				jTextField_Pais.setText(editClienteFisico.getAddress().getCountry());
-				jTextField_Estado.setText(editClienteFisico.getAddress().getState());
-				jTextField_Cidade.setText(editClienteFisico.getAddress().getCity());
-				jTextField_Logradouro.setText(editClienteFisico.getAddress().getStreet());
-				jTextField_Complemento.setText(editClienteFisico.getAddress().getComplement());
-				jTextField_Numero.setText(editClienteFisico.getAddress().getNumber());
+				editPhysicalClient = (PhysicalClient) objectClientController.searchClient(ContactView.tableName, false);
+				jTextField_Nome.setText(editPhysicalClient.getName());
+				jTextField_Telefone.setText(editPhysicalClient.getTelephone());
+				jTextField_Celular.setText(editPhysicalClient.getCellphone());
+				jTextField_CpfCnpj.setText(editPhysicalClient.getCpf());
+				jTextField_RgRazaoSocial.setText(editPhysicalClient.getRg());
+				jTextField_Pais.setText(editPhysicalClient.getAddress().getCountry());
+				jTextField_Estado.setText(editPhysicalClient.getAddress().getState());
+				jTextField_Cidade.setText(editPhysicalClient.getAddress().getCity());
+				jTextField_Logradouro.setText(editPhysicalClient.getAddress().getStreet());
+				jTextField_Complemento.setText(editPhysicalClient.getAddress().getComplement());
+				jTextField_Numero.setText(editPhysicalClient.getAddress().getNumber());
 			}
-			else if(TelaContatos.newJuridicalClient == false)
+			else if(ContactView.newJuridicalClient == false)
 			{
 				jComboBox_TipoContato.setSelectedIndex(0);
 				jComboBox_TipoPessoa.setSelectedIndex(1);
-				editClienteJuridico = (ClienteJuridico) umControleCliente.pesquisarCliente(TelaContatos.tableName, false);
-				jTextField_Nome.setText(editClienteJuridico.getName());
-				jTextField_Telefone.setText(editClienteJuridico.getTelephone());
-				jTextField_Celular.setText(editClienteJuridico.getCellphone());
-				jTextField_CpfCnpj.setText(editClienteJuridico.getCnpj());
-				jTextField_RgRazaoSocial.setText(editClienteJuridico.getSocialReason());
-				jTextField_Pais.setText(editClienteJuridico.getAddress().getCountry());
-				jTextField_Estado.setText(editClienteJuridico.getAddress().getState());
-				jTextField_Cidade.setText(editClienteJuridico.getAddress().getCity());
-				jTextField_Logradouro.setText(editClienteJuridico.getAddress().getStreet());
-				jTextField_Complemento.setText(editClienteJuridico.getAddress().getComplement());
-				jTextField_Numero.setText(editClienteJuridico.getAddress().getNumber());
+				editJuridicalClient = (JuridicalClient) objectClientController.searchClient(ContactView.tableName, false);
+				jTextField_Nome.setText(editJuridicalClient.getName());
+				jTextField_Telefone.setText(editJuridicalClient.getTelephone());
+				jTextField_Celular.setText(editJuridicalClient.getCellphone());
+				jTextField_CpfCnpj.setText(editJuridicalClient.getCnpj());
+				jTextField_RgRazaoSocial.setText(editJuridicalClient.getSocialReason());
+				jTextField_Pais.setText(editJuridicalClient.getAddress().getCountry());
+				jTextField_Estado.setText(editJuridicalClient.getAddress().getState());
+				jTextField_Cidade.setText(editJuridicalClient.getAddress().getCity());
+				jTextField_Logradouro.setText(editJuridicalClient.getAddress().getStreet());
+				jTextField_Complemento.setText(editJuridicalClient.getAddress().getComplement());
+				jTextField_Numero.setText(editJuridicalClient.getAddress().getNumber());
 			}
-			else if(TelaContatos.newPhysicalSupplier == false)
+			else if(ContactView.newPhysicalSupplier == false)
 			{
 				jComboBox_TipoContato.setSelectedIndex(1);
 				jComboBox_TipoPessoa.setSelectedIndex(0);
-				editFornecedorFisico = (FornecedorFisico) umControleFornecedor.pesquisarFornecedor(TelaContatos.tableName, false);
-				jTextField_Nome.setText(editFornecedorFisico.getNome());
-				jTextField_Telefone.setText(editFornecedorFisico.getTelefone());
-				jTextField_Celular.setText(editFornecedorFisico.getCelular());
-				jTextField_CpfCnpj.setText(editFornecedorFisico.getCpf());
-				jTextField_RgRazaoSocial.setText(editFornecedorFisico.getRg());
-				jTextField_Pais.setText(editFornecedorFisico.getEndereco().getCountry());
-				jTextField_Estado.setText(editFornecedorFisico.getEndereco().getState());
-				jTextField_Cidade.setText(editFornecedorFisico.getEndereco().getCity());
-				jTextField_Logradouro.setText(editFornecedorFisico.getEndereco().getStreet());
-				jTextField_Complemento.setText(editFornecedorFisico.getEndereco().getComplement());
-				jTextField_Numero.setText(editFornecedorFisico.getEndereco().getNumber());
+				editPhysicalSupplier = (PhysicalSupplier) objectSupplierController.searchSupplier(ContactView.tableName, false);
+				jTextField_Nome.setText(editPhysicalSupplier.getName());
+				jTextField_Telefone.setText(editPhysicalSupplier.getTelephone());
+				jTextField_Celular.setText(editPhysicalSupplier.getCellphone());
+				jTextField_CpfCnpj.setText(editPhysicalSupplier.getCpf());
+				jTextField_RgRazaoSocial.setText(editPhysicalSupplier.getRg());
+				jTextField_Pais.setText(editPhysicalSupplier.getAddress().getCountry());
+				jTextField_Estado.setText(editPhysicalSupplier.getAddress().getState());
+				jTextField_Cidade.setText(editPhysicalSupplier.getAddress().getCity());
+				jTextField_Logradouro.setText(editPhysicalSupplier.getAddress().getStreet());
+				jTextField_Complemento.setText(editPhysicalSupplier.getAddress().getComplement());
+				jTextField_Numero.setText(editPhysicalSupplier.getAddress().getNumber());
 			}
-			else if(TelaContatos.newJuridicalSupplier == false)
+			else if(ContactView.newJuridicalSupplier == false)
 			{
 				jComboBox_TipoContato.setSelectedIndex(1);
 				jComboBox_TipoPessoa.setSelectedIndex(1);
-				editFornecedorJuridico = (FornecedorJuridico) umControleFornecedor.pesquisarFornecedor(TelaContatos.tableName, false);
-				jTextField_Nome.setText(editFornecedorJuridico.getNome());
-				jTextField_Telefone.setText(editFornecedorJuridico.getTelefone());
-				jTextField_Celular.setText(editFornecedorJuridico.getCelular());
-				jTextField_CpfCnpj.setText(editFornecedorJuridico.getCnpj());
-				jTextField_RgRazaoSocial.setText(editFornecedorJuridico.getRazaoSocial());
-				jTextField_Pais.setText(editFornecedorJuridico.getEndereco().getCountry());
-				jTextField_Estado.setText(editFornecedorJuridico.getEndereco().getState());
-				jTextField_Cidade.setText(editFornecedorJuridico.getEndereco().getCity());
-				jTextField_Logradouro.setText(editFornecedorJuridico.getEndereco().getStreet());
-				jTextField_Complemento.setText(editFornecedorJuridico.getEndereco().getComplement());
-				jTextField_Numero.setText(editFornecedorJuridico.getEndereco().getNumber());
+				editJuridicalSupplier = (JuridicalSupplier) objectSupplierController.searchSupplier(ContactView.tableName, false);
+				jTextField_Nome.setText(editJuridicalSupplier.getName());
+				jTextField_Telefone.setText(editJuridicalSupplier.getTelephone());
+				jTextField_Celular.setText(editJuridicalSupplier.getCellphone());
+				jTextField_CpfCnpj.setText(editJuridicalSupplier.getCnpj());
+				jTextField_RgRazaoSocial.setText(editJuridicalSupplier.getSocialReason());
+				jTextField_Pais.setText(editJuridicalSupplier.getAddress().getCountry());
+				jTextField_Estado.setText(editJuridicalSupplier.getAddress().getState());
+				jTextField_Cidade.setText(editJuridicalSupplier.getAddress().getCity());
+				jTextField_Logradouro.setText(editJuridicalSupplier.getAddress().getStreet());
+				jTextField_Complemento.setText(editJuridicalSupplier.getAddress().getComplement());
+				jTextField_Numero.setText(editJuridicalSupplier.getAddress().getNumber());
 			}
-			else if(TelaContatos.newEmployee == false)
+			else if(ContactView.newEmployee == false)
 			{
 				jComboBox_TipoContato.setSelectedIndex(2);
 				jComboBox_TipoPessoa.setSelectedIndex(0);
-				editFuncionario = umControleFuncionario.pesquisarFuncionario(TelaContatos.tableName, false);
-				jTextField_Nome.setText(editFuncionario.getName());
-				jTextField_Telefone.setText(editFuncionario.getTelephone());
-				jTextField_Celular.setText(editFuncionario.getCellphone());
-				jTextField_CpfCnpj.setText(editFuncionario.getCpf());
-				jTextField_RgRazaoSocial.setText(editFuncionario.getRg());
-				jTextField_Pais.setText(editFuncionario.getAddress().getCountry());
-				jTextField_Estado.setText(editFuncionario.getAddress().getState());
-				jTextField_Cidade.setText(editFuncionario.getAddress().getCity());
-				jTextField_Logradouro.setText(editFuncionario.getAddress().getStreet());
-				jTextField_Complemento.setText(editFuncionario.getAddress().getComplement());
-				jTextField_Numero.setText(editFuncionario.getAddress().getNumber());
-				jTextField_Cargo.setText(editFuncionario.getRole());
-				jTextField_Salario.setText(Double.toString(editFuncionario.getSalary()));
+				editEmployee = objectEmployeeController.searchEmployee(ContactView.tableName, false);
+				jTextField_Nome.setText(editEmployee.getName());
+				jTextField_Telefone.setText(editEmployee.getTelephone());
+				jTextField_Celular.setText(editEmployee.getCellphone());
+				jTextField_CpfCnpj.setText(editEmployee.getCpf());
+				jTextField_RgRazaoSocial.setText(editEmployee.getRg());
+				jTextField_Pais.setText(editEmployee.getAddress().getCountry());
+				jTextField_Estado.setText(editEmployee.getAddress().getState());
+				jTextField_Cidade.setText(editEmployee.getAddress().getCity());
+				jTextField_Logradouro.setText(editEmployee.getAddress().getStreet());
+				jTextField_Complemento.setText(editEmployee.getAddress().getComplement());
+				jTextField_Numero.setText(editEmployee.getAddress().getNumber());
+				jTextField_Cargo.setText(editEmployee.getRole());
+				jTextField_Salario.setText(Double.toString(editEmployee.getSalary()));
 			}
 		}
 	}
@@ -465,43 +465,43 @@ public class TelaDadosContatos extends javax.swing.JFrame
 	{// GEN-FIRST:event_jButton_SalvarActionPerformed
 		if(jTextField_Nome.getText().isEmpty() == true)
 		{
-			exibirInformacao("Digite o nome do Contato!");
+			exibirInformacao("Digite o name do Contato!");
 		}
 
 		else
 		{
-			String nome = jTextField_Nome.getText();
-			String telefone = jTextField_Telefone.getText();
-			String celular = jTextField_Celular.getText();
-			String cpfcnpj = jTextField_CpfCnpj.getText();
-			String rgrazaosocial = jTextField_RgRazaoSocial.getText();
-			String logradouro = jTextField_Logradouro.getText();
-			String numero = jTextField_Numero.getText();
-			String cidade = jTextField_Cidade.getText();
-			String estado = jTextField_Estado.getText();
-			String pais = jTextField_Pais.getText();
-			String complemento = jTextField_Complemento.getText();
-			String cargo = jTextField_Cargo.getText();
-			double salario = Double.parseDouble(jTextField_Salario.getText());
-			Endereco umEndereco = new Endereco(logradouro, numero, cidade, estado, pais, complemento);
+			String name = jTextField_Nome.getText();
+			String telephone = jTextField_Telefone.getText();
+			String cellphone = jTextField_Celular.getText();
+			String cpfCnpj = jTextField_CpfCnpj.getText();
+			String rgSocialReason = jTextField_RgRazaoSocial.getText();
+			String patio = jTextField_Logradouro.getText();
+			String number = jTextField_Numero.getText();
+			String city = jTextField_Cidade.getText();
+			String state = jTextField_Estado.getText();
+			String country = jTextField_Pais.getText();
+			String complement = jTextField_Complemento.getText();
+			String office = jTextField_Cargo.getText();
+			double salary = Double.parseDouble(jTextField_Salario.getText());
+			Address objectAddress = new Address(patio, number, city, state, country, complement);
 
-			if(TelaContatos.editMode == false)
+			if(ContactView.editMode == false)
 			{
 				if(jComboBox_TipoContato.getSelectedIndex() == 0)
 				{
 					if(jComboBox_TipoPessoa.getSelectedIndex() == 0)
 					{
-						umClienteFisico = new ClienteFisico(cpfcnpj, rgrazaosocial, nome, umEndereco, telefone, celular);
-						if(umControleCliente.pesquisarCliente(umClienteFisico.getName(), false) == null)
-							umControleCliente.addCliente(umClienteFisico);
+						objectPhysicalClient = new PhysicalClient(cpfCnpj, rgSocialReason, name, objectAddress, telephone, cellphone);
+						if(objectClientController.searchClient(objectPhysicalClient.getName(), false) == null)
+							objectClientController.addClient(objectPhysicalClient);
 						else
 							exibirInformacao("Cliente já cadastrado!");
 					}
 					else if(jComboBox_TipoPessoa.getSelectedIndex() == 1)
 					{
-						umClienteJuridico = new ClienteJuridico(cpfcnpj, rgrazaosocial, nome, umEndereco, telefone, celular);
-						if(umControleCliente.pesquisarCliente(umClienteJuridico.getName(), false) == null)
-							umControleCliente.addCliente(umClienteJuridico);
+						objectJuridicalClient = new JuridicalClient(cpfCnpj, rgSocialReason, name, objectAddress, telephone, cellphone);
+						if(objectClientController.searchClient(objectJuridicalClient.getName(), false) == null)
+							objectClientController.addClient(objectJuridicalClient);
 						else
 							exibirInformacao("Cliente já cadastrado!");
 					}
@@ -510,162 +510,162 @@ public class TelaDadosContatos extends javax.swing.JFrame
 				{
 					if(jComboBox_TipoPessoa.getSelectedIndex() == 0)
 					{
-						umFornecedorFisico = new FornecedorFisico(cpfcnpj, rgrazaosocial, nome, telefone, celular, null, umEndereco);
-						if(umControleFornecedor.pesquisarFornecedor(umFornecedorFisico.getNome(), false) == null)
-							umControleFornecedor.adicionarFornecedor(umFornecedorFisico);
+						objectPhysicalSupplier = new PhysicalSupplier(cpfCnpj, rgSocialReason, name, telephone, cellphone, null, objectAddress);
+						if(objectSupplierController.searchSupplier(objectPhysicalSupplier.getName(), false) == null)
+							objectSupplierController.addSupplier(objectPhysicalSupplier);
 						else
 							exibirInformacao("Fornecedor já cadastrado!");
 					}
 					else if(jComboBox_TipoPessoa.getSelectedIndex() == 1)
 					{
-						umFornecedorJuridico = new FornecedorJuridico(cpfcnpj, rgrazaosocial, nome, telefone, celular, null, umEndereco);
-						if(umControleFornecedor.pesquisarFornecedor(umFornecedorJuridico.getNome(), false) == null)
-							umControleFornecedor.adicionarFornecedor(umFornecedorJuridico);
+						objectJuridicalSupplier = new JuridicalSupplier(cpfCnpj, rgSocialReason, name, telephone, cellphone, null, objectAddress);
+						if(objectSupplierController.searchSupplier(objectJuridicalSupplier.getName(), false) == null)
+							objectSupplierController.addSupplier(objectJuridicalSupplier);
 						else
 							exibirInformacao("Fornecedor já cadastrado!");
 					}
 				}
 				else if(jComboBox_TipoContato.getSelectedIndex() == 2)
 				{
-					umFuncionario = new Funcionario(nome, telefone, celular, cpfcnpj, rgrazaosocial, cargo, salario, umEndereco);
-					if(umControleFuncionario.pesquisarFuncionario(umFuncionario.getName(), false) == null)
-						umControleFuncionario.addFuncionario(umFuncionario);
+					objectEmployee = new Employee(name, telephone, cellphone, cpfCnpj, rgSocialReason, office, salary, objectAddress);
+					if(objectEmployeeController.searchEmployee(objectEmployee.getName(), false) == null)
+						objectEmployeeController.addEmployee(objectEmployee);
 					else
 						exibirInformacao("Funcionário já cadastrado!");
 				}
 			}
-			else if(TelaContatos.editMode == true)
+			else if(ContactView.editMode == true)
 			{
 
-				if(TelaContatos.newPhysicalClient == false)
+				if(ContactView.newPhysicalClient == false)
 				{
-					if(!editClienteFisico.getName().equals(jTextField_Nome.getText()))
+					if(!editPhysicalClient.getName().equals(jTextField_Nome.getText()))
 					{
-						exibirInformacao("Não é permitido a alteração do nome!");
+						exibirInformacao("Não é permitido a alteração do name!");
 					}
 					else
 					{
 						jComboBox_TipoContato.setSelectedIndex(0);
 						jComboBox_TipoPessoa.setSelectedIndex(0);
-						editClienteFisico.getAddress().setStreet(logradouro);
-						editClienteFisico.getAddress().setCountry(pais);
-						editClienteFisico.getAddress().setState(estado);
-						editClienteFisico.getAddress().setCity(cidade);
-						editClienteFisico.getAddress().setComplement(complemento);
-						editClienteFisico.getAddress().setNumber(numero);
-						editClienteFisico.setName(nome);
-						editClienteFisico.setTelephone(telefone);
-						editClienteFisico.setCellphone(celular);
-						editClienteFisico.setCpf(cpfcnpj);
-						editClienteFisico.setRg(rgrazaosocial);
-						editClienteFisico.setAddress(umEndereco);
+						editPhysicalClient.getAddress().setStreet(patio);
+						editPhysicalClient.getAddress().setCountry(country);
+						editPhysicalClient.getAddress().setState(state);
+						editPhysicalClient.getAddress().setCity(city);
+						editPhysicalClient.getAddress().setComplement(complement);
+						editPhysicalClient.getAddress().setNumber(number);
+						editPhysicalClient.setName(name);
+						editPhysicalClient.setTelephone(telephone);
+						editPhysicalClient.setCellphone(cellphone);
+						editPhysicalClient.setCpf(cpfCnpj);
+						editPhysicalClient.setRg(rgSocialReason);
+						editPhysicalClient.setAddress(objectAddress);
 					}
 				}
-				else if(TelaContatos.newJuridicalClient == false)
+				else if(ContactView.newJuridicalClient == false)
 				{
-					if(!editClienteJuridico.getName().equals(jTextField_Nome.getText()))
+					if(!editJuridicalClient.getName().equals(jTextField_Nome.getText()))
 					{
-						exibirInformacao("Não é permitido a alteração do nome!");
+						exibirInformacao("Não é permitido a alteração do name!");
 					}
 					else
 					{
 						jComboBox_TipoContato.setSelectedIndex(0);
 						jComboBox_TipoPessoa.setSelectedIndex(1);
-						editClienteJuridico.getAddress().setStreet(logradouro);
-						editClienteJuridico.getAddress().setCountry(pais);
-						editClienteJuridico.getAddress().setState(estado);
-						editClienteJuridico.getAddress().setCity(cidade);
-						editClienteJuridico.getAddress().setComplement(complemento);
-						editClienteJuridico.getAddress().setNumber(numero);
-						editClienteJuridico.setName(nome);
-						editClienteJuridico.setTelephone(telefone);
-						editClienteJuridico.setCellphone(celular);
-						editClienteJuridico.setCnpj(cpfcnpj);
-						editClienteJuridico.setSocialReason(rgrazaosocial);
-						editClienteJuridico.setAddress(umEndereco);
+						editJuridicalClient.getAddress().setStreet(patio);
+						editJuridicalClient.getAddress().setCountry(country);
+						editJuridicalClient.getAddress().setState(state);
+						editJuridicalClient.getAddress().setCity(city);
+						editJuridicalClient.getAddress().setComplement(complement);
+						editJuridicalClient.getAddress().setNumber(number);
+						editJuridicalClient.setName(name);
+						editJuridicalClient.setTelephone(telephone);
+						editJuridicalClient.setCellphone(cellphone);
+						editJuridicalClient.setCnpj(cpfCnpj);
+						editJuridicalClient.setSocialReason(rgSocialReason);
+						editJuridicalClient.setAddress(objectAddress);
 					}
 				}
-				else if(TelaContatos.newPhysicalSupplier == false)
+				else if(ContactView.newPhysicalSupplier == false)
 				{
-					if(!editFornecedorFisico.getNome().equals(jTextField_Nome.getText()))
+					if(!editPhysicalSupplier.getName().equals(jTextField_Nome.getText()))
 					{
-						exibirInformacao("Não é permitido a alteração do nome!");
+						exibirInformacao("Não é permitido a alteração do name!");
 					}
 					else
 					{
 						jComboBox_TipoContato.setSelectedIndex(1);
 						jComboBox_TipoPessoa.setSelectedIndex(0);
-						editFornecedorFisico.getEndereco().setStreet(logradouro);
-						editFornecedorFisico.getEndereco().setCountry(pais);
-						editFornecedorFisico.getEndereco().setState(estado);
-						editFornecedorFisico.getEndereco().setCity(cidade);
-						editFornecedorFisico.getEndereco().setComplement(complemento);
-						editFornecedorFisico.getEndereco().setNumber(numero);
-						editFornecedorFisico.setNome(nome);
-						editFornecedorFisico.setTelefone(telefone);
-						editFornecedorFisico.setCelular(celular);
-						editFornecedorFisico.setCpf(cpfcnpj);
-						editFornecedorFisico.setRg(rgrazaosocial);
-						editFornecedorFisico.setEndereco(umEndereco);
+						editPhysicalSupplier.getAddress().setStreet(patio);
+						editPhysicalSupplier.getAddress().setCountry(country);
+						editPhysicalSupplier.getAddress().setState(state);
+						editPhysicalSupplier.getAddress().setCity(city);
+						editPhysicalSupplier.getAddress().setComplement(complement);
+						editPhysicalSupplier.getAddress().setNumber(number);
+						editPhysicalSupplier.setName(name);
+						editPhysicalSupplier.setTelephone(telephone);
+						editPhysicalSupplier.setCellphone(cellphone);
+						editPhysicalSupplier.setCpf(cpfCnpj);
+						editPhysicalSupplier.setRg(rgSocialReason);
+						editPhysicalSupplier.setAddress(objectAddress);
 					}
 				}
-				else if(TelaContatos.newJuridicalSupplier == false)
+				else if(ContactView.newJuridicalSupplier == false)
 				{
-					if(!editFornecedorJuridico.getNome().equals(jTextField_Nome.getText()))
+					if(!editJuridicalSupplier.getName().equals(jTextField_Nome.getText()))
 					{
-						exibirInformacao("Não é permitido a alteração do nome!");
+						exibirInformacao("Não é permitido a alteração do name!");
 					}
 					else
 					{
 						jComboBox_TipoContato.setSelectedIndex(1);
 						jComboBox_TipoPessoa.setSelectedIndex(1);
-						editFornecedorJuridico.getEndereco().setStreet(logradouro);
-						editFornecedorJuridico.getEndereco().setCountry(pais);
-						editFornecedorJuridico.getEndereco().setState(estado);
-						editFornecedorJuridico.getEndereco().setCity(cidade);
-						editFornecedorJuridico.getEndereco().setComplement(complemento);
-						editFornecedorJuridico.getEndereco().setNumber(numero);
-						editFornecedorJuridico.setNome(nome);
-						editFornecedorJuridico.setTelefone(telefone);
-						editFornecedorJuridico.setCelular(celular);
-						editFornecedorJuridico.setCnpj(cpfcnpj);
-						editFornecedorJuridico.setRazaoSocial(rgrazaosocial);
-						editFornecedorJuridico.setEndereco(umEndereco);
+						editJuridicalSupplier.getAddress().setStreet(patio);
+						editJuridicalSupplier.getAddress().setCountry(country);
+						editJuridicalSupplier.getAddress().setState(state);
+						editJuridicalSupplier.getAddress().setCity(city);
+						editJuridicalSupplier.getAddress().setComplement(complement);
+						editJuridicalSupplier.getAddress().setNumber(number);
+						editJuridicalSupplier.setName(name);
+						editJuridicalSupplier.setTelephone(telephone);
+						editJuridicalSupplier.setCellphone(cellphone);
+						editJuridicalSupplier.setCnpj(cpfCnpj);
+						editJuridicalSupplier.setSocialReason(rgSocialReason);
+						editJuridicalSupplier.setAddress(objectAddress);
 					}
 				}
-				else if(TelaContatos.newEmployee == false)
+				else if(ContactView.newEmployee == false)
 				{
-					if(!editFuncionario.getName().equals(jTextField_Nome.getText()))
+					if(!editEmployee.getName().equals(jTextField_Nome.getText()))
 					{
-						exibirInformacao("Não é permitido a alteração do nome!");
+						exibirInformacao("Não é permitido a alteração do name!");
 					}
 					else
 					{
 						jComboBox_TipoContato.setSelectedIndex(1);
 						jComboBox_TipoPessoa.setSelectedIndex(0);
-						editFuncionario.getAddress().setStreet(logradouro);
-						editFuncionario.getAddress().setCountry(pais);
-						editFuncionario.getAddress().setState(estado);
-						editFuncionario.getAddress().setCity(cidade);
-						editFuncionario.getAddress().setComplement(complemento);
-						editFuncionario.getAddress().setNumber(numero);
-						editFuncionario.setName(nome);
-						editFuncionario.setTelephone(telefone);
-						editFuncionario.setCellphone(celular);
-						editFuncionario.setCpf(cpfcnpj);
-						editFuncionario.setRg(rgrazaosocial);
-						editFuncionario.setAddress(umEndereco);
+						editEmployee.getAddress().setStreet(patio);
+						editEmployee.getAddress().setCountry(country);
+						editEmployee.getAddress().setState(state);
+						editEmployee.getAddress().setCity(city);
+						editEmployee.getAddress().setComplement(complement);
+						editEmployee.getAddress().setNumber(number);
+						editEmployee.setName(name);
+						editEmployee.setTelephone(telephone);
+						editEmployee.setCellphone(cellphone);
+						editEmployee.setCpf(cpfCnpj);
+						editEmployee.setRg(rgSocialReason);
+						editEmployee.setAddress(objectAddress);
 					}
 				}
 			}
-			TelaContatos.editMode = false;
-			TelaContatos.newPhysicalClient = true;
-			TelaContatos.newJuridicalClient = true;
-			TelaContatos.newPhysicalSupplier = true;
-			TelaContatos.newJuridicalSupplier = true;
-			TelaContatos.newEmployee = true;
+			ContactView.editMode = false;
+			ContactView.newPhysicalClient = true;
+			ContactView.newJuridicalClient = true;
+			ContactView.newPhysicalSupplier = true;
+			ContactView.newJuridicalSupplier = true;
+			ContactView.newEmployee = true;
 
-			new TelaContatos().setVisible(true);
+			new ContactView().setVisible(true);
 			this.dispose();
 		}
 
@@ -674,7 +674,7 @@ public class TelaDadosContatos extends javax.swing.JFrame
 	// Method to cancel the operation and close the screen
 	private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt)
 	{// GEN-FIRST:event_jButton_CancelarActionPerformed
-		new TelaContatos().setVisible(true);
+		new ContactView().setVisible(true);
 		this.dispose();
 	}// GEN-LAST:event_jButton_CancelarActionPerformed
 
@@ -726,19 +726,19 @@ public class TelaDadosContatos extends javax.swing.JFrame
 		}
 		catch (ClassNotFoundException ex)
 		{
-			java.util.logging.Logger.getLogger(TelaDadosContatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(ContactDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		catch (InstantiationException ex)
 		{
-			java.util.logging.Logger.getLogger(TelaDadosContatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(ContactDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		catch (IllegalAccessException ex)
 		{
-			java.util.logging.Logger.getLogger(TelaDadosContatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(ContactDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		catch (javax.swing.UnsupportedLookAndFeelException ex)
 		{
-			java.util.logging.Logger.getLogger(TelaDadosContatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(ContactDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		// </editor-fold>
 
@@ -747,7 +747,7 @@ public class TelaDadosContatos extends javax.swing.JFrame
 		{
 			public void run()
 			{
-				new TelaDadosContatos().setVisible(true);
+				new ContactDataView().setVisible(true);
 			}
 		});
 	}

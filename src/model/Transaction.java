@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Transaction
 {
-	protected ArrayList<Produto> saleList;
+	protected ArrayList<Product> saleList;
 	protected double price;
 	protected Employee employee;
 	protected int day;
@@ -18,7 +18,7 @@ public class Transaction
 
 	/* This constructor method is responsible to receive some attributes as
 	 * parameters to initialize the Transaction's objects as self references */
-	public Transaction(ArrayList<Produto> saleList,
+	public Transaction(ArrayList<Product> saleList,
 	                 double price,
 	                 Employee employee,
 	                 int day,

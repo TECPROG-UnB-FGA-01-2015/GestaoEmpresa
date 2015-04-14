@@ -32,26 +32,24 @@ public class StockController
         this.productList = productList;
     }
     
-    // Method to insert an element which is a Product type
+    // Adds a product to the productList
     public void addProduct(Product product)
     {
         productList.add(product);
     }
    
-    // Method to remove an element which is a Product type
+    // Removes a product of the productList
     public void removeProduct(Product product)
     {
         productList.remove(product);
     }
     
-    /* Method to search an element which is a Product type by passing as a parameter
-     * a name
-     */
+    // Search for a product in the productList with a given name
     public Product searchProduct(String name, boolean search)
     {
         int i=0;
-        Product returned = null;
-        Product exactReturned = null;
+        Product returned = null; // Used to return the product matching the given name (not Case Sensitive)
+        Product exactReturned = null; // Used to return the product matching the given name (Case Sensitive)
         
         for(Product product:productList)
         {

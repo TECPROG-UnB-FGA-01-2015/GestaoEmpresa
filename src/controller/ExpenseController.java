@@ -9,7 +9,7 @@ import model.Expense;
 
 public class ExpenseController
 {
-    private ArrayList<Expense> expenseList;
+    private ArrayList<Expense> expenseList; // Maintains a list of spent of Expense object
 
     // Constructor to instance ControleDespesa with the attribute expenseList 
     public ExpenseController()

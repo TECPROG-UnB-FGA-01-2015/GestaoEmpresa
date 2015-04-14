@@ -1,6 +1,6 @@
 /**********************************************************
- * File: Despesa.java
- * Purpose: Hold all the attributes and methods of Despesa
+ * File: Expense.java
+ * Purpose: Hold all the attributes and methods of Expense
  *********************************************************/		
 package model;
 

@@ -1,6 +1,6 @@
 /**********************************************************
- * File: TelaDadosDespesas.java
- * Purpose: Responsible to get the Despesas' informations from user
+ * File: ExpenseDataView.java
+ * Purpose: Responsible to get the Expenses' informations from user
  *********************************************************/
 package view;
 
@@ -23,9 +23,9 @@ public class ExpenseDataView extends javax.swing.JFrame
     {
         initComponents();
         jTextField_Nome.requestFocus();
-        jComboBox_Dia.setSelectedIndex(Integer.parseInt(getDia())-1);
-        jComboBox_Mes.setSelectedIndex(Integer.parseInt(getMes())-1);
-        jComboBox_Ano.setSelectedItem(getAno());
+        jComboBox_Dia.setSelectedIndex(Integer.parseInt(getDay())-1);
+        jComboBox_Mes.setSelectedIndex(Integer.parseInt(getMonth())-1);
+        jComboBox_Ano.setSelectedItem(getYear());
     }
     
     // Method to show a message to user by passing as a parameter a String info
@@ -35,22 +35,22 @@ public class ExpenseDataView extends javax.swing.JFrame
         		INFORMATION_MESSAGE);
     }
     
-    // Method to return the content of attribute dia
-    public String getDia() 
+    // Method to return the content of attribute day
+    public String getDay() 
     { 
         dateFormat = new SimpleDateFormat("dd"); 
         return dateFormat.format(date);
     }
     
-    // Method to return the content of attribute mes
-    public String getMes() 
+    // Method to return the content of attribute month
+    public String getMonth() 
     { 
         dateFormat = new SimpleDateFormat("MM"); 
         return dateFormat.format(date);
     }
     
-    // Method to return the content of attribute ano
-    public String getAno()
+    // Method to return the content of attribute year
+    public String getYear()
     {
         dateFormat = new SimpleDateFormat("yyyy"); 
         return dateFormat.format(date);
@@ -197,16 +197,16 @@ public class ExpenseDataView extends javax.swing.JFrame
     private void jButton_SairActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_SairActionPerformed
       this.dispose();
-      new TelaDespesas().setVisible(true);
+      new ExpenseView().setVisible(true);
     }//GEN-LAST:event_jButton_SairActionPerformed
 
     private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt)
     {//GEN-FIRST:event_jButton_SalvarActionPerformed
-        String nome = jTextField_Nome.getText();
-        String descricao = jTextField_Descricao.getText();
-        int mes = jComboBox_Mes.getSelectedIndex()+1;
-        int ano = jComboBox_Ano.getSelectedIndex()+2013;
-        int dia = jComboBox_Dia.getSelectedIndex()+1;
+        String name = jTextField_Nome.getText();
+        String description = jTextField_Descricao.getText();
+        int month = jComboBox_Mes.getSelectedIndex()+1;
+        int year = jComboBox_Ano.getSelectedIndex()+2013;
+        int day = jComboBox_Dia.getSelectedIndex()+1;
         double valor = Double.parseDouble(jTextField_Valor.getText());
             
         if(jTextField_Nome.getText().equals(""))
@@ -221,10 +221,10 @@ public class ExpenseDataView extends javax.swing.JFrame
         
         else
         {
-            objectExpense = new Expense(nome, descricao, valor, dia, mes, ano);
+            objectExpense = new Expense(name, description, valor, day, month, year);
             objectExpenseController.addExpense(objectExpense);
             this.dispose();
-            new TelaDespesas().setVisible(true);
+            new ExpenseView().setVisible(true);
         }
     }//GEN-LAST:event_jButton_SalvarActionPerformed
 

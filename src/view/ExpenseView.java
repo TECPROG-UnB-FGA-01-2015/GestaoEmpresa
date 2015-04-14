@@ -1,6 +1,6 @@
 /**********************************************************
  * File: ExpenseView.java
- * Purpose: Responsible to show Despesa's informations
+ * Purpose: Responsible to show Expenses' informations
  *********************************************************/
 package view;
 

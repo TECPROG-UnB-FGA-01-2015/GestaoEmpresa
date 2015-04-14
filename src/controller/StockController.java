@@ -1,100 +1,100 @@
 /**********************************************************
- * File: ControleEstoque.java
- * Purpose: Contains the Produtos maintenance methods
+ * File: StockController.java
+ * Purpose: Contains the Products' maintenance methods
 **********************************************************/		
 package controller;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import model.Produto;
-import view.TelaEstoque;
+import model.Product;
+import view.StockView;
 
-public class ControleEstoque
+public class StockController
 {
-    TelaEstoque telaEstoque;
-    private ArrayList<Produto> listaProdutos;
+    StockView stockView;
+    private ArrayList<Product> productList;
     
-    // Constructor to instance ControleEstoque with the attribute listaProdutos
-    public ControleEstoque()
+    // Constructor to instance ControleEstoque with the attribute productList
+    public StockController()
     {
-        this.listaProdutos = new ArrayList<Produto>();
+        this.productList = new ArrayList<Product>();
     }
 
-    // Method to return the content of attribute listaProdutos
-    public ArrayList<Produto> getListaProdutos()
+    // Method to return the content of attribute productList
+    public ArrayList<Product> getProductList()
     {
-        return listaProdutos;
+        return productList;
     }
 
-    // Method to set a content on variable listaProdutos
-    public void setListaProdutos(ArrayList<Produto> listaProdutos)
+    // Method to set a content on variable productList
+    public void setProductList(ArrayList<Product> productList)
     {
-        this.listaProdutos = listaProdutos;
+        this.productList = productList;
     }
     
-    // Method to insert an element which is a Produto type
-    public void adicionarProduto(Produto p)
+    // Method to insert an element which is a Product type
+    public void addProduct(Product product)
     {
-        listaProdutos.add(p);
+        productList.add(product);
     }
    
-    // Method to remove an element which is a Produto type
-    public void removerProduto(Produto p)
+    // Method to remove an element which is a Product type
+    public void removeProduct(Product product)
     {
-        listaProdutos.remove(p);
+        productList.remove(product);
     }
     
-    /* Method to search an element which is a Produto type by passing as a parameter
-     * a nome
+    /* Method to search an element which is a Product type by passing as a parameter
+     * a name
      */
-    public Produto pesquisarProduto(String nome, boolean pesquisa)
+    public Product searchProduct(String name, boolean search)
     {
         int i=0;
-        Produto volta = null;
-        Produto voltaExata = null;
+        Product returned = null;
+        Product exactReturned = null;
         
-        for(Produto p:listaProdutos)
+        for(Product product:productList)
         {
-            if(p.getCodigo().toLowerCase().contains(nome.toLowerCase())&&pesquisa==
+            if(product.getCode().toLowerCase().contains(name.toLowerCase())&&search==
             		true)
             {
                 i++;
-                volta = p;
+                returned = product;
             }
             
-            if(p.getCodigo().equalsIgnoreCase(nome))
+            if(product.getCode().equalsIgnoreCase(name))
             {
-                voltaExata = p;
+                exactReturned = product;
             }
             
-            if(p.getDescricao().toLowerCase().contains(nome.toLowerCase())&&pesquisa==
+            if(product.getDescription().toLowerCase().contains(name.toLowerCase())&&search==
             		true)
             {
-                volta = p;
+                returned = product;
                 i++;
             }
             
-            if(p.getDescricao().equalsIgnoreCase(nome))
+            if(product.getDescription().equalsIgnoreCase(name))
             {
-                voltaExata = p;
+                exactReturned = product;
             }
             
         }
         
-        if(i>1&&pesquisa==true)
+        if(i>1&&search==true)
         {
-            JOptionPane.showMessageDialog(telaEstoque, "Mais de um resultado"
+            JOptionPane.showMessageDialog(stockView, "Mais de um resultado"
             		+ "encontrado","Atenção" ,JOptionPane.INFORMATION_MESSAGE);
         }
         
-        if(voltaExata != null)
+        if(exactReturned != null)
         {
-            return voltaExata;
+            return exactReturned;
         }
         
-        else if(volta != null)
+        else if(returned != null)
         {
-            return volta;
+            return returned;
         }
         
         return null;

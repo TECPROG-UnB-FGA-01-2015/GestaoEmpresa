@@ -1,6 +1,6 @@
 /**********************************************************
- * File: ControleDespesa.java
- * Purpose: Contains the Despesa maintenance methods
+ * File: ExpenseController.java
+ * Purpose: Contains the Expense maintenance methods
 **********************************************************/
 package controller;
 

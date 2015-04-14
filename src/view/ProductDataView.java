@@ -198,11 +198,12 @@ public class ProductDataView extends javax.swing.JFrame
         JOptionPane.showMessageDialog(this, info,"Atenção" ,JOptionPane.INFORMATION_MESSAGE);
     }
     
-    // Method to add one more on the attribute code if it would be a new Product
+    // Method to add informations on the Product list
     private void preencherCodigo()
     {
         if(newProduct==true)
         {
+        	// Variable to receive a list of Products
             ArrayList<Product> productList = objectStockController.getProductList();
             if(productList.isEmpty())
             {

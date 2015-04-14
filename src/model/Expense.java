@@ -6,12 +6,12 @@ package model;
 
 public class Expense
 {
-    protected String name;
-    protected String description;
-    protected double value;
-    protected int day;
-    protected int month;
-    protected int year;
+    protected String name; // Name of Expense object
+    protected String description; // Description of Expense object
+    protected double value; // Value of Expense object
+    protected int day; // Day of Expense object (only numbers; 1<day<=31)
+    protected int month; // Month of Expense object (only numbers; 1<day<=12)
+    protected int year; // Year of Expense object (only number; 0<year)
     
     /* Constructor to receive all the attributes as parameters and initialize the
      * object Expense*/

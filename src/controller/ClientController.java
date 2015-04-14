@@ -68,7 +68,10 @@ public class ClientController
         {
             return returned;
         }
-        return null;
+        else
+        {
+        	return null;
+        }
     }
     
 }

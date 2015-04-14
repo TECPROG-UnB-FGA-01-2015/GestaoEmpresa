@@ -6,11 +6,11 @@ package model;
 
 public class Product
 {
-    private String code;
-    private String description;
-    private double purchasePrice;
-    private double sellingPrice;
-    private double quantity;
+    private String code; // Code of Produto object
+    private String description; // Description of Produto object
+    private double purchasePrice; // Purchase price of Produto object
+    private double sellingPrice;// Selling price of Produto object
+    private double quantity; // Quantity of Produto object (only numbers; quantity >=0)
 
     /* Constructor to receive all the attributes as parameters and initialize the
      * object Product*/

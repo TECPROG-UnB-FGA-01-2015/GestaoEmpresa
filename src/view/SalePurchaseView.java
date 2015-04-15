@@ -129,11 +129,11 @@ public class SalePurchaseView extends javax.swing.JFrame
 			editProduct = objectStockController.searchProduct(codeTable,
 			                                                 false);
 			productSale.setCode(editProduct.getCode());
-			productSale.setPrice(editProduct.getSellingPrice());
+			productSale.setSellingPrice(editProduct.getSellingPrice());
 			productSale.setQuantity(editProduct.getQuantity());
 			productSale.setDescription(editProduct.getDescription());
 			productPurchase.setCode(editProduct.getCode());
-			productPurchase.setPrice(editProduct.setPurchasePrice());
+			productPurchase.setPurchasePrice(editProduct.getPurchasePrice());
 			productPurchase.setQuantity(editProduct.getQuantity());
 			productPurchase.setDescription(editProduct.getDescription());
 			if (salePurchaseStatus == 0)

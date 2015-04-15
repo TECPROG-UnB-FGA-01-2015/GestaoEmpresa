@@ -23,19 +23,45 @@ import static view.SalePurchaseView.salePurchaseStatus;
 public class ContactDataView extends javax.swing.JFrame
 {
 
+	// Object from the ClientController Class that is instantiated to maintenance of the customer
 	static ClientController objectClientController = new ClientController();
+	
+    // Object from the SupplierController Class that is instantiated to maintenance of the supplier
 	static SupplierController objectSupplierController = new SupplierController();
+	
+	// Object from the EmployeeController Class that is instantiated to maintenance of the employee
 	static EmployeeController objectEmployeeController = new EmployeeController();
-	EnterpriseManagement principal;
+	
+	EnterpriseManagement principal; // Object from the GestãoEmpresa Class that instantiates the main view
+	
+	// Object from the PhysicalClient Class that  is instantiated to receives the information of the customer
 	PhysicalClient objectPhysicalClient;
+	
+	// Object from the JuridicalClient Class that  is instantiated to receives the information of the customer
 	JuridicalClient objectJuridicalClient;
+	
+	// Object from the PhysicalSupplier Class that  is instantiated to receives the information of the supplier
 	PhysicalSupplier objectPhysicalSupplier;
+	
+	// Object from the JuridicalSupplier Class that  is instantiated to receives the information of the supplier
 	JuridicalSupplier objectJuridicalSupplier;
+	
+	// Object from the Employee Class that  is instantiated to receives the information of the employee
 	Employee objectEmployee;
+	
+	// Object from the PhysicalClient Class that  is instantiated to receive and update the information of the customer
 	PhysicalClient editPhysicalClient;
+	
+	// Object from the JuridicalClient Class that  is instantiated to receive and update the information of the customer
 	JuridicalClient editJuridicalClient;
+	
+	// Object from the PhysicalSupplier Class that  is instantiated to receive and update the information of the supplier
 	PhysicalSupplier editPhysicalSupplier;
+	
+	// Object from the JuridicalSupplier Class that  is instantiated to receive and update the information of the supplier
 	JuridicalSupplier editJuridicalSupplier;
+	
+	// Object from the Employee Class that  is instantiated to receive and update the information of the employee
 	Employee editEmployee;
 
 	// Method to display a warning message to the user
@@ -470,19 +496,46 @@ public class ContactDataView extends javax.swing.JFrame
 
 		else
 		{
+			// Receives the name info of the view's text field 
 			String name = jTextField_Nome.getText();
+			
+			// Receives the telephone info of the view's text field 
 			String telephone = jTextField_Telefone.getText();
+			
+			// Receives the cellphone info of the view's text field 
 			String cellphone = jTextField_Celular.getText();
+			
+			// Receives the cpf or cnpj info of the view's text field 
 			String cpfCnpj = jTextField_CpfCnpj.getText();
+			
+			// Receives the rg or corporate name info of the view's text field 
 			String rgSocialReason = jTextField_RgRazaoSocial.getText();
+			
+			// Receives the patio info of the view's text field 
 			String patio = jTextField_Logradouro.getText();
+			
+			// Receives the number info of the view's text field 
 			String number = jTextField_Numero.getText();
+			
+			// Receives the city info of the view's text field 
 			String city = jTextField_Cidade.getText();
+			
+			// Receives the state info of the view's text field 
 			String state = jTextField_Estado.getText();
+			
+			// Receives the country info of the view's text field 
 			String country = jTextField_Pais.getText();
+			
+			// Receives the complement info of the view's text field 
 			String complement = jTextField_Complemento.getText();
+			
+			// Receives the office info of the view's text field 
 			String office = jTextField_Cargo.getText();
+			
+			// Receives the salary info of the view's text field 
 			double salary = Double.parseDouble(jTextField_Salario.getText());
+			
+			// Object from the Address Class that  is instantiated to receives the information of the address
 			Address objectAddress = new Address(patio, number, city, state, country, complement);
 
 			if(ContactView.editMode == false)

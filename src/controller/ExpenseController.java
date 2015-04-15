@@ -46,6 +46,7 @@ public class ExpenseController
      */
     public Expense searchExpense(String name)
     {
+    	// Search for the expense
         for(Expense objectExpense: expenseList)
         {
             if(objectExpense.getName().equalsIgnoreCase(name))

@@ -51,6 +51,7 @@ public class StockController
         Product returned = null; // Used to return the product matching the given name (not Case Sensitive)
         Product exactReturned = null; // Used to return the product matching the given name (Case Sensitive)
         
+        // Search for the employee
         for(Product product:productList)
         {
             if(product.getCode().toLowerCase().contains(name.toLowerCase())&&search==

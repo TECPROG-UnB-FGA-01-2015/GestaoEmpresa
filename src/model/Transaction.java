@@ -9,21 +9,21 @@ import java.util.ArrayList;
 
 public class Transaction
 {
-	protected ArrayList<Product> saleList;
-	protected double price;
-	protected Employee employee;
-	protected int day;
-	protected int month;
-	protected int year;
+	protected ArrayList<Product> saleList;  // Stores and protects the Product's sale list
+	protected double price; // Stores and protects the Transaction's price from a Product Purchase/Sale
+	protected Employee employee; // Stores and protects the employee object from the Employee' class
+	protected int day; // Stores and protects the Transaction's day from a Product Purchase/Sale
+	protected int month; // Stores and protects the Transaction's month from a Product Purchase/Sale
+	protected int year; // Stores and protects the Transaction's year from a Product Purchase/Sale
 
 	/* This constructor method is responsible to receive some attributes as
 	 * parameters to initialize the Transaction's objects as self references */
-	public Transaction(ArrayList<Product> saleList,
-	                 double price,
-	                 Employee employee,
-	                 int day,
-	                 int month,
-	                 int year)
+	public Transaction(ArrayList<Product> saleList,  // Stores the Product's sale list
+	                 double price, // Stores the Transaction's price  from a Product Purchase/Sale
+	                 Employee employee, // Stores the employee object from the Employee' class
+	                 int day, // Stores the Transaction's day from a Product Purchase/Sale
+	                 int month, // Stores the Transaction's month from a Product Purchase/Sale
+	                 int year) // Stores the Transaction's year from a Product Purchase/Sale
 	{
 		this.saleList = saleList;
 		this.price = price;

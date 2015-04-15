@@ -28,58 +28,56 @@ import static view.StockView.tableDescription;
 public class SalePurchaseView extends javax.swing.JFrame
 {
 
-	// Variables declaration (do not modify) - GEN-BEGIN:variables
-	private javax.swing.JButton jButton_addProduct;
-	private javax.swing.JButton jButton_exitScreen;
-	private javax.swing.JButton jButton_finishForm;
-	private javax.swing.JButton jButton_searchClientSupplier;
-	private javax.swing.JButton jButton_searchEmployee;
-	private javax.swing.JButton jButton_searchProduct;
-	private javax.swing.JButton jButton_removeProduct;
-	private javax.swing.JComboBox jComboBox_showSalePurchase;
-	private javax.swing.JLabel jLabel_showClientWord;
-	private javax.swing.JLabel jLabel_showSupplierWord;
-	private javax.swing.JLabel jLabel_showProductWord;
-	private javax.swing.JLabel jLabel_showQuantityWord;
-	private javax.swing.JLabel jLabel_showPriceWord;
-	private javax.swing.JLabel jLabel_showDiscountWord;
-	private javax.swing.JLabel jLabel_showDiscountPercentageSymbol;
-	private javax.swing.JLabel jLabel_showMainScreenName;
-	private javax.swing.JLabel jLabel_showOperationName;
-	private javax.swing.JPanel jPanel_showEntireSalePurchaseScreen;
-	private javax.swing.JScrollPane jScrollPane_showSalePurchaseScreenScroll;
-	private javax.swing.JTable jTable_showPurchaseSaleInfoTable;
-	private javax.swing.JTextField jTextField_productCode;
-	private javax.swing.JTextField jTextField_productDiscount;
-	private javax.swing.JTextField jTextField_productDescription;
-	private javax.swing.JTextField jTextField_clientSupplierName;
-	private javax.swing.JTextField jTextField_employeeName;
-	private javax.swing.JTextField jTextField_productQuantity;
-	private javax.swing.JTextField jTextField_productValue;
-	// End of variables declaration - GEN-END:variables
+	private javax.swing.JButton jButton_addProduct; // Button responsible to add product
+	private javax.swing.JButton jButton_exitScreen; // Button responsible to exit Main Screen
+	private javax.swing.JButton jButton_finishForm; // Button responsible to Finish and Complete the Screen's form
+	private javax.swing.JButton jButton_searchClientSupplier; // Button responsible to Search Client and Supplier Names
+	private javax.swing.JButton jButton_searchEmployee; // Button responsible search Employee
+	private javax.swing.JButton jButton_searchProduct; // Button responsible search Employee
+	private javax.swing.JButton jButton_removeProduct; // Button responsible to remove product
+	private javax.swing.JComboBox jComboBox_showSalePurchase; // Button that shows a drop-down list with Buying/Sale option
+	private javax.swing.JLabel jLabel_showClientWord; // Shows the "Client" word with a chosen Sales option 
+	private javax.swing.JLabel jLabel_showSupplierWord; // Shows the "Supplier" word with a chosen Shopping option 
+	private javax.swing.JLabel jLabel_showProductWord; // Shows the "Product" word on the screen
+	private javax.swing.JLabel jLabel_showQuantityWord; // Shows the "Quantity" word on the screen
+	private javax.swing.JLabel jLabel_showPriceWord; // Shows the "Price" word on the screen
+	private javax.swing.JLabel jLabel_showDiscountWord; // Shows the "Discount" word on the screen
+	private javax.swing.JLabel jLabel_showDiscountPercentageSymbol; // Shows a discount's percentage symbol
+	private javax.swing.JLabel jLabel_showMainScreenName; // Shows the main screen name: "Sale Release"
+	private javax.swing.JLabel jLabel_showOperationName; // Shows the operation name: Buying or Selling
+	private javax.swing.JPanel jPanel_showEntireSalePurchaseScreen; // Shows the entire Sales Release's screen layout
+	private javax.swing.JScrollPane jScrollPane_showSalePurchaseScreenScroll; // Shows the Sales Release's screen scroll 
+	private javax.swing.JTable jTable_showPurchaseSaleInfoTable; // Shows a table with the Product's code, description, quantity, price and final price (with discount)
+	private javax.swing.JTextField jTextField_productCode; // Shows the product's code
+	private javax.swing.JTextField jTextField_productDiscount; // Shows the product's discount
+	private javax.swing.JTextField jTextField_productDescription; // Shows the product's description
+	private javax.swing.JTextField jTextField_clientSupplierName; // Shows Client's name with a chosen Selling option and the Supplier's name with a chosen Shopping option 
+	private javax.swing.JTextField jTextField_employeeName; // Shows Worker's name with both chosen options: Shopping/Selling
+	private javax.swing.JTextField jTextField_productQuantity; // Sets the initial product's quantity value (0)
+	private javax.swing.JTextField jTextField_productValue; // Shows the product's value
+	
+	EnterpriseManagement main; // Main object from EnterpriseManagement's class
+	public static int salePurchaseStatus = 0; // Shows the Client's name when option is 0 (Selling) and Supplier's name when option is 1 (Buying)
+	static boolean purchaseSaleMode = false; // Makes the user to exit the screen and to not write Client/Supplier's names
+	static boolean clientSupplierMode = false; // Enables the user to search registered Client/Supplier's names
+	static boolean employeeMode = false; // Gets the Supplier's info to continue the Shopping Products
+	static boolean productMode = false; // Gets the Product's code and description to buy or sell them
+	static TransactionController umControleTransacao = new TransactionController(); // Object from TransactionController's class
+	Product editProduct; // Object from Product class that edits the product's info
+	Product productSale = new Product(); // Object from Product class that adds products to sale
+	Product productPurchase = new Product(); // Object from Product class that adds products to buy
+	Sale objectSale; // Variable that adds a Product to Sell
+	Purchase objectPurchase; // Variable that adds a Product to Buy
+	double productValue = 0; // Multiplies the product's quantity and the product's value (without discount)
+	Date date = new Date(); // Stores the current date/month/year
+	DateFormat Day = new SimpleDateFormat("dd"); // Stores the day on the following format: dd
+	String day = Day.format(date); // Receives the current day to save on the transaction
+	DateFormat Month = new SimpleDateFormat("MM"); // Stores the month on the following format: mm
+	String month = Month.format(date); // Receives the current month to save on the transaction
+	DateFormat Year = new SimpleDateFormat("yyyy"); // Stores the year on the following format: yyyy
+	String year = Year.format(date); // Receives the current year to save on the transaction
 
-	EnterpriseManagement main;
-	public static int salePurchaseStatus = 0;
-	static boolean purchaseSaleMode = false;
-	static boolean clientSupplierMode = false;
-	static boolean employeeMode = false;
-	static boolean productMode = false;
-	static TransactionController umControleTransacao = new TransactionController();
-	Product editProduct;
-	Product productSale = new Product();
-	Product productPurchase = new Product();
-	Sale objectSale;
-	Purchase objectPurchase;
-	double productValue = 0;
-	Date date = new Date();
-	DateFormat Day = new SimpleDateFormat("dd");
-	String day = Day.format(date);
-	DateFormat Month = new SimpleDateFormat("MM");
-	String month = Month.format(date);
-	DateFormat Year = new SimpleDateFormat("yyyy");
-	String year = Year.format(date);
-
-	static ArrayList<Product> productTableList = new ArrayList<Product>();
+	static ArrayList<Product> productTableList = new ArrayList<Product>(); // Stores the Product's info in a Product's table class
 
 	// This method is responsible to show a specific info as a Text Box
 	public void showInfo(String info)

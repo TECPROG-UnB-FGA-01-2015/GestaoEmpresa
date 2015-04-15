@@ -15,19 +15,16 @@ import static view.SalePurchaseView.umControleTransacao;
 public class SalePurchaseHistoricView extends javax.swing.JFrame
 {
 
-	private int salePurchaseStatus = 0;
-	Sale objectSale;
-	Purchase objectPurchase;
+	private int salePurchaseStatus = 0; // Shows the Client's name when option is 0 (Selling) and Supplier's name when option is 1 (Buying)
+	Sale objectSale; // Variable that shows Client's name, Worker's name, Transaction value and Sale Product Date
+	Purchase objectPurchase; // Variable that shows Supplier's name, Worker's name, Transaction value and Shopping Product Date
 
-	// Variables declaration (do not modify) - GEN-BEGIN:variables
-	private javax.swing.JButton jButton_exitScreen;
-	private javax.swing.JComboBox jComboBox_showSalePurchase;
-	private javax.swing.JLabel jLabel_showSalePurchaseHistoricWord;
-	private javax.swing.JPanel jPanel_showEntireHistoricScreen;
-	private javax.swing.JScrollPane jScrollPane_showSalePurchaseHistoricScreenScroll;
-	private javax.swing.JTable jTable_showPurchaseSaleHistoricInfoTable;
-
-	// End of variables declaration - GEN-END:variables
+	private javax.swing.JButton jButton_exitScreen; // Button that exit the Historic Buying/Selling Products Screen
+	private javax.swing.JComboBox jComboBox_showSalePurchase; // Button that shows a drop-down list with Historic Buying/Sale option
+	private javax.swing.JLabel jLabel_showSalePurchaseHistoricWord; // Shows the "Purchase/Sales Historic" word on the screen
+	private javax.swing.JPanel jPanel_showEntireHistoricScreen; // Shows the entire Sales Historic's screen layout
+	private javax.swing.JScrollPane jScrollPane_showSalePurchaseHistoricScreenScroll; // Shows the Sales Historic's screen scroll 
+	private javax.swing.JTable jTable_showPurchaseSaleHistoricInfoTable; // Shows a table with the Sales Historic's product code, description, quantity, price and final price (with/without discount)
 
 	/* This method is responsible to load Shopping/Selling list on the GUI
 	 * (Graphical User Interface) screen */

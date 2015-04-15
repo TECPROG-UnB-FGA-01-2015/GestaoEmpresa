@@ -14,16 +14,16 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Client;
 import model.Purchase;
-import model.Despesa;
+import model.Expense;
 import model.Supplier;
 import model.Employee;
-import model.Produto;
+import model.Product;
 import model.Sale;
 import static view.ContactView.nameClientSupplier;
 import static view.ContactView.nameEmployee;
-import static view.TelaDadosProdutos.umControleEstoque;
-import static view.TelaEstoque.codigoTabela;
-import static view.TelaEstoque.descricaoTabela;
+import static view.ProductDataView.objectStockController;
+import static view.StockView.codeTable;
+import static view.StockView.tableDescription;
 
 public class SalePurchaseView extends javax.swing.JFrame
 {
@@ -65,9 +65,9 @@ public class SalePurchaseView extends javax.swing.JFrame
 	static boolean employeeMode = false;
 	static boolean productMode = false;
 	static TransactionController umControleTransacao = new TransactionController();
-	Produto editProduct;
-	Produto productSale = new Produto();
-	Produto productPurchase = new Produto();
+	Product editProduct;
+	Product productSale = new Product();
+	Product productPurchase = new Product();
 	Sale objectSale;
 	Purchase objectPurchase;
 	double productValue = 0;
@@ -79,7 +79,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 	DateFormat Year = new SimpleDateFormat("yyyy");
 	String year = Year.format(date);
 
-	static ArrayList<Produto> productTableList = new ArrayList<Produto>();
+	static ArrayList<Product> productTableList = new ArrayList<Product>();
 
 	// This method is responsible to show a specific info as a Text Box
 	public void showInfo(String info)
@@ -122,29 +122,29 @@ public class SalePurchaseView extends javax.swing.JFrame
 		{
 			// Nothing to Do
 		}
-		if (TelaEstoque.returnProduto == true)
+		if (StockView.returnProduct == true)
 		{
-			jTextField_productCode.setText(codigoTabela);
-			jTextField_productDescription.setText(descricaoTabela);
-			editProduct = umControleEstoque.pesquisarProduto(codigoTabela,
+			jTextField_productCode.setText(codeTable);
+			jTextField_productDescription.setText(tableDescription);
+			editProduct = objectStockController.searchProduct(codeTable,
 			                                                 false);
-			productSale.setCodigo(editProduct.getCodigo());
-			productSale.setPreco(editProduct.getPrecoVenda());
-			productSale.setQuantidade(editProduct.getQuantidade());
-			productSale.setDescricao(editProduct.getDescricao());
-			productPurchase.setCodigo(editProduct.getCodigo());
-			productPurchase.setPreco(editProduct.getPrecoCompra());
-			productPurchase.setQuantidade(editProduct.getQuantidade());
-			productPurchase.setDescricao(editProduct.getDescricao());
+			productSale.setCode(editProduct.getCode());
+			productSale.setPrice(editProduct.getSellingPrice());
+			productSale.setQuantity(editProduct.getQuantity());
+			productSale.setDescription(editProduct.getDescription());
+			productPurchase.setCode(editProduct.getCode());
+			productPurchase.setPrice(editProduct.setPurchasePrice());
+			productPurchase.setQuantity(editProduct.getQuantity());
+			productPurchase.setDescription(editProduct.getDescription());
 			if (salePurchaseStatus == 0)
 			{
 				jTextField_productValue.setText(Double.toString(editProduct
-				        .getPrecoVenda()));
+				        .getSellingPrice()));
 			}
 			else if (salePurchaseStatus == 1)
 			{
 				jTextField_productValue.setText(Double.toString(editProduct
-				        .getPrecoCompra()));
+				        .getPurchasePrice()));
 			jTextField_productQuantity.setEnabled(true);
 			}
 			if (salePurchaseStatus == 0)
@@ -171,8 +171,8 @@ public class SalePurchaseView extends javax.swing.JFrame
 		}
 		if (productMode == true)
 		{
-			jTextField_productCode.setText(codigoTabela);
-			jTextField_productDescription.setText(descricaoTabela);
+			jTextField_productCode.setText(codeTable);
+			jTextField_productDescription.setText(tableDescription);
 		}
 		else
 		{
@@ -632,25 +632,25 @@ public class SalePurchaseView extends javax.swing.JFrame
 		productValue = 0;
 		DefaultTableModel model = (DefaultTableModel) jTable_showPurchaseSaleInfoTable.getModel();
 		model.setRowCount(0);
-		for (Produto p : productTableList)
+		for (Product p : productTableList)
 		{
 			if (salePurchaseStatus == 0)
 			{
 				model.addRow(new String[]
-				{ p.getCodigo(), p.getDescricao(),
-				        Double.toString(p.getQuantidade()),
-				        Double.toString(p.getPrecoVenda()),
-				        Double.toString(p.getPrecoVenda() * p.getQuantidade()) });
-				productValue = productValue + p.getPrecoVenda() * p.getQuantidade();
+				{ p.getCode(), p.getDescription(),
+				        Double.toString(p.getQuantity()),
+				        Double.toString(p.getSellingPrice()),
+				        Double.toString(p.getSellingPrice() * p.getQuantity()) });
+				productValue = productValue + p.getSellingPrice() * p.getQuantity();
 			}
 			else if (salePurchaseStatus == 1)
 			{
 				model.addRow(new String[]
-				{ p.getCodigo(), p.getDescricao(),
-				        Double.toString(p.getQuantidade()),
-				        Double.toString(p.getPrecoCompra()),
-				        Double.toString(p.getPrecoCompra() * p.getQuantidade()) });
-				productValue = productValue + p.getPrecoCompra() * p.getQuantidade();
+				{ p.getCode(), p.getDescription(),
+				        Double.toString(p.getQuantity()),
+				        Double.toString(p.getPurchasePrice()),
+				        Double.toString(p.getPurchasePrice() * p.getQuantity()) });
+				productValue = productValue + p.getPurchasePrice() * p.getQuantity();
 			}
 		}
 		model.addRow(new String[]
@@ -661,7 +661,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 	// This method is responsible to confirm the Screen's Cancel Button Action
 	private void jButton_exitScreenActionPerformed(java.awt.event.ActionEvent evt)
 	{
-		TelaEstoque.returnProduto = false;
+		StockView.returnProduct = false;
 		purchaseSaleMode = false;
 		this.dispose();
 	}
@@ -767,28 +767,28 @@ public class SalePurchaseView extends javax.swing.JFrame
 
 		else
 		{
-			for (Produto p : productTableList)
+			for (Product p : productTableList)
 			{
 				if (salePurchaseStatus == 0)
 				{
-					Produto f = umControleEstoque.pesquisarProduto(p
-					        .getCodigo(), false);
-					f.setQuantidade(f.getQuantidade() - p.getQuantidade());
+					Product f = objectStockController.searchProduct(p
+					        .getCode(), false);
+					f.setQuantity(f.getQuantity() - p.getQuantity());
 				}
 				else if (salePurchaseStatus == 1)
 				{
-					Produto f = umControleEstoque.pesquisarProduto(p
-					        .getCodigo(), false);
-					f.setQuantidade(f.getQuantidade() + p.getQuantidade());
+					Product f = objectStockController.searchProduct(p
+					        .getCode(), false);
+					f.setQuantity(f.getQuantity() + p.getQuantity());
 				}
 			}
 
 			if (salePurchaseStatus == 0)
 			{
-				Client c = TelaDadosContatos.umControleCliente
-				        .pesquisarCliente(nameClientSupplier, false);
-				Employee f = TelaDadosContatos.umControleFuncionario
-				        .pesquisarFuncionario(nameEmployee, false);
+				Client c = ContactDataView.objectClientController
+				        .searchClient(nameClientSupplier, false);
+				Employee f = ContactDataView.objectEmployeeController
+				        .searchEmployee(nameEmployee, false);
 				objectSale = new Sale(c,
 				                   productTableList,
 				                     productValue,
@@ -802,10 +802,10 @@ public class SalePurchaseView extends javax.swing.JFrame
 
 			else if (salePurchaseStatus == 1)
 			{
-				Supplier c = TelaDadosContatos.umControleFornecedor
-				        .pesquisarFornecedor(nameClientSupplier, false);
-				Employee f = TelaDadosContatos.umControleFuncionario
-				        .pesquisarFuncionario(nameEmployee, false);
+				Supplier c = ContactDataView.objectSupplierController
+				        .searchSupplier(nameClientSupplier, false);
+				Employee f = ContactDataView.objectEmployeeController
+				        .searchEmployee(nameEmployee, false);
 				objectPurchase = new Purchase(c,
 				                           productTableList,
 				                       productValue,
@@ -815,21 +815,21 @@ public class SalePurchaseView extends javax.swing.JFrame
 				                       Integer.parseInt(year));
 				umControleTransacao.addSale(objectPurchase);
 
-				Despesa despesa = new Despesa("Compra de Produto do Fornecedor'"
+				Expense expenseInfo = new Expense("Compra de Produto do Fornecedor'"
 				                                      + c.getName() + "'",
 				                              null,
 				                              productValue,
 				                              Integer.parseInt(day),
 				                              Integer.parseInt(month),
 				                              Integer.parseInt(year));
-				TelaDadosDespesas.umControleDespesa.adicionarGasto(despesa);
+				ExpenseDataView.objectExpenseController.addExpense(expenseInfo);
 			}
 
 			showInfo("Operação realizada com sucesso!");
 			this.dispose();
 			employeeMode = false;
 			clientSupplierMode = false;
-			TelaEstoque.returnProduto = false;
+			StockView.returnProduct = false;
 			ContactView.returnEmployee = false;
 			ContactView.returnClientSupplier = false;
 			purchaseSaleMode = false;
@@ -844,7 +844,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 	{
 		purchaseSaleMode = true;
 		productMode = true;
-		new TelaEstoque().setVisible(true);
+		new StockView().setVisible(true);
 		this.dispose();
 	}
 
@@ -853,8 +853,8 @@ public class SalePurchaseView extends javax.swing.JFrame
 	        java.awt.event.ActionEvent evt)
 	{
 		int verifyAddedProduct = 0;
-		for (Produto s : productTableList)
-			if (s.getCodigo().equalsIgnoreCase(productSale.getCodigo()))
+		for (Product s : productTableList)
+			if (s.getCode().equalsIgnoreCase(productSale.getCode()))
 			{
 				verifyAddedProduct = 1;
 			}
@@ -869,15 +869,15 @@ public class SalePurchaseView extends javax.swing.JFrame
 			{
 				if (salePurchaseStatus == 0)
 				{
-					if (editProduct.getQuantidade() != 0)
+					if (editProduct.getQuantity() != 0)
 					{
 						if (Double.parseDouble(jTextField_productQuantity.getText()) <= editProduct
-						        .getQuantidade())
+						        .getQuantity())
 						{
-							productSale.setQuantidade(Double
+							productSale.setQuantity(Double
 							        .parseDouble(jTextField_productQuantity
 							                .getText()));
-							productSale.setPrecoVenda(Double
+							productSale.setSellingPrice(Double
 							        .parseDouble(jTextField_productValue.getText()));
 							productTableList.add(productSale);
 							loadList();
@@ -899,17 +899,17 @@ public class SalePurchaseView extends javax.swing.JFrame
 				{
 					if (verifyAddedProduct == 0)
 					{
-						productPurchase.setQuantidade(Double
+						productPurchase.setQuantity(Double
 						        .parseDouble(jTextField_productQuantity.getText()));
 						productTableList.add(productPurchase);
 						loadList();
 						jButton_addProduct.setEnabled(false);
 						jTextField_productQuantity.setEnabled(false);
 						jTextField_productDiscount.setEditable(false);
-						for (Produto s : productTableList)
+						for (Product s : productTableList)
 						{
-							if (s.getCodigo()
-							        .equalsIgnoreCase(productSale.getCodigo()))
+							if (s.getCode()
+							        .equalsIgnoreCase(productSale.getCode()))
 							{
 								verifyAddedProduct = 1;
 							}
@@ -947,9 +947,9 @@ public class SalePurchaseView extends javax.swing.JFrame
 		totalProductValue = (String) model.getValueAt(jTable_showPurchaseSaleInfoTable.getSelectedRow(), 1);
 		if (!"Total:".equals(totalProductValue))
 		{
-			for (Produto p : productTableList)
+			for (Product p : productTableList)
 			{
-				if (p.getCodigo().equalsIgnoreCase(nomeTabela))
+				if (p.getCode().equalsIgnoreCase(nomeTabela))
 				{
 					editProduct = p;
 				}
@@ -991,7 +991,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		}
 		else
 		{
-			double productValueWithDiscount = editProduct.getPrecoVenda();
+			double productValueWithDiscount = editProduct.getSellingPrice();
 			double productDiscount = Double.parseDouble(jTextField_productDiscount.getText());
 			jTextField_productValue.setText(Double.toString(productValueWithDiscount
 			        * (1 - productDiscount / 100)));

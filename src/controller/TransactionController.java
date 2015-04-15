@@ -11,7 +11,7 @@ import model.Transaction;
 
 public class TransactionController
 {
-	private ArrayList<Transaction> saleList;
+	private ArrayList<Transaction> saleList; // Stores the Transcation's sale list
 
 	/* This method is responsible to create a new ArrayList called saleList
 	 * from the model class Transaction */

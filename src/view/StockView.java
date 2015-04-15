@@ -17,11 +17,11 @@ import static view.SalePurchaseView.purchaseSaleMode;
 public class StockView extends javax.swing.JFrame
 {
 
-	EnterpriseManagement principal;
-	static boolean newProduct = true;
-	static String codeTable;
-	static String tableDescription;
-	static boolean returnProduct = false;
+	EnterpriseManagement principal; // Object from the EnterpriseManagement Class that instantiates the main view
+	static boolean newProduct = true; // Receives the boolean info
+	static String codeTable; // Receives an info of the view's table
+	static String tableDescription; // Receives an info of the view's table 
+	static boolean returnProduct = false; // Receives a list of products from the class StockController 
 
 	// Constructor to initialize components on StockView
 	public StockView()

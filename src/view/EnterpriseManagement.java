@@ -29,7 +29,7 @@ public class EnterpriseManagement extends javax.swing.JFrame
     public EnterpriseManagement()
     {
         initComponents();
-        objectProduct = new productList("Produto", null, 10.0, WIDTH, 0);
+        objectProduct = new Product("Produto", null, 10.0, WIDTH, 0);
         productList = new ArrayList<Product>();
         productList.add(objectProduct);
         objectClient = new Client("Cliente", null, null, null);

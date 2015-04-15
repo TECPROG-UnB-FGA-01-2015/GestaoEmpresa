@@ -314,7 +314,7 @@ public class ContactView extends javax.swing.JFrame
     {
         if(contactType == 0)
         {
-            listClient = objectClientController.getListaCliente();
+            listClient = objectClientController.getClientList();
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
             if (listClient != null)
@@ -341,7 +341,7 @@ public class ContactView extends javax.swing.JFrame
         }
         else if(contactType == 1)
         {
-            listSupplier = objectSupplierController.getListaFornecedor();
+            listSupplier = objectSupplierController.getSupplierList();
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
             for (Supplier supplier : listSupplier)
@@ -365,7 +365,7 @@ public class ContactView extends javax.swing.JFrame
         }
         else if(contactType == 2)
         {
-            listEmployee = objectEmployeeController.getListaEmployee();
+            listEmployee = objectEmployeeController.getEmployeeList();
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
             for (Employee employee : listEmployee)

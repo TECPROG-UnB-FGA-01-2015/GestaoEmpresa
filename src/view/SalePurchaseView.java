@@ -677,10 +677,10 @@ public class SalePurchaseView extends javax.swing.JFrame
 		else if (salePurchaseStatus == 1)
 		{
 			ContactView.contactType = 1;
+		}
 		ContactView.nameClientSupplier = null;
 		new ContactView().setVisible(true);
 		this.dispose();
-		}
 	}
 
 	/* This method is responsible to display the Client's name when the chosen

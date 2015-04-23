@@ -73,12 +73,20 @@ public class ContactView extends javax.swing.JFrame
             {
                 jComboBox1.setSelectedIndex(1);
             }   
+            else
+            {
+            	// Nothing to do
+            }
             jComboBox1.setEnabled(false);
             jButton_ConfirmarContato.setVisible(true);
         }
         if(SalePurchaseView.employeeMode == true)
         {
             jButton_AdicionarContato.setEnabled(false);
+        }
+        else
+        {
+        	// Nothing to do
         }
         jTextField_NomeBusca.requestFocus();
     }
@@ -337,6 +345,10 @@ public class ContactView extends javax.swing.JFrame
 	                    
 	            }
             }
+            else
+            {
+            	// Nothing to do
+            }
             jTable1.setModel(model);
         }
         else if(contactType == 1)
@@ -359,7 +371,11 @@ public class ContactView extends javax.swing.JFrame
                     model.addRow(new String[]{objectJuridicalSupplier.getName(), 
                         objectJuridicalSupplier.getCnpj(), objectJuridicalSupplier.getCellphone(), 
                         objectJuridicalSupplier.getTelephone(), "Jurídica"});
-                }   
+                }  
+                else
+                {
+                	// Nothing to do
+                }
             }
             jTable1.setModel(model);
         }
@@ -377,6 +393,10 @@ public class ContactView extends javax.swing.JFrame
             }
             jTable1.setModel(model);
         }
+        else
+        {
+        	// Nothing to do
+        }
     }
     
     // Cancels the client edit
@@ -386,6 +406,10 @@ public class ContactView extends javax.swing.JFrame
          if(clientSupplierMode == true)
          {
              new SalePurchaseView().setVisible(true);
+         }
+         else
+         {
+        	 // Nothing to do
          }
          clientSupplierMode = false;
          SalePurchaseView.employeeMode = false;
@@ -440,8 +464,21 @@ public class ContactView extends javax.swing.JFrame
                             contactSearch.getCnpj(), contactSearch.getCellphone(), 
                             contactSearch.getTelephone(), "Jurídica"});
                     }
+                    else
+                    {
+                    	// Nothing to do
+                    }
+                }
+                else
+                {
+                	// Nothing to do
                 }
             }
+            else
+            {
+            	// Nothing to do
+            }
+            
             if(objectSupplierController.searchSupplier(searchName,true) != null)
             {
                 if((purchaseSaleMode == false) || (purchaseSaleMode == true && contactType == 1))
@@ -472,8 +509,21 @@ public class ContactView extends javax.swing.JFrame
                             contactSearch.getCnpj(), contactSearch.getCellphone(), 
                             contactSearch.getTelephone(), "Jurídica"});
                     }
+                    else
+                    {
+                    	// Nothing to do
+                    }
+                }
+                else
+                {
+                	// Nothing to do
                 }
             }
+            else
+            {
+            	// Nothing to do
+            }
+            
             if(objectEmployeeController.searchEmployee(searchName,true)!=null)
             {
                 if((purchaseSaleMode == false) || (purchaseSaleMode == true && contactType == 2))
@@ -494,6 +544,14 @@ public class ContactView extends javax.swing.JFrame
                         buscaEmployee.getCpf(), buscaEmployee.getCellphone(), 
                         buscaEmployee.getTelephone(), "Física"});
                 }
+                else
+                {
+                	// Nothing to do
+                }
+            }
+            else
+            {
+            	// Nothing to do
             }
             
             if((objectClientController.searchClient(searchName,true) == null)
@@ -504,17 +562,31 @@ public class ContactView extends javax.swing.JFrame
                 jTextField_NomeBusca.setText(null);
                 jTextField_NomeBusca.requestFocus();
             }
+            else
+            {
+            	// Nothing to do
+            }
         }
         else
         {
             loadContactList();
             if(jTable1.getRowCount() == 0)
+            {
                 showMessage("A pesquisa não retornou nenhum resultado!");
+            }
+            else
+            {
+            	// Nothing to do
+            }
         }
 
         if(quantitySearchResult > 1)
         {
             showMessage("Mais de um resultado foi encontrando com o nome '" + searchName + "'" );
+        }
+        else
+        {
+        	// Nothing to do
         }
     }//GEN-LAST:event_jButton_PesquisarActionPerformed
 
@@ -532,6 +604,10 @@ public class ContactView extends javax.swing.JFrame
         else if(jComboBox1.getSelectedIndex() == 2)
         {
             contactType = 2;
+        }
+        else
+        {
+        	// Nothing to do
         }
         
         jButton_Editar.setEnabled(false);
@@ -578,6 +654,10 @@ public class ContactView extends javax.swing.JFrame
             {
                 newJuridicalClient = false;
             }
+            else
+            {
+            	// Nothing to do
+            }
         }
         else if(contactType == 1)
         {
@@ -589,10 +669,18 @@ public class ContactView extends javax.swing.JFrame
             {
                 newJuridicalSupplier = false;
             }
+            else
+            {
+            	// Nothing to do
+            }
         }
         else if(contactType == 2)
         {
             newEmployee = false;
+        }
+        else
+        {
+        	// Nothing to do
         }
         
         jButton_Editar.setEnabled(true);
@@ -625,6 +713,10 @@ public class ContactView extends javax.swing.JFrame
         {
             objectEmployeeController.removeEmployee(objectEmployeeController.searchEmployee(tableName, false));
         }
+        else
+        {
+        	// Nothing to do
+        }
         loadContactList();
         showMessage("Contato excluído com sucesso");
         jButton_Editar.setEnabled(false);
@@ -645,18 +737,38 @@ public class ContactView extends javax.swing.JFrame
         {
             returnClientSupplier = true;
         }
+        else
+        {
+        	// Nothing to do
+        }
+        
         if(SalePurchaseView.employeeMode == true)
         {
             returnEmployee = true;
+        }  
+        else
+        {
+        	// Nothing to do
         }
+        
         if(SalePurchaseView.clientSupplierMode == true && nameClientSupplier == null)
         {
             nameClientSupplier = tableName;
         }   
+        else
+        {
+        	// Nothing to do
+        }
+        
         if(SalePurchaseView.employeeMode == true && nameEmployee == null)
         {
             nameEmployee = tableName;
         }
+        else
+        {
+        	// Nothing to do
+        }
+        
         purchaseSaleMode = false;
         SalePurchaseView.clientSupplierMode = false;
         SalePurchaseView.employeeMode = false;
@@ -680,6 +792,10 @@ public class ContactView extends javax.swing.JFrame
                 {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+                }
+                else
+                {
+                	// Nothing to do
                 }
             }
         }

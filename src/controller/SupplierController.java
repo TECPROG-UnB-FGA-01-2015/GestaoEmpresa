@@ -64,15 +64,22 @@ public class SupplierController
 		 * Object from the Supplier Class that receives supplier's info and updates the list */
 		for(Supplier supplier : supplierList)
 		{
-			if((supplier.getName().equalsIgnoreCase(name)))
+			// Name of the supplier
+			String nameSupplier = supplier.getName();
+			
+			// Result of supplier name comparison
+			boolean nameSupplierEquals = nameSupplier.equalsIgnoreCase(name);
+			
+			// Changing the name of the supplier to lower case
+			String nameSupplierLowerCase = nameSupplier.toLowerCase();
+			
+			if(nameSupplierEquals == true)
 			{
 				exactReturned = supplier;
-				
 			}
-			else if((supplier.getName().toLowerCase().contains(name.toLowerCase())) && search == true)
+			else if(nameSupplierLowerCase.contains(name.toLowerCase()) && search == true)
 			{
 				returned = supplier;
-				
 			}
 			else
 			{

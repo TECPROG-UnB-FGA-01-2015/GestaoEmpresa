@@ -105,8 +105,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		jButton_removeProduct.setEnabled(false);
 		if (ContactView.returnClientSupplier == true)
 		{
-			jTextField_clientSupplierName
-			        .setText(ContactView.nameClientSupplier);
+			jTextField_clientSupplierName.setText(ContactView.nameClientSupplier);
 		}
 		else 
 		{
@@ -124,8 +123,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		{
 			jTextField_productCode.setText(codeTable);
 			jTextField_productDescription.setText(tableDescription);
-			editProduct = objectStockController.searchProduct(codeTable,
-			                                                 false);
+			editProduct = objectStockController.searchProduct(codeTable, false);
 			productSale.setCode(editProduct.getCode());
 			productSale.setSellingPrice(editProduct.getSellingPrice());
 			productSale.setQuantity(editProduct.getQuantity());
@@ -136,13 +134,11 @@ public class SalePurchaseView extends javax.swing.JFrame
 			productPurchase.setDescription(editProduct.getDescription());
 			if (salePurchaseStatus == 0)
 			{
-				jTextField_productValue.setText(Double.toString(editProduct
-				        .getSellingPrice()));
+				jTextField_productValue.setText(Double.toString(editProduct.getSellingPrice()));
 			}
 			else if (salePurchaseStatus == 1)
 			{
-				jTextField_productValue.setText(Double.toString(editProduct
-				        .getPurchasePrice()));
+				jTextField_productValue.setText(Double.toString(editProduct.getPurchasePrice()));
 			jTextField_productQuantity.setEnabled(true);
 			}
 			if (salePurchaseStatus == 0)

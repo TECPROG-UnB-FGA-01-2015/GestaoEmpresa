@@ -39,10 +39,8 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 	 * (date/month/year) */
 	private void loadList()
 	{
-		ArrayList<Transaction> transactionList = umControleTransacao
-		        .getSaleList();
-		DefaultTableModel model = (DefaultTableModel) jTable_showPurchaseSaleHistoricInfoTable
-		        .getModel();
+		ArrayList<Transaction> transactionList = umControleTransacao.getSaleList();
+		DefaultTableModel model = (DefaultTableModel) jTable_showPurchaseSaleHistoricInfoTable.getModel();
 		model.setRowCount(0);
 		for (Transaction t : transactionList)
 		{
@@ -51,13 +49,16 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 				if (t.getClass().equals(Sale.class))
 				{
 					objectSale = (Sale) t;
-					String data = Integer.toString(objectSale.getDay()) + "/"
-					        + Integer.toString(objectSale.getMonth()) + "/"
-					        + Integer.toString(objectSale.getYear());
+					String data = Integer.toString(objectSale.getDay()) + "/" + 
+								Integer.toString(objectSale.getMonth()) + "/" + Integer.toString(objectSale.getYear());
+					
 					model.addRow(new String[]
-					{ objectSale.getClient().getName(),
-							objectSale.getEmployee().getName(),
-					        Double.toString(objectSale.getPrice()), data });
+					{ 
+						objectSale.getClient().getName(),
+						objectSale.getEmployee().getName(),
+				        Double.toString(objectSale.getPrice()),
+				        data 
+					});
 				}
 				else
 				{
@@ -70,12 +71,14 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 				{
 					objectPurchase = (Purchase) t;
 					String data = Integer.toString(objectPurchase.getDay()) + "/"
-					        + Integer.toString(objectPurchase.getMonth()) + "/"
-					        + Integer.toString(objectPurchase.getYear());
+					        + Integer.toString(objectPurchase.getMonth()) + "/" + Integer.toString(objectPurchase.getYear());
 					model.addRow(new String[]
-					{ objectPurchase.getSupplier().getName(),
-							objectPurchase.getEmployee().getName(),
-					        Double.toString(objectPurchase.getPrice()), data });
+					{ 
+						objectPurchase.getSupplier().getName(),
+						objectPurchase.getEmployee().getName(),
+				        Double.toString(objectPurchase.getPrice()), 
+				        data 
+				    });
 				}
 				else
 				{
@@ -97,7 +100,6 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 	 * Shopping/Selling info on the screen */
 	private void initComponents()
 	{
-
 		jPanel_showEntireHistoricScreen = new javax.swing.JPanel();
 		jLabel_showSalePurchaseHistoricWord = new javax.swing.JLabel();
 		jScrollPane_showSalePurchaseHistoricScreenScroll = new javax.swing.JScrollPane();
@@ -277,8 +279,7 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 
 		try
 		{
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
-			        .getInstalledLookAndFeels())
+			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
 			{
 				if ("Nimbus".equals(info.getName()))
 				{
@@ -293,20 +294,15 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 		}
 		catch (ClassNotFoundException ex)
 		{
-			java.util.logging.Logger
-			        .getLogger(SalePurchaseHistoricView.class.getName())
-			        .log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(SalePurchaseHistoricView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		catch (InstantiationException ex)
 		{
-			java.util.logging.Logger
-			        .getLogger(SalePurchaseHistoricView.class.getName())
-			        .log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(SalePurchaseHistoricView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		catch (IllegalAccessException ex)
 		{
-			java.util.logging.Logger
-			        .getLogger(SalePurchaseHistoricView.class.getName())
+			java.util.logging.Logger.getLogger(SalePurchaseHistoricView.class.getName())
 			        .log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		catch (javax.swing.UnsupportedLookAndFeelException ex)

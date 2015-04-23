@@ -58,6 +58,10 @@ public class ClientController
             {
                 returned = client;
             }
+            else
+            {
+            	// Nothing to do
+            }
         }
         
         if(exactReturned != null)

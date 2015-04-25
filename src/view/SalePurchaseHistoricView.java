@@ -10,11 +10,10 @@ import javax.swing.table.DefaultTableModel;
 import model.Purchase;
 import model.Transaction;
 import model.Sale;
-import static view.SalePurchaseView.umControleTransacao;
+import static view.SalePurchaseView.objectTransactionController;
 
 public class SalePurchaseHistoricView extends javax.swing.JFrame
 {
-
 	private int salePurchaseStatus = 0; // Shows the Client's name when option is 0 (Selling) and Supplier's name when option is 1 (Buying)
 	Sale objectSale; // Variable that shows Client's name, Worker's name, Transaction value and Sale Product Date
 	Purchase objectPurchase; // Variable that shows Supplier's name, Worker's name, Transaction value and Shopping Product Date
@@ -39,7 +38,7 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 	 * (date/month/year) */
 	private void loadList()
 	{
-		ArrayList<Transaction> transactionList = umControleTransacao.getSaleList();
+		ArrayList<Transaction> transactionList = objectTransactionController.getSaleList();
 		DefaultTableModel model = (DefaultTableModel) jTable_showPurchaseSaleHistoricInfoTable.getModel();
 		model.setRowCount(0);
 		for (Transaction t : transactionList)
@@ -49,6 +48,7 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 				if (t.getClass().equals(Sale.class))
 				{
 					objectSale = (Sale) t;
+					
 					String data = Integer.toString(objectSale.getDay()) + "/" + 
 								Integer.toString(objectSale.getMonth()) + "/" + Integer.toString(objectSale.getYear());
 					
@@ -253,12 +253,13 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 	private void jComboBox_showSalePurchaseItemStateChanged(
 	        java.awt.event.ItemEvent evt)
 	{
-		if (jComboBox_showSalePurchase.getSelectedIndex() == 0)
+		int comboSalePurchaseStatus = jComboBox_showSalePurchase.getSelectedIndex();
+		if (comboSalePurchaseStatus == 0)
 		{
 			salePurchaseStatus = 0;
 			jLabel_showSalePurchaseHistoricWord.setText("Historico de Vendas");
 		}
-		else if (jComboBox_showSalePurchase.getSelectedIndex() == 1)
+		else if (comboSalePurchaseStatus == 1)
 		{
 			salePurchaseStatus = 1;
 			jLabel_showSalePurchaseHistoricWord.setText("Historico de Compras");
@@ -276,7 +277,6 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 	 */
 	public static void main(String args[])
 	{
-
 		try
 		{
 			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())

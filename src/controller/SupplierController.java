@@ -65,10 +65,10 @@ public class SupplierController
 		for(Supplier supplier : supplierList)
 		{
 			String nameSupplier = supplier.getName();
-			boolean nameSupplierComparison = nameSupplier.equalsIgnoreCase(name);
+			boolean nameSupplierEquals = nameSupplier.equalsIgnoreCase(name);
 			String nameSupplierLowerCase = nameSupplier.toLowerCase();
 			
-			if(nameSupplierComparison == true)
+			if(nameSupplierEquals == true)
 			{
 				exactReturned = supplier;
 			}

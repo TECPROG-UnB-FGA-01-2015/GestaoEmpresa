@@ -238,7 +238,10 @@ public class StockView extends javax.swing.JFrame
 	// Method to search for a product from the name
 	private void jButton_PesquisarProdutoActionPerformed(java.awt.event.ActionEvent evt)
 	{// GEN-FIRST:event_jButton_PesquisarProdutoActionPerformed
-		if("".equals(jTextField_NomeProduto.getText()))
+		/// Result of product name and jTextField_NomeProduto text comparison
+		boolean nameProductEquals = "".equals(jTextField_NomeProduto.getText());
+		
+		if(nameProductEquals == true)
 		{
 			loadList();
 			if(jTable2.getRowCount() == 0)
@@ -255,8 +258,10 @@ public class StockView extends javax.swing.JFrame
 			jTable2.setModel(model1);
 
 			ArrayList<Product> testList = objectStockController.getProductList();
+			
+			int sizeOfTestList = testList.size();
 
-			if(testList.size() == 0)
+			if(sizeOfTestList == 0)
 			{
 				showMessage("Nenhum produto fora cadastrado até o momento.");
 			}

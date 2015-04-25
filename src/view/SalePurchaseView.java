@@ -62,20 +62,20 @@ public class SalePurchaseView extends javax.swing.JFrame
 	static boolean clientSupplierMode = false; // Enables the user to search registered Client/Supplier's names
 	static boolean employeeMode = false; // Gets the Supplier's info to continue the Shopping Products
 	static boolean productMode = false; // Gets the Product's code and description to buy or sell them
-	static TransactionController umControleTransacao = new TransactionController(); // Object from TransactionController's class
+	static TransactionController objectTransactionController = new TransactionController(); // Object from TransactionController's class
 	Product editProduct; // Object from Product class that edits the product's info
 	Product productSale = new Product(); // Object from Product class that adds products to sale
 	Product productPurchase = new Product(); // Object from Product class that adds products to buy
 	Sale objectSale; // Variable that adds a Product to Sell
 	Purchase objectPurchase; // Variable that adds a Product to Buy
 	double productValue = 0; // Multiplies the product's quantity and the product's value (without discount)
-	Date date = new Date(); // Stores the current date/month/year
-	DateFormat Day = new SimpleDateFormat("dd"); // Stores the day on the following format: dd
-	String day = Day.format(date); // Receives the current day to save on the transaction
-	DateFormat Month = new SimpleDateFormat("MM"); // Stores the month on the following format: mm
-	String month = Month.format(date); // Receives the current month to save on the transaction
-	DateFormat Year = new SimpleDateFormat("yyyy"); // Stores the year on the following format: yyyy
-	String year = Year.format(date); // Receives the current year to save on the transaction
+	final Date CURRENT_DATE = new Date(); // Stores the current date/month/year
+	final DateFormat DAY = new SimpleDateFormat("dd"); // Stores the day on the following format: dd
+	final String CURRENT_DAY = DAY.format(CURRENT_DATE); // Receives the current day to save on the transaction
+	final DateFormat MONTH = new SimpleDateFormat("MM"); // Stores the month on the following format: mm
+	final String CURRENT_MONTH = MONTH.format(CURRENT_DATE); // Receives the current month to save on the transaction
+	final DateFormat YEAR = new SimpleDateFormat("yyyy"); // Stores the year on the following format: yyyy
+	final String CURRENT_YEAR = YEAR.format(CURRENT_DATE); // Receives the current year to save on the transaction
 
 	static ArrayList<Product> productTableList = new ArrayList<Product>(); // Stores the Product's info in a Product's table class
 
@@ -103,6 +103,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		jTextField_productDescription.setEnabled(false);
 		jButton_addProduct.setEnabled(false);
 		jButton_removeProduct.setEnabled(false);
+		
 		if (ContactView.returnClientSupplier == true)
 		{
 			jTextField_clientSupplierName.setText(ContactView.nameClientSupplier);
@@ -111,6 +112,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		{
 			// Nothing to Do
 		}
+		
 		if (ContactView.returnEmployee == true)
 		{
 			jTextField_employeeName.setText(ContactView.nameEmployee);
@@ -119,28 +121,54 @@ public class SalePurchaseView extends javax.swing.JFrame
 		{
 			// Nothing to Do
 		}
+		
 		if (StockView.returnProduct == true)
 		{
 			jTextField_productCode.setText(codeTable);
 			jTextField_productDescription.setText(tableDescription);
 			editProduct = objectStockController.searchProduct(codeTable, false);
-			productSale.setCode(editProduct.getCode());
-			productSale.setSellingPrice(editProduct.getSellingPrice());
-			productSale.setQuantity(editProduct.getQuantity());
-			productSale.setDescription(editProduct.getDescription());
-			productPurchase.setCode(editProduct.getCode());
-			productPurchase.setPurchasePrice(editProduct.getPurchasePrice());
-			productPurchase.setQuantity(editProduct.getQuantity());
-			productPurchase.setDescription(editProduct.getDescription());
+			
+			String saleProductCode = editProduct.getCode();
+			productSale.setCode(saleProductCode);
+			
+			double saleProductSellingPrice = editProduct.getSellingPrice();
+			productSale.setSellingPrice(saleProductSellingPrice);
+			
+			double saleProductQuantity = editProduct.getQuantity();
+			productSale.setQuantity(saleProductQuantity);
+			
+			String saleProductDescription = editProduct.getDescription();
+			productSale.setDescription(saleProductDescription);
+			
+			String purchaseProductCode = editProduct.getCode();
+			productPurchase.setCode(saleProductCode);
+			
+			double purchaseProductSellingPrice = editProduct.getSellingPrice();
+			productPurchase.setPurchasePrice(purchaseProductSellingPrice);
+			
+			double purchaseProductQuantity = editProduct.getQuantity();
+			productPurchase.setQuantity(purchaseProductQuantity);
+			
+			String purchaseProductDescription = editProduct.getDescription();
+			productPurchase.setDescription(purchaseProductDescription);
+			
 			if (salePurchaseStatus == 0)
 			{
-				jTextField_productValue.setText(Double.toString(editProduct.getSellingPrice()));
+				double productSellingPrice = editProduct.getSellingPrice();
+				String stringProductSellingPrice = Double.toString(productSellingPrice);
+				jTextField_productValue.setText(stringProductSellingPrice);
 			}
 			else if (salePurchaseStatus == 1)
 			{
-				jTextField_productValue.setText(Double.toString(editProduct.getPurchasePrice()));
-			jTextField_productQuantity.setEnabled(true);
+				double productSellingPrice = editProduct.getPurchasePrice();
+				String stringProductSellingPrice = Double.toString(productSellingPrice);
+				jTextField_productValue.setText(stringProductSellingPrice);
 			}
+			else
+			{
+				// Nothing to do
+			}
+			
 			if (salePurchaseStatus == 0)
 			{
 				jTextField_productDiscount.setEnabled(true);
@@ -148,13 +176,20 @@ public class SalePurchaseView extends javax.swing.JFrame
 			else if (salePurchaseStatus == 1)
 			{
 				jTextField_productDiscount.setEnabled(false);
-				jButton_addProduct.setEnabled(true);
 			}
+			else
+			{
+				// Nothing to do
+			}
+
+			jButton_addProduct.setEnabled(true);
+			jTextField_productQuantity.setEnabled(true);
 		}
 		else
 		{
 			// Nothing to Do
 		}
+		
 		if (salePurchaseStatus == 0)
 		{
 			jComboBox_showSalePurchase.setSelectedIndex(0);
@@ -163,6 +198,11 @@ public class SalePurchaseView extends javax.swing.JFrame
 		{
 			jComboBox_showSalePurchase.setSelectedIndex(1);
 		}
+		else
+		{
+			// Nothing to do
+		}
+		
 		if (productMode == true)
 		{
 			jTextField_productCode.setText(codeTable);
@@ -172,6 +212,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		{
 			// Nothing to Do
 		}
+		
 		if (clientSupplierMode == true)
 		{
 			jTextField_clientSupplierName.setText(nameClientSupplier);
@@ -180,6 +221,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		{
 			// Nothing to Do			
 		}
+		
 		if (employeeMode == true)
 		{
 			jTextField_employeeName.setText(nameEmployee);
@@ -189,6 +231,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		{
 			// Nothing to Do
 		}
+		
 		if (salePurchaseStatus == 0)
 		{
 			jLabel_showClientWord.setText("Cliente:");
@@ -196,6 +239,10 @@ public class SalePurchaseView extends javax.swing.JFrame
 		else if (salePurchaseStatus == 1)
 		{
 			jLabel_showClientWord.setText("Fornecedor:");
+		}
+		else
+		{
+			// Nothing to do
 		}
 	}
 
@@ -208,7 +255,6 @@ public class SalePurchaseView extends javax.swing.JFrame
 	 * Shopping/Selling info on the screen */
 	private void initComponents()
 	{
-
 		jPanel_showEntireSalePurchaseScreen = new javax.swing.JPanel();
 		jButton_exitScreen = new javax.swing.JButton();
 		jTextField_productValue = new javax.swing.JTextField();
@@ -626,29 +672,49 @@ public class SalePurchaseView extends javax.swing.JFrame
 		productValue = 0;
 		DefaultTableModel model = (DefaultTableModel) jTable_showPurchaseSaleInfoTable.getModel();
 		model.setRowCount(0);
-		for (Product p : productTableList)
+		for (Product product : productTableList)
 		{
 			if (salePurchaseStatus == 0)
 			{
 				model.addRow(new String[]
-				{ p.getCode(), p.getDescription(),
-				        Double.toString(p.getQuantity()),
-				        Double.toString(p.getSellingPrice()),
-				        Double.toString(p.getSellingPrice() * p.getQuantity()) });
-				productValue = productValue + p.getSellingPrice() * p.getQuantity();
+				{ 
+					product.getCode(), 
+					product.getDescription(),
+					Double.toString(product.getQuantity()),
+				    Double.toString(product.getSellingPrice()),
+				    Double.toString(product.getSellingPrice() * product.getQuantity()) 
+				});
+				
+				double productSellingPrice = product.getSellingPrice();
+				double productQuantity = product.getQuantity();
+				productValue = productValue + productSellingPrice * productQuantity;
 			}
 			else if (salePurchaseStatus == 1)
 			{
 				model.addRow(new String[]
-				{ p.getCode(), p.getDescription(),
-				        Double.toString(p.getQuantity()),
-				        Double.toString(p.getPurchasePrice()),
-				        Double.toString(p.getPurchasePrice() * p.getQuantity()) });
-				productValue = productValue + p.getPurchasePrice() * p.getQuantity();
+				{ 
+					product.getCode(), 
+					product.getDescription(),
+				    Double.toString(product.getQuantity()),
+				    Double.toString(product.getPurchasePrice()),
+				    Double.toString(product.getPurchasePrice() * product.getQuantity()) 
+				});
+				
+				double productPurchasePrice = product.getPurchasePrice();
+				double productQuantity = product.getQuantity();
+				productValue = productValue + productPurchasePrice * productQuantity;
+			}
+			else
+			{
+				// Nothing to do
 			}
 		}
+		
 		model.addRow(new String[]
-		{ "", "", "", "Total:", Double.toString(productValue) });
+		{ 
+			"", "", "", "Total:", Double.toString(productValue) 
+		});
+		
 		jTable_showPurchaseSaleInfoTable.setModel(model);
 	}
 
@@ -661,11 +727,11 @@ public class SalePurchaseView extends javax.swing.JFrame
 	}
 
 	// This method is responsible to confirm the Screen's Search Client/Provider Button Action
-	private void jButton_searchClientSupplierActionPerformed(
-	        java.awt.event.ActionEvent evt)
+	private void jButton_searchClientSupplierActionPerformed(java.awt.event.ActionEvent evt)
 	{
 		purchaseSaleMode = true;
 		clientSupplierMode = true;
+		
 		if (salePurchaseStatus == 0)
 		{
 			ContactView.contactType = 0;
@@ -674,6 +740,11 @@ public class SalePurchaseView extends javax.swing.JFrame
 		{
 			ContactView.contactType = 1;
 		}
+		else
+		{
+			// Nothing to do
+		}
+		
 		ContactView.nameClientSupplier = null;
 		new ContactView().setVisible(true);
 		this.dispose();
@@ -682,8 +753,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 	/* This method is responsible to display the Client's name when the chosen
 	 * operation was "Selling" and the Provider's name when the chosen operation
 	 * was "Shopping" */
-	private void jComboBox_showSalePurchaseItemStateChanged(
-	        java.awt.event.ItemEvent evt)
+	private void jComboBox_showSalePurchaseItemStateChanged(java.awt.event.ItemEvent evt)
 	{
 
 		if (salePurchaseStatus == 1)
@@ -701,7 +771,6 @@ public class SalePurchaseView extends javax.swing.JFrame
 				// Nothing to Do
 			}
 		}
-
 		else if (salePurchaseStatus == 0)
 		{
 			if (jComboBox_showSalePurchase.getSelectedIndex() == 1)
@@ -723,8 +792,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 	}
 
 	// This method is responsible to confirm the Screen's Search Provider Button Action
-	private void jButton_searchEmployeeActionPerformed(
-	        java.awt.event.ActionEvent evt)
+	private void jButton_searchEmployeeActionPerformed(java.awt.event.ActionEvent evt)
 	{
 		purchaseSaleMode = true;
 		employeeMode = true;
@@ -758,65 +826,54 @@ public class SalePurchaseView extends javax.swing.JFrame
 		{
 			showInfo("Inclua pelo menos um produto");
 		}
-
 		else
 		{
-			for (Product p : productTableList)
+			for (Product product : productTableList)
 			{
+				String productCode = product.getCode();
+				Product objectEditProduct = objectStockController.searchProduct(productCode, false);
+				
+				double editProductQuantity = objectEditProduct.getQuantity();
+				double productQuantity = product.getQuantity();
+				
 				if (salePurchaseStatus == 0)
 				{
-					Product f = objectStockController.searchProduct(p
-					        .getCode(), false);
-					f.setQuantity(f.getQuantity() - p.getQuantity());
+					objectEditProduct.setQuantity(editProductQuantity - productQuantity);
 				}
 				else if (salePurchaseStatus == 1)
 				{
-					Product f = objectStockController.searchProduct(p
-					        .getCode(), false);
-					f.setQuantity(f.getQuantity() + p.getQuantity());
+					objectEditProduct.setQuantity(editProductQuantity + productQuantity);
+				}
+				else
+				{
+					// Nothing to do
 				}
 			}
 
 			if (salePurchaseStatus == 0)
 			{
-				Client c = ContactDataView.objectClientController
-				        .searchClient(nameClientSupplier, false);
-				Employee f = ContactDataView.objectEmployeeController
-				        .searchEmployee(nameEmployee, false);
-				objectSale = new Sale(c,
-				                   productTableList,
-				                     productValue,
-				                     f,
-				                     Integer.parseInt(day),
-				                     Integer.parseInt(month),
-				                     Integer.parseInt(year));
-				umControleTransacao.addSale(objectSale);
-
+				Client client = ContactDataView.objectClientController.searchClient(nameClientSupplier, false);
+				Employee employee = ContactDataView.objectEmployeeController.searchEmployee(nameEmployee, false);
+				objectSale = new Sale(client, productTableList, productValue, employee, Integer.parseInt(CURRENT_DAY), 
+				                      Integer.parseInt(CURRENT_MONTH), Integer.parseInt(CURRENT_YEAR));
+				objectTransactionController.addSale(objectSale);
 			}
-
 			else if (salePurchaseStatus == 1)
 			{
-				Supplier c = ContactDataView.objectSupplierController
-				        .searchSupplier(nameClientSupplier, false);
-				Employee f = ContactDataView.objectEmployeeController
-				        .searchEmployee(nameEmployee, false);
-				objectPurchase = new Purchase(c,
-				                           productTableList,
-				                       productValue,
-				                       f,
-				                       Integer.parseInt(day),
-				                       Integer.parseInt(month),
-				                       Integer.parseInt(year));
-				umControleTransacao.addSale(objectPurchase);
+				Supplier c = ContactDataView.objectSupplierController.searchSupplier(nameClientSupplier, false);
+				Employee f = ContactDataView.objectEmployeeController.searchEmployee(nameEmployee, false);
+				objectPurchase = new Purchase(c, productTableList, productValue, f, Integer.parseInt(CURRENT_DAY),
+				                              Integer.parseInt(CURRENT_MONTH), Integer.parseInt(CURRENT_YEAR));
+				objectTransactionController.addSale(objectPurchase);
 
-				Expense expenseInfo = new Expense("Compra de Produto do Fornecedor'"
-				                                      + c.getName() + "'",
-				                              null,
-				                              productValue,
-				                              Integer.parseInt(day),
-				                              Integer.parseInt(month),
-				                              Integer.parseInt(year));
+				Expense expenseInfo = new Expense("Compra de Produto do Fornecedor'" + c.getName() + "'", null, productValue, 
+				                                  Integer.parseInt(CURRENT_DAY), Integer.parseInt(CURRENT_MONTH), Integer.parseInt(CURRENT_YEAR));
+				
 				ExpenseDataView.objectExpenseController.addExpense(expenseInfo);
+			}
+			else
+			{
+				// Nothing to do
 			}
 
 			showInfo("Operação realizada com sucesso!");
@@ -827,14 +884,11 @@ public class SalePurchaseView extends javax.swing.JFrame
 			ContactView.returnEmployee = false;
 			ContactView.returnClientSupplier = false;
 			purchaseSaleMode = false;
-
 		}
-
 	}
 
 	// This method is responsible to confirm the Screen's Search Product Button Action
-	private void jButton_searchProductActionPerformed(
-	        java.awt.event.ActionEvent evt)
+	private void jButton_searchProductActionPerformed(java.awt.event.ActionEvent evt)
 	{
 		purchaseSaleMode = true;
 		productMode = true;
@@ -843,11 +897,11 @@ public class SalePurchaseView extends javax.swing.JFrame
 	}
 
 	// This method is responsible to confirm the Screen's Add Product Button Action
-	private void jButton_addProductActionPerformed(
-	        java.awt.event.ActionEvent evt)
+	private void jButton_addProductActionPerformed(java.awt.event.ActionEvent evt)
 	{
 		int verifyAddedProduct = 0;
 		for (Product s : productTableList)
+		{
 			if (s.getCode().equalsIgnoreCase(productSale.getCode()))
 			{
 				verifyAddedProduct = 1;
@@ -856,23 +910,20 @@ public class SalePurchaseView extends javax.swing.JFrame
 			{
 				// Nothing to Do
 			}
+		}
+		
 		if (verifyAddedProduct == 0)
 		{
-			if (Double.parseDouble(jTextField_productQuantity.getText()) != 0.0
-			        && jTextField_productQuantity.getText() != "")
+			if (Double.parseDouble(jTextField_productQuantity.getText()) != 0.0 && jTextField_productQuantity.getText() != "")
 			{
 				if (salePurchaseStatus == 0)
 				{
 					if (editProduct.getQuantity() != 0)
 					{
-						if (Double.parseDouble(jTextField_productQuantity.getText()) <= editProduct
-						        .getQuantity())
+						if (Double.parseDouble(jTextField_productQuantity.getText()) <= editProduct.getQuantity())
 						{
-							productSale.setQuantity(Double
-							        .parseDouble(jTextField_productQuantity
-							                .getText()));
-							productSale.setSellingPrice(Double
-							        .parseDouble(jTextField_productValue.getText()));
+							productSale.setQuantity(Double.parseDouble(jTextField_productQuantity.getText()));
+							productSale.setSellingPrice(Double.parseDouble(jTextField_productValue.getText()));
 							productTableList.add(productSale);
 							loadList();
 							jButton_addProduct.setEnabled(false);
@@ -917,6 +968,10 @@ public class SalePurchaseView extends javax.swing.JFrame
 					{
 						showInfo("Produto já adicionado!");
 					}
+					else
+					{
+						// Nothing to do
+					}
 				}
 			}
 			else
@@ -936,9 +991,9 @@ public class SalePurchaseView extends javax.swing.JFrame
 	{
 		String totalProductValue = null;
 		DefaultTableModel model = (DefaultTableModel) jTable_showPurchaseSaleInfoTable.getModel();
-		String nomeTabela = (String) model.getValueAt(jTable_showPurchaseSaleInfoTable.getSelectedRow(),
-		                                              0);
+		String nomeTabela = (String) model.getValueAt(jTable_showPurchaseSaleInfoTable.getSelectedRow(),0);
 		totalProductValue = (String) model.getValueAt(jTable_showPurchaseSaleInfoTable.getSelectedRow(), 1);
+		
 		if (!"Total:".equals(totalProductValue))
 		{
 			for (Product p : productTableList)
@@ -947,6 +1002,10 @@ public class SalePurchaseView extends javax.swing.JFrame
 				{
 					editProduct = p;
 				}
+				else
+				{
+					// Nothing to do
+				}
 			}
 			jButton_removeProduct.setEnabled(true);
 		}
@@ -954,13 +1013,15 @@ public class SalePurchaseView extends javax.swing.JFrame
 		{
 			jButton_removeProduct.setEnabled(false);
 		}
+		else
+		{
+			// Nothing to do
+		}
 	}
 
 	// This method is responsible to confirm the Screen's Remove Product Button Action
-	private void jButton_removeProductActionPerformed(
-	        java.awt.event.ActionEvent evt)
+	private void jButton_removeProductActionPerformed(java.awt.event.ActionEvent evt)
 	{
-
 		productTableList.remove(editProduct);
 		loadList();
 		showInfo("Produto removido");
@@ -987,8 +1048,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		{
 			double productValueWithDiscount = editProduct.getSellingPrice();
 			double productDiscount = Double.parseDouble(jTextField_productDiscount.getText());
-			jTextField_productValue.setText(Double.toString(productValueWithDiscount
-			        * (1 - productDiscount / 100)));
+			jTextField_productValue.setText(Double.toString(productValueWithDiscount * (1 - productDiscount / 100)));
 		}
 	}
 
@@ -996,11 +1056,9 @@ public class SalePurchaseView extends javax.swing.JFrame
 	 * display all the Shopping/Selling list info with a log system */
 	public static void main(String args[])
 	{
-
 		try
 		{
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
-			        .getInstalledLookAndFeels())
+			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
 			{
 				if ("Nimbus".equals(info.getName()))
 				{
@@ -1039,5 +1097,4 @@ public class SalePurchaseView extends javax.swing.JFrame
 			}
 		});
 	}
-
 }

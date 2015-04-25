@@ -51,11 +51,21 @@ public class EmployeeController
         // Search for the employee 
         for(Employee employee: employeeList)
         {
-            if((employee.getName().equalsIgnoreCase(name)))
+        	
+        	// Variable to get the name of current employee
+        	String employeeName = employee.getName();
+        	
+        	// Variable to return the comparison of current employee name with the name parameter  
+        	boolean employeeNameEquals = employeeName.equalsIgnoreCase(name);
+        	
+        	// Variable to pass the employee name to lowercase
+        	String employeeNameToLowerCase = employeeName.toLowerCase();
+        	
+            if(employeeNameEquals == true)
             {
                 exactReturned = employee;
             }
-            else if((employee.getName().toLowerCase().contains(name.toLowerCase())) && ignoreCase == true)
+            else if((employeeNameToLowerCase.contains(name.toLowerCase())) && ignoreCase == true)
             {
                 returned = employee;
             }

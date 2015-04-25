@@ -13,6 +13,22 @@ import java.text.SimpleDateFormat;
 
 public class ExpenseDataView extends javax.swing.JFrame
 {
+	// Variables declaration of Buttons, Labels, ComboBox and TextFields
+    private javax.swing.JButton jButton_Sair;
+    private javax.swing.JButton jButton_Salvar;
+    private javax.swing.JComboBox jComboBox_Ano;
+    private javax.swing.JComboBox jComboBox_Dia;
+    private javax.swing.JComboBox jComboBox_Mes;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField jTextField_Descricao;
+    private javax.swing.JTextField jTextField_Nome;
+    private javax.swing.JTextField jTextField_Valor;
+    
     Expense objectExpense; // Expense type object
     Date date = new Date(); // Contains the date of an expense (dd/MM/yyyy)
     DateFormat dateFormat; // Gets the expense date on format of date
@@ -20,7 +36,7 @@ public class ExpenseDataView extends javax.swing.JFrame
     // ExpenseController type object
     static ExpenseController objectExpenseController = new ExpenseController();
     
-    // Constructor to initialize components on TelaDadosDespesas
+    // Constructor to initialize components on ExpenseDataView
     public ExpenseDataView()
     {
         initComponents();
@@ -59,7 +75,6 @@ public class ExpenseDataView extends javax.swing.JFrame
     }
     
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents()
     {
         jButton_Sair = new javax.swing.JButton();
@@ -194,16 +209,16 @@ public class ExpenseDataView extends javax.swing.JFrame
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
     private void jButton_SairActionPerformed(java.awt.event.ActionEvent evt)
-    {//GEN-FIRST:event_jButton_SairActionPerformed
+    {
       this.dispose();
       new ExpenseView().setVisible(true);
-    }//GEN-LAST:event_jButton_SairActionPerformed
+    }
 
     private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt)
-    {//GEN-FIRST:event_jButton_SalvarActionPerformed
+    {
         String name = jTextField_Nome.getText();
         String description = jTextField_Descricao.getText();
         int month = jComboBox_Mes.getSelectedIndex()+1;
@@ -228,18 +243,14 @@ public class ExpenseDataView extends javax.swing.JFrame
             this.dispose();
             new ExpenseView().setVisible(true);
         }
-    }//GEN-LAST:event_jButton_SalvarActionPerformed
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[])
     {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        
         try
         {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
@@ -267,8 +278,7 @@ public class ExpenseDataView extends javax.swing.JFrame
         catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ExpenseDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable()
         {
@@ -278,21 +288,5 @@ public class ExpenseDataView extends javax.swing.JFrame
             }
         });
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_Sair;
-    private javax.swing.JButton jButton_Salvar;
-    private javax.swing.JComboBox jComboBox_Ano;
-    private javax.swing.JComboBox jComboBox_Dia;
-    private javax.swing.JComboBox jComboBox_Mes;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField_Descricao;
-    private javax.swing.JTextField jTextField_Nome;
-    private javax.swing.JTextField jTextField_Valor;
-    // End of variables declaration//GEN-END:variables
+       
 }

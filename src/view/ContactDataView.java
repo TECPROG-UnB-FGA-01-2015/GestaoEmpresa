@@ -453,7 +453,13 @@ public class ContactDataView extends javax.swing.JFrame
 	// Method to enable the text fields according to the type of contact
 	private void jComboBox_TipoContatoItemStateChanged(java.awt.event.ItemEvent evt)
 	{// GEN-FIRST:event_jComboBox_TipoContatoItemStateChanged
-		if(jComboBox_TipoContato.getSelectedIndex() == 0f)
+		// Selected contact type on ComboBox
+		int selectedIndexContactTypeComboBox = jComboBox_TipoContato.getSelectedIndex();
+		
+		// String of selected contact type on ComboBox
+		String selectedItemContactTypeComboBox = (String) jComboBox_TipoContato.getSelectedItem();
+		
+		if(selectedIndexContactTypeComboBox == 0f)
 		{
 			jLabel6.setVisible(false);
 			jLabel7.setVisible(false);
@@ -463,7 +469,7 @@ public class ContactDataView extends javax.swing.JFrame
 			jComboBox_TipoPessoa.setSelectedIndex(0);
 			jComboBox_TipoPessoa.setSelectedItem("Pessoa Física");
 		}
-		else if(jComboBox_TipoContato.getSelectedItem() == "Fornecedor")
+		else if(selectedItemContactTypeComboBox == "Fornecedor")
 		{
 			jLabel6.setVisible(false);
 			jLabel7.setVisible(false);
@@ -473,7 +479,7 @@ public class ContactDataView extends javax.swing.JFrame
 			jComboBox_TipoPessoa.setSelectedIndex(1);
 			jComboBox_TipoPessoa.setSelectedItem("Pessoa Jurídica");
 		}
-		else if(jComboBox_TipoContato.getSelectedItem() == "Funcionário")
+		else if(selectedItemContactTypeComboBox == "Funcionário")
 		{
 			jLabel4.setText("CPF:");
 			jLabel5.setText("RG:");
@@ -540,47 +546,58 @@ public class ContactDataView extends javax.swing.JFrame
 
 			if(ContactView.editMode == false)
 			{
-				if(jComboBox_TipoContato.getSelectedIndex() == 0)
+				// Selected contact type on ComboBox
+				int selectedIndexContactTypeComboBox = jComboBox_TipoContato.getSelectedIndex();
+				
+				// Selected client type on ComboBox
+				int selectedIndexClientTypeComboBox = jComboBox_TipoPessoa.getSelectedIndex();
+				
+				if(selectedIndexContactTypeComboBox == 0)
 				{
 					if(jComboBox_TipoPessoa.getSelectedIndex() == 0)
 					{
 						objectPhysicalClient = new PhysicalClient(cpfCnpj, rgSocialReason, name, objectAddress, telephone, cellphone);
+						
 						if(objectClientController.searchClient(objectPhysicalClient.getName(), false) == null)
 							objectClientController.addClient(objectPhysicalClient);
 						else
 							exibirInformacao("Cliente já cadastrado!");
 					}
-					else if(jComboBox_TipoPessoa.getSelectedIndex() == 1)
+					else if(selectedIndexClientTypeComboBox == 1)
 					{
 						objectJuridicalClient = new JuridicalClient(cpfCnpj, rgSocialReason, name, objectAddress, telephone, cellphone);
+						
 						if(objectClientController.searchClient(objectJuridicalClient.getName(), false) == null)
 							objectClientController.addClient(objectJuridicalClient);
 						else
 							exibirInformacao("Cliente já cadastrado!");
 					}
 				}
-				else if(jComboBox_TipoContato.getSelectedIndex() == 1)
+				else if(selectedIndexContactTypeComboBox == 1)
 				{
-					if(jComboBox_TipoPessoa.getSelectedIndex() == 0)
+					if(selectedIndexClientTypeComboBox == 0)
 					{
 						objectPhysicalSupplier = new PhysicalSupplier(cpfCnpj, rgSocialReason, name, telephone, cellphone, null, objectAddress);
+
 						if(objectSupplierController.searchSupplier(objectPhysicalSupplier.getName(), false) == null)
 							objectSupplierController.addSupplier(objectPhysicalSupplier);
 						else
 							exibirInformacao("Fornecedor já cadastrado!");
 					}
-					else if(jComboBox_TipoPessoa.getSelectedIndex() == 1)
+					else if(selectedIndexClientTypeComboBox == 1)
 					{
 						objectJuridicalSupplier = new JuridicalSupplier(cpfCnpj, rgSocialReason, name, telephone, cellphone, null, objectAddress);
+
 						if(objectSupplierController.searchSupplier(objectJuridicalSupplier.getName(), false) == null)
 							objectSupplierController.addSupplier(objectJuridicalSupplier);
 						else
 							exibirInformacao("Fornecedor já cadastrado!");
 					}
 				}
-				else if(jComboBox_TipoContato.getSelectedIndex() == 2)
+				else if(selectedIndexContactTypeComboBox == 2)
 				{
 					objectEmployee = new Employee(name, telephone, cellphone, cpfCnpj, rgSocialReason, office, salary, objectAddress);
+
 					if(objectEmployeeController.searchEmployee(objectEmployee.getName(), false) == null)
 						objectEmployeeController.addEmployee(objectEmployee);
 					else
@@ -592,7 +609,10 @@ public class ContactDataView extends javax.swing.JFrame
 
 				if(ContactView.newPhysicalClient == false)
 				{
-					if(!editPhysicalClient.getName().equals(jTextField_Nome.getText()))
+					// Result of editPhysicalClient name and jTextField_Nome text comparison
+					boolean namePhyicalClientEquals = editPhysicalClient.getName().equals(jTextField_Nome.getText());
+					
+					if(!namePhyicalClientEquals)
 					{
 						exibirInformacao("Não é permitido a alteração do name!");
 					}
@@ -616,7 +636,10 @@ public class ContactDataView extends javax.swing.JFrame
 				}
 				else if(ContactView.newJuridicalClient == false)
 				{
-					if(!editJuridicalClient.getName().equals(jTextField_Nome.getText()))
+					// Result of editJuridicalClient name and jTextField_Nome text comparison
+					boolean nameJuridicalClientEquals = editJuridicalClient.getName().equals(jTextField_Nome.getText());
+					
+					if(!nameJuridicalClientEquals)
 					{
 						exibirInformacao("Não é permitido a alteração do name!");
 					}
@@ -640,7 +663,10 @@ public class ContactDataView extends javax.swing.JFrame
 				}
 				else if(ContactView.newPhysicalSupplier == false)
 				{
-					if(!editPhysicalSupplier.getName().equals(jTextField_Nome.getText()))
+					// Result of editPhysicalSupplier name and jTextField_Nome text comparison
+					boolean namePhysicalSupplierEquals = editPhysicalSupplier.getName().equals(jTextField_Nome.getText()); 
+					
+					if(!namePhysicalSupplierEquals)
 					{
 						exibirInformacao("Não é permitido a alteração do name!");
 					}
@@ -664,7 +690,10 @@ public class ContactDataView extends javax.swing.JFrame
 				}
 				else if(ContactView.newJuridicalSupplier == false)
 				{
-					if(!editJuridicalSupplier.getName().equals(jTextField_Nome.getText()))
+					// Result of editJuridicalSupplier name and jTextField_Nome text comparison
+					boolean nameJuridicalSupplierEquals = editJuridicalSupplier.getName().equals(jTextField_Nome.getText()); 
+					
+					if(!nameJuridicalSupplierEquals)
 					{
 						exibirInformacao("Não é permitido a alteração do name!");
 					}
@@ -688,7 +717,9 @@ public class ContactDataView extends javax.swing.JFrame
 				}
 				else if(ContactView.newEmployee == false)
 				{
-					if(!editEmployee.getName().equals(jTextField_Nome.getText()))
+					// Result of editEmployee name and jTextField_Nome text comparison
+					boolean nameEmployeeEquals = editEmployee.getName().equals(jTextField_Nome.getText()); 
+					if(!nameEmployeeEquals)
 					{
 						exibirInformacao("Não é permitido a alteração do name!");
 					}
@@ -734,12 +765,15 @@ public class ContactDataView extends javax.swing.JFrame
 	// Method to enable the text fields according to the type of person
 	private void jComboBox_TipoPessoaItemStateChanged(java.awt.event.ItemEvent evt)
 	{// GEN-FIRST:event_jComboBox_TipoPessoaItemStateChanged
-		if(jComboBox_TipoPessoa.getSelectedItem() == "Pessoa Física")
+		// String of selected client type on ComboBox
+		String selectedClientTypeComboBoxString = (String) jComboBox_TipoPessoa.getSelectedItem();
+		
+		if(selectedClientTypeComboBoxString == "Pessoa Física")
 		{
 			jLabel4.setText("CPF:");
 			jLabel5.setText("RG:");
 		}
-		else if(jComboBox_TipoPessoa.getSelectedItem() == "Pessoa Jurídica")
+		else if(selectedClientTypeComboBoxString == "Pessoa Jurídica")
 		{
 			jLabel4.setText("CNPJ:");
 			jLabel5.setText("Razão Social:");

@@ -38,13 +38,13 @@ public class ExpenseView extends javax.swing.JFrame
     public ExpenseView()
     {
         initComponents();
-        carregarLista();
+        loadList();
         jComboBox_Mes2.setSelectedIndex(secondMonth-1);
         jComboBox_Ano2.setSelectedItem("2014");
     }
     
     // Method to show all the expenses added
-    private void carregarLista()
+    private void loadList()
     {
         boolean permission; // Boolean to allow or not the sequence of the expense creating
         
@@ -369,31 +369,31 @@ public class ExpenseView extends javax.swing.JFrame
             jComboBox_Mes2.setEnabled(true);
         }
         
-        carregarLista();
+        loadList();
     }
     
     private void jComboBox_Mes1ItemStateChanged(java.awt.event.ItemEvent evt)
     {
         firstMonth=jComboBox_Mes1.getSelectedIndex()+1;
-        carregarLista();
+        loadList();
     }
 
     private void jComboBox_Ano1ItemStateChanged(java.awt.event.ItemEvent evt)
     {
         firstYear=Integer.parseInt((String) jComboBox_Ano1.getSelectedItem());
-        carregarLista();
+        loadList();
     }
 
     private void jComboBox_Mes2ItemStateChanged(java.awt.event.ItemEvent evt)
     {
         secondMonth=jComboBox_Mes2.getSelectedIndex()+1;
-        carregarLista();
+        loadList();
     }
 
     private void jComboBox_Ano2ItemStateChanged(java.awt.event.ItemEvent evt)
     {
         secondYear=Integer.parseInt((String) jComboBox_Ano2.getSelectedItem());
-        carregarLista();
+        loadList();
     }
 
     /**

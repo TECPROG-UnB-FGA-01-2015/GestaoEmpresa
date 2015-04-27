@@ -12,23 +12,23 @@ import static view.StockView.newProduct;
 
 public class ProductDataView extends javax.swing.JFrame
 {
-	// Variables declaration of Buttons, Labels, ComboBox and TextFields
-    private javax.swing.JButton jButton_Cancelar;
-    private javax.swing.JButton jButton_SalvarProduto;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField_DescricaoProduto;
-    private javax.swing.JTextField jTextField_NomeProduto;
-    private javax.swing.JTextField jTextField_PrecoCompra;
-    private javax.swing.JTextField jTextField_PrecoVenda;
-    private javax.swing.JTextField jTextField_QuantidadeProduto;
+	// Variables declaration of Buttons, Labels and TextFields
+    private javax.swing.JButton jButton_Cancelar; // Button that exits New Product Screen
+    private javax.swing.JButton jButton_SalvarProduto; // Button that saves and adds a New Product on the system
+    private javax.swing.JLabel jLabel1; // Shows the "Code" word on the Screen 
+    private javax.swing.JLabel jLabel2; // Shows the "Description" word on the Screen 
+    private javax.swing.JLabel jLabel3; // Shows the "Selling Price" word on the Screen 
+    private javax.swing.JLabel jLabel4; // Shows the "Quantity" word on the Screen 
+    private javax.swing.JLabel jLabel5; // Shows the "New Product" word on the Top Screen 
+    private javax.swing.JLabel jLabel6; // Shows the "R$" symbol (Brazilian Currency) on the Screen from the Selling Price
+    private javax.swing.JLabel jLabel7; // Shows the "Buying Price" word on the Screen 
+    private javax.swing.JLabel jLabel8; // Shows the "R$" symbol (Brazilian Currency) on the Screen from the Buying Price
+    private javax.swing.JPanel jPanel1; // Shows the entire "New Product" Screen Layout
+    private javax.swing.JTextField jTextField_DescricaoProduto; // Shows the product's description
+    private javax.swing.JTextField jTextField_NomeProduto; // Shows the product's name
+    private javax.swing.JTextField jTextField_PrecoCompra; // Shows the buying price
+    private javax.swing.JTextField jTextField_PrecoVenda; // Shows the selling price 
+    private javax.swing.JTextField jTextField_QuantidadeProduto; // Shows the product's quantity
     
     Product objectProduct; // Product type object
     static StockController objectStockController = new StockController(); // StockController type object
@@ -72,7 +72,7 @@ public class ProductDataView extends javax.swing.JFrame
         jTextField_PrecoVenda = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Novo Product");
+        setTitle("Novo Produto");
         setBounds(new java.awt.Rectangle(450, 300, 0, 0));
 
         jButton_Cancelar.setText("Sair");
@@ -106,7 +106,7 @@ public class ProductDataView extends javax.swing.JFrame
         });
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        jLabel5.setText("Novo Product");
+        jLabel5.setText("Novo Produto");
 
         jLabel6.setText("R$");
 

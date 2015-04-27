@@ -10,7 +10,7 @@ Assim, os alunos de Técnicas de Programação irão trabalhar com todos os mód
 
 Os arquivos do projeto foram dividos entre os integrantes do Grupo 4 da matéria de Técnicas de Programação 2015/1 da seguinte maneira:
 
-<h2>Eduardo Moreira (13/0008371)<h2>
+<h2>Eduardo Moreira (13/0008371)</h2>
 <h3>Atividades 1 a 4:</h3>  
 - Cliente    
 - Cliente Físico  

@@ -40,9 +40,9 @@ public class ProductDataView extends javax.swing.JFrame
     public ProductDataView()
     {
         initComponents();
-        preencherCampos();
+        fillFields();
         jTextField_QuantidadeProduto.setEnabled(false);
-        preencherCodigo();
+        fillCode();
         jTextField_DescricaoProduto.requestFocus();
     }
 
@@ -216,7 +216,7 @@ public class ProductDataView extends javax.swing.JFrame
     }
     
     // Method to add informations on the Product list
-    private void preencherCodigo()
+    private void fillCode()
     {
         if(newProduct==true)
         {
@@ -245,7 +245,7 @@ public class ProductDataView extends javax.swing.JFrame
     }
     
     // Method to add one more on the attribute code if there is already a Product
-    private void preencherCampos()
+    private void fillFields()
     {
         if(newProduct==false)
         {
@@ -264,7 +264,7 @@ public class ProductDataView extends javax.swing.JFrame
     }
     
     // Method to clean up the textBox
-        private void limparCampos()
+        private void cleanFields()
     {
         jTextField_NomeProduto.setText("");
         jTextField_DescricaoProduto.setText("");
@@ -349,8 +349,8 @@ public class ProductDataView extends javax.swing.JFrame
             	// Nothing to do
             }
             
-            limparCampos();
-            preencherCodigo();
+            cleanFields();
+            fillCode();
             newProduct=true;
         }
         

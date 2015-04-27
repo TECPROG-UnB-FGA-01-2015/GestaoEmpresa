@@ -19,11 +19,11 @@ public class Transaction
 	/* This constructor method is responsible to receive some attributes as
 	 * parameters to initialize the Transaction's objects as self references */
 	public Transaction(ArrayList<Product> saleList,  // Stores the Product's sale list
-	                 double price, // Stores the Transaction's price  from a Product Purchase/Sale
-	                 Employee employee, // Stores the employee object from the Employee' class
-	                 int day, // Stores the Transaction's day from a Product Purchase/Sale
-	                 int month, // Stores the Transaction's month from a Product Purchase/Sale
-	                 int year) // Stores the Transaction's year from a Product Purchase/Sale
+	                   double price, // Stores the Transaction's price  from a Product Purchase/Sale
+	                   Employee employee, // Stores the employee object from the Employee' class
+	                   int day, // Stores the Transaction's day from a Product Purchase/Sale
+	                   int month, // Stores the Transaction's month from a Product Purchase/Sale
+	                   int year) // Stores the Transaction's year from a Product Purchase/Sale
 	{
 		this.saleList = saleList;
 		this.price = price;

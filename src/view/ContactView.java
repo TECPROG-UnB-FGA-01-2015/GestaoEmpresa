@@ -342,6 +342,10 @@ public class ContactView extends javax.swing.JFrame
 	                        objectJuridicalClient.getCnpj(), objectJuridicalClient.getCellphone(), 
 	                        objectJuridicalClient.getTelephone(), "Jurídica"});
 	                }
+	                else
+	                {
+	                	// Nothing to do
+	                }
 	                    
 	            }
             }

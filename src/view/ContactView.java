@@ -26,19 +26,19 @@ import static view.SalePurchaseView.salePurchaseStatus;
 public class ContactView extends javax.swing.JFrame
 {
 	// Variables declaration of Buttons, ComboBox, Labels, Panel, ScrollPane, Table and TextField
-    private javax.swing.JButton jButton_AdicionarContato;
-    private javax.swing.JButton jButton_Cancelar;
-    private javax.swing.JButton jButton_ConfirmarContato;
-    private javax.swing.JButton jButton_Editar;
-    private javax.swing.JButton jButton_Excluir;
-    private javax.swing.JButton jButton_Pesquisar;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField_NomeBusca;
+    private javax.swing.JButton jButton_AdicionarContato; // Button that adds a New Contact (Client, Supplier or Employee) on the system
+    private javax.swing.JButton jButton_Cancelar; // Button that exits "Contact Register" Screen
+    private javax.swing.JButton jButton_ConfirmarContato; // Button that adds and saves the new contact on the system
+    private javax.swing.JButton jButton_Editar; // Button that edits the added contact on the system
+    private javax.swing.JButton jButton_Excluir; // Button that deletes the added contact on the system
+    private javax.swing.JButton jButton_Pesquisar; // Button that searches the added contact on the system
+    private javax.swing.JComboBox jComboBox1; // Button that shows a drop-down list with Client/Supplier/Employee options
+    private javax.swing.JLabel jLabel1; // Shows the "Name" word on the Screen 
+    private javax.swing.JLabel jLabel2; // Shows the "Contact Register" sentence on the Screen 
+    private javax.swing.JPanel jPanel1; // Shows the entire "Contact Register" Screen Layout
+    private javax.swing.JScrollPane jScrollPane1; // Shows the "Contact Register" screen scroll 
+    private javax.swing.JTable jTable1; // Shows a table with name, CPF/CNPJ, cellphone, telephone, Physical/Juridical
+    private javax.swing.JTextField jTextField_NomeBusca; // Shows the searched name of Client/Supplier/Employee
     
     EnterpriseManagement mainMenu; // Instantiate the main menu class
     static boolean newPhysicalClient = true; // Indicates if form is loaded to add a new Physical Client

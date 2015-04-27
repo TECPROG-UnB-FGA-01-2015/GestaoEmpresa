@@ -25,6 +25,21 @@ import static view.SalePurchaseView.salePurchaseStatus;
 
 public class ContactView extends javax.swing.JFrame
 {
+	// Variables declaration of Buttons, ComboBox, Labels, Panel, ScrollPane, Table and TextField
+    private javax.swing.JButton jButton_AdicionarContato;
+    private javax.swing.JButton jButton_Cancelar;
+    private javax.swing.JButton jButton_ConfirmarContato;
+    private javax.swing.JButton jButton_Editar;
+    private javax.swing.JButton jButton_Excluir;
+    private javax.swing.JButton jButton_Pesquisar;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField_NomeBusca;
+    
     EnterpriseManagement mainMenu; // Instantiate the main menu class
     static boolean newPhysicalClient = true; // Indicates if form is loaded to add a new Physical Client
     static boolean newJuridicalClient = true; // Indicates if form is loaded to add a new Juridical Client
@@ -91,9 +106,7 @@ public class ContactView extends javax.swing.JFrame
         jTextField_NomeBusca.requestFocus();
     }
 
-    // Auto-generated function to initialize components of the form
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents()
     {
         jPanel1 = new javax.swing.JPanel();
@@ -303,7 +316,7 @@ public class ContactView extends javax.swing.JFrame
             getAccessibleContext().setAccessibleDescription("");
 
             pack();
-        }// </editor-fold>//GEN-END:initComponents
+        }
 
     // Shows message on screen with given string
     public void showMessage(String info)
@@ -405,7 +418,7 @@ public class ContactView extends javax.swing.JFrame
     
     // Cancels the client edit
     private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt)
-    {//GEN-FIRST:event_jButton_CancelarActionPerformed
+    {
          this.dispose();
          if(clientSupplierMode == true)
          {
@@ -417,19 +430,19 @@ public class ContactView extends javax.swing.JFrame
          }
          clientSupplierMode = false;
          SalePurchaseView.employeeMode = false;
-    }//GEN-LAST:event_jButton_CancelarActionPerformed
+    }
 
     // Calls the form to register new contact
     private void jButton_AdicionarContatoActionPerformed(java.awt.event.ActionEvent evt)
-    {//GEN-FIRST:event_jButton_AdicionarContatoActionPerformed
+    {
         editMode = false;
         new ContactDataView().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton_AdicionarContatoActionPerformed
+    }
 
     // Search for the contacts
     private void jButton_PesquisarActionPerformed(java.awt.event.ActionEvent evt)
-    {//GEN-FIRST:event_jButton_PesquisarActionPerformed
+    {
         String searchName = jTextField_NomeBusca.getText();
         
         // Cleans the table
@@ -592,11 +605,11 @@ public class ContactView extends javax.swing.JFrame
         {
         	// Nothing to do
         }
-    }//GEN-LAST:event_jButton_PesquisarActionPerformed
+    }
 
-    // Changes de variable contactType depending on which contact type was chosen
+    // Changes contactType's variable depending on which contact type was chosen
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt)
-    {//GEN-FIRST:event_jComboBox1ItemStateChanged
+    {
         if(jComboBox1.getSelectedIndex() == 0)
         {
             contactType = 0;
@@ -618,11 +631,11 @@ public class ContactView extends javax.swing.JFrame
         jButton_Excluir.setEnabled(false);
         
         loadContactList();
-    }//GEN-LAST:event_jComboBox1ItemStateChanged
+    }
 
     // Opens contact register form to edit contact
     private void jButton_EditarActionPerformed(java.awt.event.ActionEvent evt)
-    {//GEN-FIRST:event_jButton_EditarActionPerformed
+    {
         if(newPhysicalClient == true && newJuridicalClient == true
                 && newPhysicalSupplier == true && newJuridicalSupplier == true
                 && newEmployee == true)
@@ -634,11 +647,11 @@ public class ContactView extends javax.swing.JFrame
             new ContactDataView().setVisible(true);
             this.setVisible(false);
         }
-    }//GEN-LAST:event_jButton_EditarActionPerformed
+    }
 
     // Select contact depending on which contact was clicked
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt)
-    {//GEN-FIRST:event_jTable1MouseClicked
+    {
         newPhysicalClient = true;
         newJuridicalClient = true;
         newPhysicalSupplier = true;
@@ -691,11 +704,11 @@ public class ContactView extends javax.swing.JFrame
         jButton_Excluir.setEnabled(true);
         jButton_ConfirmarContato.setEnabled(true);
         editMode = true;
-    }//GEN-LAST:event_jTable1MouseClicked
+    }
 
     // Exclude contact selected
     private void jButton_ExcluirActionPerformed(java.awt.event.ActionEvent evt)
-    {//GEN-FIRST:event_jButton_ExcluirActionPerformed
+    {
         
         if(newPhysicalClient == false)
         {
@@ -725,17 +738,17 @@ public class ContactView extends javax.swing.JFrame
         showMessage("Contato excluído com sucesso");
         jButton_Editar.setEnabled(false);
         jButton_Excluir.setEnabled(false);
-    }//GEN-LAST:event_jButton_ExcluirActionPerformed
+    }
 
     // Disable the Confirm Contact button
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt)
-    {//GEN-FIRST:event_jPanel1MouseClicked
+    {
         jButton_ConfirmarContato.setEnabled(false);
-    }//GEN-LAST:event_jPanel1MouseClicked
+    }
 
     // Confirm Contact chosen to TelaVendaCompra's view
     private void jButton_ConfirmarContatoActionPerformed(java.awt.event.ActionEvent evt)
-    {//GEN-FIRST:event_jButton_ConfirmarContatoActionPerformed
+    {
         this.dispose();
         if(SalePurchaseView.clientSupplierMode == true)
         {
@@ -778,16 +791,12 @@ public class ContactView extends javax.swing.JFrame
         SalePurchaseView.employeeMode = false;
         
         new SalePurchaseView().setVisible(true);
-    }//GEN-LAST:event_jButton_ConfirmarContatoActionPerformed
+    }
 
     // Main function
     public static void main(String args[])
     {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+       
         try
         {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
@@ -819,8 +828,7 @@ public class ContactView extends javax.swing.JFrame
         {
             java.util.logging.Logger.getLogger(ContactView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
+      
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable()
         {
@@ -830,21 +838,5 @@ public class ContactView extends javax.swing.JFrame
             }
         });
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_AdicionarContato;
-    private javax.swing.JButton jButton_Cancelar;
-    private javax.swing.JButton jButton_ConfirmarContato;
-    private javax.swing.JButton jButton_Editar;
-    private javax.swing.JButton jButton_Excluir;
-    private javax.swing.JButton jButton_Pesquisar;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField_NomeBusca;
-    // End of variables declaration//GEN-END:variables
 
 }

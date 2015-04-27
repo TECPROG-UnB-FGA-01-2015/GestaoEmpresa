@@ -50,10 +50,8 @@ public class ExpenseController
 		// Search for the expense
 		for (Expense objectExpense : expenseList)
 		{
-
 			String objectExpenseName = objectExpense.getName();
 			boolean objectExpenseNameEquals = objectExpenseName.equalsIgnoreCase(name);
-			String objectExpenseNameToLowerCase = objectExpenseName.toLowerCase();
 
 			if (objectExpenseNameEquals == true)
 			{
@@ -62,5 +60,4 @@ public class ExpenseController
 		}
 		return null;
 	}
-
 }

@@ -11,7 +11,7 @@ Assim, os alunos de Técnicas de Programação irão trabalhar com todos os mód
 Os arquivos do projeto foram dividos entre os integrantes do Grupo 4 da matéria de Técnicas de Programação 2015/1 da seguinte maneira:
 
 <h2>Eduardo Moreira (13/0008371)<h2>
-<h3>Atividades 1 a 4:<h3>
+<h3>Atividades 1 a 4:</h3>
 - Cliente
 - Cliente Físico
 - Cliente Jurídico
@@ -21,7 +21,7 @@ Os arquivos do projeto foram dividos entre os integrantes do Grupo 4 da matéria
 - Controle Funcionário
 - GestaoEmpresa
 - TelaContatos
-<h3>Atividade 5:<h3>
+<h3>Atividade 5:</h3>
 - Compra
 - Venda
 - Transacao
@@ -37,7 +37,7 @@ Os arquivos do projeto foram dividos entre os integrantes do Grupo 4 da matéria
 - TelaDespesas
 
 <h2>Henrique Augusto (11/0148886)</h2>
-<h3>Atividades 1 a 4:<h3>
+<h3>Atividades 1 a 4:</h3>
 - Compra
 - Venda
 - Transacao
@@ -48,14 +48,14 @@ Os arquivos do projeto foram dividos entre os integrantes do Grupo 4 da matéria
 nenhuma
 
 <h2>Matheus Silva (13/0015369)</h2>
-<h3>Atividades 1 a 4:<h3>
+<h3>Atividades 1 a 4:</h3>
 - Fornecedor
 - FornecedorFisico
 - FornecedorJuridico
 - ControleFornecedor
 - TelaDadosContatos
 - TelaEstoque
-<h3>Atividade 5:<h3>
+<h3>Atividade 5:</h3>
 - Cliente
 - Cliente Físico
 - Cliente Jurídico
@@ -68,7 +68,7 @@ nenhuma
 
 
 <h2>Omar Júnior (13/0015920)</h2>
-<h3>Atividades 1 a 4:<h3>
+<h3>Atividades 1 a 4:</h3>
 - Produto
 - Despesa
 - ControleEstoque
@@ -76,7 +76,7 @@ nenhuma
 - TelaDadosDespesas
 - TelaDadosProdutos
 - TelaDespesas
-<h3>Atividade 5:<h3>
+<h3>Atividade 5:</h3>
 - Compra
 - Venda
 - Transacao

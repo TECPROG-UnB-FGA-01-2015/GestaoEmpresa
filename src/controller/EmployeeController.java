@@ -1,5 +1,5 @@
 /**********************************************************
- * File: ControleEmployee.java
+ * File: EmployeeController.java
  * Purpose: Contains the Employees maintenance methods
 **********************************************************/		
 

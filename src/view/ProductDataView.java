@@ -218,26 +218,25 @@ public class ProductDataView extends javax.swing.JFrame
     // Method to add informations on the Product list
     private void fillCode()
     {
-        if(newProduct==true)
+        if(newProduct == true)
         {
         	// Variable to receive a list of Products
             ArrayList<Product> productList = objectStockController.getProductList();
+            
             if(productList.isEmpty())
             {
                 jTextField_NomeProduto.setText("1");
             }
-            
             else
             {
-                jTextField_NomeProduto.setText(Integer.toString
-                                            (Integer.parseInt
-                                            (productList.get
-                                            (productList.size()-1)
-                                            .getCode())
-                                             +1));
+            	int sizeProductList = productList.size();
+            	Product newProduct = productList.get(sizeProductList - 1);
+            	String codeNewProduct = newProduct.getCode();
+            	int intCodeNewProduct = Integer.parseInt(codeNewProduct);
+            	String nameProduct = Integer.toString(intCodeNewProduct + 1);
+                jTextField_NomeProduto.setText(nameProduct);
             }
-        }
-        
+        }   
         else
         {
         	// Nothing to do
@@ -247,16 +246,28 @@ public class ProductDataView extends javax.swing.JFrame
     // Method to add one more on the attribute code if there is already a Product
     private void fillFields()
     {
-        if(newProduct==false)
+        if(newProduct == false)
         {
 	        editProduct = objectStockController.searchProduct(stockView.codeTable,false);
-	        jTextField_NomeProduto.setText(editProduct.getCode());
-	        jTextField_DescricaoProduto.setText(editProduct.getDescription());
-	        jTextField_PrecoCompra.setText(Double.toString(editProduct.getPurchasePrice()));
-	        jTextField_PrecoVenda.setText(Double.toString(editProduct.getSellingPrice()));
-	        jTextField_QuantidadeProduto.setText(Double.toString(editProduct.getQuantity()));
+	        
+	        String productCode = editProduct.getCode();
+	        jTextField_NomeProduto.setText(productCode);
+	        
+	        String productDescription = editProduct.getDescription();
+	        jTextField_DescricaoProduto.setText(productDescription);
+	        
+	        double productPurchasePrice = editProduct.getPurchasePrice();
+	        String strProductPurchasePrice = Double.toString(productPurchasePrice);
+	        jTextField_PrecoCompra.setText(strProductPurchasePrice);
+	        
+	        double productSellingPrice = editProduct.getSellingPrice();
+	        String strProductSellingPrice = Double.toString(productSellingPrice);
+	        jTextField_PrecoVenda.setText(strProductSellingPrice);
+
+	        double productQuantity = editProduct.getQuantity();
+	        String strProductQuantity = Double.toString(productQuantity);
+	        jTextField_QuantidadeProduto.setText(strProductQuantity);
         }
-        
         else
         {
         	// Nothing to do
@@ -300,23 +311,22 @@ public class ProductDataView extends javax.swing.JFrame
             double sellingPrice = Double.parseDouble(jTextField_PrecoVenda.getText());
             double quantity = Double.parseDouble(jTextField_QuantidadeProduto.getText());
 
-            if(stockView.newProduct==true)
+            if(stockView.newProduct == true)
             {
                 objectProduct = new Product(code, description, purchasePrice, quantity, sellingPrice);
                 
-                if(objectStockController.searchProduct(objectProduct.getCode(),false)==null
-                        &&objectStockController.searchProduct(objectProduct.getDescription(),false)==null)
+                if(objectStockController.searchProduct(objectProduct.getCode(),false) == null &&objectStockController.searchProduct(objectProduct.getDescription(),false)==null)
                 {
                     objectStockController.addProduct(objectProduct);
                     showMessage("Product Adicionado!");
                 }
                 
-                else if(objectStockController.searchProduct(objectProduct.getCode(),false)!=null)
+                else if(objectStockController.searchProduct(objectProduct.getCode(),false) != null)
                 {
                     showMessage("Product com esse código já existente no quantity!");
                 }
                 
-                else if(objectStockController.searchProduct(objectProduct.getDescription(),false)!=null)
+                else if(objectStockController.searchProduct(objectProduct.getDescription(),false) != null)
                 {
                     showMessage("Product com essa Descrição já existente no quantity!");
                 }

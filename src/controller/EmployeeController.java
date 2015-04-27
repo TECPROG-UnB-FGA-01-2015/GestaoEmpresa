@@ -52,8 +52,13 @@ public class EmployeeController
         for(Employee employee: employeeList)
         {
         	
+        	// Variable to get the name of current employee
         	String employeeName = employee.getName();
+        	
+        	// Variable to return the comparison of current employee name with the name parameter  
         	boolean employeeNameEquals = employeeName.equalsIgnoreCase(name);
+        	
+        	// Variable to pass the employee name to lowercase
         	String employeeNameToLowerCase = employeeName.toLowerCase();
         	
             if(employeeNameEquals == true)

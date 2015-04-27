@@ -50,8 +50,13 @@ public class ClientController
         
         for(Client client: clientList)
         {
+        	// Variable to get the name of current supplier
         	String clientName = client.getName();
+        	
+        	// Variable to return the comparison of current client name with the name parameter  
         	boolean clientNameEquals = clientName.equalsIgnoreCase(name);
+        	
+        	// Variable to pass the client name to lowercase
         	String clientNameToLowerCase = clientName.toLowerCase();
         	
             if(clientNameEquals == true)

@@ -13,8 +13,7 @@ import view.StockView;
 public class StockController
 {
 	StockView stockView; // Calls StockView view
-	private ArrayList<Product> productList; // Maintains a list of Product
-											// object
+	private ArrayList<Product> productList; // Maintains a list of Product object
 
 	// Constructor to instance ControleEstoque with the attribute productList
 	public StockController()
@@ -47,61 +46,75 @@ public class StockController
 	}
 
 	// Search for a product in the productList with a given name
-	public Product searchProduct(String name, boolean search)
+	public Product searchProduct(String code, boolean searchContains)
 	{
 		int productCounter = 0;
-		Product returned = null; // Used to return the product matching the
-								 // given name (not Case Sensitive)
-		Product exactReturned = null; // Used to return the product matching the
-									  // given name (Case Sensitive)
+		Product returned = null; // Used to return the product matching the given name (not Case Sensitive)
+		Product exactReturned = null; // Used to return the product matching the given name (Case Sensitive)
 
 		// Search for the employee
 		for (Product product : productList)
 		{
 			String productCode = product.getCode();
-			boolean productCodeEquals = productCode.equalsIgnoreCase(name);
-			String productCodeToLowerCase = productCode.toLowerCase();
-
-			String productDescription = product.getDescription();
-			boolean productDescriptionEquals = productDescription.equalsIgnoreCase(name);
-			String productDescriptionToLowerCase = productDescription.toLowerCase();
+			boolean productCodeEquals = productCode.equalsIgnoreCase(code);
 
 			if (productCodeEquals == true)
 			{
 				productCounter++;
-				returned = product;
+				exactReturned = product;
+			}
+			else
+			{
+				// Nothing to do
 			}
 
-			if (productCodeToLowerCase.contains(name.toLowerCase())
-			        && search == true)
+			String productCodeToLowerCase = productCode.toLowerCase();
+			boolean productCodeContains = productCodeToLowerCase.contains(code.toLowerCase()); 
+			
+			if (productCodeContains && searchContains == true)
 			{
 				productCounter++;
 				returned = product;
 			}
-
-			if (productCode.equalsIgnoreCase(name))
+			else
 			{
-				exactReturned = product;
+				// Nothing to do
 			}
 
-			if (productDescription.toLowerCase().contains(name.toLowerCase())
-			        && search == true)
+			String productDescription = product.getDescription();
+			boolean productDescriptionContains = productDescription.toLowerCase().contains(code.toLowerCase());
+
+			if (productDescriptionContains && searchContains == true)
 			{
 				returned = product;
 				productCounter++;
 			}
+			else
+			{
+				// Nothing to do
+			}
 
-			if (productDescription.equalsIgnoreCase(name))
+			boolean productDescriptionEquals = productDescription.equalsIgnoreCase(code);
+			
+			if (productDescriptionEquals)
 			{
 				exactReturned = product;
+			}
+			else
+			{
+				// Nothing to do
 			}
 
 		}
 
-		if (productCounter > 1 && search == true)
+		if (productCounter > 1 && searchContains == true)
 		{
 			JOptionPane.showMessageDialog(stockView, "Mais de um resultado"
 			        + "encontrado", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else
+		{
+			// Nothing to do
 		}
 
 		if (exactReturned != null)
@@ -113,9 +126,9 @@ public class StockController
 		{
 			return returned;
 		}
-
-		return null;
-
+		else
+		{
+			return null;
+		}
 	}
-
 }

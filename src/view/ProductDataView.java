@@ -302,8 +302,18 @@ public class ProductDataView extends javax.swing.JFrame
     /* Method to save all the informations provided by the user on a new object
      * Product
      */
-    private void jButton_SalvarProdutoActionPerformed(java.awt.event.ActionEvent evt) {
-        if(!jTextField_NomeProduto.getText().equals("")&&!jTextField_DescricaoProduto.getText().equals("")&&!jTextField_PrecoCompra.getText().equals(""))
+    private void jButton_SalvarProdutoActionPerformed(java.awt.event.ActionEvent evt) 
+    {
+    	String productName = jTextField_NomeProduto.getText();
+    	boolean emptyProductName = productName.equals("");
+    	
+    	String productDescription = jTextField_DescricaoProduto.getText();
+    	boolean emptyProductDescription = productDescription.equals("");
+    	
+    	String productPurchasePrice = jTextField_PrecoCompra.getText();
+    	boolean emptyProductPurchasePrice = productPurchasePrice.equals("");
+    	
+        if(!emptyProductName && !emptyProductDescription && !emptyProductPurchasePrice)
         {
             String code = jTextField_NomeProduto.getText();
             String description = jTextField_DescricaoProduto.getText();
@@ -315,36 +325,40 @@ public class ProductDataView extends javax.swing.JFrame
             {
                 objectProduct = new Product(code, description, purchasePrice, quantity, sellingPrice);
                 
-                if(objectStockController.searchProduct(objectProduct.getCode(),false) == null &&objectStockController.searchProduct(objectProduct.getDescription(),false)==null)
+                String listProductCode = objectProduct.getCode();
+                Product returnProduct = objectStockController.searchProduct(listProductCode, false);
+                
+                String listProductDescription = objectProduct.getDescription();
+                Product returnDescription = objectStockController.searchProduct(listProductDescription, false);
+                
+                if(returnProduct == null && returnDescription == null)
                 {
                     objectStockController.addProduct(objectProduct);
-                    showMessage("Product Adicionado!");
+                    showMessage("Produto Adicionado!");
                 }
-                
-                else if(objectStockController.searchProduct(objectProduct.getCode(),false) != null)
+                else if(returnProduct != null)
                 {
-                    showMessage("Product com esse código já existente no quantity!");
+                    showMessage("Produto com esse código já existente no estoque!");
                 }
-                
-                else if(objectStockController.searchProduct(objectProduct.getDescription(),false) != null)
+                else if(returnDescription != null)
                 {
-                    showMessage("Product com essa Descrição já existente no quantity!");
+                    showMessage("Produto com essa Descrição já existente no estoque!");
                 }
-                
                 else
                 {
                 	// Nothing to do
                 }
             }
-            
-            else if(stockView.newProduct==false)
+            else if(stockView.newProduct == false)
             {    
-                if(!editProduct.getCode().equals(jTextField_NomeProduto.getText()))
+            	String editProductCode = editProduct.getCode();
+            	boolean changedEditProductCode = editProduct.getCode().equals(code);
+                if(!changedEditProductCode)
                 {
                     showMessage("Não é permitido a alteração do código do produto!");
                 }
-                
-                else{
+                else
+                {
                     editProduct.setCode(code);
                     editProduct.setDescription(description);
                     editProduct.setPurchasePrice(purchasePrice);
@@ -353,7 +367,6 @@ public class ProductDataView extends javax.swing.JFrame
                     showMessage("Product Editado!");
                 }
             }
-            
             else
             {
             	// Nothing to do
@@ -361,7 +374,7 @@ public class ProductDataView extends javax.swing.JFrame
             
             cleanFields();
             fillCode();
-            newProduct=true;
+            newProduct = true;
         }
         
         else if(jTextField_NomeProduto.getText().equals(""))

@@ -49,8 +49,7 @@ public class ExpenseDataView extends javax.swing.JFrame
     // Method to show a message to user by passing as a parameter a String info
     public void showMessage(String info)
     {
-        JOptionPane.showMessageDialog(this, info,"Atenção" ,JOptionPane.
-        		INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, info, "Atenção" , JOptionPane.INFORMATION_MESSAGE);
     }
     
     // Method to return the content of attribute day
@@ -225,17 +224,21 @@ public class ExpenseDataView extends javax.swing.JFrame
         int year = jComboBox_Ano.getSelectedIndex()+2013;
         int day = jComboBox_Dia.getSelectedIndex()+1;
         double valor = Double.parseDouble(jTextField_Valor.getText());
-            
-        if(jTextField_Nome.getText().equals(""))
+           
+        String textFieldName = jTextField_Nome.getText();
+        boolean textFieldNameEmpty = textFieldName.equals(""); 
+        
+        String expenseValueTextField = jTextField_Valor.getText();
+        double expenseValue = Double.parseDouble(expenseValueTextField);
+        
+        if(textFieldNameEmpty)
         {
             showMessage("Digite o histórico da despesa");
         }
-        
-        else if(Double.parseDouble(jTextField_Valor.getText())==0.0)
+        else if(expenseValue == 0.0)
         {
             showMessage("Digite um valor para a despesa");
-        }
-        
+        }      
         else
         {
             objectExpense = new Expense(name, description, valor, day, month, year);

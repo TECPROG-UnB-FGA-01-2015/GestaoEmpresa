@@ -13,21 +13,21 @@ import java.text.SimpleDateFormat;
 
 public class ExpenseDataView extends javax.swing.JFrame
 {
-	// Variables declaration of Buttons, Labels, ComboBox and TextFields
-    private javax.swing.JButton jButton_Sair;
-    private javax.swing.JButton jButton_Salvar;
-    private javax.swing.JComboBox jComboBox_Ano;
-    private javax.swing.JComboBox jComboBox_Dia;
-    private javax.swing.JComboBox jComboBox_Mes;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField_Descricao;
-    private javax.swing.JTextField jTextField_Nome;
-    private javax.swing.JTextField jTextField_Valor;
+	// Variables declaration of Buttons, ComboBox, Label and TextFields
+    private javax.swing.JButton jButton_Sair; // Button that exits "New Expense" Screen
+    private javax.swing.JButton jButton_Salvar; // Button that adds and saves a New Expense on the screen
+    private javax.swing.JComboBox jComboBox_Ano; // Button that shows a drop-down list from the years 2013 until 2017 on the date's option
+    private javax.swing.JComboBox jComboBox_Dia; // Button that shows a drop-down list from the days 1 until 31 on the date's option
+    private javax.swing.JComboBox jComboBox_Mes; // Button that shows a drop-down list from the months January until December on the date's option
+    private javax.swing.JLabel jLabel1; // Shows the "Historic" word on the Screen 
+    private javax.swing.JLabel jLabel2; // Shows the "Date" word on the Screen 
+    private javax.swing.JLabel jLabel3; // Shows the "Value" word on the Screen 
+    private javax.swing.JLabel jLabel4; // Shows the "Note" word on the Screen 
+    private javax.swing.JLabel jLabel5; // Shows the "New Expense" word on the Screen 
+    private javax.swing.JLabel jLabel6;  // Shows the "R$" symbol (Brazilian Currency) on the New Expense Screen
+    private javax.swing.JTextField jTextField_Descricao; // Keeps and adds the Expense's note 
+    private javax.swing.JTextField jTextField_Nome; // Keeps and adds the Expense's name 
+    private javax.swing.JTextField jTextField_Valor; // Keeps and adds the Expense's value 
     
     Expense objectExpense; // Expense type object
     Date date = new Date(); // Contains the date of an expense (dd/MM/yyyy)
@@ -93,7 +93,7 @@ public class ExpenseDataView extends javax.swing.JFrame
         jComboBox_Dia = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Nova Expense");
+        setTitle("Nova Despesa");
         setBounds(new java.awt.Rectangle(450, 300, 0, 0));
 
         jButton_Sair.setText("Sair");
@@ -125,7 +125,7 @@ public class ExpenseDataView extends javax.swing.JFrame
         });
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        jLabel5.setText("Nova Expense");
+        jLabel5.setText("Nova Despesa");
 
         jComboBox_Mes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
 

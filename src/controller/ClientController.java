@@ -50,11 +50,15 @@ public class ClientController
         
         for(Client client: clientList)
         {
-            if((client.getName().equalsIgnoreCase(name)))
+        	String clientName = client.getName();
+        	boolean clientNameEquals = clientName.equalsIgnoreCase(name);
+        	String clientNameToLowerCase = clientName.toLowerCase();
+        	
+            if(clientNameEquals == true)
             {
                 exactReturned = client;
             }
-            else if((client.getName().toLowerCase().contains(name.toLowerCase())) && ignoreCase == true)
+            else if((clientNameToLowerCase.toLowerCase().contains(name.toLowerCase())) && ignoreCase == true)
             {
                 returned = client;
             }

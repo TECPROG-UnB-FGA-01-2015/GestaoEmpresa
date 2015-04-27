@@ -18,13 +18,13 @@ import model.Sale;
 
 public class EnterpriseManagement extends javax.swing.JFrame
 {
-    private javax.swing.JButton jButton_Contatos;
-    private javax.swing.JButton jButton_Despesas;
-    private javax.swing.JButton jButton_Estoque;
-    private javax.swing.JButton jButton_HistoricoCompraVenda;
-    private javax.swing.JButton jButton_VendaCompra;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jButton_Contatos; // Shows the Contact's Main Button on the Enterprise Management's Main Menu
+    private javax.swing.JButton jButton_Despesas; // Shows the Expense's Main Button on the Enterprise Management's Main Menu
+    private javax.swing.JButton jButton_Estoque; // Shows the Stock's Main Button on the Enterprise Management's Main Menu
+    private javax.swing.JButton jButton_HistoricoCompraVenda; // Shows the Buying Selling Historic's Main Button on the Enterprise Management's Main Menu
+    private javax.swing.JButton jButton_VendaCompra; // Shows the Selling Buying's Main Button on the Enterprise Management Main's Menu
+    private javax.swing.JLabel jLabel1; // Shows the "Enterprise Management - 1.0" sentence on the Main Menu 
+    private javax.swing.JPanel jPanel1; // Shows the entire "Enterprise Management" Screen Layout
     
     Client objectClient; // Instantiates objectClient
     Employee objectEmployee; // Instantiates an object Employee

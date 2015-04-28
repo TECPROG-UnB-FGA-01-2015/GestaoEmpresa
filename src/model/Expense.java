@@ -16,11 +16,11 @@ public class Expense
     /* Constructor to receive all the attributes as parameters and initialize the
      * object Expense*/
     public Expense(String name,
-    				String description,
-    				double value,
-    				int day,
-    				int month,
-    				int year)
+    			   String description,
+    			   double value,
+    			   int day,
+    			   int month,
+    			   int year)
     {
         this.name = name;
         this.description = description;

@@ -1,4 +1,4 @@
-/***********************************************************
+/**********************************************************
  * File: Sale.java
  * Purpose: Responsible to get the Client's info to
  * 			sell Products with a given Date.

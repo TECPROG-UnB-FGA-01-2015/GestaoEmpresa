@@ -5,20 +5,18 @@
 
 package view;
 
-import controller.ClientController;
-import controller.SupplierController;
-import controller.EmployeeController;
 import javax.swing.JOptionPane;
-import model.PhysicalClient;
-import model.JuridicalClient;
-import model.Address;
-import model.PhysicalSupplier;
-import model.JuridicalSupplier;
-import model.Employee;
-import static view.SalePurchaseView.clientSupplierMode;
-import static view.SalePurchaseView.employeeMode;
 import static view.SalePurchaseView.purchaseSaleMode;
 import static view.SalePurchaseView.salePurchaseStatus;
+import controller.ClientController;
+import controller.EmployeeController;
+import controller.SupplierController;
+import model.Address;
+import model.Employee;
+import model.JuridicalClient;
+import model.JuridicalSupplier;
+import model.PhysicalClient;
+import model.PhysicalSupplier;
 
 public class ContactDataView extends javax.swing.JFrame
 {

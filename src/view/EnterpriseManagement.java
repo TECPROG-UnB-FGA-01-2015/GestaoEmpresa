@@ -5,26 +5,23 @@
 
 package view;
 
-import controller.TransactionController;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.Client;
-import model.Purchase;
 import model.Supplier;
 import model.Employee;
 import model.Product;
-import model.Transaction;
-import model.Sale;
+import javax.swing.*;
 
 public class EnterpriseManagement extends javax.swing.JFrame
 {
-    private javax.swing.JButton jButton_Contatos; // Shows the Contact's Main Button on the Enterprise Management's Main Menu
-    private javax.swing.JButton jButton_Despesas; // Shows the Expense's Main Button on the Enterprise Management's Main Menu
-    private javax.swing.JButton jButton_Estoque; // Shows the Stock's Main Button on the Enterprise Management's Main Menu
-    private javax.swing.JButton jButton_HistoricoCompraVenda; // Shows the Buying Selling Historic's Main Button on the Enterprise Management's Main Menu
-    private javax.swing.JButton jButton_VendaCompra; // Shows the Selling Buying's Main Button on the Enterprise Management Main's Menu
-    private javax.swing.JLabel jLabel1; // Shows the "Enterprise Management - 1.0" sentence on the Main Menu 
-    private javax.swing.JPanel jPanel1; // Shows the entire "Enterprise Management" Screen Layout
+    private JButton jButton_Contact; // Shows the Contact's Main Button on the Enterprise Management's Main Menu
+    private JButton jButton_Despesas; // Shows the Expense's Main Button on the Enterprise Management's Main Menu
+    private JButton jButton_Estoque; // Shows the Stock's Main Button on the Enterprise Management's Main Menu
+    private JButton jButton_HistoricoCompraVenda; // Shows the Buying Selling Historic's Main Button on the Enterprise Management's Main Menu
+    private JButton jButton_VendaCompra; // Shows the Selling Buying's Main Button on the Enterprise Management Main's Menu
+    private JLabel jLabel1; // Shows the "Enterprise Management - 1.0" sentence on the Main Menu 
+    private JPanel jPanel1; // Shows the entire "Enterprise Management" Screen Layout
     
     Client objectClient; // Instantiates objectClient
     Employee objectEmployee; // Instantiates an object Employee
@@ -54,7 +51,7 @@ public class EnterpriseManagement extends javax.swing.JFrame
     {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton_Contatos = new javax.swing.JButton();
+        jButton_Contact = new javax.swing.JButton();
         jButton_Estoque = new javax.swing.JButton();
         jButton_VendaCompra = new javax.swing.JButton();
         jButton_Despesas = new javax.swing.JButton();
@@ -83,9 +80,9 @@ public class EnterpriseManagement extends javax.swing.JFrame
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        jButton_Contatos.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        jButton_Contatos.setText("Contatos");
-        jButton_Contatos.addActionListener(new java.awt.event.ActionListener()
+        jButton_Contact.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jButton_Contact.setText("Contatos");
+        jButton_Contact.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
@@ -141,7 +138,7 @@ public class EnterpriseManagement extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(207, 207, 207)
-                        .addComponent(jButton_Contatos)
+                        .addComponent(jButton_Contact)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_Estoque)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -160,14 +157,14 @@ public class EnterpriseManagement extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jButton_Estoque, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Contatos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_Contact, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_VendaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_Despesas, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_HistoricoCompraVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(437, 437, 437))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton_Contatos, jButton_Despesas, jButton_Estoque, jButton_HistoricoCompraVenda, jButton_VendaCompra});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton_Contact, jButton_Despesas, jButton_Estoque, jButton_HistoricoCompraVenda, jButton_VendaCompra});
 
         pack();
     }

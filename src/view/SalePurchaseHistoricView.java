@@ -11,22 +11,28 @@ import model.Purchase;
 import model.Transaction;
 import model.Sale;
 import static view.SalePurchaseView.objectTransactionController;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane; 
+import javax.swing.JTable;
 
 public class SalePurchaseHistoricView extends javax.swing.JFrame
 {
 	private int salePurchaseStatus = 0; // Shows the Client's name when option is 0 (Selling) and Supplier's name when option is 1 (Buying)
-	Sale objectSale; // Variable that shows Client's name, Worker's name, Transaction value and Sale Product Date
-	Purchase objectPurchase; // Variable that shows Supplier's name, Worker's name, Transaction value and Shopping Product Date
+	Sale objectSale; // Shows Client's name, Worker's name, Transaction value and Sale Product Date
+	Purchase objectPurchase; // Shows Supplier's name, Worker's name, Transaction value and Shopping Product Date
 
-	private javax.swing.JButton jButton_exitScreen; // Button that exit the Historic Buying/Selling Products Screen
-	private javax.swing.JComboBox jComboBox_showSalePurchase; // Button that shows a drop-down list with Historic Buying/Sale option
-	private javax.swing.JLabel jLabel_showSalePurchaseHistoricWord; // Shows the "Purchase/Sales Historic" word on the screen
-	private javax.swing.JPanel jPanel_showEntireHistoricScreen; // Shows the entire Sales Historic's screen layout
-	private javax.swing.JScrollPane jScrollPane_showSalePurchaseHistoricScreenScroll; // Shows the Sales Historic's screen scroll 
-	private javax.swing.JTable jTable_showPurchaseSaleHistoricInfoTable; // Shows a table with the Sales Historic's product code, description, quantity, price and final price (with/without discount)
+	private JButton jButton_exitScreen; // Exit the Historic Buying/Selling Products Screen
+	private JComboBox jComboBox_showSalePurchase; // Shows a drop-down list with Historic Buying/Sale option
+	private JLabel jLabel_showSalePurchaseHistoricWord; // Shows the "Purchase/Sales Historic" word on the screen
+	private JPanel jPanel_showEntireHistoricScreen; // Shows the entire Sales Historic's screen layout
+	private JScrollPane jScrollPane_showSalePurchaseHistoricScreenScroll; // Shows the Sales Historic's screen scroll 
+	private JTable jTable_showPurchaseSaleHistoricInfoTable; // Shows a table with the Sales Historic's product code, description, quantity, price and final price (with/without discount)
 
-	/* This method is responsible to load Shopping/Selling list on the GUI
-	 * (Graphical User Interface) screen */
+	/* Constructor of SalePurchaseHistoricView 
+	 * Loads Purchase/Selling list on the screen */
 	public SalePurchaseHistoricView()
 	{
 		initComponents();
@@ -41,13 +47,13 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 		ArrayList<Transaction> transactionList = objectTransactionController.getSaleList();
 		DefaultTableModel model = (DefaultTableModel) jTable_showPurchaseSaleHistoricInfoTable.getModel();
 		model.setRowCount(0);
-		for (Transaction t : transactionList)
+		for (Transaction transaction : transactionList)
 		{
 			if (salePurchaseStatus == 0)
 			{
-				if (t.getClass().equals(Sale.class))
+				if (transaction.getClass().equals(Sale.class))
 				{
-					objectSale = (Sale) t;
+					objectSale = (Sale) transaction;
 					
 					String data = Integer.toString(objectSale.getDay()) + "/" + 
 								Integer.toString(objectSale.getMonth()) + "/" + Integer.toString(objectSale.getYear());
@@ -67,9 +73,9 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 			}
 			else if (salePurchaseStatus == 1)
 			{
-				if (t.getClass().equals(Purchase.class))
+				if (transaction.getClass().equals(Purchase.class))
 				{
-					objectPurchase = (Purchase) t;
+					objectPurchase = (Purchase) transaction;
 					String data = Integer.toString(objectPurchase.getDay()) + "/"
 					        + Integer.toString(objectPurchase.getMonth()) + "/" + Integer.toString(objectPurchase.getYear());
 					model.addRow(new String[]
@@ -100,12 +106,12 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 	 * Shopping/Selling info on the screen */
 	private void initComponents()
 	{
-		jPanel_showEntireHistoricScreen = new javax.swing.JPanel();
-		jLabel_showSalePurchaseHistoricWord = new javax.swing.JLabel();
-		jScrollPane_showSalePurchaseHistoricScreenScroll = new javax.swing.JScrollPane();
-		jTable_showPurchaseSaleHistoricInfoTable = new javax.swing.JTable();
-		jComboBox_showSalePurchase = new javax.swing.JComboBox();
-		jButton_exitScreen = new javax.swing.JButton();
+		jPanel_showEntireHistoricScreen = new JPanel();
+		jLabel_showSalePurchaseHistoricWord = new JLabel();
+		jScrollPane_showSalePurchaseHistoricScreenScroll = new JScrollPane();
+		jTable_showPurchaseSaleHistoricInfoTable = new JTable();
+		jComboBox_showSalePurchase = new JComboBox();
+		jButton_exitScreen = new JButton();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 		setTitle("Historico de Vendas");

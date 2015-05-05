@@ -47,22 +47,32 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 		ArrayList<Transaction> transactionList = objectTransactionController.getSaleList();
 		DefaultTableModel model = (DefaultTableModel) jTable_showPurchaseSaleHistoricInfoTable.getModel();
 		model.setRowCount(0);
+		
 		for (Transaction transaction : transactionList)
 		{
 			if (salePurchaseStatus == 0)
 			{
-				if (transaction.getClass().equals(Sale.class))
+				boolean isSale = transaction.getClass().equals(Sale.class);
+				
+				if (isSale)
 				{
 					objectSale = (Sale) transaction;
 					
-					String data = Integer.toString(objectSale.getDay()) + "/" + 
-								Integer.toString(objectSale.getMonth()) + "/" + Integer.toString(objectSale.getYear());
+					String clientName = objectSale.getClient().getName();
+					String employeeName = objectSale.getEmployee().getName();
+					String strSalePrice = Double.toString(objectSale.getPrice());
+					
+					String strDay = Integer.toString(objectSale.getDay());
+					String strMonth = Integer.toString(objectSale.getMonth());
+					String strYear = Integer.toString(objectSale.getYear());
+					
+					String data = strDay + "/" + strMonth + "/" + strYear;
 					
 					model.addRow(new String[]
 					{ 
-						objectSale.getClient().getName(),
-						objectSale.getEmployee().getName(),
-				        Double.toString(objectSale.getPrice()),
+						clientName,
+						employeeName,
+						strSalePrice,
 				        data 
 					});
 				}
@@ -76,13 +86,22 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 				if (transaction.getClass().equals(Purchase.class))
 				{
 					objectPurchase = (Purchase) transaction;
-					String data = Integer.toString(objectPurchase.getDay()) + "/"
-					        + Integer.toString(objectPurchase.getMonth()) + "/" + Integer.toString(objectPurchase.getYear());
+					
+					String supplierName = objectPurchase.getSupplier().getName();
+					String employeeName = objectPurchase.getEmployee().getName();
+					String strPurchasePrice = Double.toString(objectPurchase.getPrice());
+					
+					String strDay = Integer.toString(objectPurchase.getDay());
+					String strMonth = Integer.toString(objectPurchase.getMonth());
+					String strYear = Integer.toString(objectPurchase.getYear());
+					
+					String data = strDay + "/" + strMonth + "/" + strYear;
+					
 					model.addRow(new String[]
 					{ 
-						objectPurchase.getSupplier().getName(),
-						objectPurchase.getEmployee().getName(),
-				        Double.toString(objectPurchase.getPrice()), 
+						supplierName,
+						employeeName,
+						strPurchasePrice, 
 				        data 
 				    });
 				}

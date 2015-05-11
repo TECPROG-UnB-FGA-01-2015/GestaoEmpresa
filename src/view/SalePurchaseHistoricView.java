@@ -6,17 +6,22 @@
 package view;
 
 import java.util.ArrayList;
+
 import javax.swing.table.DefaultTableModel;
+
 import model.Purchase;
 import model.Transaction;
 import model.Sale;
 import static view.SalePurchaseView.objectTransactionController;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane; 
 import javax.swing.JTable;
+
+import org.apache.log4j.Logger;
 
 public class SalePurchaseHistoricView extends javax.swing.JFrame
 {
@@ -30,6 +35,8 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 	private JPanel jPanel_showEntireHistoricScreen; // Shows the entire Sales Historic's screen layout
 	private JScrollPane jScrollPane_showSalePurchaseHistoricScreenScroll; // Shows the Sales Historic's screen scroll 
 	private JTable jTable_showPurchaseSaleHistoricInfoTable; // Shows a table with the Sales Historic's product code, description, quantity, price and final price (with/without discount)
+	
+	static Logger log = Logger.getLogger(SalePurchaseView.class.getName()); // Used to log debug, info, warning, error and fatal error
 
 	/* Constructor of SalePurchaseHistoricView 
 	 * Loads Purchase/Selling list on the screen */
@@ -37,6 +44,7 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 	{
 		initComponents();
 		loadList();
+		log.debug("Loaded Historic of Sale/Purchase");
 	}
 
 	/* This method is responsible to show the Shopping/Selling list info, as:
@@ -52,7 +60,7 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 		{
 			if (salePurchaseStatus == 0)
 			{
-				boolean isSale = transaction.getClass().equals(Sale.class);
+				boolean isSale = transaction.getClass().equals(Sale.class); // Indicates if transaction is a sale
 				
 				if (isSale)
 				{
@@ -80,10 +88,14 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 				{
 					// Nothing to Do
 				}
+				
+				log.debug("Loaded list of sales");
 			}
 			else if (salePurchaseStatus == 1)
 			{
-				if (transaction.getClass().equals(Purchase.class))
+				boolean isPurchase = transaction.getClass().equals(Purchase.class); // Indicates if transaction is a purchase
+				
+				if (isPurchase)
 				{
 					objectPurchase = (Purchase) transaction;
 					
@@ -109,6 +121,8 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 				{
 					// Nothing to Do
 				}
+				
+				log.debug("Loaded list of purchases");
 			}
 			else
 			{
@@ -268,6 +282,7 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 	private void jButton_exitScreenActionPerformed(java.awt.event.ActionEvent evt)
 	{
 		this.dispose();
+		log.debug("Exit Historic of Sale/Purchase view.");
 	}
 
 	/*
@@ -275,19 +290,20 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 	 * button: Shopping/Selling list info (Client/Provider name, responsible
 	 * employee, transaction value and date (date/month/year)
 	 */
-	private void jComboBox_showSalePurchaseItemStateChanged(
-	        java.awt.event.ItemEvent evt)
+	private void jComboBox_showSalePurchaseItemStateChanged(java.awt.event.ItemEvent evt)
 	{
 		int comboSalePurchaseStatus = jComboBox_showSalePurchase.getSelectedIndex();
 		if (comboSalePurchaseStatus == 0)
 		{
 			salePurchaseStatus = 0;
 			jLabel_showSalePurchaseHistoricWord.setText("Historico de Vendas");
+			log.info("User selected sales' historic");
 		}
 		else if (comboSalePurchaseStatus == 1)
 		{
 			salePurchaseStatus = 1;
 			jLabel_showSalePurchaseHistoricWord.setText("Historico de Compras");
+			log.info("User selected purchases' historic");
 		}
 		else
 		{

@@ -1,7 +1,7 @@
 # GestaoEmpresa
 
-O projeto Gestão Empresa foi desenvolvido por alunos da faculdade UnB - Gama (FGA) da disciplina de OO (Orientação à Objetos).
-O Projeto é uma aplicação Java que trabalha com o sistema de cadastro de Clientes, Funcionários e Fornecedores integrado ao sistema
+O projeto Gestão Empresa foi desenvolvido pelos alunos da faculdade UnB - Gama (FGa): Eduardo Moreira (13/0008371) e Ricardo Lupiano (13/0016969) durante a disciplina de Orientação à Objetos 1º/2014.
+O projeto é uma aplicação Java que trabalha com o sistema de cadastro de Clientes, Funcionários e Fornecedores integrado ao sistema
 completo de cadastro, compras e vendas de diversos produtos específicos da Empresa. Ele é projetado em uma interface gráfica com
 diferentes telas referentes à cada funcionalidade do sistema.
 

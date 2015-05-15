@@ -35,6 +35,13 @@ Os arquivos do projeto foram dividos entre os integrantes do Grupo 4 da matéria
 - TelaDadosDespesas
 - TelaDadosProdutos
 - TelaDespesas
+<h3>Atividade 6:</h3>  
+- Compra  
+- Venda
+- Transacao  
+- ControleTransacao
+- TelaHistoricoVendaCompra
+- TelaVendaCompra
 
 <h2>Henrique Augusto (11/0148886)</h2>
 <h3>Atividades 1 a 4:</h3>
@@ -46,6 +53,14 @@ Os arquivos do projeto foram dividos entre os integrantes do Grupo 4 da matéria
 - TelaVendaCompra
 <h3>Atividade 5:</h3>  
  nenhuma
+<h3>Atividade 6:</h3>  
+- Produto
+- Despesa
+- ControleEstoque
+- ControleDespesa
+- TelaDadosDespesas
+- TelaDadosProdutos
+- TelaDespesas
 
 <h2>Matheus Silva (13/0015369)</h2>
 <h3>Atividades 1 a 4:</h3> 
@@ -55,7 +70,7 @@ Os arquivos do projeto foram dividos entre os integrantes do Grupo 4 da matéria
 - ControleFornecedor
 - TelaDadosContatos
 - TelaEstoque     
-<h3>Atividade 5:</h3>
+<h3>Atividade 5 e 6:</h3>
 - Cliente
 - Cliente Físico
 - Cliente Jurídico
@@ -76,10 +91,10 @@ Os arquivos do projeto foram dividos entre os integrantes do Grupo 4 da matéria
 - TelaDadosDespesas
 - TelaDadosProdutos
 - TelaDespesas
-<h3>Atividade 5:</h3>
-- Compra
-- Venda
-- Transacao
-- ControleTransacao
-- TelaHistoricoVendaCompra
-- TelaVendaCompra
+<h3>Atividade 5 e 6:</h3>
+- Fornecedor  
+- FornecedorFisico   
+- FornecedorJuridico   
+- ControleFornecedor
+- TelaDadosContatos
+- TelaEstoque  

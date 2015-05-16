@@ -6,12 +6,15 @@
 package view;
 
 import controller.TransactionController;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;	
 import java.util.ArrayList;
 import java.util.Date;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 import model.Client;
 import model.Purchase;
 import model.Expense;
@@ -24,6 +27,7 @@ import static view.ContactView.nameEmployee;
 import static view.ProductDataView.objectStockController;
 import static view.StockView.codeTable;
 import static view.StockView.tableDescription;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -32,9 +36,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import org.apache.log4j.Logger;
 
-public class SalePurchaseView extends javax.swing.JFrame
-{
+
+public class SalePurchaseView extends javax.swing.JFrame{
 	
 	private JButton jButton_addProduct; // Button responsible to add product
 	private JButton jButton_exitScreen; // Button responsible to exit Main Screen
@@ -86,6 +91,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 	final String CURRENT_YEAR = YEAR.format(CURRENT_DATE); // Receives the current year to save on the transaction
 
 	static ArrayList<Product> productTableList = new ArrayList<Product>(); // Stores the Product's info in a Product's table class
+	static Logger log = Logger.getLogger(SalePurchaseView.class.getName());
 
 	// This method is responsible to show a specific info as a Text Box
 	public void showInfo(String info)
@@ -240,6 +246,8 @@ public class SalePurchaseView extends javax.swing.JFrame
 		{
 			// Nothing to do
 		}
+		
+		log.debug("Load SalePurchaseView");
 	}
 
 	/* This method is called from within the constructor to initialize the form.
@@ -310,7 +318,14 @@ public class SalePurchaseView extends javax.swing.JFrame
 		        {
 			        public void actionPerformed(java.awt.event.ActionEvent evt)
 			        {
-			        	jButton_addProductActionPerformed(evt);
+			        	try
+						{
+							jButton_addProductActionPerformed(evt);
+						}
+						catch (Exception e)
+						{
+							e.printStackTrace();
+						}
 			        }
 		        });
 
@@ -339,7 +354,14 @@ public class SalePurchaseView extends javax.swing.JFrame
 		{
 			public void mouseClicked(java.awt.event.MouseEvent evt)
 			{
-				jTable_showPurchaseSaleInfoTableMouseClicked(evt);
+				try
+				{
+					jTable_showPurchaseSaleInfoTableMouseClicked(evt);
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+				}
 			}
 		});
 		jScrollPane_showSalePurchaseScreenScroll.setViewportView(jTable_showPurchaseSaleInfoTable);
@@ -398,7 +420,14 @@ public class SalePurchaseView extends javax.swing.JFrame
 		        {
 			        public void actionPerformed(java.awt.event.ActionEvent evt)
 			        {
-				        jButton_removeProductActionPerformed(evt);
+				        try
+						{
+							jButton_removeProductActionPerformed(evt);
+						}
+						catch (Exception e)
+						{
+							e.printStackTrace();
+						}
 			        }
 		        });
 
@@ -735,6 +764,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 	{
 		StockView.returnProduct = false;
 		purchaseSaleMode = false;
+		log.debug("Exit SalePurchaseView");
 		this.dispose();
 	}
 
@@ -867,14 +897,20 @@ public class SalePurchaseView extends javax.swing.JFrame
 
 			if (salePurchaseStatus == 0)
 			{
+				log.info("Initialize sale operation");
+				
 				Client client = ContactDataView.objectClientController.searchClient(nameClientSupplier, false);
 				Employee employee = ContactDataView.objectEmployeeController.searchEmployee(nameEmployee, false);
 				objectSale = new Sale(client, productTableList, transactionPrice, employee, Integer.parseInt(CURRENT_DAY), 
 				                      Integer.parseInt(CURRENT_MONTH), Integer.parseInt(CURRENT_YEAR));
 				objectTransactionController.addSale(objectSale);
+				
+				log.info("Sale operation finalized successfully!");
 			}
 			else if (salePurchaseStatus == 1)
 			{
+				log.info("Initialize purchase operation");
+				
 				Supplier c = ContactDataView.objectSupplierController.searchSupplier(nameClientSupplier, false);
 				Employee f = ContactDataView.objectEmployeeController.searchEmployee(nameEmployee, false);
 				objectPurchase = new Purchase(c, productTableList, transactionPrice, f, Integer.parseInt(CURRENT_DAY),
@@ -885,6 +921,8 @@ public class SalePurchaseView extends javax.swing.JFrame
 				                                  Integer.parseInt(CURRENT_DAY), Integer.parseInt(CURRENT_MONTH), Integer.parseInt(CURRENT_YEAR));
 				
 				ExpenseDataView.objectExpenseController.addExpense(expenseInfo);
+				
+				log.info("Purchase operation finalized successfully!");
 			}
 			else
 			{
@@ -912,147 +950,178 @@ public class SalePurchaseView extends javax.swing.JFrame
 	}
 
 	// This method is responsible to confirm the Screen's Add Product Button Action
-	private void jButton_addProductActionPerformed(java.awt.event.ActionEvent evt)
+	private void jButton_addProductActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{
-		int verifyAddedProduct = 0;
-		for (Product product : productTableList)
+		try
 		{
-			String tableProductCode = product.getCode();
+			int verifyAddedProduct = 0;
 			String saleProductCode = productSale.getCode();
 			
-			if (tableProductCode.equalsIgnoreCase(saleProductCode))
+			for (Product tableProduct : productTableList)
 			{
-				verifyAddedProduct = 1;
-			}
-			else 
-			{
-				// Nothing to Do
-			}
-		}
-		
-		if (verifyAddedProduct == 0)
-		{
-			String strProductQuqntity = jTextField_productQuantity.getText();
-			double productQuantity = Double.parseDouble(jTextField_productQuantity.getText());
-			if (productQuantity != 0.0 && strProductQuqntity != "")
-			{
-				if (salePurchaseStatus == 0)
+				String tableProductCode = tableProduct.getCode();
+				
+				if (tableProductCode.equalsIgnoreCase(saleProductCode))
 				{
-					double productStockQuantity = editProduct.getQuantity();
-					
-					if (productStockQuantity != 0)
+					verifyAddedProduct = 1;
+				}
+				else 
+				{
+					// Nothing to Do
+				}
+			}
+			
+			if (verifyAddedProduct == 0)
+			{
+				String strProductQuantity = jTextField_productQuantity.getText();
+				double productQuantity = Double.parseDouble(jTextField_productQuantity.getText());
+				if (productQuantity != 0.0 && strProductQuantity != "")
+				{
+					if (salePurchaseStatus == 0)
 					{
-						if (productQuantity <= productStockQuantity)
+						double productStockQuantity = editProduct.getQuantity();
+						
+						if (productStockQuantity != 0)
 						{
-							productSale.setQuantity(Double.parseDouble(jTextField_productQuantity.getText()));
-							productSale.setSellingPrice(Double.parseDouble(jTextField_productValue.getText()));
-							productTableList.add(productSale);
+							if (productQuantity <= productStockQuantity)
+							{
+								productSale.setQuantity(Double.parseDouble(jTextField_productQuantity.getText()));
+								productSale.setSellingPrice(Double.parseDouble(jTextField_productValue.getText()));
+								productTableList.add(productSale);
+								loadList();
+								jButton_addProduct.setEnabled(false);
+								jTextField_productQuantity.setEnabled(false);
+								jTextField_productDiscount.setEditable(false);
+							}
+							else
+							{
+								showInfo("A quantidade de produto vendido não deve exceder a quantidade em estoque");
+							}
+						}
+						else
+						{
+							showInfo("Produto não disponível em estoque");
+						}
+					}
+					else if (salePurchaseStatus == 1)
+					{
+						if (verifyAddedProduct == 0)
+						{
+							productPurchase.setQuantity(Double.parseDouble(jTextField_productQuantity.getText()));
+							productTableList.add(productPurchase);
 							loadList();
 							jButton_addProduct.setEnabled(false);
 							jTextField_productQuantity.setEnabled(false);
 							jTextField_productDiscount.setEditable(false);
+							for (Product tableProduct : productTableList)
+							{
+								String tableProductCode = tableProduct.getCode();
+								
+								if (tableProductCode.equalsIgnoreCase(saleProductCode))
+								{
+									verifyAddedProduct = 1;
+								}
+								else
+								{
+									// Nothing to Do
+								}
+							}
+						}
+						else if (verifyAddedProduct == 1)
+						{
+							showInfo("Produto já adicionado!");
 						}
 						else
 						{
-							showInfo("A quantidade de produto vendido não deve exceder a quantidade em estoque");
+							// Nothing to do
 						}
-					}
-					else
-					{
-						showInfo("Produto não disponível em estoque");
 					}
 				}
-				else if (salePurchaseStatus == 1)
+				else
 				{
-					if (verifyAddedProduct == 0)
+					showInfo("Selecione a quantidade envolvida na operação");
+					jTextField_productQuantity.requestFocus();
+				}
+			}
+			else
+			{
+				showInfo("Produto já adicionado!");
+			}
+		}
+		catch(Exception e)
+		{
+			log.error("Error when adding product. Exception: ", e);
+			throw e;
+		}
+	}
+
+	// This method is responsible to list and edit the registered Products
+	private void jTable_showPurchaseSaleInfoTableMouseClicked(java.awt.event.MouseEvent evt) throws Exception
+	{
+		try
+		{
+			log.debug("Click product table");
+			
+			String totalProductValue = null;
+			DefaultTableModel model = (DefaultTableModel) jTable_showPurchaseSaleInfoTable.getModel();
+			String nomeTabela = (String) model.getValueAt(jTable_showPurchaseSaleInfoTable.getSelectedRow(), 0);
+			totalProductValue = (String) model.getValueAt(jTable_showPurchaseSaleInfoTable.getSelectedRow(), 1);
+			
+			if (!"Total:".equals(totalProductValue))
+			{
+				for (Product product : productTableList)
+				{
+					String tableProductCode = product.getCode();
+					
+					if (tableProductCode.equalsIgnoreCase(nomeTabela))
 					{
-						productPurchase.setQuantity(Double
-						        .parseDouble(jTextField_productQuantity.getText()));
-						productTableList.add(productPurchase);
-						loadList();
-						jButton_addProduct.setEnabled(false);
-						jTextField_productQuantity.setEnabled(false);
-						jTextField_productDiscount.setEditable(false);
-						for (Product s : productTableList)
-						{
-							if (s.getCode()
-							        .equalsIgnoreCase(productSale.getCode()))
-							{
-								verifyAddedProduct = 1;
-							}
-							else
-							{
-								// Nothing to Do
-							}
-						}
-					}
-					else if (verifyAddedProduct == 1)
-					{
-						showInfo("Produto já adicionado!");
+						editProduct = product;
 					}
 					else
 					{
 						// Nothing to do
 					}
 				}
+				jButton_removeProduct.setEnabled(true);
+			}
+			else if (totalProductValue.equals("Total:"))
+			{
+				jButton_removeProduct.setEnabled(false);
 			}
 			else
 			{
-				showInfo("Selecione a quantidade envolvida na operação");
-				jTextField_productQuantity.requestFocus();
+				// Nothing to do
 			}
 		}
-		else
+		catch(Exception e)
 		{
-			showInfo("Produto já adicionado!");
-		}
-	}
-
-	// This method is responsible to list and edit the registered Products
-	private void jTable_showPurchaseSaleInfoTableMouseClicked(java.awt.event.MouseEvent evt)
-	{
-		String totalProductValue = null;
-		DefaultTableModel model = (DefaultTableModel) jTable_showPurchaseSaleInfoTable.getModel();
-		String nomeTabela = (String) model.getValueAt(jTable_showPurchaseSaleInfoTable.getSelectedRow(),0);
-		totalProductValue = (String) model.getValueAt(jTable_showPurchaseSaleInfoTable.getSelectedRow(), 1);
-		
-		if (!"Total:".equals(totalProductValue))
-		{
-			for (Product product : productTableList)
-			{
-				String tableProductCode = product.getCode();
-				
-				if (tableProductCode.equalsIgnoreCase(nomeTabela))
-				{
-					editProduct = product;
-				}
-				else
-				{
-					// Nothing to do
-				}
-			}
-			jButton_removeProduct.setEnabled(true);
-		}
-		else if (totalProductValue.equals("Total:"))
-		{
-			jButton_removeProduct.setEnabled(false);
-		}
-		else
-		{
-			// Nothing to do
+			log.error("Error when clicking the product table. Exception: ", e);
+			throw e;
 		}
 	}
 
 	// This method is responsible to confirm the Screen's Remove Product Button Action
-	private void jButton_removeProductActionPerformed(java.awt.event.ActionEvent evt)
+	private void jButton_removeProductActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{
-		productTableList.remove(editProduct);
-		loadList();
-		showInfo("Produto removido");
-		jButton_addProduct.setEnabled(true);
-		jTextField_productQuantity.setEnabled(true);
-		jTextField_productDiscount.setEnabled(true);
-		jButton_removeProduct.setEnabled(false);
+		try
+		{
+			log.debug("Start removing product");
+			
+			productTableList.remove(editProduct);
+			loadList();
+			showInfo("Produto removido");
+			jButton_addProduct.setEnabled(true);
+			jTextField_productQuantity.setEnabled(true);
+			jTextField_productDiscount.setEnabled(true);
+			jButton_removeProduct.setEnabled(false);
+			
+			log.debug("Product successfully removed");
+		}
+		catch(Exception e)
+		{
+			log.error("Error when removing product. Exception: ", e);
+			throw e;
+		}
 	}
 
 	// This method is responsible to add (in percentage) the Product's discount

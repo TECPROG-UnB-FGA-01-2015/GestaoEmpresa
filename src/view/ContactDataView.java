@@ -84,8 +84,8 @@ public class ContactDataView extends javax.swing.JFrame
 		jLabel7.setVisible(false);
 		jTextField_Cargo.setVisible(false);
 		jTextField_Salario.setVisible(false);
-		limparCampos();
-		preencherCampos();
+		cleanFields();
+		populateFields();
 
 		if(purchaseSaleMode == true)
 		{
@@ -135,7 +135,7 @@ public class ContactDataView extends javax.swing.JFrame
 	}
 
 	// Method to populate text fields with customer information
-	private void preencherCampos()
+	private void populateFields()
 	{
 		if(ContactView.editMode == true)
 		{
@@ -240,7 +240,7 @@ public class ContactDataView extends javax.swing.JFrame
 	}
 
 	// Method to clear the text fields
-	private void limparCampos()
+	private void cleanFields()
 	{
 		jTextField_Nome.setText("");
 		jTextField_Telefone.setText("");

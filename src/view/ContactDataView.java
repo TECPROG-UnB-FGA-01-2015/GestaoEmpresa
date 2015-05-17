@@ -70,7 +70,7 @@ public class ContactDataView extends javax.swing.JFrame
 	static Logger log = Logger.getLogger(SalePurchaseView.class.getName());
 
 	// Method to display a warning message to the user
-	public void exibirInformacao(String info)
+	public void showInfo(String info)
 	{
 		JOptionPane.showMessageDialog(this, info, "Atenção", JOptionPane.INFORMATION_MESSAGE);
 	}
@@ -502,7 +502,7 @@ public class ContactDataView extends javax.swing.JFrame
 	{// GEN-FIRST:event_jButton_SalvarActionPerformed
 		if(jTextField_Nome.getText().isEmpty() == true)
 		{
-			exibirInformacao("Digite o name do Contato!");
+			showInfo("Digite o name do Contato!");
 		}
 
 		else
@@ -566,7 +566,7 @@ public class ContactDataView extends javax.swing.JFrame
 						if(objectClientController.searchClient(objectPhysicalClient.getName(), false) == null)
 							objectClientController.addClient(objectPhysicalClient);
 						else
-							exibirInformacao("Cliente já cadastrado!");
+							showInfo("Cliente já cadastrado!");
 					}
 					else if(selectedIndexClientTypeComboBox == 1)
 					{
@@ -575,7 +575,7 @@ public class ContactDataView extends javax.swing.JFrame
 						if(objectClientController.searchClient(objectJuridicalClient.getName(), false) == null)
 							objectClientController.addClient(objectJuridicalClient);
 						else
-							exibirInformacao("Cliente já cadastrado!");
+							showInfo("Cliente já cadastrado!");
 					}
 				}
 				else if(selectedIndexContactTypeComboBox == 1)
@@ -587,7 +587,7 @@ public class ContactDataView extends javax.swing.JFrame
 						if(objectSupplierController.searchSupplier(objectPhysicalSupplier.getName(), false) == null)
 							objectSupplierController.addSupplier(objectPhysicalSupplier);
 						else
-							exibirInformacao("Fornecedor já cadastrado!");
+							showInfo("Fornecedor já cadastrado!");
 					}
 					else if(selectedIndexClientTypeComboBox == 1)
 					{
@@ -596,7 +596,7 @@ public class ContactDataView extends javax.swing.JFrame
 						if(objectSupplierController.searchSupplier(objectJuridicalSupplier.getName(), false) == null)
 							objectSupplierController.addSupplier(objectJuridicalSupplier);
 						else
-							exibirInformacao("Fornecedor já cadastrado!");
+							showInfo("Fornecedor já cadastrado!");
 					}
 				}
 				else if(selectedIndexContactTypeComboBox == 2)
@@ -606,7 +606,7 @@ public class ContactDataView extends javax.swing.JFrame
 					if(objectEmployeeController.searchEmployee(objectEmployee.getName(), false) == null)
 						objectEmployeeController.addEmployee(objectEmployee);
 					else
-						exibirInformacao("Funcionário já cadastrado!");
+						showInfo("Funcionário já cadastrado!");
 				}
 			}
 			else if(ContactView.editMode == true)
@@ -619,7 +619,7 @@ public class ContactDataView extends javax.swing.JFrame
 					
 					if(!namePhyicalClientEquals)
 					{
-						exibirInformacao("Não é permitido a alteração do name!");
+						showInfo("Não é permitido a alteração do name!");
 					}
 					else
 					{
@@ -646,7 +646,7 @@ public class ContactDataView extends javax.swing.JFrame
 					
 					if(!nameJuridicalClientEquals)
 					{
-						exibirInformacao("Não é permitido a alteração do name!");
+						showInfo("Não é permitido a alteração do name!");
 					}
 					else
 					{
@@ -673,7 +673,7 @@ public class ContactDataView extends javax.swing.JFrame
 					
 					if(!namePhysicalSupplierEquals)
 					{
-						exibirInformacao("Não é permitido a alteração do name!");
+						showInfo("Não é permitido a alteração do name!");
 					}
 					else
 					{
@@ -700,7 +700,7 @@ public class ContactDataView extends javax.swing.JFrame
 					
 					if(!nameJuridicalSupplierEquals)
 					{
-						exibirInformacao("Não é permitido a alteração do name!");
+						showInfo("Não é permitido a alteração do name!");
 					}
 					else
 					{
@@ -726,7 +726,7 @@ public class ContactDataView extends javax.swing.JFrame
 					boolean nameEmployeeEquals = editEmployee.getName().equals(jTextField_Nome.getText()); 
 					if(!nameEmployeeEquals)
 					{
-						exibirInformacao("Não é permitido a alteração do name!");
+						showInfo("Não é permitido a alteração do name!");
 					}
 					else
 					{

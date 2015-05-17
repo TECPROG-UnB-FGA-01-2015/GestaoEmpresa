@@ -6,17 +6,22 @@
 package view;
 
 import javax.swing.JOptionPane;
+
 import static view.SalePurchaseView.purchaseSaleMode;
 import static view.SalePurchaseView.salePurchaseStatus;
+
 import controller.ClientController;
 import controller.EmployeeController;
 import controller.SupplierController;
+
 import model.Address;
 import model.Employee;
 import model.JuridicalClient;
 import model.JuridicalSupplier;
 import model.PhysicalClient;
 import model.PhysicalSupplier;
+
+import org.apache.log4j.Logger;
 
 public class ContactDataView extends javax.swing.JFrame
 {
@@ -61,6 +66,8 @@ public class ContactDataView extends javax.swing.JFrame
 	
 	// Object from the Employee Class that  is instantiated to receive and update the information of the employee
 	Employee editEmployee;
+	
+	static Logger log = Logger.getLogger(SalePurchaseView.class.getName());
 
 	// Method to display a warning message to the user
 	public void exibirInformacao(String info)

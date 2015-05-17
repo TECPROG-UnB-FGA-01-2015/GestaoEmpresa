@@ -125,6 +125,10 @@ public class ContactDataView extends javax.swing.JFrame
 				jComboBox_TipoPessoa.setSelectedIndex(0);
 				jComboBox_TipoPessoa.setEnabled(false);
 			}
+			else
+			{
+				// Nothing to do
+			}
 		}
 
 		jTextField_Nome.requestFocus();
@@ -224,6 +228,14 @@ public class ContactDataView extends javax.swing.JFrame
 				jTextField_Cargo.setText(editEmployee.getRole());
 				jTextField_Salario.setText(Double.toString(editEmployee.getSalary()));
 			}
+			else
+			{
+				// Nothing to do
+			}
+		}
+		else
+		{
+			// Nothing to do
 		}
 	}
 
@@ -495,6 +507,10 @@ public class ContactDataView extends javax.swing.JFrame
 			jComboBox_TipoPessoa.setEnabled(false);
 			jComboBox_TipoPessoa.setSelectedIndex(0);
 		}
+		else
+		{
+			// Nothing to do
+		}
 	}// GEN-LAST:event_jComboBox_TipoContatoItemStateChanged
 
 	// Method to scan the information of text field and save on the customer object attributes
@@ -564,18 +580,30 @@ public class ContactDataView extends javax.swing.JFrame
 						objectPhysicalClient = new PhysicalClient(cpfCnpj, rgSocialReason, name, objectAddress, telephone, cellphone);
 						
 						if(objectClientController.searchClient(objectPhysicalClient.getName(), false) == null)
+						{
 							objectClientController.addClient(objectPhysicalClient);
+						}
 						else
+						{
 							showInfo("Cliente já cadastrado!");
+						}
 					}
 					else if(selectedIndexClientTypeComboBox == 1)
 					{
 						objectJuridicalClient = new JuridicalClient(cpfCnpj, rgSocialReason, name, objectAddress, telephone, cellphone);
 						
 						if(objectClientController.searchClient(objectJuridicalClient.getName(), false) == null)
+						{
 							objectClientController.addClient(objectJuridicalClient);
+						}
 						else
+						{
 							showInfo("Cliente já cadastrado!");
+						}
+					}
+					else
+					{
+						// Nothing to do
 					}
 				}
 				else if(selectedIndexContactTypeComboBox == 1)
@@ -585,18 +613,30 @@ public class ContactDataView extends javax.swing.JFrame
 						objectPhysicalSupplier = new PhysicalSupplier(cpfCnpj, rgSocialReason, name, telephone, cellphone, null, objectAddress);
 
 						if(objectSupplierController.searchSupplier(objectPhysicalSupplier.getName(), false) == null)
+						{
 							objectSupplierController.addSupplier(objectPhysicalSupplier);
+						}
 						else
+						{
 							showInfo("Fornecedor já cadastrado!");
+						}
 					}
 					else if(selectedIndexClientTypeComboBox == 1)
 					{
 						objectJuridicalSupplier = new JuridicalSupplier(cpfCnpj, rgSocialReason, name, telephone, cellphone, null, objectAddress);
 
 						if(objectSupplierController.searchSupplier(objectJuridicalSupplier.getName(), false) == null)
+						{
 							objectSupplierController.addSupplier(objectJuridicalSupplier);
+						}
 						else
+						{
 							showInfo("Fornecedor já cadastrado!");
+						}
+					}
+					else
+					{
+						// Nothing to do
 					}
 				}
 				else if(selectedIndexContactTypeComboBox == 2)
@@ -604,9 +644,17 @@ public class ContactDataView extends javax.swing.JFrame
 					objectEmployee = new Employee(name, telephone, cellphone, cpfCnpj, rgSocialReason, office, salary, objectAddress);
 
 					if(objectEmployeeController.searchEmployee(objectEmployee.getName(), false) == null)
+					{
 						objectEmployeeController.addEmployee(objectEmployee);
+					}
 					else
+					{
 						showInfo("Funcionário já cadastrado!");
+					}
+				}
+				else
+				{
+					// Nothing to do
 				}
 			}
 			else if(ContactView.editMode == true)
@@ -746,7 +794,16 @@ public class ContactDataView extends javax.swing.JFrame
 						editEmployee.setAddress(objectAddress);
 					}
 				}
+				else
+				{
+					// Nothing to do
+				}
 			}
+			else
+			{
+				// Nothing to do
+			}
+			
 			ContactView.editMode = false;
 			ContactView.newPhysicalClient = true;
 			ContactView.newJuridicalClient = true;
@@ -783,6 +840,10 @@ public class ContactDataView extends javax.swing.JFrame
 			jLabel4.setText("CNPJ:");
 			jLabel5.setText("Razão Social:");
 		}
+		else
+		{
+			// Nothing to do
+		}
 	}// GEN-LAST:event_jComboBox_TipoPessoaItemStateChanged
 
 	private void jTextField_SalarioActionPerformed(java.awt.event.ActionEvent evt)
@@ -813,6 +874,10 @@ public class ContactDataView extends javax.swing.JFrame
 				{
 					javax.swing.UIManager.setLookAndFeel(info.getClassName());
 					break;
+				}
+				else
+				{
+					// Nothing to do
 				}
 			}
 		}

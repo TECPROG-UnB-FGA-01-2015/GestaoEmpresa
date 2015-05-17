@@ -9,11 +9,9 @@ import javax.swing.JOptionPane;
 
 import static view.SalePurchaseView.purchaseSaleMode;
 import static view.SalePurchaseView.salePurchaseStatus;
-
 import controller.ClientController;
 import controller.EmployeeController;
 import controller.SupplierController;
-
 import model.Address;
 import model.Employee;
 import model.JuridicalClient;
@@ -132,6 +130,8 @@ public class ContactDataView extends javax.swing.JFrame
 		}
 
 		jTextField_Nome.requestFocus();
+		
+		log.debug("Load ContactDataView");
 	}
 
 	// Method to populate text fields with customer information
@@ -309,7 +309,14 @@ public class ContactDataView extends javax.swing.JFrame
 		{
 			public void actionPerformed(java.awt.event.ActionEvent evt)
 			{
-				jTextField_SalarioActionPerformed(evt);
+				try
+				{
+					jTextField_SalarioActionPerformed(evt);
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+				}				
 			}
 		});
 
@@ -328,7 +335,14 @@ public class ContactDataView extends javax.swing.JFrame
 		{
 			public void itemStateChanged(java.awt.event.ItemEvent evt)
 			{
-				jComboBox_TipoContatoItemStateChanged(evt);
+				try
+				{
+					jComboBox_TipoContatoItemStateChanged(evt);
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+				}
 			}
 		});
 
@@ -351,7 +365,14 @@ public class ContactDataView extends javax.swing.JFrame
 		{
 			public void actionPerformed(java.awt.event.ActionEvent evt)
 			{
-				jButton_SalvarActionPerformed(evt);
+				try
+				{
+					jButton_SalvarActionPerformed(evt);
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+				}
 			}
 		});
 
@@ -360,7 +381,14 @@ public class ContactDataView extends javax.swing.JFrame
 		{
 			public void actionPerformed(java.awt.event.ActionEvent evt)
 			{
-				jButton_CancelarActionPerformed(evt);
+				try
+				{
+					jButton_CancelarActionPerformed(evt);
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+				}
 			}
 		});
 
@@ -369,7 +397,14 @@ public class ContactDataView extends javax.swing.JFrame
 		{
 			public void itemStateChanged(java.awt.event.ItemEvent evt)
 			{
-				jComboBox_TipoPessoaItemStateChanged(evt);
+				try
+				{
+					jComboBox_TipoPessoaItemStateChanged(evt);
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+				}
 			}
 		});
 
@@ -485,6 +520,8 @@ public class ContactDataView extends javax.swing.JFrame
 			jComboBox_TipoPessoa.setEnabled(true);
 			jComboBox_TipoPessoa.setSelectedIndex(0);
 			jComboBox_TipoPessoa.setSelectedItem("Pessoa Física");
+			
+			log.info("Physical Person type to be added!");
 		}
 		else if(selectedItemContactTypeComboBox == "Fornecedor")
 		{
@@ -495,6 +532,8 @@ public class ContactDataView extends javax.swing.JFrame
 			jComboBox_TipoPessoa.setEnabled(true);
 			jComboBox_TipoPessoa.setSelectedIndex(1);
 			jComboBox_TipoPessoa.setSelectedItem("Pessoa Jurídica");
+			
+			log.info("Juridical Person type to be added!");
 		}
 		else if(selectedItemContactTypeComboBox == "Funcionário")
 		{
@@ -506,6 +545,8 @@ public class ContactDataView extends javax.swing.JFrame
 			jTextField_Salario.setVisible(true);
 			jComboBox_TipoPessoa.setEnabled(false);
 			jComboBox_TipoPessoa.setSelectedIndex(0);
+			
+			log.info("Employee type to be added!");
 		}
 		else
 		{
@@ -518,11 +559,15 @@ public class ContactDataView extends javax.swing.JFrame
 	{// GEN-FIRST:event_jButton_SalvarActionPerformed
 		if(jTextField_Nome.getText().isEmpty() == true)
 		{
+			log.warn("Contact name wasn't informed!");
+			
 			showInfo("Digite o name do Contato!");
 		}
 
 		else
 		{
+			log.info("Initialize save contact operation");
+			
 			// Receives the name info of the view's text field 
 			String name = jTextField_Nome.getText();
 			
@@ -810,8 +855,12 @@ public class ContactDataView extends javax.swing.JFrame
 			ContactView.newPhysicalSupplier = true;
 			ContactView.newJuridicalSupplier = true;
 			ContactView.newEmployee = true;
-
+			
+			log.info("Save contact operation finalized successfully!");
+			
 			new ContactView().setVisible(true);
+			
+			log.debug("Exit SalePurchaseView");
 			this.dispose();
 		}
 
@@ -832,11 +881,15 @@ public class ContactDataView extends javax.swing.JFrame
 		
 		if(selectedClientTypeComboBoxString == "Pessoa Física")
 		{
+			log.info("Physical Person ComboBox selected!");
+			
 			jLabel4.setText("CPF:");
 			jLabel5.setText("RG:");
 		}
 		else if(selectedClientTypeComboBoxString == "Pessoa Jurídica")
 		{
+			log.info("Juridical Person ComboBox selected!");
+			
 			jLabel4.setText("CNPJ:");
 			jLabel5.setText("Razão Social:");
 		}

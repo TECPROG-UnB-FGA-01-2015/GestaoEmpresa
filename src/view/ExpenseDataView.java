@@ -11,6 +11,8 @@ import java.util.Date;
 import java.text.DateFormat; 
 import java.text.SimpleDateFormat; 
 
+import org.apache.log4j.Logger;
+
 public class ExpenseDataView extends javax.swing.JFrame
 {
 	// Variables declaration of Buttons, ComboBox, Label and TextFields
@@ -35,12 +37,14 @@ public class ExpenseDataView extends javax.swing.JFrame
     
     // ExpenseController type object
     static ExpenseController objectExpenseController = new ExpenseController();
+    static Logger log = Logger.getLogger(ExpenseDataView.class.getName());
     
     // Constructor to initialize components on ExpenseDataView
     public ExpenseDataView()
     {
         initComponents();
         jTextField_Nome.requestFocus();
+        log.debug("Load ExpenseDataView");
         jComboBox_Dia.setSelectedIndex(Integer.parseInt(getDay())-1);
         jComboBox_Mes.setSelectedIndex(Integer.parseInt(getMonth())-1);
         jComboBox_Ano.setSelectedItem(getYear());
@@ -100,7 +104,14 @@ public class ExpenseDataView extends javax.swing.JFrame
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton_SairActionPerformed(evt);
+            		try
+            				{
+            						jButton_SairActionPerformed(evt);
+            				}
+            				catch (Exception e)
+            				{
+            						e.printStackTrace();
+            				}
             }
         });
 
@@ -119,7 +130,15 @@ public class ExpenseDataView extends javax.swing.JFrame
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton_SalvarActionPerformed(evt);
+        			try
+        					{
+        						jButton_SalvarActionPerformed(evt);
+        					}
+        					catch (Exception e)
+        					{
+        						e.printStackTrace();
+        					}           	
+                
             }
         });
 
@@ -127,13 +146,16 @@ public class ExpenseDataView extends javax.swing.JFrame
         jLabel5.setText("Nova Despesa");
 
         jComboBox_Mes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
+        log.info("Load months from January until December");
 
         jComboBox_Ano.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2013", "2014", "2015", "2016", "2017", " " }));
-
+        log.info("Load years from 2013 until 2017");
+        
         jLabel6.setText("R$");
 
         jComboBox_Dia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", " " }));
-
+        log.info("Load days from 1 until 31");
+        
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -212,6 +234,7 @@ public class ExpenseDataView extends javax.swing.JFrame
 
     private void jButton_SairActionPerformed(java.awt.event.ActionEvent evt)
     {
+      log.debug("Exit ExpenseDataView");
       this.dispose();
       new ExpenseView().setVisible(true);
     }
@@ -234,15 +257,18 @@ public class ExpenseDataView extends javax.swing.JFrame
         if(textFieldNameEmpty)
         {
             showMessage("Digite o histórico da despesa");
+            log.warn("Expense Historic is empty!");
         }
         else if(expenseValue == 0.0)
         {
             showMessage("Digite um valor para a despesa");
+            log.warn("Expense value wasn't informed!");
         }      
         else
         {
             objectExpense = new Expense(name, description, valor, day, month, year);
             objectExpenseController.addExpense(objectExpense);
+            log.debug("New Expense saved successfully!");
             this.dispose();
             new ExpenseView().setVisible(true);
         }

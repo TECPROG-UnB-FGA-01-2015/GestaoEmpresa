@@ -39,7 +39,7 @@ public class ExpenseView extends javax.swing.JFrame
     int secondMonth=7; // Holds the expense's month final
     int secondYear=2014; // Holds the expense's year final
     
-    static Logger log = Logger.getLogger(SalePurchaseView.class.getName());
+    static Logger log = Logger.getLogger(ExpenseView.class.getName());
     
     // Constructor to initialize components on ProductDataView
     public ExpenseView()

@@ -67,7 +67,7 @@ public class ContactDataView extends javax.swing.JFrame
 	// Object from the Employee Class that  is instantiated to receive and update the information of the employee
 	Employee editEmployee;
 	
-	static Logger log = Logger.getLogger(SalePurchaseView.class.getName());
+	static Logger log = Logger.getLogger(ContactDataView.class.getName());
 
 	// Method to display a warning message to the user
 	public void showInfo(String info)
@@ -883,15 +883,11 @@ public class ContactDataView extends javax.swing.JFrame
 		
 		if(selectedClientTypeComboBoxString == "Pessoa Física")
 		{
-			log.info("Physical Person ComboBox selected!");
-			
 			jLabel4.setText("CPF:");
 			jLabel5.setText("RG:");
 		}
 		else if(selectedClientTypeComboBoxString == "Pessoa Jurídica")
 		{
-			log.info("Juridical Person ComboBox selected!");
-			
 			jLabel4.setText("CNPJ:");
 			jLabel5.setText("Razão Social:");
 		}

@@ -623,6 +623,8 @@ public class ContactDataView extends javax.swing.JFrame
 							if(objectClientController.searchClient(namePhysicalClient, false) == null)
 							{
 								objectClientController.addClient(objectPhysicalClient);
+								
+								log.info("Client " + namePhysicalClient + " added successfully!");
 							}
 							else
 							{
@@ -638,6 +640,8 @@ public class ContactDataView extends javax.swing.JFrame
 							if(objectClientController.searchClient(nameJuridicalClient, false) == null)
 							{
 								objectClientController.addClient(objectJuridicalClient);
+								
+								log.info("Client " + nameJuridicalClient + " added successfully!");
 							}
 							else
 							{
@@ -656,9 +660,12 @@ public class ContactDataView extends javax.swing.JFrame
 							objectPhysicalSupplier = new PhysicalSupplier(cpfCnpj, rgSocialReason, name, telephone, cellphone, null, objectAddress);
 	
 							String namePhysicalSupplier = objectPhysicalSupplier.getName();
+							
 							if(objectSupplierController.searchSupplier(namePhysicalSupplier, false) == null)
 							{
 								objectSupplierController.addSupplier(objectPhysicalSupplier);
+								
+								log.info("Supplier " + namePhysicalSupplier + " added successfully!");
 							}
 							else
 							{
@@ -670,9 +677,12 @@ public class ContactDataView extends javax.swing.JFrame
 							objectJuridicalSupplier = new JuridicalSupplier(cpfCnpj, rgSocialReason, name, telephone, cellphone, null, objectAddress);
 	
 							String nameJuridicalSupplier = objectJuridicalSupplier.getName();
+							
 							if(objectSupplierController.searchSupplier(nameJuridicalSupplier, false) == null)
 							{
 								objectSupplierController.addSupplier(objectJuridicalSupplier);
+								
+								log.info("Supplier " + nameJuridicalSupplier + " added successfully!");
 							}
 							else
 							{
@@ -689,9 +699,12 @@ public class ContactDataView extends javax.swing.JFrame
 						objectEmployee = new Employee(name, telephone, cellphone, cpfCnpj, rgSocialReason, office, salary, objectAddress);
 	
 						String nameEmployee = objectEmployee.getName();
+						
 						if(objectEmployeeController.searchEmployee(nameEmployee, false) == null)
 						{
 							objectEmployeeController.addEmployee(objectEmployee);
+							
+							log.info("Employee " + nameEmployee + " added successfully!");
 						}
 						else
 						{

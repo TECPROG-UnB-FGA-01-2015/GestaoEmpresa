@@ -9,9 +9,11 @@ import javax.swing.JOptionPane;
 
 import static view.SalePurchaseView.purchaseSaleMode;
 import static view.SalePurchaseView.salePurchaseStatus;
+
 import controller.ClientController;
 import controller.EmployeeController;
 import controller.SupplierController;
+
 import model.Address;
 import model.Employee;
 import model.JuridicalClient;

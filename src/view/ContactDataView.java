@@ -618,7 +618,9 @@ public class ContactDataView extends javax.swing.JFrame
 						{
 							objectPhysicalClient = new PhysicalClient(cpfCnpj, rgSocialReason, name, objectAddress, telephone, cellphone);
 							
-							if(objectClientController.searchClient(objectPhysicalClient.getName(), false) == null)
+							String namePhysicalClient = objectPhysicalClient.getName();
+							
+							if(objectClientController.searchClient(namePhysicalClient, false) == null)
 							{
 								objectClientController.addClient(objectPhysicalClient);
 							}
@@ -631,7 +633,9 @@ public class ContactDataView extends javax.swing.JFrame
 						{
 							objectJuridicalClient = new JuridicalClient(cpfCnpj, rgSocialReason, name, objectAddress, telephone, cellphone);
 							
-							if(objectClientController.searchClient(objectJuridicalClient.getName(), false) == null)
+							String nameJuridicalClient = objectJuridicalClient.getName();
+							
+							if(objectClientController.searchClient(nameJuridicalClient, false) == null)
 							{
 								objectClientController.addClient(objectJuridicalClient);
 							}
@@ -651,7 +655,8 @@ public class ContactDataView extends javax.swing.JFrame
 						{
 							objectPhysicalSupplier = new PhysicalSupplier(cpfCnpj, rgSocialReason, name, telephone, cellphone, null, objectAddress);
 	
-							if(objectSupplierController.searchSupplier(objectPhysicalSupplier.getName(), false) == null)
+							String namePhysicalSupplier = objectPhysicalSupplier.getName();
+							if(objectSupplierController.searchSupplier(namePhysicalSupplier, false) == null)
 							{
 								objectSupplierController.addSupplier(objectPhysicalSupplier);
 							}
@@ -664,7 +669,8 @@ public class ContactDataView extends javax.swing.JFrame
 						{
 							objectJuridicalSupplier = new JuridicalSupplier(cpfCnpj, rgSocialReason, name, telephone, cellphone, null, objectAddress);
 	
-							if(objectSupplierController.searchSupplier(objectJuridicalSupplier.getName(), false) == null)
+							String nameJuridicalSupplier = objectJuridicalSupplier.getName();
+							if(objectSupplierController.searchSupplier(nameJuridicalSupplier, false) == null)
 							{
 								objectSupplierController.addSupplier(objectJuridicalSupplier);
 							}
@@ -682,7 +688,8 @@ public class ContactDataView extends javax.swing.JFrame
 					{
 						objectEmployee = new Employee(name, telephone, cellphone, cpfCnpj, rgSocialReason, office, salary, objectAddress);
 	
-						if(objectEmployeeController.searchEmployee(objectEmployee.getName(), false) == null)
+						String nameEmployee = objectEmployee.getName();
+						if(objectEmployeeController.searchEmployee(nameEmployee, false) == null)
 						{
 							objectEmployeeController.addEmployee(objectEmployee);
 						}

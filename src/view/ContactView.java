@@ -23,6 +23,8 @@ import static view.SalePurchaseView.clientSupplierMode;
 import static view.SalePurchaseView.purchaseSaleMode;
 import static view.SalePurchaseView.salePurchaseStatus;
 
+import org.apache.log4j.Logger;
+
 public class ContactView extends javax.swing.JFrame
 {
 	// Variables declaration of Buttons, ComboBox, Labels, Panel, ScrollPane, Table and TextField
@@ -63,6 +65,8 @@ public class ContactView extends javax.swing.JFrame
     static boolean returnEmployee; // Indicates if employees was returned to sale/purchase view
     static String nameClientSupplier; // Holds the name of the client/supplier to return to sale/purchase view
     static String nameEmployee; // Holds the name of the employee to return to sale/purchase view
+    
+    static Logger log = Logger.getLogger(ContactView.class.getName());
 
     // Constructor of the ContactView's class
     public ContactView()

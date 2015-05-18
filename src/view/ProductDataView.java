@@ -7,6 +7,9 @@ package view;
 import controller.StockController;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
+import org.apache.log4j.Logger;
+
 import model.Product;
 import static view.StockView.newProduct;
 
@@ -35,12 +38,15 @@ public class ProductDataView extends javax.swing.JFrame
     Product editProduct; // Product type object that is being editing
     StockView stockView; // Control the view visibility situation
     static boolean infoCarregar=false; // Boolean to disposes the informations on view
+    static Logger log = Logger.getLogger(ProductDataView.class.getName());
+
     
     // Constructor to initialize components on ProductDataView
     public ProductDataView()
     {
         initComponents();
         fillFields();
+        log.debug("Load ProductDataView");
         jTextField_QuantidadeProduto.setEnabled(false);
         fillCode();
         jTextField_DescricaoProduto.requestFocus();
@@ -80,8 +86,15 @@ public class ProductDataView extends javax.swing.JFrame
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton_CancelarActionPerformed(evt);
-            }
+            	try
+            	{
+                    jButton_CancelarActionPerformed(evt);
+            	}
+            	catch (Exception e)
+            	{
+            		e.printStackTrace();
+            	}
+           }
         });
 
         jLabel1.setText("Código:");
@@ -101,7 +114,14 @@ public class ProductDataView extends javax.swing.JFrame
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton_SalvarProdutoActionPerformed(evt);
+            	try
+            	{
+                    jButton_SalvarProdutoActionPerformed(evt);
+            	}
+            	catch (Exception e)
+            	{
+            		e.printStackTrace();
+            	}
             }
         });
 
@@ -226,6 +246,7 @@ public class ProductDataView extends javax.swing.JFrame
             if(productList.isEmpty())
             {
                 jTextField_NomeProduto.setText("1");
+                log.info("Put first Product code with number 1");
             }
             else
             {
@@ -282,6 +303,7 @@ public class ProductDataView extends javax.swing.JFrame
         jTextField_PrecoCompra.setText("0.00");
         jTextField_PrecoVenda.setText("0.00");
         jTextField_QuantidadeProduto.setText("0.0");
+        log.info("Clean product, buying price and selling price fields");
     }
     
     /* Method to cancel the action to add another product giving returning an
@@ -295,6 +317,7 @@ public class ProductDataView extends javax.swing.JFrame
         }
             
         new StockView().setVisible(true);
+        log.info("Exit ProductDataView");
         this.dispose();
         infoCarregar=true;
     }
@@ -335,14 +358,17 @@ public class ProductDataView extends javax.swing.JFrame
                 {
                     objectStockController.addProduct(objectProduct);
                     showMessage("Produto Adicionado!");
+                    log.info("Product added successfully!");
                 }
                 else if(returnProduct != null)
                 {
                     showMessage("Produto com esse código já existente no estoque!");
+                    log.info("Product code already exists!");
                 }
                 else if(returnDescription != null)
                 {
                     showMessage("Produto com essa Descrição já existente no estoque!");
+                    log.info("Product description already exists!");
                 }
                 else
                 {
@@ -356,6 +382,7 @@ public class ProductDataView extends javax.swing.JFrame
                 if(!changedEditProductCode)
                 {
                     showMessage("Não é permitido a alteração do código do produto!");
+                    log.info("Product code can't be edited!");
                 }
                 else
                 {
@@ -365,6 +392,7 @@ public class ProductDataView extends javax.swing.JFrame
                     editProduct.setSellingPrice(sellingPrice);
                     editProduct.setQuantity(quantity);   
                     showMessage("Product Editado!");
+                    log.info("Product edited!");
                 }
             }
             else
@@ -387,18 +415,22 @@ public class ProductDataView extends javax.swing.JFrame
         {
             showMessage("Digite uma descrição para o produto");
             jTextField_DescricaoProduto.requestFocus();
+            log.warn("Product description is empty!");
         }
         
         else if(jTextField_PrecoCompra.getText().equals(""))
         {
             showMessage("Digite um preço de compra para o produto");
             jTextField_PrecoCompra.requestFocus();
+            log.warn("Product buying price is empty!");
+
         }
         
         else if(jTextField_PrecoVenda.getText().equals(""))
         {
             showMessage("Digite um preço de venda para o produto");
             jTextField_PrecoCompra.requestFocus();
+            log.warn("Product selling price is empty!");
         }
         
         else

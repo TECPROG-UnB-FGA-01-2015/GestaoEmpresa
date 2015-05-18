@@ -104,14 +104,14 @@ public class ExpenseDataView extends javax.swing.JFrame
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-            		try
-            				{
-            						jButton_SairActionPerformed(evt);
-            				}
-            				catch (Exception e)
-            				{
-            						e.printStackTrace();
-            				}
+            	try
+            	{
+            		jButton_SairActionPerformed(evt);
+            	}
+            	catch (Exception e)
+            	{
+            		e.printStackTrace();
+            	}
             }
         });
 
@@ -130,15 +130,14 @@ public class ExpenseDataView extends javax.swing.JFrame
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-        			try
-        					{
-        						jButton_SalvarActionPerformed(evt);
-        					}
-        					catch (Exception e)
-        					{
-        						e.printStackTrace();
-        					}           	
-                
+        		try
+        		{
+        			jButton_SalvarActionPerformed(evt);
+        		}
+        		catch (Exception e)
+        		{
+        			e.printStackTrace();
+        		}           	
             }
         });
 

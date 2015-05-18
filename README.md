@@ -12,89 +12,89 @@ Os arquivos do projeto foram dividos entre os integrantes do Grupo 4 da matéria
 
 <h2>Eduardo Moreira (13/0008371)</h2>
 <h3>Atividades 1 a 4:</h3>  
-- Cliente    
-- Cliente Físico  
-- Cliente Jurídico    
-- Endereço  
-- Funcionário
-- Controle Cliente
-- Controle Funcionário
-- GestaoEmpresa
-- TelaContatos
-<h3>Atividade 5:</h3>  
-- Compra  
-- Venda
-- Transacao  
-- ControleTransacao
-- TelaHistoricoVendaCompra
-- TelaVendaCompra
-- Produto
-- Despesa
-- ControleEstoque
-- ControleDespesa
-- TelaDadosDespesas
-- TelaDadosProdutos
-- TelaDespesas
+- Cliente (Client)   
+- Cliente Físico (PhysicalClient) 
+- Cliente Jurídico (JuridicalClient)   
+- Endereço (Address)  
+- Funcionário (Employee)
+- ControleCliente (ClientController)
+- ControleFuncionario (EmployeeController)
+- GestaoEmpresa (EnterpriseManagement)
+- TelaContatos (ContactView)
+<h3>Atividade 5:</h3>   
+- Compra (Purchase)  
+- Venda (Sale)
+- Transacao (Transaction) 
+- ControleTransacao (TransactionController)
+- TelaHistoricoVendaCompra (SalePurchaseHistoricView)
+- TelaVendaCompra (SalePurchaseView)
+- Produto (Product)
+- Despesa (Expense)
+- ControleEstoque (StockController)
+- ControleDespesa (ExpenseController)
+- TelaDadosDespesas (ExpenseDataView)
+- TelaDadosProdutos (ProductDataView)
+- TelaDespesas (ExpenseView)
 <h3>Atividade 6:</h3>  
-- Compra  
-- Venda
-- Transacao  
-- ControleTransacao
-- TelaHistoricoVendaCompra
-- TelaVendaCompra
+- Compra (Purchase)  
+- Venda (Sale)
+- Transacao (Transaction) 
+- ControleTransacao (TransactionController)
+- TelaHistoricoVendaCompra (SalePurchaseHistoricView)
+- TelaVendaCompra (SalePurchaseView)
 
 <h2>Henrique Augusto (11/0148886)</h2>
 <h3>Atividades 1 a 4:</h3>
-- Compra
-- Venda
-- Transacao
-- ControleTransacao
-- TelaHistoricoVendaCompra
-- TelaVendaCompra
+- Compra (Purchase)  
+- Venda (Sale)
+- Transacao (Transaction) 
+- ControleTransacao (TransactionController)
+- TelaHistoricoVendaCompra (SalePurchaseHistoricView)
+- TelaVendaCompra (SalePurchaseView)
 <h3>Atividade 5:</h3>  
  nenhuma
 <h3>Atividade 6:</h3>  
-- Produto
-- Despesa
-- ControleEstoque
-- ControleDespesa
-- TelaDadosDespesas
-- TelaDadosProdutos
-- TelaDespesas
+- Produto (Product)
+- Despesa (Expense)
+- ControleEstoque (StockController)
+- ControleDespesa (ExpenseController)
+- TelaDadosDespesas (ExpenseDataView)
+- TelaDadosProdutos (ProductDataView)
+- TelaDespesas (ExpenseView)
 
 <h2>Matheus Silva (13/0015369)</h2>
 <h3>Atividades 1 a 4:</h3> 
-- Fornecedor  
-- FornecedorFisico   
-- FornecedorJuridico   
-- ControleFornecedor
-- TelaDadosContatos
-- TelaEstoque     
+- Fornecedor (Supplier) 
+- FornecedorFisico (PhysicalSupplier)  
+- FornecedorJuridico (JuridicalSupplier)  
+- ControleFornecedor (SupplierController)
+- TelaDadosContatos (ContactDataView)
+- TelaEstoque (StockView)
 <h3>Atividade 5 e 6:</h3>
-- Cliente
-- Cliente Físico
-- Cliente Jurídico
-- Endereço
-- Funcionário
-- Controle Cliente
-- Controle Funcionário
-- GestaoEmpresa
-- TelaContatos
+- Cliente (Client)   
+- Cliente Físico (PhysicalClient) 
+- Cliente Jurídico (JuridicalClient)   
+- Endereço (Address)  
+- Funcionário (Employee)
+- ControleCliente (ClientController)
+- ControleFuncionario (EmployeeController)
+- GestaoEmpresa (EnterpriseManagement)
+- TelaContatos (ContactView)
 
 
 <h2>Omar Júnior (13/0015920)</h2>
 <h3>Atividades 1 a 4:</h3>
-- Produto
-- Despesa
-- ControleEstoque
-- ControleDespesa
-- TelaDadosDespesas
-- TelaDadosProdutos
-- TelaDespesas
+- Produto (Product)
+- Despesa (Expense)
+- ControleEstoque (StockController)
+- ControleDespesa (ExpenseController)
+- TelaDadosDespesas (ExpenseDataView)
+- TelaDadosProdutos (ProductDataView)
+- TelaDespesas (ExpenseView)
 <h3>Atividade 5 e 6:</h3>
-- Fornecedor  
-- FornecedorFisico   
-- FornecedorJuridico   
-- ControleFornecedor
-- TelaDadosContatos
-- TelaEstoque  
+- Fornecedor (Supplier) 
+- FornecedorFisico (PhysicalSupplier)  
+- FornecedorJuridico (JuridicalSupplier)  
+- ControleFornecedor (SupplierController)
+- TelaDadosContatos (ContactDataView)
+- TelaEstoque (StockView)

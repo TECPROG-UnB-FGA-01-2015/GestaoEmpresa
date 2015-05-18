@@ -48,6 +48,8 @@ public class ExpenseView extends javax.swing.JFrame
         loadList();
         jComboBox_Mes2.setSelectedIndex(secondMonth-1);
         jComboBox_Ano2.setSelectedItem("2014");
+        
+        log.debug("Load ExpenseView");
     }
     
     // Method to show all the expenses added
@@ -172,7 +174,14 @@ public class ExpenseView extends javax.swing.JFrame
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton_SairActionPerformed(evt);
+            	try
+            	{
+            		jButton_SairActionPerformed(evt);
+            	}
+            	catch (Exception e)
+            	{
+            		e.printStackTrace();
+            	}
             }
         });
 
@@ -205,7 +214,14 @@ public class ExpenseView extends javax.swing.JFrame
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton1ActionPerformed(evt);
+            	try
+            	{
+                    jButton1ActionPerformed(evt);
+            	}
+            	catch (Exception e)
+            	{
+            		e.printStackTrace();
+            	}
             }
         });
 
@@ -214,7 +230,14 @@ public class ExpenseView extends javax.swing.JFrame
         {
             public void itemStateChanged(java.awt.event.ItemEvent evt)
             {
-                jComboBox_Mes1ItemStateChanged(evt);
+            	try
+            	{
+                    jComboBox_Mes1ItemStateChanged(evt);
+            	}
+            	catch (Exception e)
+            	{
+            		e.printStackTrace();
+            	}
             }
         });
 
@@ -223,7 +246,14 @@ public class ExpenseView extends javax.swing.JFrame
         {
             public void itemStateChanged(java.awt.event.ItemEvent evt)
             {
-                jComboBox_Ano1ItemStateChanged(evt);
+            	try
+            	{
+                    jComboBox_Ano1ItemStateChanged(evt);
+            	}
+            	catch (Exception e)
+            	{
+            		e.printStackTrace();
+            	}
             }
         });
 
@@ -234,7 +264,14 @@ public class ExpenseView extends javax.swing.JFrame
         {
             public void itemStateChanged(java.awt.event.ItemEvent evt) 
             {
-                jComboBox_Mes2ItemStateChanged(evt);
+            	try
+            	{
+                    jComboBox_Mes2ItemStateChanged(evt);
+            	}
+            	catch (Exception e)
+            	{
+            		e.printStackTrace();
+            	}
             }
         });
 
@@ -243,7 +280,14 @@ public class ExpenseView extends javax.swing.JFrame
         {
             public void itemStateChanged(java.awt.event.ItemEvent evt)
             {
-                jComboBox_Ano2ItemStateChanged(evt);
+            	try
+            	{
+                    jComboBox_Ano2ItemStateChanged(evt);
+            	}
+            	catch (Exception e)
+            	{
+            		e.printStackTrace();
+            	}
             }
         });
 
@@ -252,7 +296,14 @@ public class ExpenseView extends javax.swing.JFrame
         {
             public void itemStateChanged(java.awt.event.ItemEvent evt)
             {
-                jRadioButton1ItemStateChanged(evt);
+            	try
+            	{
+                    jRadioButton1ItemStateChanged(evt);
+            	}
+            	catch (Exception e)
+            	{
+            		e.printStackTrace();
+            	}
             }
         });
 
@@ -341,11 +392,13 @@ public class ExpenseView extends javax.swing.JFrame
 
     private void jButton_SairActionPerformed(java.awt.event.ActionEvent evt)
     {
+    	log.debug("Exit ExpenseView");
         this.dispose();
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)
     {
+    	log.debug("Exit ExpenseView");
         this.dispose();
         new ExpenseDataView().setVisible(true);
     }

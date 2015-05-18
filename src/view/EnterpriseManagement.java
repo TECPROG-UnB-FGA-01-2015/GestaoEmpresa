@@ -234,22 +234,22 @@ public class EnterpriseManagement extends javax.swing.JFrame
         catch (ClassNotFoundException ex)
         {
             java.util.logging.Logger.getLogger(EnterpriseManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            log.error("ClassNotFoundException: ", ex);
+            log.fatal("ClassNotFound. Exception: ", ex);
         }
         catch (InstantiationException ex)
         {
             java.util.logging.Logger.getLogger(EnterpriseManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            log.error("InstantiationException: ", ex);
+            log.fatal("Instantiation. Exception: ", ex);
         }
         catch (IllegalAccessException ex)
         {
             java.util.logging.Logger.getLogger(EnterpriseManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            log.error("IllegalAccessException: ", ex);
+            log.fatal("IllegalAccess. Exception: ", ex);
         }
         catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
             java.util.logging.Logger.getLogger(EnterpriseManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            log.error("UnsupportedLookAndFeelException: ", ex);
+            log.fatal("UnsupportedLookAndFeel. Exception: ", ex);
         }
       
         /* Create and display the form */

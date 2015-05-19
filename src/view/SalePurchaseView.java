@@ -6,12 +6,15 @@
 package view;
 
 import controller.TransactionController;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;	
 import java.util.ArrayList;
 import java.util.Date;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 import model.Client;
 import model.Purchase;
 import model.Expense;
@@ -24,6 +27,7 @@ import static view.ContactView.nameEmployee;
 import static view.ProductDataView.objectStockController;
 import static view.StockView.codeTable;
 import static view.StockView.tableDescription;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -31,6 +35,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+
+import org.apache.log4j.Logger;
 
 
 public class SalePurchaseView extends javax.swing.JFrame
@@ -86,6 +92,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 	final String CURRENT_YEAR = YEAR.format(CURRENT_DATE); // Receives the current year to save on the transaction
 
 	static ArrayList<Product> productTableList = new ArrayList<Product>(); // Stores the Product's info in a Product's table class
+	static Logger log = Logger.getLogger(SalePurchaseView.class.getName()); // Used to log debug, info, warning, error and fatal error
 
 	// This method is responsible to show a specific info as a Text Box
 	public void showInfo(String info)
@@ -120,7 +127,17 @@ public class SalePurchaseView extends javax.swing.JFrame
 		
 		if (ContactView.returnEmployee == true)
 		{
-			jTextField_employeeName.setText(ContactView.nameEmployee);
+			String employeeName = ContactView.nameEmployee;
+			jTextField_employeeName.setText(employeeName);
+			
+			if (employeeName != "")
+			{
+				log.info("Selected transaction's employee: '" + employeeName +  "'.");
+			}
+			else
+			{
+				// Nothing to do because any employee was selected
+			}
 		}
 		else
 		{
@@ -240,6 +257,8 @@ public class SalePurchaseView extends javax.swing.JFrame
 		{
 			// Nothing to do
 		}
+		
+		log.debug("Load SalePurchaseView");
 	}
 
 	/* This method is called from within the constructor to initialize the form.
@@ -300,7 +319,14 @@ public class SalePurchaseView extends javax.swing.JFrame
 		        {
 			        public void actionPerformed(java.awt.event.ActionEvent evt)
 			        {
-			        	jButton_searchEmployeeActionPerformed(evt);
+			        	try
+						{
+							jButton_searchEmployeeActionPerformed(evt);
+						}
+						catch (Exception e)
+						{
+							e.printStackTrace();
+						}
 			        }
 		        });
 
@@ -310,7 +336,14 @@ public class SalePurchaseView extends javax.swing.JFrame
 		        {
 			        public void actionPerformed(java.awt.event.ActionEvent evt)
 			        {
-			        	jButton_addProductActionPerformed(evt);
+			        	try
+						{
+							jButton_addProductActionPerformed(evt);
+						}
+						catch (Exception e)
+						{
+							e.printStackTrace();
+						}
 			        }
 		        });
 
@@ -339,7 +372,14 @@ public class SalePurchaseView extends javax.swing.JFrame
 		{
 			public void mouseClicked(java.awt.event.MouseEvent evt)
 			{
-				jTable_showPurchaseSaleInfoTableMouseClicked(evt);
+				try
+				{
+					jTable_showPurchaseSaleInfoTableMouseClicked(evt);
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+				}
 			}
 		});
 		jScrollPane_showSalePurchaseScreenScroll.setViewportView(jTable_showPurchaseSaleInfoTable);
@@ -350,7 +390,14 @@ public class SalePurchaseView extends javax.swing.JFrame
 		        {
 			        public void actionPerformed(java.awt.event.ActionEvent evt)
 			        {
-				        jButton_searchProductActionPerformed(evt);
+				        try
+						{
+							jButton_searchProductActionPerformed(evt);
+						}
+						catch (Exception e)
+						{
+							e.printStackTrace();
+						}
 			        }
 		        });
 
@@ -365,7 +412,14 @@ public class SalePurchaseView extends javax.swing.JFrame
 		{
 			public void actionPerformed(java.awt.event.ActionEvent evt)
 			{
-				jButton_finishFormActionPerformed(evt);
+				try
+				{
+					jButton_finishFormActionPerformed(evt);
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+				}
 			}
 		});
 
@@ -375,7 +429,14 @@ public class SalePurchaseView extends javax.swing.JFrame
 		        {
 			        public void actionPerformed(java.awt.event.ActionEvent evt)
 			        {
-				        jButton_searchClientSupplierActionPerformed(evt);
+				        try
+						{
+							jButton_searchClientSupplierActionPerformed(evt);
+						}
+						catch (Exception e)
+						{
+							e.printStackTrace();
+						}
 			        }
 		        });
 
@@ -386,7 +447,14 @@ public class SalePurchaseView extends javax.swing.JFrame
 		{
 			public void itemStateChanged(java.awt.event.ItemEvent evt)
 			{
-				jComboBox_showSalePurchaseItemStateChanged(evt);
+				try
+				{
+					jComboBox_showSalePurchaseItemStateChanged(evt);
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+				}
 			}
 		});
 
@@ -398,7 +466,14 @@ public class SalePurchaseView extends javax.swing.JFrame
 		        {
 			        public void actionPerformed(java.awt.event.ActionEvent evt)
 			        {
-				        jButton_removeProductActionPerformed(evt);
+				        try
+						{
+							jButton_removeProductActionPerformed(evt);
+						}
+						catch (Exception e)
+						{
+							e.printStackTrace();
+						}
 			        }
 		        });
 
@@ -407,7 +482,14 @@ public class SalePurchaseView extends javax.swing.JFrame
 		{
 			public void focusLost(java.awt.event.FocusEvent evt)
 			{
-				jTextField_productDiscountFocusLost(evt);
+				try
+				{
+					jTextField_productDiscountFocusLost(evt);
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+				}
 			}
 		});
 
@@ -728,6 +810,8 @@ public class SalePurchaseView extends javax.swing.JFrame
 		});
 		
 		jTable_showPurchaseSaleInfoTable.setModel(model);
+		
+		log.debug("Refresh product list");
 	}
 
 	// This method is responsible to confirm the Screen's Cancel Button Action
@@ -735,351 +819,452 @@ public class SalePurchaseView extends javax.swing.JFrame
 	{
 		StockView.returnProduct = false;
 		purchaseSaleMode = false;
+		log.debug("Exit SalePurchaseView");
 		this.dispose();
 	}
 
 	// This method is responsible to confirm the Screen's Search Client/Provider Button Action
-	private void jButton_searchClientSupplierActionPerformed(java.awt.event.ActionEvent evt)
+	private void jButton_searchClientSupplierActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{
-		purchaseSaleMode = true;
-		clientSupplierMode = true;
-		
-		if (salePurchaseStatus == 0)
+		try
 		{
-			ContactView.contactType = 0;
-		}
-		else if (salePurchaseStatus == 1)
-		{
-			ContactView.contactType = 1;
-		}
-		else
-		{
-			// Nothing to do
-		}
-		
-		ContactView.nameClientSupplier = null;
-		new ContactView().setVisible(true);
-		this.dispose();
-	}
-
-	/* This method is responsible to display the Client's name when the chosen
-	 * operation was "Selling" and the Provider's name when the chosen operation
-	 * was "Shopping" */
-	private void jComboBox_showSalePurchaseItemStateChanged(java.awt.event.ItemEvent evt)
-	{
-		int selectedTransactionComboBox = jComboBox_showSalePurchase.getSelectedIndex();
-		
-		if (salePurchaseStatus == 1)
-		{
-			if (selectedTransactionComboBox == 0)
-			{
-				productTableList.clear();
-				salePurchaseStatus = 0;
-				jLabel_showClientWord.setText("Cliente:");
-				jLabel_showMainScreenName.setText("Lançamento Venda");
-				jTextField_clientSupplierName.setText(null);
-			}
-			else
-			{
-				// Nothing to Do
-			}
-		}
-		else if (salePurchaseStatus == 0)
-		{
-			if (selectedTransactionComboBox == 1)
-			{
-				productTableList.clear();
-				salePurchaseStatus = 1;
-				jLabel_showClientWord.setText("Fornecedor:");
-				jTextField_clientSupplierName.setText(null);
-				jTextField_productDiscount.setText("0.0");
-				jLabel_showMainScreenName.setText("Lançamento Compra");
-				jTextField_productDiscount.setEnabled(false);
-			}
-			else
-			{
-				// Nothing to Do
-			}
-		}
-		loadList();
-	}
-
-	// This method is responsible to confirm the Screen's Search Provider Button Action
-	private void jButton_searchEmployeeActionPerformed(java.awt.event.ActionEvent evt)
-	{
-		purchaseSaleMode = true;
-		employeeMode = true;
-		ContactView.contactType = 2;
-		ContactView.nameEmployee = null;
-		new ContactView().setVisible(true);
-		this.dispose();
-	}
-
-	/* This method is responsible to confirm the Screen's Finish Button Action
-	 * and to prevent the User to finish the form without choosing the Client,
-	 * Provider and Product names */
-	private void jButton_finishFormActionPerformed(java.awt.event.ActionEvent evt)
-	{
-		if (nameClientSupplier == null)
-		{
+			Integer.parseInt(ContactView.nameClientSupplier);
+			purchaseSaleMode = true;
+			clientSupplierMode = true;
+			
 			if (salePurchaseStatus == 0)
 			{
-				showInfo("Selecione o Cliente para operação");
+				ContactView.contactType = 0;
 			}
 			else if (salePurchaseStatus == 1)
 			{
-				showInfo("Selecione o Fornecedor para operação");
-			}
-		}
-		else if (nameEmployee == null)
-		{
-			showInfo("Selecione o Funcionario responsável pela operação");
-		}
-		else if (productTableList.isEmpty())
-		{
-			showInfo("Inclua pelo menos um produto");
-		}
-		else
-		{
-			for (Product product : productTableList)
-			{
-				String productCode = product.getCode();
-				Product objectEditProduct = objectStockController.searchProduct(productCode, false);
-				
-				double editProductQuantity = objectEditProduct.getQuantity();
-				double productQuantity = product.getQuantity();
-				
-				if (salePurchaseStatus == 0)
-				{
-					double newProductQuantity = editProductQuantity - productQuantity;
-					objectEditProduct.setQuantity(newProductQuantity);
-				}
-				else if (salePurchaseStatus == 1)
-				{
-					double newProductQuantity = editProductQuantity + productQuantity;
-					objectEditProduct.setQuantity(newProductQuantity);
-				}
-				else
-				{
-					// Nothing to do
-				}
-			}
-
-			if (salePurchaseStatus == 0)
-			{
-				Client client = ContactDataView.objectClientController.searchClient(nameClientSupplier, false);
-				Employee employee = ContactDataView.objectEmployeeController.searchEmployee(nameEmployee, false);
-				objectSale = new Sale(client, productTableList, transactionPrice, employee, Integer.parseInt(CURRENT_DAY), 
-				                      Integer.parseInt(CURRENT_MONTH), Integer.parseInt(CURRENT_YEAR));
-				objectTransactionController.addSale(objectSale);
-			}
-			else if (salePurchaseStatus == 1)
-			{
-				Supplier c = ContactDataView.objectSupplierController.searchSupplier(nameClientSupplier, false);
-				Employee f = ContactDataView.objectEmployeeController.searchEmployee(nameEmployee, false);
-				objectPurchase = new Purchase(c, productTableList, transactionPrice, f, Integer.parseInt(CURRENT_DAY),
-				                              Integer.parseInt(CURRENT_MONTH), Integer.parseInt(CURRENT_YEAR));
-				objectTransactionController.addSale(objectPurchase);
-
-				Expense expenseInfo = new Expense("Compra de Produto do Fornecedor'" + c.getName() + "'", null, transactionPrice, 
-				                                  Integer.parseInt(CURRENT_DAY), Integer.parseInt(CURRENT_MONTH), Integer.parseInt(CURRENT_YEAR));
-				
-				ExpenseDataView.objectExpenseController.addExpense(expenseInfo);
+				ContactView.contactType = 1;
 			}
 			else
 			{
 				// Nothing to do
 			}
-
-			showInfo("Operação realizada com sucesso!");
-			this.dispose();
-			employeeMode = false;
-			clientSupplierMode = false;
-			StockView.returnProduct = false;
-			ContactView.returnEmployee = false;
-			ContactView.returnClientSupplier = false;
-			purchaseSaleMode = false;
-		}
-	}
-
-	// This method is responsible to confirm the Screen's Search Product Button Action
-	private void jButton_searchProductActionPerformed(java.awt.event.ActionEvent evt)
-	{
-		purchaseSaleMode = true;
-		productMode = true;
-		new StockView().setVisible(true);
-		this.dispose();
-	}
-
-	// This method is responsible to confirm the Screen's Add Product Button Action
-	private void jButton_addProductActionPerformed(java.awt.event.ActionEvent evt)
-	{
-		int verifyAddedProduct = 0;
-		for (Product product : productTableList)
-		{
-			String tableProductCode = product.getCode();
-			String saleProductCode = productSale.getCode();
 			
-			if (tableProductCode.equalsIgnoreCase(saleProductCode))
-			{
-				verifyAddedProduct = 1;
-			}
-			else 
-			{
-				// Nothing to Do
-			}
+			ContactView.nameClientSupplier = null;
+			new ContactView().setVisible(true);
+			this.dispose();
 		}
-		
-		if (verifyAddedProduct == 0)
+		catch(Exception e)
 		{
-			String strProductQuqntity = jTextField_productQuantity.getText();
-			double productQuantity = Double.parseDouble(jTextField_productQuantity.getText());
-			if (productQuantity != 0.0 && strProductQuqntity != "")
+			log.error("Error when searching client/supplier. Exception: ",e);
+			throw e;
+		}
+	}
+
+	/* This method is responsible to display the Client's name when the chosen
+	 * operation was "Selling" and the Provider's name when the chosen operation
+	 * was "Shopping" */
+	private void jComboBox_showSalePurchaseItemStateChanged(java.awt.event.ItemEvent evt) throws Exception
+	{
+		try
+		{
+			int selectedTransactionComboBox = jComboBox_showSalePurchase.getSelectedIndex();
+			
+			if (salePurchaseStatus == 1)
+			{
+				if (selectedTransactionComboBox == 0)
+				{
+					productTableList.clear();
+					salePurchaseStatus = 0;
+					jLabel_showClientWord.setText("Cliente:");
+					jLabel_showMainScreenName.setText("Lançamento Venda");
+					jTextField_clientSupplierName.setText(null);
+					
+					log.debug("Selected sale transaction");
+				}
+				else
+				{
+					// Nothing to do because the selected combo box is the same as the previous one
+				}
+			}
+			else if (salePurchaseStatus == 0)
+			{
+				if (selectedTransactionComboBox == 1)
+				{
+					productTableList.clear();
+					salePurchaseStatus = 1;
+					jLabel_showClientWord.setText("Fornecedor:");
+					jTextField_clientSupplierName.setText(null);
+					jTextField_productDiscount.setText("0.0");
+					jLabel_showMainScreenName.setText("Lançamento Compra");
+					jTextField_productDiscount.setEnabled(false);
+					
+					log.debug("Selected purchase transaction");
+				}
+				else
+				{
+					// Nothing to do because the selected combo box is the same as the previous one
+				}
+			}
+			loadList();
+		}
+		catch(Exception e)
+		{
+			log.error("Error when selecting transaction mode (Sale/Transaction). Exception: ",e);
+			throw e;
+		}
+	}
+
+	// This method is responsible to confirm the Screen's Search Provider Button Action
+	private void jButton_searchEmployeeActionPerformed(java.awt.event.ActionEvent evt) throws Exception
+	{
+		try
+		{
+			purchaseSaleMode = true;
+			employeeMode = true;
+			ContactView.contactType = 2;
+			ContactView.nameEmployee = null;
+			new ContactView().setVisible(true);
+			this.dispose();
+		}
+		catch(Exception e)
+		{
+			log.error("Error when search Employee",e);
+			throw e;
+		}
+	}
+
+	/* This method is responsible to confirm the Screen's Finish Button Action
+	 * and to prevent the User to finish the form without choosing the Client,
+	 * Provider and Product names */
+	private void jButton_finishFormActionPerformed(java.awt.event.ActionEvent evt) throws Exception
+	{
+		try
+		{
+			if (nameClientSupplier == null)
 			{
 				if (salePurchaseStatus == 0)
 				{
-					double productStockQuantity = editProduct.getQuantity();
-					
-					if (productStockQuantity != 0)
-					{
-						if (productQuantity <= productStockQuantity)
-						{
-							productSale.setQuantity(Double.parseDouble(jTextField_productQuantity.getText()));
-							productSale.setSellingPrice(Double.parseDouble(jTextField_productValue.getText()));
-							productTableList.add(productSale);
-							loadList();
-							jButton_addProduct.setEnabled(false);
-							jTextField_productQuantity.setEnabled(false);
-							jTextField_productDiscount.setEditable(false);
-						}
-						else
-						{
-							showInfo("A quantidade de produto vendido não deve exceder a quantidade em estoque");
-						}
-					}
-					else
-					{
-						showInfo("Produto não disponível em estoque");
-					}
+					showInfo("Selecione o Cliente para operação");
 				}
 				else if (salePurchaseStatus == 1)
 				{
-					if (verifyAddedProduct == 0)
+					showInfo("Selecione o Fornecedor para operação");
+				}
+			}
+			else if (nameEmployee == null)
+			{
+				showInfo("Selecione o Funcionario responsável pela operação");
+			}
+			else if (productTableList.isEmpty())
+			{
+				showInfo("Inclua pelo menos um produto");
+			}
+			else
+			{
+				for (Product product : productTableList)
+				{
+					String productCode = product.getCode();
+					Product objectEditProduct = objectStockController.searchProduct(productCode, false);
+					
+					double editProductQuantity = objectEditProduct.getQuantity();
+					double productQuantity = product.getQuantity();
+					
+					if (salePurchaseStatus == 0)
 					{
-						productPurchase.setQuantity(Double
-						        .parseDouble(jTextField_productQuantity.getText()));
-						productTableList.add(productPurchase);
-						loadList();
-						jButton_addProduct.setEnabled(false);
-						jTextField_productQuantity.setEnabled(false);
-						jTextField_productDiscount.setEditable(false);
-						for (Product s : productTableList)
-						{
-							if (s.getCode()
-							        .equalsIgnoreCase(productSale.getCode()))
-							{
-								verifyAddedProduct = 1;
-							}
-							else
-							{
-								// Nothing to Do
-							}
-						}
+						double newProductQuantity = editProductQuantity - productQuantity;
+						objectEditProduct.setQuantity(newProductQuantity);
 					}
-					else if (verifyAddedProduct == 1)
+					else if (salePurchaseStatus == 1)
 					{
-						showInfo("Produto já adicionado!");
+						double newProductQuantity = editProductQuantity + productQuantity;
+						objectEditProduct.setQuantity(newProductQuantity);
 					}
 					else
 					{
 						// Nothing to do
 					}
 				}
-			}
-			else
-			{
-				showInfo("Selecione a quantidade envolvida na operação");
-				jTextField_productQuantity.requestFocus();
-			}
-		}
-		else
-		{
-			showInfo("Produto já adicionado!");
-		}
-	}
-
-	// This method is responsible to list and edit the registered Products
-	private void jTable_showPurchaseSaleInfoTableMouseClicked(java.awt.event.MouseEvent evt)
-	{
-		String totalProductValue = null;
-		DefaultTableModel model = (DefaultTableModel) jTable_showPurchaseSaleInfoTable.getModel();
-		String nomeTabela = (String) model.getValueAt(jTable_showPurchaseSaleInfoTable.getSelectedRow(),0);
-		totalProductValue = (String) model.getValueAt(jTable_showPurchaseSaleInfoTable.getSelectedRow(), 1);
-		
-		if (!"Total:".equals(totalProductValue))
-		{
-			for (Product product : productTableList)
-			{
-				String tableProductCode = product.getCode();
-				
-				if (tableProductCode.equalsIgnoreCase(nomeTabela))
-				{
-					editProduct = product;
+	
+				if (salePurchaseStatus == 0)
+				{	
+					Client client = ContactDataView.objectClientController.searchClient(nameClientSupplier, false);
+					Employee employee = ContactDataView.objectEmployeeController.searchEmployee(nameEmployee, false);
+					objectSale = new Sale(client, productTableList, transactionPrice, employee, Integer.parseInt(CURRENT_DAY), 
+					                      Integer.parseInt(CURRENT_MONTH), Integer.parseInt(CURRENT_YEAR));
+					objectTransactionController.addSale(objectSale);
+					
+					log.info("Sale operation to client '" + nameClientSupplier + "' finalized successfully!");
+				}
+				else if (salePurchaseStatus == 1)
+				{	
+					Supplier purchaseSupplier = ContactDataView.objectSupplierController.searchSupplier(nameClientSupplier, false);
+					Employee employeeSupplier = ContactDataView.objectEmployeeController.searchEmployee(nameEmployee, false);
+					
+					objectPurchase = new Purchase(purchaseSupplier, productTableList, transactionPrice, employeeSupplier, Integer.parseInt(CURRENT_DAY),
+					                              Integer.parseInt(CURRENT_MONTH), Integer.parseInt(CURRENT_YEAR));
+					objectTransactionController.addSale(objectPurchase);
+	
+					String expenseDescription = "Compra de Produto do Fornecedor'" + purchaseSupplier.getName() + "'";
+					
+					Expense expenseInfo = new Expense(expenseDescription, null, transactionPrice, 
+					                                  Integer.parseInt(CURRENT_DAY), Integer.parseInt(CURRENT_MONTH), Integer.parseInt(CURRENT_YEAR));
+					
+					ExpenseDataView.objectExpenseController.addExpense(expenseInfo);
+					
+					log.info("Purchase operation of supplier '" + nameClientSupplier + "' finalized successfully!");
 				}
 				else
 				{
 					// Nothing to do
 				}
+	
+				showInfo("Operação realizada com sucesso!");
+				this.dispose();
+				employeeMode = false;
+				clientSupplierMode = false;
+				StockView.returnProduct = false;
+				ContactView.returnEmployee = false;
+				ContactView.returnClientSupplier = false;
+				purchaseSaleMode = false;
 			}
-			jButton_removeProduct.setEnabled(true);
 		}
-		else if (totalProductValue.equals("Total:"))
+		catch(Exception e)
 		{
-			jButton_removeProduct.setEnabled(false);
+			log.error("Error when finishing transaction. Exception: ",e);
+			throw e;
 		}
-		else
+	}
+
+	// This method is responsible to confirm the Screen's Search Product Button Action
+	private void jButton_searchProductActionPerformed(java.awt.event.ActionEvent evt) throws Exception
+	{
+		try
 		{
-			// Nothing to do
+			purchaseSaleMode = true;
+			productMode = true;
+			new StockView().setVisible(true);
+			this.dispose();
+		}
+		catch(Exception e)
+		{
+			log.error("Error when search product. Exception: ",e);
+			throw e;
+		}
+	}
+
+	// This method is responsible to confirm the Screen's Add Product Button Action
+	private void jButton_addProductActionPerformed(java.awt.event.ActionEvent evt) throws Exception
+	{
+		try
+		{
+			int verifyAddedProduct = 0;
+			String saleProductCode = productSale.getCode();
+			
+			for (Product tableProduct : productTableList)
+			{
+				String tableProductCode = tableProduct.getCode();
+				
+				if (tableProductCode.equalsIgnoreCase(saleProductCode))
+				{
+					verifyAddedProduct = 1;
+				}
+				else 
+				{
+					// Nothing to Do
+				}
+			}
+			
+			if (verifyAddedProduct == 0)
+			{
+				String strProductQuantity = jTextField_productQuantity.getText();
+				double productQuantity = Double.parseDouble(jTextField_productQuantity.getText());
+				if (productQuantity != 0.0 && strProductQuantity != "")
+				{
+					if (salePurchaseStatus == 0)
+					{
+						double productStockQuantity = editProduct.getQuantity();
+						
+						if (productStockQuantity != 0)
+						{
+							if (productQuantity <= productStockQuantity)
+							{
+								productSale.setQuantity(Double.parseDouble(jTextField_productQuantity.getText()));
+								productSale.setSellingPrice(Double.parseDouble(jTextField_productValue.getText()));
+								productTableList.add(productSale);
+								loadList();
+								jButton_addProduct.setEnabled(false);
+								jTextField_productQuantity.setEnabled(false);
+								jTextField_productDiscount.setEditable(false);
+							}
+							else
+							{
+								showInfo("A quantidade de produto vendido não deve exceder a quantidade em estoque");
+							}
+						}
+						else
+						{
+							showInfo("Produto não disponível em estoque");
+						}
+					}
+					else if (salePurchaseStatus == 1)
+					{
+						if (verifyAddedProduct == 0)
+						{
+							productPurchase.setQuantity(Double.parseDouble(jTextField_productQuantity.getText()));
+							productTableList.add(productPurchase);
+							loadList();
+							jButton_addProduct.setEnabled(false);
+							jTextField_productQuantity.setEnabled(false);
+							jTextField_productDiscount.setEditable(false);
+							
+							String productName = productPurchase.getDescription();
+							log.info("Added product '" + productName + "' to transaction");
+							
+							for (Product tableProduct : productTableList)
+							{
+								String tableProductCode = tableProduct.getCode();
+								
+								if (tableProductCode.equalsIgnoreCase(saleProductCode))
+								{
+									verifyAddedProduct = 1;
+								}
+								else
+								{
+									// Nothing to Do
+								}
+							}
+						}
+						else if (verifyAddedProduct == 1)
+						{
+							showInfo("Produto já adicionado!");
+						}
+						else
+						{
+							// Nothing to do
+						}
+					}
+				}
+				else
+				{
+					showInfo("Selecione a quantidade envolvida na operação");
+					jTextField_productQuantity.requestFocus();
+				}
+			}
+			else
+			{
+				showInfo("Produto já adicionado!");
+			}
+		}
+		catch(Exception e)
+		{
+			log.error("Error when adding product. Exception: ", e);
+			throw e;
+		}
+	}
+
+	// This method is responsible to list and edit the registered Products
+	private void jTable_showPurchaseSaleInfoTableMouseClicked(java.awt.event.MouseEvent evt) throws Exception
+	{
+		try
+		{
+			String totalProductValue = null;
+			DefaultTableModel model = (DefaultTableModel) jTable_showPurchaseSaleInfoTable.getModel();
+			String nomeTabela = (String) model.getValueAt(jTable_showPurchaseSaleInfoTable.getSelectedRow(), 0);
+			totalProductValue = (String) model.getValueAt(jTable_showPurchaseSaleInfoTable.getSelectedRow(), 1);
+			
+			if (!"Total:".equals(totalProductValue))
+			{
+				for (Product product : productTableList)
+				{
+					String tableProductCode = product.getCode();
+					
+					if (tableProductCode.equalsIgnoreCase(nomeTabela))
+					{
+						editProduct = product;
+						
+						String productDescription = product.getDescription();
+						log.debug("Click product '" + productDescription + "' on product table");
+					}
+					else
+					{
+						// Nothing to do
+					}
+				}
+				jButton_removeProduct.setEnabled(true);
+			}
+			else if (totalProductValue.equals("Total:"))
+			{
+				jButton_removeProduct.setEnabled(false);
+			}
+			else
+			{
+				// Nothing to do
+			}
+		}
+		catch(Exception e)
+		{
+			log.error("Error when clicking the product table. Exception: ", e);
+			throw e;
 		}
 	}
 
 	// This method is responsible to confirm the Screen's Remove Product Button Action
-	private void jButton_removeProductActionPerformed(java.awt.event.ActionEvent evt)
+	private void jButton_removeProductActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{
-		productTableList.remove(editProduct);
-		loadList();
-		showInfo("Produto removido");
-		jButton_addProduct.setEnabled(true);
-		jTextField_productQuantity.setEnabled(true);
-		jTextField_productDiscount.setEnabled(true);
-		jButton_removeProduct.setEnabled(false);
+		try
+		{
+			String productDescription = editProduct.getDescription();
+			log.debug("Start removing product '" + productDescription + "'.");
+			
+			productTableList.remove(editProduct);
+			loadList();
+			showInfo("Produto removido");
+			jButton_addProduct.setEnabled(true);
+			jTextField_productQuantity.setEnabled(true);
+			jTextField_productDiscount.setEnabled(true);
+			jButton_removeProduct.setEnabled(false);
+			
+			log.info("Product '" + productDescription + "' successfully removed");
+		}
+		catch(Exception e)
+		{
+			log.error("Error when removing product. Exception: ", e);
+			throw e;
+		}
 	}
 
 	// This method is responsible to add (in percentage) the Product's discount
-	private void jTextField_productDiscountFocusLost(java.awt.event.FocusEvent evt)
+	private void jTextField_productDiscountFocusLost(java.awt.event.FocusEvent evt) throws Exception
 	{
-		String strProductDiscount = jTextField_productDiscount.getText();
-		double productDiscount = Double.parseDouble(strProductDiscount);
-		
-		if (productDiscount > 100)
+		try
 		{
-			showInfo("Limite de desconto excedido");
-			jTextField_productDiscount.setText("0.0");
-			jTextField_productDiscount.requestFocus();
-		}
-		else if (strProductDiscount == "")
-		{
-			jTextField_productDiscount.setText("0.0");
-		}
-		else
-		{
-			double productValueWithDiscount = editProduct.getSellingPrice();
+			String strProductDiscount = jTextField_productDiscount.getText();
+			double productDiscount = Double.parseDouble(strProductDiscount);
 			
-			productDiscount = 1 - (productDiscount / 100);
-			double finalProductPrice = productValueWithDiscount * productDiscount;
-			String strFinalProductPrice = Double.toString(finalProductPrice);
-			
-			jTextField_productValue.setText(strFinalProductPrice);
+			if (productDiscount > 100)
+			{
+				showInfo("Limite de desconto excedido");
+				jTextField_productDiscount.setText("0.0");
+				jTextField_productDiscount.requestFocus();
+			}
+			else if (strProductDiscount == "")
+			{
+				jTextField_productDiscount.setText("0.0");
+			}
+			else
+			{
+				double productValueWithDiscount = editProduct.getSellingPrice();
+				
+				double decimalDiscount = 1 - (productDiscount / 100);
+				double finalProductPrice = productValueWithDiscount * decimalDiscount;
+				String strFinalProductPrice = Double.toString(finalProductPrice);
+				
+				String productDescription = editProduct.getDescription();
+				
+				log.info("Applied discount of " + productDiscount + "% on product '" + productDescription +"'.");
+				
+				jTextField_productValue.setText(strFinalProductPrice);
+			}
+		}
+		catch(Exception e)
+		{
+			log.error("Error when applying discount on product.");
 		}
 	}
 

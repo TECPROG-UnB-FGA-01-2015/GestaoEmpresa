@@ -7,6 +7,9 @@ package view;
 import controller.StockController;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
+import org.apache.log4j.Logger;
+
 import model.Product;
 import static view.StockView.newProduct;
 
@@ -35,12 +38,15 @@ public class ProductDataView extends javax.swing.JFrame
     Product editProduct; // Product type object that is being editing
     StockView stockView; // Control the view visibility situation
     static boolean infoCarregar=false; // Boolean to disposes the informations on view
+    static Logger log = Logger.getLogger(ProductDataView.class.getName());
+
     
     // Constructor to initialize components on ProductDataView
     public ProductDataView()
     {
         initComponents();
         fillFields();
+        log.debug("Load ProductDataView");
         jTextField_QuantidadeProduto.setEnabled(false);
         fillCode();
         jTextField_DescricaoProduto.requestFocus();
@@ -80,8 +86,15 @@ public class ProductDataView extends javax.swing.JFrame
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton_CancelarActionPerformed(evt);
-            }
+            	try
+            	{
+                    jButton_CancelarActionPerformed(evt);
+            	}
+            	catch (Exception e)
+            	{
+            		e.printStackTrace();
+            	}
+           }
         });
 
         jLabel1.setText("Código:");
@@ -101,7 +114,14 @@ public class ProductDataView extends javax.swing.JFrame
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton_SalvarProdutoActionPerformed(evt);
+            	try
+            	{
+                    jButton_SalvarProdutoActionPerformed(evt);
+            	}
+            	catch (Exception e)
+            	{
+            		e.printStackTrace();
+            	}
             }
         });
 
@@ -218,70 +238,98 @@ public class ProductDataView extends javax.swing.JFrame
     // Method to add informations on the Product list
     private void fillCode()
     {
-        if(newProduct == true)
-        {
-        	// Variable to receive a list of Products
-            ArrayList<Product> productList = objectStockController.getProductList();
-            
-            if(productList.isEmpty())
-            {
-                jTextField_NomeProduto.setText("1");
-            }
-            else
-            {
-            	int sizeProductList = productList.size();
-            	Product newProduct = productList.get(sizeProductList - 1);
-            	String codeNewProduct = newProduct.getCode();
-            	int intCodeNewProduct = Integer.parseInt(codeNewProduct);
-            	String nameProduct = Integer.toString(intCodeNewProduct + 1);
-                jTextField_NomeProduto.setText(nameProduct);
-            }
-        }   
-        else
-        {
-        	// Nothing to do
-        }
+    	try
+    	{
+    		if(newProduct == true)
+    		{
+	        	// Variable to receive a list of Products
+	            ArrayList<Product> productList = objectStockController.getProductList();
+	            
+	            if(productList.isEmpty())
+	            {
+	                jTextField_NomeProduto.setText("1");
+	                log.info("Put first Product code with number 1");
+	            }
+	            else
+	            {
+	            	int sizeProductList = productList.size();
+	            	Product newProduct = productList.get(sizeProductList - 1);
+	            	String codeNewProduct = newProduct.getCode();
+	            	int intCodeNewProduct = Integer.parseInt(codeNewProduct);
+	            	String nameProduct = Integer.toString(intCodeNewProduct + 1);
+	                jTextField_NomeProduto.setText(nameProduct);
+	                log.info("Product code number " + codeNewProduct + " was added successfuly!");
+	            }
+    		}   
+	        else
+	        {
+	        	// Nothing to do
+	        }
+    	}
+    	catch(Exception e)
+    	{
+    		log.error("It wasn't possible to add Product list' info . Exception: ", e);
+    		throw e;
+    	}
     }
     
     // Method to add one more on the attribute code if there is already a Product
     private void fillFields()
     {
-        if(newProduct == false)
-        {
-	        editProduct = objectStockController.searchProduct(stockView.codeTable,false);
+    	try
+    	{
+    		if(newProduct == false)
+    		{
+    			editProduct = objectStockController.searchProduct(stockView.codeTable,false);
 	        
-	        String productCode = editProduct.getCode();
-	        jTextField_NomeProduto.setText(productCode);
-	        
-	        String productDescription = editProduct.getDescription();
-	        jTextField_DescricaoProduto.setText(productDescription);
-	        
-	        double productPurchasePrice = editProduct.getPurchasePrice();
-	        String strProductPurchasePrice = Double.toString(productPurchasePrice);
-	        jTextField_PrecoCompra.setText(strProductPurchasePrice);
-	        
-	        double productSellingPrice = editProduct.getSellingPrice();
-	        String strProductSellingPrice = Double.toString(productSellingPrice);
-	        jTextField_PrecoVenda.setText(strProductSellingPrice);
-
-	        double productQuantity = editProduct.getQuantity();
-	        String strProductQuantity = Double.toString(productQuantity);
-	        jTextField_QuantidadeProduto.setText(strProductQuantity);
-        }
-        else
-        {
-        	// Nothing to do
-        }
+		        String productCode = editProduct.getCode();
+		        jTextField_NomeProduto.setText(productCode);
+		        
+		        String productDescription = editProduct.getDescription();
+		        jTextField_DescricaoProduto.setText(productDescription);
+		        
+		        double productPurchasePrice = editProduct.getPurchasePrice();
+		        String strProductPurchasePrice = Double.toString(productPurchasePrice);
+		        jTextField_PrecoCompra.setText(strProductPurchasePrice);
+		        
+		        double productSellingPrice = editProduct.getSellingPrice();
+		        String strProductSellingPrice = Double.toString(productSellingPrice);
+		        jTextField_PrecoVenda.setText(strProductSellingPrice);
+	
+		        double productQuantity = editProduct.getQuantity();
+		        String strProductQuantity = Double.toString(productQuantity);
+		        jTextField_QuantidadeProduto.setText(strProductQuantity);
+    		}
+	        else
+	        {
+	        	// Nothing to do
+	        }
+	    }
+	    catch(Exception e)
+	    {
+	    	log.error("It wasn't possible to fill Product list' fields. Exception: ", e);
+	    	throw e;
+	    }
+    	
     }
     
     // Method to clean up the textBox
-        private void cleanFields()
+    private void cleanFields()
     {
-        jTextField_NomeProduto.setText("");
-        jTextField_DescricaoProduto.setText("");
-        jTextField_PrecoCompra.setText("0.00");
-        jTextField_PrecoVenda.setText("0.00");
-        jTextField_QuantidadeProduto.setText("0.0");
+    	try
+    	{
+	        jTextField_NomeProduto.setText("");
+	        jTextField_DescricaoProduto.setText("");
+	        jTextField_PrecoCompra.setText("0.00");
+	        jTextField_PrecoVenda.setText("0.00");
+	        jTextField_QuantidadeProduto.setText("0.0");
+	        log.info("Clean product, buying price and selling price fields");
+    	}
+    	catch(Exception e)
+    	{
+    		log.error("It wasn't possible to clean Product list' fields. Exception: ", e);
+    		throw e;
+    	}
     }
     
     /* Method to cancel the action to add another product giving returning an
@@ -289,14 +337,26 @@ public class ProductDataView extends javax.swing.JFrame
      */
     private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt)
     {
-        if(!jTextField_DescricaoProduto.getText().equals(""))
-        {
-            showMessage("Product não adicionado");
-        }
-            
-        new StockView().setVisible(true);
-        this.dispose();
-        infoCarregar=true;
+    	try
+    	{
+	        if(!jTextField_DescricaoProduto.getText().equals(""))
+	        {
+	            showMessage("Product não adicionado");
+	            log.info("Product wasn't added!");
+	        }
+	        else
+	        {
+		        new StockView().setVisible(true);
+		        log.info("Exit ProductDataView");
+		        this.dispose();
+		        infoCarregar=true;
+	        }
+    	}
+    	catch(Exception e)
+    	{
+    		log.error("It wasn't possible to exit ProductDataView. Exception: ", e);
+    		throw e;
+    	}
     }
 
     /* Method to save all the informations provided by the user on a new object
@@ -304,108 +364,125 @@ public class ProductDataView extends javax.swing.JFrame
      */
     private void jButton_SalvarProdutoActionPerformed(java.awt.event.ActionEvent evt) 
     {
-    	String productName = jTextField_NomeProduto.getText();
-    	boolean emptyProductName = productName.equals("");
-    	
-    	String productDescription = jTextField_DescricaoProduto.getText();
-    	boolean emptyProductDescription = productDescription.equals("");
-    	
-    	String productPurchasePrice = jTextField_PrecoCompra.getText();
-    	boolean emptyProductPurchasePrice = productPurchasePrice.equals("");
-    	
-        if(!emptyProductName && !emptyProductDescription && !emptyProductPurchasePrice)
-        {
-            String code = jTextField_NomeProduto.getText();
-            String description = jTextField_DescricaoProduto.getText();
-            double purchasePrice = Double.parseDouble(jTextField_PrecoCompra.getText());
-            double sellingPrice = Double.parseDouble(jTextField_PrecoVenda.getText());
-            double quantity = Double.parseDouble(jTextField_QuantidadeProduto.getText());
-
-            if(stockView.newProduct == true)
-            {
-                objectProduct = new Product(code, description, purchasePrice, quantity, sellingPrice);
-                
-                String listProductCode = objectProduct.getCode();
-                Product returnProduct = objectStockController.searchProduct(listProductCode, false);
-                
-                String listProductDescription = objectProduct.getDescription();
-                Product returnDescription = objectStockController.searchProduct(listProductDescription, false);
-                
-                if(returnProduct == null && returnDescription == null)
-                {
-                    objectStockController.addProduct(objectProduct);
-                    showMessage("Produto Adicionado!");
-                }
-                else if(returnProduct != null)
-                {
-                    showMessage("Produto com esse código já existente no estoque!");
-                }
-                else if(returnDescription != null)
-                {
-                    showMessage("Produto com essa Descrição já existente no estoque!");
-                }
-                else
-                {
-                	// Nothing to do
-                }
-            }
-            else if(stockView.newProduct == false)
-            {    
-            	String editProductCode = editProduct.getCode();
-            	boolean changedEditProductCode = editProduct.getCode().equals(code);
-                if(!changedEditProductCode)
-                {
-                    showMessage("Não é permitido a alteração do código do produto!");
-                }
-                else
-                {
-                    editProduct.setCode(code);
-                    editProduct.setDescription(description);
-                    editProduct.setPurchasePrice(purchasePrice);
-                    editProduct.setSellingPrice(sellingPrice);
-                    editProduct.setQuantity(quantity);   
-                    showMessage("Product Editado!");
-                }
-            }
-            else
-            {
-            	// Nothing to do
-            }
-            
-            cleanFields();
-            fillCode();
-            newProduct = true;
-        }
-        
-        else if(jTextField_NomeProduto.getText().equals(""))
-        {
-            showMessage("Digite um código para o produto");
-            jTextField_NomeProduto.requestFocus();
-        }
-        
-        else if(jTextField_DescricaoProduto.getText().equals(""))
-        {
-            showMessage("Digite uma descrição para o produto");
-            jTextField_DescricaoProduto.requestFocus();
-        }
-        
-        else if(jTextField_PrecoCompra.getText().equals(""))
-        {
-            showMessage("Digite um preço de compra para o produto");
-            jTextField_PrecoCompra.requestFocus();
-        }
-        
-        else if(jTextField_PrecoVenda.getText().equals(""))
-        {
-            showMessage("Digite um preço de venda para o produto");
-            jTextField_PrecoCompra.requestFocus();
-        }
-        
-        else
-        {
-        	// Nothing to do
-        }
-    }
+    	try
+    	{
+	    	String productName = jTextField_NomeProduto.getText();
+	    	boolean emptyProductName = productName.equals("");
+	    	
+	    	String productDescription = jTextField_DescricaoProduto.getText();
+	    	boolean emptyProductDescription = productDescription.equals("");
+	    	
+	    	String productPurchasePrice = jTextField_PrecoCompra.getText();
+	    	boolean emptyProductPurchasePrice = productPurchasePrice.equals("");
+	    	
+	        if(!emptyProductName && !emptyProductDescription && !emptyProductPurchasePrice)
+	        {
+	            String code = jTextField_NomeProduto.getText();
+	            String description = jTextField_DescricaoProduto.getText();
+	            double purchasePrice = Double.parseDouble(jTextField_PrecoCompra.getText());
+	            double sellingPrice = Double.parseDouble(jTextField_PrecoVenda.getText());
+	            double quantity = Double.parseDouble(jTextField_QuantidadeProduto.getText());
+	
+	            if(stockView.newProduct == true)
+	            {
+	                objectProduct = new Product(code, description, purchasePrice, quantity, sellingPrice);
+	                
+	                String listProductCode = objectProduct.getCode();
+	                Product returnProduct = objectStockController.searchProduct(listProductCode, false);
+	                
+	                String listProductDescription = objectProduct.getDescription();
+	                Product returnDescription = objectStockController.searchProduct(listProductDescription, false);
+	                
+	                if(returnProduct == null && returnDescription == null)
+	                {
+	                    objectStockController.addProduct(objectProduct);
+	                    showMessage("Produto Adicionado!");
+	                    log.info("Product '" + listProductDescription + "' added successfully!");
+	                }
+	                else if(returnProduct != null)
+	                {
+	                    showMessage("Produto com esse código já existente no estoque!");
+	                    log.info("Product code '" + listProductDescription + "' already exists!");
+	                }
+	                else if(returnDescription != null)
+	                {
+	                    showMessage("Produto com essa Descrição já existente no estoque!");
+	                    log.info("Product name '" + listProductDescription + "' already exists!");	              
+	                }
+	                else
+	                {
+	                	// Nothing to do
+	                }
+	            }
+	            else if(stockView.newProduct == false)
+	            {    
+	            	String editProductCode = editProduct.getCode();
+	            	boolean changedEditProductCode = editProduct.getCode().equals(code);
+	                if(!changedEditProductCode)
+	                {
+	                    showMessage("Não é permitido a alteração do código do produto!");
+	                    log.info("Product code can't be edited!");
+	                }
+	                else
+	                {
+	                    editProduct.setCode(code);
+	                    editProduct.setDescription(description);
+	                    editProduct.setPurchasePrice(purchasePrice);
+	                    editProduct.setSellingPrice(sellingPrice);
+	                    editProduct.setQuantity(quantity);   
+	                    showMessage("Product Editado!");
+	                    log.info("Product edited!");
+	                }
+	            }
+	            else
+	            {
+	            	// Nothing to do
+	            }
+	            
+	            cleanFields();
+	            fillCode();
+	            newProduct = true;
+	        }
+	        
+	        else if(jTextField_NomeProduto.getText().equals(""))
+	        {
+	            showMessage("Digite um código para o produto");
+	            jTextField_NomeProduto.requestFocus();
+	        }
+	        
+	        else if(jTextField_DescricaoProduto.getText().equals(""))
+	        {
+	            showMessage("Digite uma descrição para o produto");
+	            jTextField_DescricaoProduto.requestFocus();
+	            log.warn("Product description is empty!");
+	        }
+	        
+	        else if(jTextField_PrecoCompra.getText().equals(""))
+	        {
+	            showMessage("Digite um preço de compra para o produto");
+	            jTextField_PrecoCompra.requestFocus();
+	            log.warn("Product buying price is empty!");
+	
+	        }
+	        
+	        else if(jTextField_PrecoVenda.getText().equals(""))
+	        {
+	            showMessage("Digite um preço de venda para o produto");
+	            jTextField_PrecoCompra.requestFocus();
+	            log.warn("Product selling price is empty!");
+	        }
+	        
+	        else
+	        {
+	        	// Nothing to do
+	        }
+    	}
+    	catch(Exception e)
+    	{
+    		log.error("It wasn't possible to save Product. Exception: ", e);
+    		throw e;
+    	}
+    }	
 
     /**
      * @param args the command line arguments
@@ -428,25 +505,28 @@ public class ProductDataView extends javax.swing.JFrame
                 }
             }
         }
-        
-        catch (ClassNotFoundException ex)
+    	catch (ClassNotFoundException ex)
         {
             java.util.logging.Logger.getLogger(ProductDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.error("ClassNotFoundException: ", ex);
         }
         
         catch (InstantiationException ex)
         {
             java.util.logging.Logger.getLogger(ProductDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.error("InstantiationException: ", ex);
         }
         
         catch (IllegalAccessException ex)
         {
             java.util.logging.Logger.getLogger(ProductDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.error("IllegalAccessException: ", ex);
         }
         
         catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
             java.util.logging.Logger.getLogger(ProductDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.error("UnsupportedLookAndFeelException: ", ex);
         }
      
         /* Create and display the form */
@@ -454,7 +534,15 @@ public class ProductDataView extends javax.swing.JFrame
         {
             public void run()
             {
-                new ProductDataView().setVisible(true);
+            	try
+            	{
+            		new ProductDataView().setVisible(true);
+            	}
+            	catch(Exception e)
+            	{
+            		log.error("Error when running ProductDataView. Exception: ", e);
+            		throw e; 
+            	}
             }
         });
     }

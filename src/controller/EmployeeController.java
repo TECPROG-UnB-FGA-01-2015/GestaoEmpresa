@@ -69,6 +69,10 @@ public class EmployeeController
             {
                 returned = employee;
             }
+            else
+            {
+            	// Nothing to do
+            }
         }
 
         if(exactReturned != null)

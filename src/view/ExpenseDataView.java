@@ -11,6 +11,8 @@ import java.util.Date;
 import java.text.DateFormat; 
 import java.text.SimpleDateFormat; 
 
+import org.apache.log4j.Logger;
+
 public class ExpenseDataView extends javax.swing.JFrame
 {
 	// Variables declaration of Buttons, ComboBox, Label and TextFields
@@ -35,12 +37,14 @@ public class ExpenseDataView extends javax.swing.JFrame
     
     // ExpenseController type object
     static ExpenseController objectExpenseController = new ExpenseController();
+    static Logger log = Logger.getLogger(ExpenseDataView.class.getName());
     
     // Constructor to initialize components on ExpenseDataView
     public ExpenseDataView()
     {
         initComponents();
         jTextField_Nome.requestFocus();
+        log.debug("Load ExpenseDataView");
         jComboBox_Dia.setSelectedIndex(Integer.parseInt(getDay())-1);
         jComboBox_Mes.setSelectedIndex(Integer.parseInt(getMonth())-1);
         jComboBox_Ano.setSelectedItem(getYear());
@@ -100,7 +104,14 @@ public class ExpenseDataView extends javax.swing.JFrame
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton_SairActionPerformed(evt);
+            	try
+            	{
+            		jButton_SairActionPerformed(evt);
+            	}
+            	catch (Exception e)
+            	{
+            		e.printStackTrace();
+            	}
             }
         });
 
@@ -119,7 +130,14 @@ public class ExpenseDataView extends javax.swing.JFrame
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton_SalvarActionPerformed(evt);
+        		try
+        		{
+        			jButton_SalvarActionPerformed(evt);
+        		}
+        		catch (Exception e)
+        		{
+        			e.printStackTrace();
+        		}           	
             }
         });
 
@@ -127,13 +145,16 @@ public class ExpenseDataView extends javax.swing.JFrame
         jLabel5.setText("Nova Despesa");
 
         jComboBox_Mes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
+        log.info("Load months from January until December");
 
         jComboBox_Ano.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2013", "2014", "2015", "2016", "2017", " " }));
-
+        log.info("Load years from 2013 until 2017");
+        
         jLabel6.setText("R$");
 
         jComboBox_Dia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", " " }));
-
+        log.info("Load days from 1 until 31");
+        
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -212,40 +233,61 @@ public class ExpenseDataView extends javax.swing.JFrame
 
     private void jButton_SairActionPerformed(java.awt.event.ActionEvent evt)
     {
-      this.dispose();
-      new ExpenseView().setVisible(true);
+    	try
+    	{
+    		log.debug("Exit ExpenseDataView");
+    		this.dispose();
+    		new ExpenseView().setVisible(true);
+    	}
+    	catch(Exception e)
+        {
+        	log.error("Error when exiting ExpenseDataView. Exception: ", e);
+        	throw e;
+        }
     }
 
     private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt)
     {
-        String name = jTextField_Nome.getText();
-        String description = jTextField_Descricao.getText();
-        int month = jComboBox_Mes.getSelectedIndex()+1;
-        int year = jComboBox_Ano.getSelectedIndex()+2013;
-        int day = jComboBox_Dia.getSelectedIndex()+1;
-        double valor = Double.parseDouble(jTextField_Valor.getText());
-           
-        String textFieldName = jTextField_Nome.getText();
-        boolean textFieldNameEmpty = textFieldName.equals(""); 
-        
-        String expenseValueTextField = jTextField_Valor.getText();
-        double expenseValue = Double.parseDouble(expenseValueTextField);
-        
-        if(textFieldNameEmpty)
-        {
-            showMessage("Digite o histórico da despesa");
-        }
-        else if(expenseValue == 0.0)
-        {
-            showMessage("Digite um valor para a despesa");
-        }      
-        else
-        {
-            objectExpense = new Expense(name, description, valor, day, month, year);
-            objectExpenseController.addExpense(objectExpense);
-            this.dispose();
-            new ExpenseView().setVisible(true);
-        }
+    	try
+    	{
+	        String name = jTextField_Nome.getText();
+	        String description = jTextField_Descricao.getText();
+	        int month = jComboBox_Mes.getSelectedIndex()+1;
+	        int year = jComboBox_Ano.getSelectedIndex()+2013;
+	        int day = jComboBox_Dia.getSelectedIndex()+1;
+	        double value = Double.parseDouble(jTextField_Valor.getText());
+	           
+	        String textFieldName = jTextField_Nome.getText();
+	        boolean textFieldNameEmpty = textFieldName.equals(""); 
+	        
+	        String expenseValueTextField = jTextField_Valor.getText();
+	        double expenseValue = Double.parseDouble(expenseValueTextField);
+	        
+	        if(textFieldNameEmpty)
+	        {
+	            showMessage("Digite o histórico da despesa");
+	            log.warn("Expense Historic is empty!");
+	        }
+	        else if(expenseValue == 0.0)
+	        {
+	            showMessage("Digite um valor para a despesa");
+	            log.warn("Expense value wasn't informed!");
+	        }      
+	        else
+	        {
+	            objectExpense = new Expense(name, description, value, day, month, year);
+	            objectExpenseController.addExpense(objectExpense);
+	            log.debug("New Expense '" + name + "' saved successfully!");
+	            log.debug("Expense info: Value '" + value + "', Date: " + day + "/" + month + "/" + year + "");
+	            this.dispose();
+	            new ExpenseView().setVisible(true);
+	        }
+    	}
+    	catch(Exception e)
+    	{
+    		log.error("Error when saving new expense. Exception: ", e);
+    		throw e;   
+    	}
     }
 
     /**
@@ -253,8 +295,7 @@ public class ExpenseDataView extends javax.swing.JFrame
      */
     public static void main(String args[])
     {
-        
-        try
+    	try
         {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
             {
@@ -263,23 +304,31 @@ public class ExpenseDataView extends javax.swing.JFrame
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
+                else
+                {
+                	// Nothing to do
+                }
             }
         }
-        
-        catch (ClassNotFoundException ex) {
+        catch (ClassNotFoundException ex) 
+        {
             java.util.logging.Logger.getLogger(ExpenseDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.error("ClassNotFoundException: ", ex);
         }
-        
-        catch (InstantiationException ex) {
+        catch (InstantiationException ex) 
+        {
             java.util.logging.Logger.getLogger(ExpenseDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.error("InstantiationException: ", ex);
         }
-        
-        catch (IllegalAccessException ex) {
+        catch (IllegalAccessException ex) 
+        {
             java.util.logging.Logger.getLogger(ExpenseDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.error("IllegalAccessException: ", ex);
         }
-        
-        catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        catch (javax.swing.UnsupportedLookAndFeelException ex) 
+        {
             java.util.logging.Logger.getLogger(ExpenseDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.error("UnsupportedLookAndFeelException: ", ex);
         }
         
         /* Create and display the form */
@@ -287,7 +336,15 @@ public class ExpenseDataView extends javax.swing.JFrame
         {
             public void run()
             {
-                new ExpenseDataView().setVisible(true);
+            	try
+            	{
+            		new ExpenseDataView().setVisible(true);
+            	}
+            	catch(Exception e)
+            	{
+            		log.error("Error when running ExpenseDataView. Exception: ", e);
+            		throw e;   
+            	}
             }
         });
     }

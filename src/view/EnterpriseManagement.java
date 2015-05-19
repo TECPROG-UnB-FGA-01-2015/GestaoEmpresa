@@ -13,6 +13,8 @@ import model.Employee;
 import model.Product;
 import javax.swing.*;
 
+import org.apache.log4j.Logger;
+
 public class EnterpriseManagement extends javax.swing.JFrame
 {
     private JButton jButton_Contact; // Shows the Contact's Main Button on the Enterprise Management's Main Menu
@@ -28,6 +30,7 @@ public class EnterpriseManagement extends javax.swing.JFrame
     Supplier objectSupplier; // Instantiates an object Supplier
     Product objectProduct; // Instantiates an object Product
     ArrayList<Product> productList; // Instantiates a product List
+    static Logger log = Logger.getLogger(EnterpriseManagement.class.getName());
 
     // Constructor of the EnterpriseManagement's class
     public EnterpriseManagement()
@@ -39,6 +42,8 @@ public class EnterpriseManagement extends javax.swing.JFrame
         objectClient = new Client("Cliente", null, null, null);
         objectEmployee = new Employee("Funcionario", null, null, null, null, null, WIDTH, null);
         objectSupplier = new Supplier("Fornecedor", null, null, null, null);
+        
+        log.debug("Load EnterpriseManagement");
     }
     
     /**
@@ -173,18 +178,21 @@ public class EnterpriseManagement extends javax.swing.JFrame
     public void showMessage(String info)
     {
         JOptionPane.showMessageDialog(this, info,"Atenção" ,JOptionPane.INFORMATION_MESSAGE);
+        log.info(info);
     }
     
     // Opens Expense's form
     private void jButton_DespesasActionPerformed(java.awt.event.ActionEvent evt)
     {
         new ExpenseView().setVisible(true);
+        log.debug("Open ExpenseView");
     }
 
     // Opens Stock's form
     private void jButton_EstoqueActionPerformed(java.awt.event.ActionEvent evt)
     {
        new StockView().setVisible(true);
+       log.debug("Open StockView");
     }
 
     // Opens Contact's form
@@ -192,24 +200,28 @@ public class EnterpriseManagement extends javax.swing.JFrame
     {
         SalePurchaseView.purchaseSaleMode = false;
         new ContactView().setVisible(true);
+        log.debug("Open ContactView");
     }
     
     // Opens SalePurchase's form
     private void jButton_VendaCompraActionPerformed(java.awt.event.ActionEvent evt)
     {
         new SalePurchaseView().setVisible(true);
+        log.debug("Open SalePurchaseView");
     }
 
     // Opens SalePurchaseHistoric's form
     private void jButton_HistoricoCompraVendaActionPerformed(java.awt.event.ActionEvent evt)
     {
         new SalePurchaseHistoricView().setVisible(true);
+        log.debug("Open SalePurchaseHistoricView");
     }
     
     // Main function of EnterpriseManagement
     public static void main(String args[])
     {
-            try {
+        try
+        {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
             {
                 if ("Nimbus".equals(info.getName()))
@@ -222,18 +234,22 @@ public class EnterpriseManagement extends javax.swing.JFrame
         catch (ClassNotFoundException ex)
         {
             java.util.logging.Logger.getLogger(EnterpriseManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.fatal("ClassNotFound. Exception: ", ex);
         }
         catch (InstantiationException ex)
         {
             java.util.logging.Logger.getLogger(EnterpriseManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.fatal("Instantiation. Exception: ", ex);
         }
         catch (IllegalAccessException ex)
         {
             java.util.logging.Logger.getLogger(EnterpriseManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.fatal("IllegalAccess. Exception: ", ex);
         }
         catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
             java.util.logging.Logger.getLogger(EnterpriseManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.fatal("UnsupportedLookAndFeel. Exception: ", ex);
         }
       
         /* Create and display the form */
@@ -242,6 +258,7 @@ public class EnterpriseManagement extends javax.swing.JFrame
             public void run()
             {
                 new EnterpriseManagement().setVisible(true);
+                log.debug("Open EnterpriseManagement");
             }
         });
     }

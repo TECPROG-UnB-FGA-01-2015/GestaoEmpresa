@@ -9,11 +9,9 @@ import javax.swing.JOptionPane;
 
 import static view.SalePurchaseView.purchaseSaleMode;
 import static view.SalePurchaseView.salePurchaseStatus;
-
 import controller.ClientController;
 import controller.EmployeeController;
 import controller.SupplierController;
-
 import model.Address;
 import model.Employee;
 import model.JuridicalClient;
@@ -67,7 +65,7 @@ public class ContactDataView extends javax.swing.JFrame
 	// Object from the Employee Class that  is instantiated to receive and update the information of the employee
 	Employee editEmployee;
 	
-	static Logger log = Logger.getLogger(SalePurchaseView.class.getName());
+	static Logger log = Logger.getLogger(ContactDataView.class.getName());
 
 	// Method to display a warning message to the user
 	public void showInfo(String info)
@@ -262,7 +260,6 @@ public class ContactDataView extends javax.swing.JFrame
 	// desc="Generated Code">//GEN-BEGIN:initComponents
 	private void initComponents()
 	{
-
 		jPanel1 = new javax.swing.JPanel();
 		jLabel1 = new javax.swing.JLabel();
 		jTextField_Nome = new javax.swing.JTextField();
@@ -311,14 +308,7 @@ public class ContactDataView extends javax.swing.JFrame
 		{
 			public void actionPerformed(java.awt.event.ActionEvent evt)
 			{
-				try
-				{
-					jTextField_SalarioActionPerformed(evt);
-				}
-				catch (Exception e)
-				{
-					e.printStackTrace();
-				}				
+				jTextField_SalarioActionPerformed(evt);				
 			}
 		});
 
@@ -349,17 +339,11 @@ public class ContactDataView extends javax.swing.JFrame
 		});
 
 		jLabel10.setText("Contato:");
-
 		jLabel11.setText("País:");
-
 		jLabel12.setText("Estado:");
-
 		jLabel13.setText("Cidade:");
-
 		jLabel14.setText("Logradouro:");
-
 		jLabel15.setText("Complemento:");
-
 		jLabel16.setText("Número:");
 
 		jButton_Salvar.setText("Salvar");
@@ -505,399 +489,444 @@ public class ContactDataView extends javax.swing.JFrame
 	}// </editor-fold>//GEN-END:initComponents
 
 	// Method to enable the text fields according to the type of contact
-	private void jComboBox_TipoContatoItemStateChanged(java.awt.event.ItemEvent evt)
+	private void jComboBox_TipoContatoItemStateChanged(java.awt.event.ItemEvent evt) throws Exception
 	{// GEN-FIRST:event_jComboBox_TipoContatoItemStateChanged
-		// Selected contact type on ComboBox
-		int selectedIndexContactTypeComboBox = jComboBox_TipoContato.getSelectedIndex();
-		
-		// String of selected contact type on ComboBox
-		String selectedItemContactTypeComboBox = (String) jComboBox_TipoContato.getSelectedItem();
-		
-		if(selectedIndexContactTypeComboBox == 0f)
+		try
 		{
-			jLabel6.setVisible(false);
-			jLabel7.setVisible(false);
-			jTextField_Cargo.setVisible(false);
-			jTextField_Salario.setVisible(false);
-			jComboBox_TipoPessoa.setEnabled(true);
-			jComboBox_TipoPessoa.setSelectedIndex(0);
-			jComboBox_TipoPessoa.setSelectedItem("Pessoa Física");
+			// Selected contact type on ComboBox
+			int selectedIndexContactTypeComboBox = jComboBox_TipoContato.getSelectedIndex();
 			
-			log.info("Physical Person type to be added!");
-		}
-		else if(selectedItemContactTypeComboBox == "Fornecedor")
-		{
-			jLabel6.setVisible(false);
-			jLabel7.setVisible(false);
-			jTextField_Cargo.setVisible(false);
-			jTextField_Salario.setVisible(false);
-			jComboBox_TipoPessoa.setEnabled(true);
-			jComboBox_TipoPessoa.setSelectedIndex(1);
-			jComboBox_TipoPessoa.setSelectedItem("Pessoa Jurídica");
+			// String of selected contact type on ComboBox
+			String selectedItemContactTypeComboBox = (String) jComboBox_TipoContato.getSelectedItem();
 			
-			log.info("Juridical Person type to be added!");
-		}
-		else if(selectedItemContactTypeComboBox == "Funcionário")
-		{
-			jLabel4.setText("CPF:");
-			jLabel5.setText("RG:");
-			jLabel6.setVisible(true);
-			jLabel7.setVisible(true);
-			jTextField_Cargo.setVisible(true);
-			jTextField_Salario.setVisible(true);
-			jComboBox_TipoPessoa.setEnabled(false);
-			jComboBox_TipoPessoa.setSelectedIndex(0);
-			
-			log.info("Employee type to be added!");
-		}
-		else
-		{
-			// Nothing to do
-		}
-	}// GEN-LAST:event_jComboBox_TipoContatoItemStateChanged
-
-	// Method to scan the information of text field and save on the customer object attributes
-	private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt)
-	{// GEN-FIRST:event_jButton_SalvarActionPerformed
-		if(jTextField_Nome.getText().isEmpty() == true)
-		{
-			log.warn("Contact name wasn't informed!");
-			
-			showInfo("Digite o name do Contato!");
-		}
-
-		else
-		{
-			log.info("Initialize save contact operation");
-			
-			// Receives the name info of the view's text field 
-			String name = jTextField_Nome.getText();
-			
-			// Receives the telephone info of the view's text field 
-			String telephone = jTextField_Telefone.getText();
-			
-			// Receives the cellphone info of the view's text field 
-			String cellphone = jTextField_Celular.getText();
-			
-			// Receives the cpf or cnpj info of the view's text field 
-			String cpfCnpj = jTextField_CpfCnpj.getText();
-			
-			// Receives the rg or corporate name info of the view's text field 
-			String rgSocialReason = jTextField_RgRazaoSocial.getText();
-			
-			// Receives the patio info of the view's text field 
-			String patio = jTextField_Logradouro.getText();
-			
-			// Receives the number info of the view's text field 
-			String number = jTextField_Numero.getText();
-			
-			// Receives the city info of the view's text field 
-			String city = jTextField_Cidade.getText();
-			
-			// Receives the state info of the view's text field 
-			String state = jTextField_Estado.getText();
-			
-			// Receives the country info of the view's text field 
-			String country = jTextField_Pais.getText();
-			
-			// Receives the complement info of the view's text field 
-			String complement = jTextField_Complemento.getText();
-			
-			// Receives the office info of the view's text field 
-			String office = jTextField_Cargo.getText();
-			
-			// Receives the salary info of the view's text field 
-			double salary = Double.parseDouble(jTextField_Salario.getText());
-			
-			// Object from the Address Class that  is instantiated to receives the information of the address
-			Address objectAddress = new Address(patio, number, city, state, country, complement);
-
-			if(ContactView.editMode == false)
+			if(selectedIndexContactTypeComboBox == 0f)
 			{
-				// Selected contact type on ComboBox
-				int selectedIndexContactTypeComboBox = jComboBox_TipoContato.getSelectedIndex();
+				jLabel6.setVisible(false);
+				jLabel7.setVisible(false);
+				jTextField_Cargo.setVisible(false);
+				jTextField_Salario.setVisible(false);
+				jComboBox_TipoPessoa.setEnabled(true);
+				jComboBox_TipoPessoa.setSelectedIndex(0);
+				jComboBox_TipoPessoa.setSelectedItem("Pessoa Física");
 				
-				// Selected client type on ComboBox
-				int selectedIndexClientTypeComboBox = jComboBox_TipoPessoa.getSelectedIndex();
-				
-				if(selectedIndexContactTypeComboBox == 0)
-				{
-					if(jComboBox_TipoPessoa.getSelectedIndex() == 0)
-					{
-						objectPhysicalClient = new PhysicalClient(cpfCnpj, rgSocialReason, name, objectAddress, telephone, cellphone);
-						
-						if(objectClientController.searchClient(objectPhysicalClient.getName(), false) == null)
-						{
-							objectClientController.addClient(objectPhysicalClient);
-						}
-						else
-						{
-							showInfo("Cliente já cadastrado!");
-						}
-					}
-					else if(selectedIndexClientTypeComboBox == 1)
-					{
-						objectJuridicalClient = new JuridicalClient(cpfCnpj, rgSocialReason, name, objectAddress, telephone, cellphone);
-						
-						if(objectClientController.searchClient(objectJuridicalClient.getName(), false) == null)
-						{
-							objectClientController.addClient(objectJuridicalClient);
-						}
-						else
-						{
-							showInfo("Cliente já cadastrado!");
-						}
-					}
-					else
-					{
-						// Nothing to do
-					}
-				}
-				else if(selectedIndexContactTypeComboBox == 1)
-				{
-					if(selectedIndexClientTypeComboBox == 0)
-					{
-						objectPhysicalSupplier = new PhysicalSupplier(cpfCnpj, rgSocialReason, name, telephone, cellphone, null, objectAddress);
-
-						if(objectSupplierController.searchSupplier(objectPhysicalSupplier.getName(), false) == null)
-						{
-							objectSupplierController.addSupplier(objectPhysicalSupplier);
-						}
-						else
-						{
-							showInfo("Fornecedor já cadastrado!");
-						}
-					}
-					else if(selectedIndexClientTypeComboBox == 1)
-					{
-						objectJuridicalSupplier = new JuridicalSupplier(cpfCnpj, rgSocialReason, name, telephone, cellphone, null, objectAddress);
-
-						if(objectSupplierController.searchSupplier(objectJuridicalSupplier.getName(), false) == null)
-						{
-							objectSupplierController.addSupplier(objectJuridicalSupplier);
-						}
-						else
-						{
-							showInfo("Fornecedor já cadastrado!");
-						}
-					}
-					else
-					{
-						// Nothing to do
-					}
-				}
-				else if(selectedIndexContactTypeComboBox == 2)
-				{
-					objectEmployee = new Employee(name, telephone, cellphone, cpfCnpj, rgSocialReason, office, salary, objectAddress);
-
-					if(objectEmployeeController.searchEmployee(objectEmployee.getName(), false) == null)
-					{
-						objectEmployeeController.addEmployee(objectEmployee);
-					}
-					else
-					{
-						showInfo("Funcionário já cadastrado!");
-					}
-				}
-				else
-				{
-					// Nothing to do
-				}
+				log.debug("Physical Person type to be added!");
 			}
-			else if(ContactView.editMode == true)
+			else if(selectedItemContactTypeComboBox == "Fornecedor")
 			{
-
-				if(ContactView.newPhysicalClient == false)
-				{
-					// Result of editPhysicalClient name and jTextField_Nome text comparison
-					boolean namePhyicalClientEquals = editPhysicalClient.getName().equals(jTextField_Nome.getText());
-					
-					if(!namePhyicalClientEquals)
-					{
-						showInfo("Não é permitido a alteração do name!");
-					}
-					else
-					{
-						jComboBox_TipoContato.setSelectedIndex(0);
-						jComboBox_TipoPessoa.setSelectedIndex(0);
-						editPhysicalClient.getAddress().setStreet(patio);
-						editPhysicalClient.getAddress().setCountry(country);
-						editPhysicalClient.getAddress().setState(state);
-						editPhysicalClient.getAddress().setCity(city);
-						editPhysicalClient.getAddress().setComplement(complement);
-						editPhysicalClient.getAddress().setNumber(number);
-						editPhysicalClient.setName(name);
-						editPhysicalClient.setTelephone(telephone);
-						editPhysicalClient.setCellphone(cellphone);
-						editPhysicalClient.setCpf(cpfCnpj);
-						editPhysicalClient.setRg(rgSocialReason);
-						editPhysicalClient.setAddress(objectAddress);
-					}
-				}
-				else if(ContactView.newJuridicalClient == false)
-				{
-					// Result of editJuridicalClient name and jTextField_Nome text comparison
-					boolean nameJuridicalClientEquals = editJuridicalClient.getName().equals(jTextField_Nome.getText());
-					
-					if(!nameJuridicalClientEquals)
-					{
-						showInfo("Não é permitido a alteração do name!");
-					}
-					else
-					{
-						jComboBox_TipoContato.setSelectedIndex(0);
-						jComboBox_TipoPessoa.setSelectedIndex(1);
-						editJuridicalClient.getAddress().setStreet(patio);
-						editJuridicalClient.getAddress().setCountry(country);
-						editJuridicalClient.getAddress().setState(state);
-						editJuridicalClient.getAddress().setCity(city);
-						editJuridicalClient.getAddress().setComplement(complement);
-						editJuridicalClient.getAddress().setNumber(number);
-						editJuridicalClient.setName(name);
-						editJuridicalClient.setTelephone(telephone);
-						editJuridicalClient.setCellphone(cellphone);
-						editJuridicalClient.setCnpj(cpfCnpj);
-						editJuridicalClient.setSocialReason(rgSocialReason);
-						editJuridicalClient.setAddress(objectAddress);
-					}
-				}
-				else if(ContactView.newPhysicalSupplier == false)
-				{
-					// Result of editPhysicalSupplier name and jTextField_Nome text comparison
-					boolean namePhysicalSupplierEquals = editPhysicalSupplier.getName().equals(jTextField_Nome.getText()); 
-					
-					if(!namePhysicalSupplierEquals)
-					{
-						showInfo("Não é permitido a alteração do name!");
-					}
-					else
-					{
-						jComboBox_TipoContato.setSelectedIndex(1);
-						jComboBox_TipoPessoa.setSelectedIndex(0);
-						editPhysicalSupplier.getAddress().setStreet(patio);
-						editPhysicalSupplier.getAddress().setCountry(country);
-						editPhysicalSupplier.getAddress().setState(state);
-						editPhysicalSupplier.getAddress().setCity(city);
-						editPhysicalSupplier.getAddress().setComplement(complement);
-						editPhysicalSupplier.getAddress().setNumber(number);
-						editPhysicalSupplier.setName(name);
-						editPhysicalSupplier.setTelephone(telephone);
-						editPhysicalSupplier.setCellphone(cellphone);
-						editPhysicalSupplier.setCpf(cpfCnpj);
-						editPhysicalSupplier.setRg(rgSocialReason);
-						editPhysicalSupplier.setAddress(objectAddress);
-					}
-				}
-				else if(ContactView.newJuridicalSupplier == false)
-				{
-					// Result of editJuridicalSupplier name and jTextField_Nome text comparison
-					boolean nameJuridicalSupplierEquals = editJuridicalSupplier.getName().equals(jTextField_Nome.getText()); 
-					
-					if(!nameJuridicalSupplierEquals)
-					{
-						showInfo("Não é permitido a alteração do name!");
-					}
-					else
-					{
-						jComboBox_TipoContato.setSelectedIndex(1);
-						jComboBox_TipoPessoa.setSelectedIndex(1);
-						editJuridicalSupplier.getAddress().setStreet(patio);
-						editJuridicalSupplier.getAddress().setCountry(country);
-						editJuridicalSupplier.getAddress().setState(state);
-						editJuridicalSupplier.getAddress().setCity(city);
-						editJuridicalSupplier.getAddress().setComplement(complement);
-						editJuridicalSupplier.getAddress().setNumber(number);
-						editJuridicalSupplier.setName(name);
-						editJuridicalSupplier.setTelephone(telephone);
-						editJuridicalSupplier.setCellphone(cellphone);
-						editJuridicalSupplier.setCnpj(cpfCnpj);
-						editJuridicalSupplier.setSocialReason(rgSocialReason);
-						editJuridicalSupplier.setAddress(objectAddress);
-					}
-				}
-				else if(ContactView.newEmployee == false)
-				{
-					// Result of editEmployee name and jTextField_Nome text comparison
-					boolean nameEmployeeEquals = editEmployee.getName().equals(jTextField_Nome.getText()); 
-					if(!nameEmployeeEquals)
-					{
-						showInfo("Não é permitido a alteração do name!");
-					}
-					else
-					{
-						jComboBox_TipoContato.setSelectedIndex(1);
-						jComboBox_TipoPessoa.setSelectedIndex(0);
-						editEmployee.getAddress().setStreet(patio);
-						editEmployee.getAddress().setCountry(country);
-						editEmployee.getAddress().setState(state);
-						editEmployee.getAddress().setCity(city);
-						editEmployee.getAddress().setComplement(complement);
-						editEmployee.getAddress().setNumber(number);
-						editEmployee.setName(name);
-						editEmployee.setTelephone(telephone);
-						editEmployee.setCellphone(cellphone);
-						editEmployee.setCpf(cpfCnpj);
-						editEmployee.setRg(rgSocialReason);
-						editEmployee.setAddress(objectAddress);
-					}
-				}
-				else
-				{
-					// Nothing to do
-				}
+				jLabel6.setVisible(false);
+				jLabel7.setVisible(false);
+				jTextField_Cargo.setVisible(false);
+				jTextField_Salario.setVisible(false);
+				jComboBox_TipoPessoa.setEnabled(true);
+				jComboBox_TipoPessoa.setSelectedIndex(1);
+				jComboBox_TipoPessoa.setSelectedItem("Pessoa Jurídica");
+				
+				log.debug("Supplier type to be added!");
+			}
+			else if(selectedItemContactTypeComboBox == "Funcionário")
+			{
+				jLabel4.setText("CPF:");
+				jLabel5.setText("RG:");
+				jLabel6.setVisible(true);
+				jLabel7.setVisible(true);
+				jTextField_Cargo.setVisible(true);
+				jTextField_Salario.setVisible(true);
+				jComboBox_TipoPessoa.setEnabled(false);
+				jComboBox_TipoPessoa.setSelectedIndex(0);
+				
+				log.debug("Employee type to be added!");
 			}
 			else
 			{
 				// Nothing to do
 			}
-			
-			ContactView.editMode = false;
-			ContactView.newPhysicalClient = true;
-			ContactView.newJuridicalClient = true;
-			ContactView.newPhysicalSupplier = true;
-			ContactView.newJuridicalSupplier = true;
-			ContactView.newEmployee = true;
-			
-			log.info("Save contact operation finalized successfully!");
-			
-			new ContactView().setVisible(true);
-			
-			log.debug("Exit SalePurchaseView");
-			this.dispose();
 		}
+		catch (Exception e)
+		{
+			log.error("Error when selecting contact type. Exception: ", e);
+			throw e;
+		}
+	}// GEN-LAST:event_jComboBox_TipoContatoItemStateChanged
 
+	// Method to scan the information of text field and save on the customer object attributes
+	private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt) throws Exception
+	{// GEN-FIRST:event_jButton_SalvarActionPerformed
+		try
+		{
+			if(jTextField_Nome.getText().isEmpty() == true)
+			{
+				log.info("Contact name wasn't informed!");
+				
+				showInfo("Digite o name do Contato!");
+			}
+	
+			else
+			{		
+				// Receives the name info of the view's text field 
+				String name = jTextField_Nome.getText();
+				
+				// Receives the telephone info of the view's text field 
+				String telephone = jTextField_Telefone.getText();
+				
+				// Receives the cellphone info of the view's text field 
+				String cellphone = jTextField_Celular.getText();
+				
+				// Receives the cpf or cnpj info of the view's text field 
+				String cpfCnpj = jTextField_CpfCnpj.getText();
+				
+				// Receives the rg or corporate name info of the view's text field 
+				String rgSocialReason = jTextField_RgRazaoSocial.getText();
+				
+				// Receives the patio info of the view's text field 
+				String patio = jTextField_Logradouro.getText();
+				
+				// Receives the number info of the view's text field 
+				String number = jTextField_Numero.getText();
+				
+				// Receives the city info of the view's text field 
+				String city = jTextField_Cidade.getText();
+				
+				// Receives the state info of the view's text field 
+				String state = jTextField_Estado.getText();
+				
+				// Receives the country info of the view's text field 
+				String country = jTextField_Pais.getText();
+				
+				// Receives the complement info of the view's text field 
+				String complement = jTextField_Complemento.getText();
+				
+				// Receives the office info of the view's text field 
+				String office = jTextField_Cargo.getText();
+				
+				// Receives the salary info of the view's text field 
+				double salary = Double.parseDouble(jTextField_Salario.getText());
+				
+				// Object from the Address Class that  is instantiated to receives the information of the address
+				Address objectAddress = new Address(patio, number, city, state, country, complement);
+	
+				if(ContactView.editMode == false)
+				{
+					// Selected contact type on ComboBox
+					int selectedIndexContactTypeComboBox = jComboBox_TipoContato.getSelectedIndex();
+					
+					// Selected client type on ComboBox
+					int selectedIndexClientTypeComboBox = jComboBox_TipoPessoa.getSelectedIndex();
+					
+					if(selectedIndexContactTypeComboBox == 0)
+					{
+						if(jComboBox_TipoPessoa.getSelectedIndex() == 0)
+						{
+							objectPhysicalClient = new PhysicalClient(cpfCnpj, rgSocialReason, name, objectAddress, telephone, cellphone);
+							
+							String namePhysicalClient = objectPhysicalClient.getName();
+							
+							if(objectClientController.searchClient(namePhysicalClient, false) == null)
+							{
+								objectClientController.addClient(objectPhysicalClient);
+								
+								log.info("Client " + namePhysicalClient + " added successfully!");
+							}
+							else
+							{
+								showInfo("Cliente já cadastrado!");
+							}
+						}
+						else if(selectedIndexClientTypeComboBox == 1)
+						{
+							objectJuridicalClient = new JuridicalClient(cpfCnpj, rgSocialReason, name, objectAddress, telephone, cellphone);
+							
+							String nameJuridicalClient = objectJuridicalClient.getName();
+							
+							if(objectClientController.searchClient(nameJuridicalClient, false) == null)
+							{
+								objectClientController.addClient(objectJuridicalClient);
+								
+								log.info("Client " + nameJuridicalClient + " added successfully!");
+							}
+							else
+							{
+								showInfo("Cliente já cadastrado!");
+							}
+						}
+						else
+						{
+							// Nothing to do
+						}
+					}
+					else if(selectedIndexContactTypeComboBox == 1)
+					{
+						if(selectedIndexClientTypeComboBox == 0)
+						{
+							objectPhysicalSupplier = new PhysicalSupplier(cpfCnpj, rgSocialReason, name, telephone, cellphone, null, objectAddress);
+	
+							String namePhysicalSupplier = objectPhysicalSupplier.getName();
+							
+							if(objectSupplierController.searchSupplier(namePhysicalSupplier, false) == null)
+							{
+								objectSupplierController.addSupplier(objectPhysicalSupplier);
+								
+								log.info("Supplier " + namePhysicalSupplier + " added successfully!");
+							}
+							else
+							{
+								showInfo("Fornecedor já cadastrado!");
+							}
+						}
+						else if(selectedIndexClientTypeComboBox == 1)
+						{
+							objectJuridicalSupplier = new JuridicalSupplier(cpfCnpj, rgSocialReason, name, telephone, cellphone, null, objectAddress);
+	
+							String nameJuridicalSupplier = objectJuridicalSupplier.getName();
+							
+							if(objectSupplierController.searchSupplier(nameJuridicalSupplier, false) == null)
+							{
+								objectSupplierController.addSupplier(objectJuridicalSupplier);
+								
+								log.info("Supplier " + nameJuridicalSupplier + " added successfully!");
+							}
+							else
+							{
+								showInfo("Fornecedor já cadastrado!");
+							}
+						}
+						else
+						{
+							// Nothing to do
+						}
+					}
+					else if(selectedIndexContactTypeComboBox == 2)
+					{
+						objectEmployee = new Employee(name, telephone, cellphone, cpfCnpj, rgSocialReason, office, salary, objectAddress);
+	
+						String nameEmployee = objectEmployee.getName();
+						
+						if(objectEmployeeController.searchEmployee(nameEmployee, false) == null)
+						{
+							objectEmployeeController.addEmployee(objectEmployee);
+							
+							log.info("Employee " + nameEmployee + " added successfully!");
+						}
+						else
+						{
+							showInfo("Funcionário já cadastrado!");
+						}
+					}
+					else
+					{
+						// Nothing to do
+					}
+				}
+				else if(ContactView.editMode == true)
+				{
+	
+					if(ContactView.newPhysicalClient == false)
+					{
+						// Result of editPhysicalClient name and jTextField_Nome text comparison
+						boolean namePhyicalClientEquals = editPhysicalClient.getName().equals(jTextField_Nome.getText());
+						
+						if(!namePhyicalClientEquals)
+						{
+							showInfo("Não é permitido a alteração do name!");
+						}
+						else
+						{
+							jComboBox_TipoContato.setSelectedIndex(0);
+							jComboBox_TipoPessoa.setSelectedIndex(0);
+							editPhysicalClient.getAddress().setStreet(patio);
+							editPhysicalClient.getAddress().setCountry(country);
+							editPhysicalClient.getAddress().setState(state);
+							editPhysicalClient.getAddress().setCity(city);
+							editPhysicalClient.getAddress().setComplement(complement);
+							editPhysicalClient.getAddress().setNumber(number);
+							editPhysicalClient.setName(name);
+							editPhysicalClient.setTelephone(telephone);
+							editPhysicalClient.setCellphone(cellphone);
+							editPhysicalClient.setCpf(cpfCnpj);
+							editPhysicalClient.setRg(rgSocialReason);
+							editPhysicalClient.setAddress(objectAddress);
+						}
+					}
+					else if(ContactView.newJuridicalClient == false)
+					{
+						// Result of editJuridicalClient name and jTextField_Nome text comparison
+						boolean nameJuridicalClientEquals = editJuridicalClient.getName().equals(jTextField_Nome.getText());
+						
+						if(!nameJuridicalClientEquals)
+						{
+							showInfo("Não é permitido a alteração do name!");
+						}
+						else
+						{
+							jComboBox_TipoContato.setSelectedIndex(0);
+							jComboBox_TipoPessoa.setSelectedIndex(1);
+							editJuridicalClient.getAddress().setStreet(patio);
+							editJuridicalClient.getAddress().setCountry(country);
+							editJuridicalClient.getAddress().setState(state);
+							editJuridicalClient.getAddress().setCity(city);
+							editJuridicalClient.getAddress().setComplement(complement);
+							editJuridicalClient.getAddress().setNumber(number);
+							editJuridicalClient.setName(name);
+							editJuridicalClient.setTelephone(telephone);
+							editJuridicalClient.setCellphone(cellphone);
+							editJuridicalClient.setCnpj(cpfCnpj);
+							editJuridicalClient.setSocialReason(rgSocialReason);
+							editJuridicalClient.setAddress(objectAddress);
+						}
+					}
+					else if(ContactView.newPhysicalSupplier == false)
+					{
+						// Result of editPhysicalSupplier name and jTextField_Nome text comparison
+						boolean namePhysicalSupplierEquals = editPhysicalSupplier.getName().equals(jTextField_Nome.getText()); 
+						
+						if(!namePhysicalSupplierEquals)
+						{
+							showInfo("Não é permitido a alteração do name!");
+						}
+						else
+						{
+							jComboBox_TipoContato.setSelectedIndex(1);
+							jComboBox_TipoPessoa.setSelectedIndex(0);
+							editPhysicalSupplier.getAddress().setStreet(patio);
+							editPhysicalSupplier.getAddress().setCountry(country);
+							editPhysicalSupplier.getAddress().setState(state);
+							editPhysicalSupplier.getAddress().setCity(city);
+							editPhysicalSupplier.getAddress().setComplement(complement);
+							editPhysicalSupplier.getAddress().setNumber(number);
+							editPhysicalSupplier.setName(name);
+							editPhysicalSupplier.setTelephone(telephone);
+							editPhysicalSupplier.setCellphone(cellphone);
+							editPhysicalSupplier.setCpf(cpfCnpj);
+							editPhysicalSupplier.setRg(rgSocialReason);
+							editPhysicalSupplier.setAddress(objectAddress);
+						}
+					}
+					else if(ContactView.newJuridicalSupplier == false)
+					{
+						// Result of editJuridicalSupplier name and jTextField_Nome text comparison
+						boolean nameJuridicalSupplierEquals = editJuridicalSupplier.getName().equals(jTextField_Nome.getText()); 
+						
+						if(!nameJuridicalSupplierEquals)
+						{
+							showInfo("Não é permitido a alteração do name!");
+						}
+						else
+						{
+							jComboBox_TipoContato.setSelectedIndex(1);
+							jComboBox_TipoPessoa.setSelectedIndex(1);
+							editJuridicalSupplier.getAddress().setStreet(patio);
+							editJuridicalSupplier.getAddress().setCountry(country);
+							editJuridicalSupplier.getAddress().setState(state);
+							editJuridicalSupplier.getAddress().setCity(city);
+							editJuridicalSupplier.getAddress().setComplement(complement);
+							editJuridicalSupplier.getAddress().setNumber(number);
+							editJuridicalSupplier.setName(name);
+							editJuridicalSupplier.setTelephone(telephone);
+							editJuridicalSupplier.setCellphone(cellphone);
+							editJuridicalSupplier.setCnpj(cpfCnpj);
+							editJuridicalSupplier.setSocialReason(rgSocialReason);
+							editJuridicalSupplier.setAddress(objectAddress);
+						}
+					}
+					else if(ContactView.newEmployee == false)
+					{
+						// Result of editEmployee name and jTextField_Nome text comparison
+						boolean nameEmployeeEquals = editEmployee.getName().equals(jTextField_Nome.getText()); 
+						if(!nameEmployeeEquals)
+						{
+							showInfo("Não é permitido a alteração do name!");
+						}
+						else
+						{
+							jComboBox_TipoContato.setSelectedIndex(1);
+							jComboBox_TipoPessoa.setSelectedIndex(0);
+							editEmployee.getAddress().setStreet(patio);
+							editEmployee.getAddress().setCountry(country);
+							editEmployee.getAddress().setState(state);
+							editEmployee.getAddress().setCity(city);
+							editEmployee.getAddress().setComplement(complement);
+							editEmployee.getAddress().setNumber(number);
+							editEmployee.setName(name);
+							editEmployee.setTelephone(telephone);
+							editEmployee.setCellphone(cellphone);
+							editEmployee.setCpf(cpfCnpj);
+							editEmployee.setRg(rgSocialReason);
+							editEmployee.setAddress(objectAddress);
+						}
+					}
+					else
+					{
+						// Nothing to do
+					}
+				}
+				else
+				{
+					// Nothing to do
+				}
+				
+				ContactView.editMode = false;
+				ContactView.newPhysicalClient = true;
+				ContactView.newJuridicalClient = true;
+				ContactView.newPhysicalSupplier = true;
+				ContactView.newJuridicalSupplier = true;
+				ContactView.newEmployee = true;
+				
+				log.info("Save contact operation finalized successfully!");
+				
+				new ContactView().setVisible(true);
+				
+				log.debug("Exit SalePurchaseView");
+				this.dispose();
+			}
+		}
+		catch (Exception e)
+		{
+			log.error("Error when saving contact. Exception: ", e);
+			throw e;
+		}
 	}// GEN-LAST:event_jButton_SalvarActionPerformed
 
 	// Method to cancel the operation and close the screen
-	private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt)
+	private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{// GEN-FIRST:event_jButton_CancelarActionPerformed
-		new ContactView().setVisible(true);
-		this.dispose();
+		try
+		{
+			new ContactView().setVisible(true);
+			this.dispose();
+		}
+		catch (Exception e)
+		{
+			log.error("Error when canceling the action of add a contact. Exception: ", e);
+			throw e;
+		}
 	}// GEN-LAST:event_jButton_CancelarActionPerformed
 
 	// Method to enable the text fields according to the type of person
-	private void jComboBox_TipoPessoaItemStateChanged(java.awt.event.ItemEvent evt)
+	private void jComboBox_TipoPessoaItemStateChanged(java.awt.event.ItemEvent evt) throws Exception
 	{// GEN-FIRST:event_jComboBox_TipoPessoaItemStateChanged
-		// String of selected client type on ComboBox
-		String selectedClientTypeComboBoxString = (String) jComboBox_TipoPessoa.getSelectedItem();
-		
-		if(selectedClientTypeComboBoxString == "Pessoa Física")
+		try
 		{
-			log.info("Physical Person ComboBox selected!");
+			// String of selected client type on ComboBox
+			String selectedClientTypeComboBoxString = (String) jComboBox_TipoPessoa.getSelectedItem();
 			
-			jLabel4.setText("CPF:");
-			jLabel5.setText("RG:");
+			if(selectedClientTypeComboBoxString == "Pessoa Física")
+			{
+				jLabel4.setText("CPF:");
+				jLabel5.setText("RG:");
+			}
+			else if(selectedClientTypeComboBoxString == "Pessoa Jurídica")
+			{
+				jLabel4.setText("CNPJ:");
+				jLabel5.setText("Razão Social:");
+			}
+			else
+			{
+				// Nothing to do
+			}
 		}
-		else if(selectedClientTypeComboBoxString == "Pessoa Jurídica")
+		catch (Exception e)
 		{
-			log.info("Juridical Person ComboBox selected!");
-			
-			jLabel4.setText("CNPJ:");
-			jLabel5.setText("Razão Social:");
-		}
-		else
-		{
-			// Nothing to do
+			log.error("Error when selecting the person type. Exception: ", e);
+			throw e;
 		}
 	}// GEN-LAST:event_jComboBox_TipoPessoaItemStateChanged
 

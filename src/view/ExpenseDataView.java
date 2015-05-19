@@ -305,6 +305,10 @@ public class ExpenseDataView extends javax.swing.JFrame
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
+                else
+                {
+                	// Nothing to do
+                }
             }
         }
         
@@ -342,7 +346,6 @@ public class ExpenseDataView extends javax.swing.JFrame
             		log.error("Error when running ExpenseDataView. Exception: ", e);
             		throw e;   
             	}
-
             }
         });
     }

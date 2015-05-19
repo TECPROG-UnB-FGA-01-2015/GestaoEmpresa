@@ -233,13 +233,23 @@ public class ExpenseDataView extends javax.swing.JFrame
 
     private void jButton_SairActionPerformed(java.awt.event.ActionEvent evt)
     {
-      log.debug("Exit ExpenseDataView");
-      this.dispose();
-      new ExpenseView().setVisible(true);
+    	try
+    	{
+    		log.debug("Exit ExpenseDataView");
+    		this.dispose();
+    		new ExpenseView().setVisible(true);
+    	}
+    	catch(Exception e)
+        {
+        	log.error("Error when exiting ExpenseDataView. Exception: ", e);
+        	throw e;
+        }
     }
 
     private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt)
     {
+    	try
+    	{
         String name = jTextField_Nome.getText();
         String description = jTextField_Descricao.getText();
         int month = jComboBox_Mes.getSelectedIndex()+1;
@@ -267,10 +277,17 @@ public class ExpenseDataView extends javax.swing.JFrame
         {
             objectExpense = new Expense(name, description, valor, day, month, year);
             objectExpenseController.addExpense(objectExpense);
-            log.debug("New Expense saved successfully!");
+            log.debug("New Expense '" + name + "' saved successfully!");
+            log.debug("Expense info: Value '" + valor + "', Date: " + day + "/" + month + "/" + year + "");
             this.dispose();
             new ExpenseView().setVisible(true);
         }
+    	}
+    	catch(Exception e)
+    	{
+    		log.error("Error when saving new expense. Exception: ", e);
+    		throw e;   
+    	}
     }
 
     /**
@@ -293,18 +310,22 @@ public class ExpenseDataView extends javax.swing.JFrame
         
         catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(ExpenseDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.error("ClassNotFoundException: ", ex);
         }
         
         catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(ExpenseDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.error("InstantiationException: ", ex);
         }
         
         catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(ExpenseDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.error("IllegalAccessException: ", ex);
         }
         
         catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ExpenseDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.error("UnsupportedLookAndFeelException: ", ex);
         }
         
         /* Create and display the form */
@@ -312,7 +333,16 @@ public class ExpenseDataView extends javax.swing.JFrame
         {
             public void run()
             {
+            	try
+            	{
                 new ExpenseDataView().setVisible(true);
+            	}
+            	catch(Exception e)
+            	{
+            		log.error("Error when running ExpenseDataView. Exception: ", e);
+            		throw e;   
+            	}
+
             }
         });
     }

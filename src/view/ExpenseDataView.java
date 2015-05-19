@@ -255,7 +255,7 @@ public class ExpenseDataView extends javax.swing.JFrame
         int month = jComboBox_Mes.getSelectedIndex()+1;
         int year = jComboBox_Ano.getSelectedIndex()+2013;
         int day = jComboBox_Dia.getSelectedIndex()+1;
-        double valor = Double.parseDouble(jTextField_Valor.getText());
+        double value = Double.parseDouble(jTextField_Valor.getText());
            
         String textFieldName = jTextField_Nome.getText();
         boolean textFieldNameEmpty = textFieldName.equals(""); 
@@ -275,10 +275,10 @@ public class ExpenseDataView extends javax.swing.JFrame
         }      
         else
         {
-            objectExpense = new Expense(name, description, valor, day, month, year);
+            objectExpense = new Expense(name, description, value, day, month, year);
             objectExpenseController.addExpense(objectExpense);
             log.debug("New Expense '" + name + "' saved successfully!");
-            log.debug("Expense info: Value '" + valor + "', Date: " + day + "/" + month + "/" + year + "");
+            log.debug("Expense info: Value '" + value + "', Date: " + day + "/" + month + "/" + year + "");
             this.dispose();
             new ExpenseView().setVisible(true);
         }

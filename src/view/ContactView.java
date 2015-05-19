@@ -107,7 +107,9 @@ public class ContactView extends javax.swing.JFrame
         {
         	// Nothing to do
         }
+        
         jTextField_NomeBusca.requestFocus();
+        log.debug("Load ContactView");
     }
 
     @SuppressWarnings("unchecked")
@@ -205,7 +207,14 @@ public class ContactView extends javax.swing.JFrame
             jButton_Cancelar.addActionListener(new java.awt.event.ActionListener()
                 {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jButton_CancelarActionPerformed(evt);
+                    try
+					{
+						jButton_CancelarActionPerformed(evt);
+					}
+					catch (Exception e)
+					{
+						e.printStackTrace();
+					}
                 }
             });
 
@@ -326,6 +335,7 @@ public class ContactView extends javax.swing.JFrame
     public void showMessage(String info)
     {
         JOptionPane.showMessageDialog(this, info, "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        log.info(info);
     }
 
     // Access and returns the property clieteFisico
@@ -371,6 +381,7 @@ public class ContactView extends javax.swing.JFrame
             	// Nothing to do
             }
             jTable1.setModel(model);
+            log.debug("Load client on List");
         }
         else if(contactType == 1)
         {
@@ -399,6 +410,7 @@ public class ContactView extends javax.swing.JFrame
                 }
             }
             jTable1.setModel(model);
+            log.debug("Load supplier on List");
         }
         else if(contactType == 2)
         {
@@ -413,6 +425,7 @@ public class ContactView extends javax.swing.JFrame
                 objectEmployee.getTelephone(), "Física"});   
             }
             jTable1.setModel(model);
+            log.debug("Load employee on List");
         }
         else
         {
@@ -421,12 +434,21 @@ public class ContactView extends javax.swing.JFrame
     }
     
     // Cancels the client edit
-    private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt)
+    private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt) throws Exception
     {
          this.dispose();
          if(clientSupplierMode == true)
          {
-             new SalePurchaseView().setVisible(true);
+        	 try
+        	 {
+	             new SalePurchaseView().setVisible(true);
+	             log.debug("Open SalePurchaseView");
+        	 }
+        	 catch (Exception e)
+     		 {
+     			log.error("Error opening the view SalePurchaseView. Exception: ", e);
+     			throw e;
+     		 }
          }
          else
          {
@@ -440,7 +462,18 @@ public class ContactView extends javax.swing.JFrame
     private void jButton_AdicionarContatoActionPerformed(java.awt.event.ActionEvent evt)
     {
         editMode = false;
-        new ContactDataView().setVisible(true);
+        
+	    try
+	   	{
+	    	new ContactDataView().setVisible(true);
+	        log.debug("Open ContactDataView");
+	   	}
+	   	catch (Exception e)
+		{
+	   		log.error("Error opening the view ContactDataView. Exception: ", e);
+			throw e;
+		}
+	     
         this.setVisible(false);
     }
 
@@ -448,6 +481,7 @@ public class ContactView extends javax.swing.JFrame
     private void jButton_PesquisarActionPerformed(java.awt.event.ActionEvent evt)
     {
         String searchName = jTextField_NomeBusca.getText();
+        log.info("The user-given name is: '" + searchName + "'.");
         
         // Cleans the table
         DefaultTableModel model1 = (DefaultTableModel) jTable1.getModel();
@@ -477,6 +511,7 @@ public class ContactView extends javax.swing.JFrame
                     {
                         PhysicalClient contactSearch=(PhysicalClient) objectClientController.searchClient(searchName,true);
                         model.addRow(new String[]{contactSearch.getName(), contactSearch.getCpf(), contactSearch.getCellphone(), contactSearch.getTelephone(), "Física"});
+                        log.debug("Load physical client on list as result");
                     }
                     else if(searchClient.getClass().equals(JuridicalClient.class))
                     {
@@ -484,6 +519,7 @@ public class ContactView extends javax.swing.JFrame
                         model.addRow(new String[]{contactSearch.getName(), 
                             contactSearch.getCnpj(), contactSearch.getCellphone(), 
                             contactSearch.getTelephone(), "Jurídica"});
+                        log.debug("Load Juridical client on list as result");
                     }
                     else
                     {
@@ -604,6 +640,7 @@ public class ContactView extends javax.swing.JFrame
         if(quantitySearchResult > 1)
         {
             showMessage("Mais de um resultado foi encontrando com o nome '" + searchName + "'" );
+            log.info("More than one result has found with the name '" + searchName + "'.");
         }
         else
         {
@@ -740,6 +777,7 @@ public class ContactView extends javax.swing.JFrame
         }
         loadContactList();
         showMessage("Contato excluído com sucesso");
+        log.debug("Contact deleted successfully");
         jButton_Editar.setEnabled(false);
         jButton_Excluir.setEnabled(false);
     }
@@ -819,18 +857,22 @@ public class ContactView extends javax.swing.JFrame
         catch (ClassNotFoundException ex)
         {
             java.util.logging.Logger.getLogger(ContactView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.fatal("ClassNotFound. Exception: ", ex);
         }
         catch (InstantiationException ex)
         {
             java.util.logging.Logger.getLogger(ContactView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.fatal("Instantiation. Exception: ", ex);
         }
         catch (IllegalAccessException ex)
         {
             java.util.logging.Logger.getLogger(ContactView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.fatal("IllegalAccess. Exception: ", ex);
         }
         catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
             java.util.logging.Logger.getLogger(ContactView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.fatal("UnsupportedLookAndFeel. Exception: ", ex);
         }
       
         /* Create and display the form */
@@ -839,6 +881,7 @@ public class ContactView extends javax.swing.JFrame
             public void run()
             {
                 new ContactView().setVisible(true);
+                log.debug("Open ContactView");
             }
         });
     }

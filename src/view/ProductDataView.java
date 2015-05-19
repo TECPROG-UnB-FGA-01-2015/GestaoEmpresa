@@ -344,11 +344,13 @@ public class ProductDataView extends javax.swing.JFrame
 	            showMessage("Product não adicionado");
 	            log.info("Product wasn't added!");
 	        }
-	            
-	        new StockView().setVisible(true);
-	        log.info("Exit ProductDataView");
-	        this.dispose();
-	        infoCarregar=true;
+	        else
+	        {
+		        new StockView().setVisible(true);
+		        log.info("Exit ProductDataView");
+		        this.dispose();
+		        infoCarregar=true;
+	        }
     	}
     	catch(Exception e)
     	{
@@ -503,8 +505,7 @@ public class ProductDataView extends javax.swing.JFrame
                 }
             }
         }
-        
-        catch (ClassNotFoundException ex)
+    	catch (ClassNotFoundException ex)
         {
             java.util.logging.Logger.getLogger(ProductDataView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             log.error("ClassNotFoundException: ", ex);

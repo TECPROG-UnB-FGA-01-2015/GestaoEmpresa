@@ -92,7 +92,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 	final String CURRENT_YEAR = YEAR.format(CURRENT_DATE); // Receives the current year to save on the transaction
 
 	static ArrayList<Product> productTableList = new ArrayList<Product>(); // Stores the Product's info in a Product's table class
-	static Logger log = Logger.getLogger(SalePurchaseView.class.getName());
+	static Logger log = Logger.getLogger(SalePurchaseView.class.getName()); // Used to log debug, info, warning, error and fatal error
 
 	// This method is responsible to show a specific info as a Text Box
 	public void showInfo(String info)

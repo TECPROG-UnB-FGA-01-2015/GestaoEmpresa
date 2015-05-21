@@ -1074,7 +1074,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 			{
 				String strProductQuantity = jTextField_productQuantity.getText();
 				double productQuantity = Double.parseDouble(jTextField_productQuantity.getText());
-				if (productQuantity != 0.0 && strProductQuantity != "")
+				if (productQuantity != 0.0 && !strProductQuantity.equals(""))
 				{
 					if (salePurchaseStatus == 0)
 					{
@@ -1104,39 +1104,28 @@ public class SalePurchaseView extends javax.swing.JFrame
 					}
 					else if (salePurchaseStatus == 1)
 					{
-						if (verifyAddedProduct == 0)
+						productPurchase.setQuantity(Double.parseDouble(jTextField_productQuantity.getText()));
+						productTableList.add(productPurchase);
+						loadList();
+						jButton_addProduct.setEnabled(false);
+						jTextField_productQuantity.setEnabled(false);
+						jTextField_productDiscount.setEditable(false);
+						
+						String productName = productPurchase.getDescription();
+						log.info("Added product '" + productName + "' to transaction");
+						
+						for (Product tableProduct : productTableList)
 						{
-							productPurchase.setQuantity(Double.parseDouble(jTextField_productQuantity.getText()));
-							productTableList.add(productPurchase);
-							loadList();
-							jButton_addProduct.setEnabled(false);
-							jTextField_productQuantity.setEnabled(false);
-							jTextField_productDiscount.setEditable(false);
+							String tableProductCode = tableProduct.getCode();
 							
-							String productName = productPurchase.getDescription();
-							log.info("Added product '" + productName + "' to transaction");
-							
-							for (Product tableProduct : productTableList)
+							if (tableProductCode.equalsIgnoreCase(saleProductCode))
 							{
-								String tableProductCode = tableProduct.getCode();
-								
-								if (tableProductCode.equalsIgnoreCase(saleProductCode))
-								{
-									verifyAddedProduct = 1;
-								}
-								else
-								{
-									// Nothing to Do
-								}
+								verifyAddedProduct = 1;
 							}
-						}
-						else if (verifyAddedProduct == 1)
-						{
-							showInfo("Produto já adicionado!");
-						}
-						else
-						{
-							// Nothing to do
+							else
+							{
+								// Nothing to Do
+							}
 						}
 					}
 				}

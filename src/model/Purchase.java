@@ -38,5 +38,4 @@ public class Purchase extends Transaction
 	{
 		this.supplier = supplier;
 	}
-
 }

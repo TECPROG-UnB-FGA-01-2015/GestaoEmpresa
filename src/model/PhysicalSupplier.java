@@ -51,5 +51,4 @@ public class PhysicalSupplier extends Supplier
 	{
 		this.rg = rg;
 	}
-
 }

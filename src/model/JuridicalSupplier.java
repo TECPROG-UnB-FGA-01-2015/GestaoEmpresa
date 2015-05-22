@@ -51,5 +51,4 @@ public class JuridicalSupplier extends Supplier
 	{
 		this.cnpj = cnpj;
 	}
-
 }

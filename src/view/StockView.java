@@ -19,14 +19,12 @@ import static view.SalePurchaseView.purchaseSaleMode;
 
 public class StockView extends javax.swing.JFrame
 {
-
 	EnterpriseManagement principal; // Object from the EnterpriseManagement Class that instantiates the main view
 	static boolean newProduct = true; // Receives the boolean info
 	static String codeTable; // Receives an info of the view's table
 	static String tableDescription; // Receives an info of the view's table 
 	static boolean returnProduct = false; // Receives a list of products from the class StockController 
     static Logger log = Logger.getLogger(StockView.class.getName());
-
 
 	// Constructor to initialize components on StockView
 	public StockView()
@@ -44,6 +42,7 @@ public class StockView extends javax.swing.JFrame
 		{
 			// Do nothing
 		}
+		
 		if(purchaseSaleMode == true)
 		{
 			jButton_AdicionarProduto.setEnabled(false);
@@ -52,6 +51,7 @@ public class StockView extends javax.swing.JFrame
 		{
 			// Do nothing
 		}
+		
 		if(ProductDataView.infoCarregar == true)
 		{
 			loadList();
@@ -60,6 +60,7 @@ public class StockView extends javax.swing.JFrame
 		{
 			// Do nothing
 		}
+		
 		ProductDataView.infoCarregar = false;
 		loadList();
 		jTextField_NomeProduto.requestFocus();
@@ -149,9 +150,9 @@ public class StockView extends javax.swing.JFrame
 			{
 				log.info("Load Product's info: code, description, purchase price, selling price and quantity.");
 				return false;
-			}
-			
+			}	
 		});
+		
 		jTable2.addMouseListener(new java.awt.event.MouseAdapter()
 		{
 			public void mouseClicked(java.awt.event.MouseEvent evt)
@@ -166,6 +167,7 @@ public class StockView extends javax.swing.JFrame
             	}
 			}
 		});
+		
 		jScrollPane1.setViewportView(jTable2);
 
 		jButton_AdicionarProduto.setText("Adicionar Produto");
@@ -312,10 +314,15 @@ public class StockView extends javax.swing.JFrame
 			if(nameProductEquals == true)
 			{
 				loadList();
+				
 				if(jTable2.getRowCount() == 0)
 				{
 					showMessage("Nenhum produto fora cadastrado até o momento.");
 					log.info("No product was added until now.");
+				}
+				else
+				{
+					// Nothing to do
 				}
 			}
 			else
@@ -378,6 +385,7 @@ public class StockView extends javax.swing.JFrame
 		{
 			log.debug("Exit StockView");
 			this.dispose();
+			
 			if(productMode == true)
 			{
 				new SalePurchaseView().setVisible(true);
@@ -407,7 +415,6 @@ public class StockView extends javax.swing.JFrame
     		log.error("Error when editing Product. Exception: ", e);
     		throw e;   
     	}
-		
 	}// GEN-LAST:event_jButton_EditarProdutoActionPerformed
 
 	// Method for Selecting an item in the table and enable the options edit, delete and confirms
@@ -550,4 +557,3 @@ public class StockView extends javax.swing.JFrame
 	private javax.swing.JTextField jTextField_NomeProduto;
 	// End of variables declaration//GEN-END:variables
 }
-

@@ -1,4 +1,4 @@
-# GestaoEmpresa
+﻿# GestaoEmpresa
 
 O projeto Gestão Empresa foi desenvolvido pelos alunos da faculdade UnB - Gama (FGa): Eduardo Moreira (13/0008371) e Ricardo Lupiano (13/0016969) durante a disciplina de Orientação à Objetos 1º/2014.
 O projeto é uma aplicação Java que trabalha com o sistema de cadastro de Clientes, Funcionários e Fornecedores integrado ao sistema
@@ -35,7 +35,7 @@ Os arquivos do projeto foram dividos entre os integrantes do Grupo 4 da matéria
 - TelaDadosDespesas (ExpenseDataView)
 - TelaDadosProdutos (ProductDataView)
 - TelaDespesas (ExpenseView)
-<h3>Atividade 6:</h3>  
+<h3>Atividades 6 e 7:</h3>  
 - Compra (Purchase)  
 - Venda (Sale)
 - Transacao (Transaction) 
@@ -53,7 +53,7 @@ Os arquivos do projeto foram dividos entre os integrantes do Grupo 4 da matéria
 - TelaVendaCompra (SalePurchaseView)
 <h3>Atividade 5:</h3>  
  nenhuma
-<h3>Atividade 6:</h3>  
+<h3>Atividades 6 e 7:</h3>  
 - Produto (Product)
 - Despesa (Expense)
 - ControleEstoque (StockController)
@@ -70,7 +70,7 @@ Os arquivos do projeto foram dividos entre os integrantes do Grupo 4 da matéria
 - ControleFornecedor (SupplierController)
 - TelaDadosContatos (ContactDataView)
 - TelaEstoque (StockView)
-<h3>Atividade 5 e 6:</h3>
+<h3>Atividades 5, 6 e 7:</h3>
 - Cliente (Client)   
 - Cliente Físico (PhysicalClient) 
 - Cliente Jurídico (JuridicalClient)   
@@ -91,7 +91,7 @@ Os arquivos do projeto foram dividos entre os integrantes do Grupo 4 da matéria
 - TelaDadosDespesas (ExpenseDataView)
 - TelaDadosProdutos (ProductDataView)
 - TelaDespesas (ExpenseView)
-<h3>Atividade 5 e 6:</h3>
+<h3>Atividades 5, 6 e 7:</h3>
 - Fornecedor (Supplier) 
 - FornecedorFisico (PhysicalSupplier)  
 - FornecedorJuridico (JuridicalSupplier)  

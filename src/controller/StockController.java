@@ -104,7 +104,6 @@ public class StockController
 			{
 				// Nothing to do
 			}
-
 		}
 
 		if (productCounter > 1 && searchContains == true)

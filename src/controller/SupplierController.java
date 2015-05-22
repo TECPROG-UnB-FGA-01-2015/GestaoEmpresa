@@ -12,7 +12,6 @@ import view.ContactView;
 	
 public class SupplierController
 {
-
 	private static ArrayList<Supplier> supplierList; // maintains a list of objects of type Supplier
 	ContactView contactView;
 
@@ -100,5 +99,4 @@ public class SupplierController
 			return null;
 		}
 	}
-
 }

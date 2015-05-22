@@ -51,7 +51,6 @@ public class EmployeeController
         // Search for the employee 
         for(Employee employee: employeeList)
         {
-        	
         	// Variable to get the name of current employee
         	String employeeName = employee.getName();
         	

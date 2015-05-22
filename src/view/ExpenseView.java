@@ -419,7 +419,6 @@ public class ExpenseView extends javax.swing.JFrame
             jComboBox_Mes1.setEnabled(false);
             jComboBox_Mes2.setEnabled(false);
         }
-        
         else
         {
             firstMonth=jComboBox_Mes1.getSelectedIndex()+1;
@@ -506,6 +505,10 @@ public class ExpenseView extends javax.swing.JFrame
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
+                else
+                {
+                	// Nothing to do
+                }
             }
         }
         
@@ -538,5 +541,4 @@ public class ExpenseView extends javax.swing.JFrame
             }
         });
     }
-      
 }

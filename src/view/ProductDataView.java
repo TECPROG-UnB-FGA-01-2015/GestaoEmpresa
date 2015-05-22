@@ -310,7 +310,6 @@ public class ProductDataView extends javax.swing.JFrame
 	    	log.error("It wasn't possible to fill Product list' fields. Exception: ", e);
 	    	throw e;
 	    }
-    	
     }
     
     // Method to clean up the textBox
@@ -498,7 +497,6 @@ public class ProductDataView extends javax.swing.JFrame
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
-                
                 else
                 {
                 	// Nothing to do
@@ -545,6 +543,5 @@ public class ProductDataView extends javax.swing.JFrame
             	}
             }
         });
-    }
-    
+    } 
 }

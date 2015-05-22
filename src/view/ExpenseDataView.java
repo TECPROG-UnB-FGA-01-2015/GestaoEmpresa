@@ -347,6 +347,5 @@ public class ExpenseDataView extends javax.swing.JFrame
             	}
             }
         });
-    }
-       
+    }     
 }

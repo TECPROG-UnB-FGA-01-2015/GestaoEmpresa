@@ -23,7 +23,6 @@ import org.apache.log4j.Logger;
 
 public class ContactDataView extends javax.swing.JFrame
 {
-
 	// Object from the ClientController Class that is instantiated to maintenance of the customer
 	static ClientController objectClientController = new ClientController();
 	
@@ -255,7 +254,6 @@ public class ContactDataView extends javax.swing.JFrame
 		jTextField_Complemento.setText("");
 	}
 
-	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed"
 	// desc="Generated Code">//GEN-BEGIN:initComponents
 	private void initComponents()

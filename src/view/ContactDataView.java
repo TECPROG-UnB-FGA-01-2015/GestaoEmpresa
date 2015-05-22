@@ -23,8 +23,6 @@ import org.apache.log4j.Logger;
 
 public class ContactDataView extends javax.swing.JFrame
 {
-	private static final long serialVersionUID = 4864412308476543592L;
-
 	// Object from the ClientController Class that is instantiated to maintenance of the customer
 	static ClientController objectClientController = new ClientController();
 	

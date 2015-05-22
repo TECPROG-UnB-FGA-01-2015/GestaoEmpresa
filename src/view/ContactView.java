@@ -196,7 +196,7 @@ public class ContactView extends javax.swing.JFrame
 
             jButton_Excluir.setText("Excluir");
             jButton_Excluir.addActionListener(new java.awt.event.ActionListener()
-                {
+            {
                 public void actionPerformed(java.awt.event.ActionEvent evt)
                 {
                     jButton_ExcluirActionPerformed(evt);
@@ -205,7 +205,7 @@ public class ContactView extends javax.swing.JFrame
 
             jButton_Cancelar.setText("Sair");
             jButton_Cancelar.addActionListener(new java.awt.event.ActionListener()
-                {
+            {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     try
 					{
@@ -220,7 +220,7 @@ public class ContactView extends javax.swing.JFrame
 
             jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cliente", "Fornecedor", "Funcionário" }));
             jComboBox1.addItemListener(new java.awt.event.ItemListener()
-                {
+            {
                 public void itemStateChanged(java.awt.event.ItemEvent evt)
                 {
                     jComboBox1ItemStateChanged(evt);
@@ -229,7 +229,7 @@ public class ContactView extends javax.swing.JFrame
 
             jButton_ConfirmarContato.setText("Confirmar");
             jButton_ConfirmarContato.addActionListener(new java.awt.event.ActionListener()
-                {
+            {
                 public void actionPerformed(java.awt.event.ActionEvent evt)
                 {
                     jButton_ConfirmarContatoActionPerformed(evt);
@@ -372,8 +372,7 @@ public class ContactView extends javax.swing.JFrame
 	                else
 	                {
 	                	// Nothing to do
-	                }
-	                    
+	                } 
 	            }
             }
             else
@@ -749,8 +748,7 @@ public class ContactView extends javax.swing.JFrame
 
     // Exclude contact selected
     private void jButton_ExcluirActionPerformed(java.awt.event.ActionEvent evt)
-    {
-        
+    {  
         if(newPhysicalClient == false)
         {
             objectClientController.removeClient(objectClientController.searchClient(tableName, false));
@@ -775,6 +773,7 @@ public class ContactView extends javax.swing.JFrame
         {
         	// Nothing to do
         }
+        
         loadContactList();
         showMessage("Contato excluído com sucesso");
         log.debug("Contact deleted successfully");
@@ -818,7 +817,7 @@ public class ContactView extends javax.swing.JFrame
         {
         	// Nothing to do
         }
-        
+
         if(SalePurchaseView.employeeMode == true && nameEmployee == null)
         {
             nameEmployee = tableName;
@@ -838,7 +837,6 @@ public class ContactView extends javax.swing.JFrame
     // Main function
     public static void main(String args[])
     {
-       
         try
         {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
@@ -885,5 +883,4 @@ public class ContactView extends javax.swing.JFrame
             }
         });
     }
-
 }

@@ -229,6 +229,10 @@ public class EnterpriseManagement extends javax.swing.JFrame
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
+                else
+                {
+                	// Nothing to do
+                }
             }
         }
         catch (ClassNotFoundException ex)
@@ -261,6 +265,5 @@ public class EnterpriseManagement extends javax.swing.JFrame
                 log.debug("Open EnterpriseManagement");
             }
         });
-    }
-           
+    }     
 }

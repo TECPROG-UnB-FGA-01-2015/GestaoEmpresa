@@ -10,8 +10,7 @@ import model.Expense;
 
 public class ExpenseController
 {
-	private ArrayList<Expense> expenseList; // Maintains a list of spent of
-											// Expense object
+	private ArrayList<Expense> expenseList; // Maintains a list of spent of Expense object
 
 	// Constructor to instance ControleDespesa with the attribute expenseList
 	public ExpenseController()
@@ -56,6 +55,10 @@ public class ExpenseController
 			if (objectExpenseNameEquals == true)
 			{
 				return objectExpense;
+			}
+			else
+			{
+				// Nothing to do
 			}
 		}
 		return null;

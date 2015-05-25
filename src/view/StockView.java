@@ -53,7 +53,7 @@ public class StockView extends javax.swing.JFrame
 			// Do nothing
 		}
 		
-		if(ProductDataView.infoCarregar == true)
+		if(ProductDataView.loadInfo == true)
 		{
 			loadList();
 		}
@@ -62,7 +62,7 @@ public class StockView extends javax.swing.JFrame
 			// Do nothing
 		}
 		
-		ProductDataView.infoCarregar = false;
+		ProductDataView.loadInfo = false;
 		loadList();
 		jTextField_NomeProduto.requestFocus();
 		log.debug("Load StockView");

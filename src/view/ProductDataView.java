@@ -38,7 +38,7 @@ public class ProductDataView extends javax.swing.JFrame
     static StockController objectStockController = new StockController(); // StockController type object
     Product editProduct; // Product type object that is being editing
     StockView stockView; // Control the view visibility situation
-    static boolean infoCarregar=false; // Boolean to disposes the informations on view
+    static boolean loadInfo = false; // Boolean to disposes the informations on view
     static Logger log = Logger.getLogger(ProductDataView.class.getName());
 
     
@@ -348,7 +348,7 @@ public class ProductDataView extends javax.swing.JFrame
 		        new StockView().setVisible(true);
 		        log.info("Exit ProductDataView");
 		        this.dispose();
-		        infoCarregar=true;
+		        loadInfo = true;
 	        }
     	}
     	catch(Exception e)

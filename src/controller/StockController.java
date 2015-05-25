@@ -15,7 +15,7 @@ public class StockController
 	StockView stockView; // Calls StockView view
 	private ArrayList<Product> productList; // Maintains a list of Product object
 
-	// Constructor to instance ControleEstoque with the attribute productList
+	// Constructor to instantiate StockController with the attribute productList
 	public StockController()
 	{
 		this.productList = new ArrayList<Product>();

@@ -61,7 +61,7 @@ public class ExpenseView extends javax.swing.JFrame
     {
         boolean permission; // Boolean to allow or not the sequence of the expense creating
         
-        ArrayList<Expense> expenseList = objectExpenseController.getListaGasto();
+        ArrayList<Expense> expenseList = objectExpenseController.getExpenseList();
         DefaultTableModel model = (DefaultTableModel) jTable_Despesa.getModel();
         model.setRowCount(0);
         for (Expense expense : expenseList) 

@@ -19,7 +19,7 @@ public class ExpenseController
 	}
 
 	// Method to return the content of attribute expenseList
-	public ArrayList<Expense> getListaGasto()
+	public ArrayList<Expense> getExpenseList()
 	{
 		return expenseList;
 	}

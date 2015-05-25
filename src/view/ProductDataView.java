@@ -13,9 +13,9 @@ import org.apache.log4j.Logger;
 import model.Product;
 import static view.StockView.newProduct;
 
+@SuppressWarnings("serial")
 public class ProductDataView extends javax.swing.JFrame
 {
-	private static final long serialVersionUID = 1L;
 	// Variables declaration of Buttons, Labels and TextFields
     private javax.swing.JButton jButton_Cancelar; // Button that exits New Product Screen
     private javax.swing.JButton jButton_SalvarProduto; // Button that saves and adds a New Product on the system

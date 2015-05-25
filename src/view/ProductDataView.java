@@ -429,7 +429,7 @@ public class ProductDataView extends javax.swing.JFrame
 	                    editProduct.setPurchasePrice(purchasePrice);
 	                    editProduct.setSellingPrice(sellingPrice);
 	                    editProduct.setQuantity(quantity);   
-	                    showMessage("Product Editado!");
+	                    showMessage("Produto Editado!");
 	                    log.info("Product edited!");
 	                }
 	            }

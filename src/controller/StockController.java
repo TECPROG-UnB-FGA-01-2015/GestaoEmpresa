@@ -108,8 +108,8 @@ public class StockController
 
 		if (productCounter > 1 && searchContains == true)
 		{
-			JOptionPane.showMessageDialog(stockView, "Mais de um resultado"
-			        + "encontrado", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Mais de um resultado"
+			        + " encontrado.", "Atenção", JOptionPane.INFORMATION_MESSAGE);
 		}
 		else
 		{

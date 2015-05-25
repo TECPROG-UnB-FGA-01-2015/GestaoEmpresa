@@ -15,6 +15,7 @@ import org.apache.log4j.Logger;
 
 public class ExpenseDataView extends javax.swing.JFrame
 {
+	private static final long serialVersionUID = -3987114343987650026L;
 	// Variables declaration of Buttons, ComboBox, Label and TextFields
     private javax.swing.JButton jButton_Sair; // Button that exits "New Expense" Screen
     private javax.swing.JButton jButton_Salvar; // Button that adds and saves a New Expense on the screen

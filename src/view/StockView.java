@@ -394,7 +394,7 @@ public class StockView extends javax.swing.JFrame
 			}
 			else
 			{
-				
+				// Nothing to do
 			}
 		}
 		catch(Exception e)

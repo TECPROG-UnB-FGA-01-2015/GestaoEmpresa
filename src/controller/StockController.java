@@ -15,7 +15,7 @@ public class StockController
 	StockView stockView; // Calls StockView view
 	private ArrayList<Product> productList; // Maintains a list of Product object
 
-	// Constructor to instance ControleEstoque with the attribute productList
+	// Constructor to instantiate StockController with the attribute productList
 	public StockController()
 	{
 		this.productList = new ArrayList<Product>();
@@ -108,8 +108,8 @@ public class StockController
 
 		if (productCounter > 1 && searchContains == true)
 		{
-			JOptionPane.showMessageDialog(stockView, "Mais de um resultado"
-			        + "encontrado", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Mais de um resultado"
+			        + " encontrado.", "Atenção", JOptionPane.INFORMATION_MESSAGE);
 		}
 		else
 		{

@@ -13,14 +13,18 @@ import java.text.SimpleDateFormat;
 
 import org.apache.log4j.Logger;
 
+@SuppressWarnings("serial")
 public class ExpenseDataView extends javax.swing.JFrame
 {
 	// Variables declaration of Buttons, ComboBox, Label and TextFields
     private javax.swing.JButton jButton_Sair; // Button that exits "New Expense" Screen
     private javax.swing.JButton jButton_Salvar; // Button that adds and saves a New Expense on the screen
-    private javax.swing.JComboBox jComboBox_Ano; // Button that shows a drop-down list from the years 2013 until 2017 on the date's option
-    private javax.swing.JComboBox jComboBox_Dia; // Button that shows a drop-down list from the days 1 until 31 on the date's option
-    private javax.swing.JComboBox jComboBox_Mes; // Button that shows a drop-down list from the months January until December on the date's option
+    @SuppressWarnings("rawtypes")
+	private javax.swing.JComboBox jComboBox_Ano; // Button that shows a drop-down list from the years 2013 until 2017 on the date's option
+    @SuppressWarnings("rawtypes")
+	private javax.swing.JComboBox jComboBox_Dia; // Button that shows a drop-down list from the days 1 until 31 on the date's option
+    @SuppressWarnings("rawtypes")
+	private javax.swing.JComboBox jComboBox_Mes; // Button that shows a drop-down list from the months January until December on the date's option
     private javax.swing.JLabel jLabel1; // Shows the "Historic" word on the Screen 
     private javax.swing.JLabel jLabel2; // Shows the "Date" word on the Screen 
     private javax.swing.JLabel jLabel3; // Shows the "Value" word on the Screen 
@@ -77,7 +81,7 @@ public class ExpenseDataView extends javax.swing.JFrame
         return dateFormat.format(date);
     }
     
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     private void initComponents()
     {
         jButton_Sair = new javax.swing.JButton();

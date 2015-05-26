@@ -17,9 +17,9 @@ import static view.ProductDataView.objectStockController;
 import static view.SalePurchaseView.productMode;
 import static view.SalePurchaseView.purchaseSaleMode;
 
+@SuppressWarnings("serial")
 public class StockView extends javax.swing.JFrame
 {
-	private static final long serialVersionUID = -3413389617155453819L;
 	EnterpriseManagement principal; // Object from the EnterpriseManagement Class that instantiates the main view
 	static boolean newProduct = true; // Receives the boolean info
 	static String codeTable; // Receives an info of the view's table
@@ -53,7 +53,7 @@ public class StockView extends javax.swing.JFrame
 			// Do nothing
 		}
 		
-		if(ProductDataView.infoCarregar == true)
+		if(ProductDataView.loadInfo == true)
 		{
 			loadList();
 		}
@@ -62,7 +62,7 @@ public class StockView extends javax.swing.JFrame
 			// Do nothing
 		}
 		
-		ProductDataView.infoCarregar = false;
+		ProductDataView.loadInfo = false;
 		loadList();
 		jTextField_NomeProduto.requestFocus();
 		log.debug("Load StockView");
@@ -394,7 +394,7 @@ public class StockView extends javax.swing.JFrame
 			}
 			else
 			{
-				
+				// Nothing to do
 			}
 		}
 		catch(Exception e)

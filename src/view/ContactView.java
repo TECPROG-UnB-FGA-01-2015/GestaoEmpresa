@@ -359,7 +359,7 @@ public class ContactView extends javax.swing.JFrame
 	                {
 	                    objectPhysicalClient=(PhysicalClient) client;
 	                    model.addRow(new String[]{objectPhysicalClient.getName(), 
-	                        objectPhysicalClient.getCpf(), objectPhysicalClient.getName(), 
+	                        objectPhysicalClient.getCpf(), objectPhysicalClient.getCellphone(), 
 	                        objectPhysicalClient.getTelephone(), "Física"});
 	                }
 	                else if(client.getClass().equals(JuridicalClient.class))

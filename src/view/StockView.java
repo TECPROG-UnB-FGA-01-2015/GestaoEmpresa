@@ -17,9 +17,9 @@ import static view.ProductDataView.objectStockController;
 import static view.SalePurchaseView.productMode;
 import static view.SalePurchaseView.purchaseSaleMode;
 
+@SuppressWarnings("serial")
 public class StockView extends javax.swing.JFrame
 {
-	private static final long serialVersionUID = -3413389617155453819L;
 	EnterpriseManagement principal; // Object from the EnterpriseManagement Class that instantiates the main view
 	static boolean newProduct = true; // Receives the boolean info
 	static String codeTable; // Receives an info of the view's table

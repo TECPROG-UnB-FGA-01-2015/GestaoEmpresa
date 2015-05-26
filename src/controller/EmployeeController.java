@@ -6,16 +6,21 @@
 package controller;
 
 import java.util.ArrayList;
+
 import model.Employee;
 
 public class EmployeeController 
 {
     private static ArrayList<Employee> employeeList; // Holds all the employees registered on the system
+    
+    static {
+    	employeeList = new ArrayList<Employee>();
+    }
 
-    // Constructor of the EmployeeController's class
+    // Constructor default of the EmployeeController's class
     public EmployeeController() 
     {
-        employeeList = new ArrayList<Employee>();
+        
     }
 
     // Access and returns the property employeeList
@@ -25,9 +30,9 @@ public class EmployeeController
     }
 
     // Sets a new value for the employeeList property
-    public void setEmployeeList(ArrayList<Employee> employeeList) 
+    public static void setEmployeeList(ArrayList<Employee> employeeList) 
     {
-        this.employeeList = employeeList;
+        EmployeeController.employeeList = employeeList;
     }
     
     // Adds an employee to the employeeList 
@@ -51,7 +56,6 @@ public class EmployeeController
         // Search for the employee 
         for(Employee employee: employeeList)
         {
-        	
         	// Variable to get the name of current employee
         	String employeeName = employee.getName();
         	

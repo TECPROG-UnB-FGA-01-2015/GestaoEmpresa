@@ -41,7 +41,6 @@ import org.apache.log4j.Logger;
 
 public class SalePurchaseView extends javax.swing.JFrame
 {
-	
 	private JButton jButton_addProduct; // Button responsible to add product
 	private JButton jButton_exitScreen; // Button responsible to exit Main Screen
 	private JButton jButton_finishForm; // Button responsible to Finish and Complete the Screen's form
@@ -901,6 +900,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 					// Nothing to do because the selected combo box is the same as the previous one
 				}
 			}
+			
 			loadList();
 		}
 		catch(Exception e)
@@ -945,6 +945,10 @@ public class SalePurchaseView extends javax.swing.JFrame
 				else if (salePurchaseStatus == 1)
 				{
 					showInfo("Selecione o Fornecedor para operação");
+				}
+				else
+				{
+					// Nothing to do
 				}
 			}
 			else if (nameEmployee == null)
@@ -1074,7 +1078,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 			{
 				String strProductQuantity = jTextField_productQuantity.getText();
 				double productQuantity = Double.parseDouble(jTextField_productQuantity.getText());
-				if (productQuantity != 0.0 && strProductQuantity != "")
+				if (productQuantity != 0.0 && !strProductQuantity.equals(""))
 				{
 					if (salePurchaseStatus == 0)
 					{
@@ -1104,39 +1108,28 @@ public class SalePurchaseView extends javax.swing.JFrame
 					}
 					else if (salePurchaseStatus == 1)
 					{
-						if (verifyAddedProduct == 0)
+						productPurchase.setQuantity(Double.parseDouble(jTextField_productQuantity.getText()));
+						productTableList.add(productPurchase);
+						loadList();
+						jButton_addProduct.setEnabled(false);
+						jTextField_productQuantity.setEnabled(false);
+						jTextField_productDiscount.setEditable(false);
+						
+						String productName = productPurchase.getDescription();
+						log.info("Added product '" + productName + "' to transaction");
+						
+						for (Product tableProduct : productTableList)
 						{
-							productPurchase.setQuantity(Double.parseDouble(jTextField_productQuantity.getText()));
-							productTableList.add(productPurchase);
-							loadList();
-							jButton_addProduct.setEnabled(false);
-							jTextField_productQuantity.setEnabled(false);
-							jTextField_productDiscount.setEditable(false);
+							String tableProductCode = tableProduct.getCode();
 							
-							String productName = productPurchase.getDescription();
-							log.info("Added product '" + productName + "' to transaction");
-							
-							for (Product tableProduct : productTableList)
+							if (tableProductCode.equalsIgnoreCase(saleProductCode))
 							{
-								String tableProductCode = tableProduct.getCode();
-								
-								if (tableProductCode.equalsIgnoreCase(saleProductCode))
-								{
-									verifyAddedProduct = 1;
-								}
-								else
-								{
-									// Nothing to Do
-								}
+								verifyAddedProduct = 1;
 							}
-						}
-						else if (verifyAddedProduct == 1)
-						{
-							showInfo("Produto já adicionado!");
-						}
-						else
-						{
-							// Nothing to do
+							else
+							{
+								// Nothing to Do
+							}
 						}
 					}
 				}
@@ -1280,6 +1273,10 @@ public class SalePurchaseView extends javax.swing.JFrame
 				{
 					javax.swing.UIManager.setLookAndFeel(info.getClassName());
 					break;
+				}
+				else
+				{
+					// Nothing to do
 				}
 			}
 		}

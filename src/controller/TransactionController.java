@@ -42,5 +42,4 @@ public class TransactionController
 	{
 		saleList.remove(sale);
 	}
-
 }

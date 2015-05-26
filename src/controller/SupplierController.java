@@ -12,14 +12,13 @@ import view.ContactView;
 	
 public class SupplierController
 {
-
 	private static ArrayList<Supplier> supplierList; // maintains a list of objects of type Supplier
 	ContactView contactView;
 
 	// Constructor to instance SupplierController with the attribute supplierList
 	public SupplierController()
 	{
-		this.supplierList = new ArrayList<Supplier>();
+		SupplierController.supplierList = new ArrayList<Supplier>();
 	}
 
 	// Method to return the content of attribute supplierList
@@ -31,7 +30,7 @@ public class SupplierController
 	// Method to set a content on variable listaForncedor
 	public void setSupplierList(ArrayList<Supplier> supplierList)
 	{
-		this.supplierList = supplierList;
+		SupplierController.supplierList = supplierList;
 	}
 
 	// Method to insert a supplier to attribute supplierList
@@ -100,5 +99,4 @@ public class SupplierController
 			return null;
 		}
 	}
-
 }

@@ -104,5 +104,4 @@ public class Transaction
 	{
 		this.year = year;
 	}
-
 }

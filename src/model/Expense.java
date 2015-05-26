@@ -101,5 +101,4 @@ public class Expense
     {
         this.day = day;
     }
-    
 }

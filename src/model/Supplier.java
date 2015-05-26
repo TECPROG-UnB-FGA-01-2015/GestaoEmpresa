@@ -91,5 +91,4 @@ public class Supplier
 	{
 		this.address = address;
 	}
-
 }

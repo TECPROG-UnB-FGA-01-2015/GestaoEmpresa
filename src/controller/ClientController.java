@@ -11,15 +11,19 @@ import model.Client;
 public class ClientController
 {
     private static ArrayList<Client> clientList; // Holds all the clients registered on the system
+    
+    static {
+    	clientList = new ArrayList<Client>();
+    }
 
-    // Constructor of the ClientController's class
+    // Constructor default of the ClientController's class
     public ClientController()
     {
-        clientList = new ArrayList<Client>();
+      
     }
 
     // Access and returns the property clientList
-    public static ArrayList<Client> getClientList()
+    public ArrayList<Client> getClientList()
     {
         return clientList;
     }
@@ -86,5 +90,4 @@ public class ClientController
         	return null;
         }
     }
-    
 }

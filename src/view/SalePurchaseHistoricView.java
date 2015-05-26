@@ -128,8 +128,8 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 			{
 				// Nothing to Do
 			}
-
 		}
+		
 		jTable_showPurchaseSaleHistoricInfoTable.setModel(model);
 	}
 
@@ -293,6 +293,7 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 	private void jComboBox_showSalePurchaseItemStateChanged(java.awt.event.ItemEvent evt)
 	{
 		int comboSalePurchaseStatus = jComboBox_showSalePurchase.getSelectedIndex();
+		
 		if (comboSalePurchaseStatus == 0)
 		{
 			salePurchaseStatus = 0;
@@ -309,6 +310,7 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 		{
 			// Nothing to Do
 		}
+		
 		loadList();
 	}
 
@@ -362,5 +364,4 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 			}
 		});
 	}
-
 }

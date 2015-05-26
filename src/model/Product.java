@@ -51,7 +51,7 @@ public class Product
         return description;
     }
 
- // Method to set a content on variable description
+    // Method to set a content on variable description
     public void setDescription(String description)
     {
         this.description = description;
@@ -75,7 +75,7 @@ public class Product
         return quantity;
     }
 
- // Method to set a content on variable quantity
+    // Method to set a content on variable quantity
     public void setQuantity(double quantity)
     {
         this.quantity = quantity;
@@ -91,6 +91,5 @@ public class Product
     public void setSellingPrice(double sellingPrice)
     {
         this.sellingPrice = sellingPrice;
-    }
-    
+    } 
 }

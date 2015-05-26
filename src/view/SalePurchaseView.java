@@ -70,7 +70,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 	private JTextField jTextField_productValue; // Shows the product's value
 	
 	EnterpriseManagement main; // Main object from EnterpriseManagement's class
-	public static int salePurchaseStatus = 0; // Shows the Client's name when option is 0 (Selling) and Supplier's name when option is 1 (Buying)
+	protected static int salePurchaseStatus = 0; // Shows the Client's name when option is 0 (Selling) and Supplier's name when option is 1 (Buying)
 	static boolean purchaseSaleMode = false; // Makes the user to exit the screen and to not write Client/Supplier's names
 	static boolean clientSupplierMode = false; // Enables the user to search registered Client/Supplier's names
 	static boolean employeeMode = false; // Gets the Supplier's info to continue the Shopping Products
@@ -1236,7 +1236,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 				jTextField_productDiscount.setText("0.0");
 				jTextField_productDiscount.requestFocus();
 			}
-			else if (strProductDiscount == "")
+			else if (strProductDiscount.equals(""))
 			{
 				jTextField_productDiscount.setText("0.0");
 			}

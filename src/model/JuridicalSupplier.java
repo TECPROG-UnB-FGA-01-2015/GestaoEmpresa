@@ -10,43 +10,42 @@ import java.util.ArrayList;
 
 public class JuridicalSupplier extends Supplier
 {
-	private String socialReason; // Holds the info of the legal supplier's corporate name
-	private String cnpj; // Holds the info of the legal supplier's cnpj
+	private String socialReason; // Describes the social reason of the company
+	private String cnpj; // Describes the CNPJ of the company (example: 21.163.235/0001-74)
 
-	/* Constructor to receive all the attributes as parameters and initialize the
-	 * object JuridicalSupplier*/
+	// Constructor to receive all the attributes as parameters and initialize the object JuridicalSupplier
 	public JuridicalSupplier(String socialReason,
-							  String cnpj,
-							  String name,
-							  String telephone,
-							  String cellphone,
-							  ArrayList<Product> productList,
-							  Address objectAddress)
+							 String cnpj,
+							 String name,
+							 String telephone,
+							 String cellphone,
+							 ArrayList<Product> productList,
+							 Address objectAddress)
 	{
 		super(name, telephone, cellphone, productList, objectAddress);
 		this.socialReason = socialReason;
 		this.cnpj = cnpj;
 	}
 
-	// Method to return the content of attribute socialReason
+    // Access and returns the property socialReason
 	public String getSocialReason()
 	{
 		return socialReason;
 	}
 
-	// Method to set a content on variable socialReason
+    // Sets a new value for the socialReason property
 	public void setSocialReason(String socialReason)
 	{
 		this.socialReason = socialReason;
 	}
 
-	// Method to return the content of attribute cnpj
+    // Access and returns the property cnpj
 	public String getCnpj()
 	{
 		return cnpj;
 	}
 
-	// Method to set a content on variable cnpj
+    // Sets a new value for the cnpj property
 	public void setCnpj(String cnpj)
 	{
 		this.cnpj = cnpj;

@@ -2,18 +2,18 @@
  * File: Product.java
  * Purpose: Hold all the attributes and methods of Product
  **********************************************************/
+
 package model;
 
 public class Product
 {
-    private String code; // Code of Product object
-    private String description; // Description of Product object
-    private double purchasePrice; // Purchase price of Product object
-    private double sellingPrice;// Selling price of Product object
-    private double quantity; // Quantity of Product object (only numbers; quantity >=0)
+    private String code; // Describes the code of the product (code >= 0; example: 100123)
+    private String description; // Describes the description of the product
+    private double purchasePrice; // Describes the purchase price of the product (purchasePrice >= 0; example: 49,90)
+    private double sellingPrice; // Describes the selling price of the product (sellingPrice >= 0; example: 99,90)
+    private double quantity; // Describes the quantity of the product (quantity >= 0; example: 2,50)
 
-    /* Constructor to receive all the attributes as parameters and initialize the
-     * object Product*/
+    // Constructor to receive all the attributes as parameters and initialize the object Product
     public Product(String code,
     			   String description,
     			   double purchasePrice,
@@ -33,61 +33,61 @@ public class Product
         // Nothing to do
     }
 
-    // Method to return the content of attribute code
+    // Access and returns the property code
     public String getCode()
     {
         return code;
     }
 
-    // Method to set a content on variable code
+    // Sets a new value for the code property
     public void setCode(String code)
     {
         this.code = code;
     }
 
-    // Method to return the content of attribute description
+    // Access and returns the property description
     public String getDescription()
     {
         return description;
     }
 
-    // Method to set a content on variable description
+    // Sets a new value for the description property
     public void setDescription(String description)
     {
         this.description = description;
     }
 
-    // Method to return the content of attribute purchasePrice
+    // Access and returns the property purchasePrice
     public double getPurchasePrice()
     {
         return purchasePrice;
     }
 
-    // Method to set a content on variable purchasePrice
+    // Sets a new value for the purchasePrice property
     public void setPurchasePrice(double purchasePrice)
     {
         this.purchasePrice = purchasePrice;
     }
 
-    // Method to return the content of attribute quantity
+    // Access and returns the property quantity
     public double getQuantity()
     {
         return quantity;
     }
 
-    // Method to set a content on variable quantity
+    // Sets a new value for the quantity property
     public void setQuantity(double quantity)
     {
         this.quantity = quantity;
     }
 
-    // Method to return the content of attribute sellingPrice
+    // Access and returns the property sellingPrice
     public double getSellingPrice()
     {
         return sellingPrice;
     }
 
-    // Method to set a content on variable sellingPrice
+    // Sets a new value for the sellingPrice property
     public void setSellingPrice(double sellingPrice)
     {
         this.sellingPrice = sellingPrice;

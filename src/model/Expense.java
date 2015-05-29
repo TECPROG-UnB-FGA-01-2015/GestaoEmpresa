@@ -9,10 +9,10 @@ public class Expense
 {
     protected String name; // Describes the name of the expense
     protected String description; // Describes the description of the expense
-    protected double value; // Describes the value of the expense
-    protected int day; // Describes the day of the expense (only numbers; 1 <= day <= 31)
-    protected int month; // Describes the month of the expense (only numbers; 1 <= day <= 12)
-    protected int year; // Describes the year of the expense (only number; 2000 <= year <= 2015)
+    protected double value; // Describes the value of the expense (value >= 0; example: 74,90)
+    protected int day; // Describes the day of the expense (1 <= day <= 31)
+    protected int month; // Describes the month of the expense (1 <= day <= 12)
+    protected int year; // Describes the year of the expense (2000 <= year <= 2015)
     
     // Constructor to receive all the attributes as parameters and initialize the object Expense
     public Expense(String name,

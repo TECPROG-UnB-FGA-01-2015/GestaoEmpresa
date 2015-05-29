@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class JuridicalSupplier extends Supplier
 {
 	private String socialReason; // Describes the social reason of the company
-	private String cnpj; // Describes the CNPJ of the company (example: 21.163.235/0001-74)
+	private String cnpj; // Describes the CNPJ of the company (only numbers; cnpj >= 0; example: 21163235000174)
 
 	// Constructor to receive all the attributes as parameters and initialize the object JuridicalSupplier
 	public JuridicalSupplier(String socialReason,

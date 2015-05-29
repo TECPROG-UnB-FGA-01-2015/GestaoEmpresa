@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public class PhysicalSupplier extends Supplier
 {
-	private String cpf; // Holds the info of the  physical supplier's  cpf
-	private String rg; // Holds the info of the  physical supplier's  rg
+	private String cpf; // Describes the CPF of the Physical Supplier (only numbers; cpf >= 0; example : 62354823611)
+	private String rg; // Describes the RG of the Physical Supplier (only numbers; rg >= 0;example: 3515236)
 
 	/* Constructor to receive all the attributes as parameters and initialize the
 	 * object PhysicalSupplier*/

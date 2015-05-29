@@ -8,10 +8,10 @@ package model;
 
 public class PhysicalClient extends Client
 {
-    private String cpf; // Describes the CPF of the Physical Client (example : 62354823611)
-    private String rg; // Describes the RG of the Physical Client (example: 3515236)
+    private String cpf; // Describes the CPF of the Physical Client (only numbers; cpf >= 0; example : 62354823611)
+    private String rg; // Describes the RG of the Physical Client (only numbers; rg >= 0; example: 3515236)
 
-    // Constructor of the PhysicalClient's class
+    // Constructor to receive all the attributes as parameters and initialize the object PhysicalClient
     public PhysicalClient(String cpf, 
     			  		  String rg, 
     			  		  String name, 

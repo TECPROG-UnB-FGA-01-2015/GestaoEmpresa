@@ -65,6 +65,18 @@ public class Expense
     {
         this.value = value;
     }
+    
+    // Access and returns the property day
+    public int getDay()
+    {
+        return day;
+    }
+
+    // Sets a new value for the day property
+    public void setDay(int day)
+    {
+        this.day = day;
+    }
 
     // Access and returns the property month
     public int getMonth()
@@ -88,17 +100,5 @@ public class Expense
     public void setYear(int year)
     {
         this.year = year;
-    }
-
-    // Access and returns the property day
-    public int getDay()
-    {
-        return day;
-    }
-
-    // Sets a new value for the day property
-    public void setDay(int day)
-    {
-        this.day = day;
     }
 }

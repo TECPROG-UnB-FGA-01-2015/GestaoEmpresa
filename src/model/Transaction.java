@@ -9,15 +9,14 @@ import java.util.ArrayList;
 
 public class Transaction
 {
-	protected ArrayList<Product> saleList;  // Stores and protects the Product's sale list
-	protected double price; // Stores and protects the Transaction's price from a Product Purchase/Sale
-	protected Employee employee; // Stores and protects the employee object from the Employee' class
-	protected int day; // Stores and protects the Transaction's day from a Product Purchase/Sale
-	protected int month; // Stores and protects the Transaction's month from a Product Purchase/Sale
-	protected int year; // Stores and protects the Transaction's year from a Product Purchase/Sale
+	protected ArrayList<Product> saleList;  // Describes a list of products of the transaction
+	protected double price; // Describes the price of the transaction (value >= 0; example: 74,90)
+	protected Employee employee; // Describes the employee of the transaction
+	protected int day; // Describes the day of the transaction (1 <= day <= 31)
+	protected int month; // Describes the month of the transaction (1 <= day <= 12)
+	protected int year; // Describes the year of the transaction (2000 <= year <= 2015)
 
-	/* This constructor method is responsible to receive some attributes as
-	 * parameters to initialize the Transaction's objects as self references */
+	// Constructor to receive all the attributes as parameters and initialize the object Transaction
 	public Transaction(ArrayList<Product> saleList,  // Stores the Product's sale list
 	                   double price, // Stores the Transaction's price  from a Product Purchase/Sale
 	                   Employee employee, // Stores the employee object from the Employee' class
@@ -33,73 +32,73 @@ public class Transaction
 		this.year = year;
 	}
 
-	// This method is responsible to access the saleList's protected value from the Produtc's ArrayList
+    // Access and returns the saleList
 	public ArrayList<Product> getSaleList()
 	{
 		return saleList;
 	}
 
-	// This method is responsible to modify the saleList's protected value from the Product's ArrayList
+    // Sets a new value for the saleList
 	public void setSaleList(ArrayList<Product> saleList)
 	{
 		this.saleList = saleList;
 	}
 
-	// This method is responsible to access the price's value
+    // Access and returns the property price
 	public double getPrice()
 	{
 		return price;
 	}
 
-	// This method is responsible to modify the price's value
+    // Sets a new value for the price property
 	public void setPrice(double price)
 	{
 		this.price = price;
 	}
 
-	// This method is responsible to access the employee's value
+    // Access and returns the Employee
 	public Employee getEmployee()
 	{
 		return employee;
 	}
 
-	// This method is responsible to modify the employee's value
+    // Sets a new value for the Employee
 	public void setEmployee(Employee employee)
 	{
 		this.employee = employee;
 	}
 
-	// This method is responsible to access the day's value
+    // Access and returns the property day
 	public int getDay()
 	{
 		return day;
 	}
 
-	// This method is responsible to modify the day's value
+    // Sets a new value for the day property
 	public void setDay(int day)
 	{
 		this.day = day;
 	}
 
-	// This method is responsible to access the month's value
+    // Access and returns the property month
 	public int getMonth()
 	{
 		return month;
 	}
 
-	// This method is responsible to modify the month's value
+    // Sets a new value for the month property
 	public void setMonth(int month)
 	{
 		this.month = month;
 	}
 
-	// This method is responsible to access the year's value
+    // Access and returns the property year
 	public int getYear()
 	{
 		return year;
 	}
 
-	// This method is responsible to modify the year's value
+    // Sets a new value for the year property
 	public void setYear(int year)
 	{
 		this.year = year;

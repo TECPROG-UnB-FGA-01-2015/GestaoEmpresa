@@ -14,7 +14,7 @@ public class Purchase extends Transaction
 
     // Constructor to receive all the attributes as parameters and initialize the object Purchase
 	public Purchase(Supplier supplier,
-	                ArrayList<Product> saleList, // Describes the sale list of the purchase
+	                ArrayList<Product> saleList, // Describes the sale list of the product
 	                double price, // Describes the price of the purchase (value >= 0; example: 74,90)
 	                Employee employee, // Describes the employee of the purchase
 	                int day, // Describes the day of the purchase (1 <= day <= 31)
@@ -31,7 +31,7 @@ public class Purchase extends Transaction
 		return supplier;
 	}
 
-    // Sets a new value for the Supplier property
+    // Sets a new value for the Supplier
 	public void setSupplier(Supplier supplier)
 	{
 		this.supplier = supplier;

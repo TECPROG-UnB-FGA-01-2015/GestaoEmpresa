@@ -6,12 +6,12 @@ package model;
 
 public class Expense
 {
-    protected String name; // Name of Expense object
-    protected String description; // Description of Expense object
-    protected double value; // Value of Expense object
-    protected int day; // Day of Expense object (only numbers; 1<day<=31)
-    protected int month; // Month of Expense object (only numbers; 1<day<=12)
-    protected int year; // Year of Expense object (only number; 0<year)
+    protected String name; // Describes the name of the expense
+    protected String description; // Describes the description of the expense
+    protected double value; // Describes the value of the expense
+    protected int day; // Describes the day of the expense (only numbers; 1 <= day <= 31)
+    protected int month; // Describes the month of the expense (only numbers; 1 <= day <= 12)
+    protected int year; // Describes the year of the expense (only number; 2000 <= year <= 2015)
     
     /* Constructor to receive all the attributes as parameters and initialize the
      * object Expense*/
@@ -30,73 +30,73 @@ public class Expense
         this.year = year;
     }
 
-    // Method to return the content of attribute name
+    // Access and returns the property name
     public String getName()
     {
         return name;
     }
 
-    // Method to set a content on variable name
+    // Sets a new value for the name property
     public void setName(String name)
     {
         this.name = name;
     }
 
-    // Method to return the content of attribute description
+    // Access and returns the property description
     public String getDescription()
     {
         return description;
     }
 
-    // Method to set a content on variable description
+    // Sets a new value for the description property
     public void setDescription(String description)
     {
         this.description = description;
     }
 
-    // Method to return the content of attribute value
+    // Access and returns the property value
     public double getValue()
     {
         return value;
     }
 
-    // Method to set a content on variable value
+    // Sets a new value for the value property
     public void setValue(double value)
     {
         this.value = value;
     }
 
-    // Method to return the content of attribute month
+    // Access and returns the property month
     public int getMonth()
     {
         return month;
     }
 
-    // Method to set a content on variable month
+    // Sets a new value for the month property
     public void setMonth(int month)
     {
         this.month = month;
     }
 
-    // Method to return the content of attribute year
+    // Access and returns the property year
     public int getYear()
     {
         return year;
     }
 
-    // Method to set a content on variable year
+    // Sets a new value for the year property
     public void setYear(int year)
     {
         this.year = year;
     }
 
-    // Method to return the content of attribute day
+    // Access and returns the property day
     public int getDay()
     {
         return day;
     }
 
-    // Method to set a content on variable day
+    // Sets a new value for the day property
     public void setDay(int day)
     {
         this.day = day;

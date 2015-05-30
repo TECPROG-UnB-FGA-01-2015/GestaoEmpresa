@@ -9,13 +9,13 @@ package model;
 public class Address
 {
     private String street; // Describes the street of the address
-    private String number; // Describes the number of the address
+    private String number; // Describes the number of the address (only numbers; example: 23)
     private String city; // Describes the city of the address
     private String state; // Describes the state of the address
     private String country; // Describes the country of the address
     private String complement; // Describes the complement of the address
 
-    // Constructor of the Address' class
+    // Constructor to receive all the attributes as parameters and initialize the object Address
     public Address(String street,
                    String number,
                    String city,

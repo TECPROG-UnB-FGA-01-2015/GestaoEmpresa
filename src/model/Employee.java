@@ -9,15 +9,15 @@ package model;
 public class Employee
 {
     private String name; // Describes the name of the client
-    private String telephone; // Describes the telephone of the client (example: 6132765432) 
-    private String cellphone; // Describes the telephone of the client (example: 6198765432) 
-    private String cpf; // Describes the cpf of the client (example: 32432432411)
-    private String rg; // Describes the rg of the client (example: 3177732)
+    private String telephone; // Describes the telephone of the client (only numbers; example: 6132765432) 
+    private String cellphone; // Describes the telephone of the client (only numbers; example: 6198765432) 
+    private String cpf; // Describes the cpf of the client (only numbers; example: 32432432411)
+    private String rg; // Describes the rg of the client (only numbers; example: 3177732)
     private String role; // Describes the role of the client
     private double salary; // Describes the salary of the client (example: 542,50)
     private Address address; // Describes the address of the client
 
-    // Constructor of the Employee's class
+    // Constructor to receive all the attributes as parameters and initialize the object Employee
     public Employee(String name,
                     String telephone,
                     String cellphone,

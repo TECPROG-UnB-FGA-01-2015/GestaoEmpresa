@@ -7,6 +7,7 @@
 package view;
 
 import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,7 +29,7 @@ public class StockView extends javax.swing.JFrame
     static Logger log = Logger.getLogger(StockView.class.getName());
 
 	// Constructor to initialize components on StockView
-	public StockView()
+	public StockView() throws Exception
 	{
 		initComponents();
 		jButton_EditarProduto.setEnabled(false);
@@ -75,7 +76,7 @@ public class StockView extends javax.swing.JFrame
 	}
 
 	// Method to load the table with product information
-	public void loadList()
+	public void loadList() throws Exception
 	{
 		try
 		{
@@ -306,7 +307,7 @@ public class StockView extends javax.swing.JFrame
 	}// </editor-fold>//GEN-END:initComponents
 
 	// Method to search for a product from the name
-	private void jButton_PesquisarProdutoActionPerformed(java.awt.event.ActionEvent evt)
+	private void jButton_PesquisarProdutoActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{// GEN-FIRST:event_jButton_PesquisarProdutoActionPerformed
 		try
 		{
@@ -366,7 +367,7 @@ public class StockView extends javax.swing.JFrame
 	}// GEN-LAST:event_jButton_PesquisarProdutoActionPerformed
 
 	// Method to open the view ProductDataView for add a new product
-	private void jButton_AdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt)
+	private void jButton_AdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{// GEN-FIRST:event_jButton_AdicionarProdutoActionPerformed
 		try
 		{
@@ -381,7 +382,7 @@ public class StockView extends javax.swing.JFrame
 	}// GEN-LAST:event_jButton_AdicionarProdutoActionPerformed
 
 	// Method to cancel the operation and close the screen
-	private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt)
+	private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{// GEN-FIRST:event_jButton_CancelarActionPerformed
 		try
 		{
@@ -405,7 +406,7 @@ public class StockView extends javax.swing.JFrame
 	}// GEN-LAST:event_jButton_CancelarActionPerformed
 
 	// Method to open the view ProductDataView for edit the product information
-	private void jButton_EditarProdutoActionPerformed(java.awt.event.ActionEvent evt)
+	private void jButton_EditarProdutoActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{// GEN-FIRST:event_jButton_EditarProdutoActionPerformed
 		try
 		{
@@ -420,7 +421,7 @@ public class StockView extends javax.swing.JFrame
 	}// GEN-LAST:event_jButton_EditarProdutoActionPerformed
 
 	// Method for Selecting an item in the table and enable the options edit, delete and confirms
-	private void jTable2MouseClicked(java.awt.event.MouseEvent evt)
+	private void jTable2MouseClicked(java.awt.event.MouseEvent evt) throws Exception
 	{// GEN-FIRST:event_jTable2MouseClicked
 		try
 		{
@@ -439,7 +440,7 @@ public class StockView extends javax.swing.JFrame
 	}// GEN-LAST:event_jTable2MouseClicked
 
 	// Method for removing a product from the table
-	private void jButton_ExcluirProdutoActionPerformed(java.awt.event.ActionEvent evt)
+	private void jButton_ExcluirProdutoActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{// GEN-FIRST:event_jButton_ExcluirProdutoActionPerformed
 		try
 		{
@@ -457,7 +458,7 @@ public class StockView extends javax.swing.JFrame
 	}// GEN-LAST:event_jButton_ExcluirProdutoActionPerformed
 
 	// Method to confirm the operation
-	private void jButton_ConfirmarProdutoActionPerformed(java.awt.event.ActionEvent evt)
+	private void jButton_ConfirmarProdutoActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{// GEN-FIRST:event_jButton_ConfirmarProdutoActionPerformed
 		try
 		{
@@ -538,7 +539,14 @@ public class StockView extends javax.swing.JFrame
 				catch(Exception e)
             	{
             		log.error("Error when running StockView. Exception: ", e);
-            		throw e;   
+            		try
+					{
+						throw e;
+					}
+					catch (Exception e1)
+					{
+						e1.printStackTrace();
+					}   
             	}
 			}
 		});

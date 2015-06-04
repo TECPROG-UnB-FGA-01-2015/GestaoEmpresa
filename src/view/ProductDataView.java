@@ -5,7 +5,9 @@
 package view;
 
 import controller.StockController;
+
 import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
 import org.apache.log4j.Logger;
@@ -43,7 +45,7 @@ public class ProductDataView extends javax.swing.JFrame
 
     
     // Constructor to initialize components on ProductDataView
-    public ProductDataView()
+    public ProductDataView() throws Exception
     {
         initComponents();
         fillFields();
@@ -236,7 +238,7 @@ public class ProductDataView extends javax.swing.JFrame
     }
     
     // Method to add informations on the Product list
-    private void fillCode()
+    private void fillCode() throws Exception
     {
     	try
     	{
@@ -274,7 +276,7 @@ public class ProductDataView extends javax.swing.JFrame
     }
     
     // Method to add one more on the attribute code if there is already a Product
-    private void fillFields()
+    private void fillFields() throws Exception
     {
     	try
     	{
@@ -313,7 +315,7 @@ public class ProductDataView extends javax.swing.JFrame
     }
     
     // Method to clean up the textBox
-    private void cleanFields()
+    private void cleanFields() throws Exception
     {
     	try
     	{
@@ -334,7 +336,7 @@ public class ProductDataView extends javax.swing.JFrame
     /* Method to cancel the action to add another product giving returning an
      * information to user
      */
-    private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt)
+    private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt) throws Exception
     {
     	try
     	{
@@ -361,7 +363,7 @@ public class ProductDataView extends javax.swing.JFrame
     /* Method to save all the informations provided by the user on a new object
      * Product
      */
-    private void jButton_SalvarProdutoActionPerformed(java.awt.event.ActionEvent evt) 
+    private void jButton_SalvarProdutoActionPerformed(java.awt.event.ActionEvent evt) throws Exception 
     {
     	try
     	{
@@ -539,7 +541,15 @@ public class ProductDataView extends javax.swing.JFrame
             	catch(Exception e)
             	{
             		log.error("Error when running ProductDataView. Exception: ", e);
-            		throw e; 
+            		try
+					{
+						throw e;
+					}
+					catch (Exception e1)
+					{
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} 
             	}
             }
         });

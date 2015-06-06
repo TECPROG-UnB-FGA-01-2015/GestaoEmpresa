@@ -28,25 +28,25 @@ public class PhysicalSupplier extends Supplier
 		this.rg = rg;
 	}
 
-	// Method to return the content of attribute cpf
+	// Access and returns the property cpf
 	public String getCpf()
 	{
 		return cpf;
 	}
 
-	// Method to set a content on variable cpf
+	// Sets a new value for the cpf property
 	public void setCpf(String cpf)
 	{
 		this.cpf = cpf;
 	}
 
-	// Method to return the content of attribute rg
+	// Access and returns the property rg
 	public String getRg()
 	{
 		return rg;
 	}
 
-	// Method to set a content on variable rg
+	// Sets a new value for the rg property
 	public void setRg(String rg)
 	{
 		this.rg = rg;

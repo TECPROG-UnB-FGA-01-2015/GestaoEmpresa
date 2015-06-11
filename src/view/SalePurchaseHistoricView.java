@@ -52,7 +52,7 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 	 * (date/month/year) */
 	private void loadList()
 	{
-		ArrayList<Transaction> transactionList = objectTransactionController.getSaleList();
+		ArrayList<Transaction> transactionList = objectTransactionController.getTransactionList();
 		DefaultTableModel model = (DefaultTableModel) jTable_showPurchaseSaleHistoricInfoTable.getModel();
 		model.setRowCount(0);
 		

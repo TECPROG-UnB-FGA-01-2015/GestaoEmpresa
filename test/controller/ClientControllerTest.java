@@ -28,8 +28,13 @@ public class ClientControllerTest extends TestCase
 	}
 
 	@Test
-	public void test()
+	public void testAddClient()
 	{
+		clientController.addClient(client);
+		
+		clientList = clientController.getClientList();
+		int listSize = clientList.size();
+		assertEquals(1,listSize);
 		
 	}
 	

@@ -34,8 +34,19 @@ public class ClientControllerTest extends TestCase
 		
 		clientList = clientController.getClientList();
 		int listSize = clientList.size();
-		assertEquals(1,listSize);
+		assertEquals(1,listSize);	
+	}
+	
+	@Test
+	public void testRemoveClient()
+	{
+		clientController.addClient(client);
 		
+		clientList = clientController.getClientList();
+		clientController.removeClient(client);
+		
+		int listSize = clientList.size();
+		assertEquals(0,listSize);
 	}
 	
 }

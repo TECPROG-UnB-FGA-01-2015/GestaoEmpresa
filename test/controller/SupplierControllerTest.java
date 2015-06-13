@@ -29,8 +29,14 @@ public class SupplierControllerTest extends TestCase
 	}
 
 	@Test
-	protected void test()
+	protected void addSuppliertest()
 	{
-
+		supplierController.addSupplier(supplier);
+		
+		supplierList = supplierController.getSupplierList();
+		
+		int listSize = supplierList.size();
+		assertEquals(1, listSize);
 	}
+
 }

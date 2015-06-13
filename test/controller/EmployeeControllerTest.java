@@ -1,12 +1,9 @@
 package controller;
 
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
 
 import junit.framework.TestCase;
 
-import model.Client;
 import model.Employee;
 
 import org.junit.After;
@@ -32,11 +29,18 @@ public class EmployeeControllerTest extends TestCase
 	{
 		employeeList.clear();
 	}
-
+	
 	@Test
-	public void test()
+	public void testAddEmployee()
 	{
+		employeeController.addEmployee(employee);
 		
+		employeeList = employeeController.getEmployeeList();
+		int listSize = employeeList.size();
+		assertEquals(1,listSize);	
 	}
+
+
+
 
 }

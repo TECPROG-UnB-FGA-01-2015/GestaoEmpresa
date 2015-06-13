@@ -38,5 +38,16 @@ public class SupplierControllerTest extends TestCase
 		int listSize = supplierList.size();
 		assertEquals(1, listSize);
 	}
-
+	
+	@Test
+	public void removeSupplierTest()
+	{
+		supplierController.addSupplier(supplier);
+		
+		supplierList = supplierController.getSupplierList();
+		supplierController.removeSupplier(supplier);
+		
+		int listSize = supplierList.size();
+		assertEquals(0, listSize);
+	}
 }

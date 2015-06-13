@@ -2,12 +2,13 @@ package controller;
 
 import java.util.ArrayList;
 
-import junit.framework.TestCase;
 import model.Supplier;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import junit.framework.TestCase;
 
 public class SupplierControllerTest extends TestCase
 {
@@ -21,18 +22,18 @@ public class SupplierControllerTest extends TestCase
 		Supplier supplier = new Supplier("", "", "", null, null);
 		supplierList = new ArrayList<Supplier>();
 	}
-
+	
 	@After
 	protected void tearDown() throws Exception
 	{
 		supplierList.clear();
 	}
-
+	
 	@Test
-	protected void addSuppliertest()
+	public void testAddSupplier()
 	{
 		supplierController.addSupplier(supplier);
-		
+
 		supplierList = supplierController.getSupplierList();
 		
 		int listSize = supplierList.size();
@@ -40,11 +41,12 @@ public class SupplierControllerTest extends TestCase
 	}
 	
 	@Test
-	public void removeSupplierTest()
+	public void testRemoveSupplier()
 	{
 		supplierController.addSupplier(supplier);
 		
 		supplierList = supplierController.getSupplierList();
+		
 		supplierController.removeSupplier(supplier);
 		
 		int listSize = supplierList.size();

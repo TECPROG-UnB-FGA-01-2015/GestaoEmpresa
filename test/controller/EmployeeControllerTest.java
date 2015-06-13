@@ -40,7 +40,17 @@ public class EmployeeControllerTest extends TestCase
 		assertEquals(1,listSize);	
 	}
 
-
+	@Test
+	public void testRemoveEmployee()
+	{
+		employeeController.addEmployee(employee);
+		
+		employeeList = employeeController.getEmployeeList();
+		employeeController.removeEmployee(employee);
+		
+		int listSize = employeeList.size();
+		assertEquals(0,listSize);
+	}
 
 
 }

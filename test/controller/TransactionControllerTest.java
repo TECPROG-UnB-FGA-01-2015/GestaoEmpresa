@@ -38,10 +38,9 @@ public class TransactionControllerTest extends TestCase
 	public void testAddTransaction()
 	{
 		transactionController.addTransaction(sale);
+		
 		transactionList = transactionController.getTransactionList();
-		
 		int listSize = transactionList.size();
-		
 		assertEquals(1,listSize);
 	}
 
@@ -49,11 +48,11 @@ public class TransactionControllerTest extends TestCase
 	public void testRemoveTransaction()
 	{
 		transactionController.addTransaction(purchase);
+		
 		transactionList = transactionController.getTransactionList();
 		transactionController.removeTransaction(purchase);
 		
 		int listSize = transactionList.size();
-		
 		assertEquals(0,listSize);
 	}
 

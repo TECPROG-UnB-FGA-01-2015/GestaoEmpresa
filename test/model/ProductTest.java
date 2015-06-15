@@ -45,4 +45,13 @@ public class ProductTest extends TestCase
 		assertSame("2", product.getCode());
 	}
 	
+	@Test
+	public void testProductDescription()
+	{
+		product = new Product("1", "Mesas", 900, 5, 1000);
+		product.setDescription("Cadeiras");
+						
+		assertSame("Cadeiras", product.getDescription());
+	}
+	
 }

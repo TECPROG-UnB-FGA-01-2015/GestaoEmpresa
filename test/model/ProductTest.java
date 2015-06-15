@@ -35,5 +35,14 @@ public class ProductTest extends TestCase
 	{
 		productList.clear();
 	}
-
+	
+	@Test
+	public void testProductCode()
+	{
+		product = new Product("1", "Mesas", 900, 5, 1000);
+		product.setCode("2");
+						
+		assertSame("2", product.getCode());
+	}
+	
 }

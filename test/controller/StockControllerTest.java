@@ -56,5 +56,14 @@ public class StockControllerTest extends TestCase
 		product = new Product("1", "Mesas", 900, 5, 1000);
 		assertNotNull(product);
 	}
-		
+	
+	@Test
+	public void testProductMessage()
+	{
+		JOptionPane jOptionPane = new JOptionPane();
+		jOptionPane.showMessageDialog(null, "Mais de um resultado encontrado.", "Atenção", jOptionPane.INFORMATION_MESSAGE);
+		String productMessage = "Type the Following Exact Sentence: 'Mais de um resultado encontrado.'";
+		assertEquals(JOptionPane.showInputDialog(productMessage), "Mais de um resultado encontrado.");
+	}
+			
 }

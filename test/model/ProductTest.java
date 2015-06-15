@@ -3,17 +3,7 @@ package model;
 import java.util.ArrayList;
 
 import junit.framework.TestCase;
-import model.Client;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 
-import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
-
-import junit.framework.TestCase;
-import model.Product;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -80,5 +70,4 @@ public class ProductTest extends TestCase
 						
 		assertEquals(1400.0, product.getSellingPrice());
 	}
-	
 }

@@ -36,4 +36,16 @@ public class StockControllerTest extends TestCase
 		int listSize = productList.size();
 		assertEquals(1,listSize);
 	}
+	
+	@Test
+	public void testRemoveProduct()
+	{
+		stockController.addProduct(product);
+		
+		productList = stockController.getProductList();
+		stockController.removeProduct(product);
+		
+		int listSize = productList.size();
+		assertEquals(0,listSize);
+	}
 }

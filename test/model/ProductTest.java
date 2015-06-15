@@ -54,4 +54,13 @@ public class ProductTest extends TestCase
 		assertSame("Cadeiras", product.getDescription());
 	}
 	
+	@Test
+	public void testProductPurchasePrice()
+	{
+		product = new Product("1", "Mesas", 900, 5, 1000);
+		product.setPurchasePrice(1200.0);
+						
+		assertEquals(1200.0, product.getPurchasePrice());
+	}
+	
 }

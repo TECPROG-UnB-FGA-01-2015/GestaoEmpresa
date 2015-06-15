@@ -72,4 +72,13 @@ public class ProductTest extends TestCase
 		assertEquals(20.0, product.getQuantity());
 	}
 	
+	@Test
+	public void testProductSellingPrice()
+	{
+		product = new Product("1", "Mesas", 900, 5, 1000);
+		product.setSellingPrice(1400.0);
+						
+		assertEquals(1400.0, product.getSellingPrice());
+	}
+	
 }

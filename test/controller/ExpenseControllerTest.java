@@ -2,8 +2,6 @@ package controller;
 
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
 import junit.framework.TestCase;
 import model.Expense;
 import org.junit.After;
@@ -14,7 +12,7 @@ public class ExpenseControllerTest extends TestCase
 {
 	Expense expense;
 	ArrayList<Expense> expenselist;
-	StockController stockController = new StockController(); 
+	ExpenseController expenseController = new ExpenseController(); 
 
 	@Before
 	public void setUp() throws Exception
@@ -27,5 +25,15 @@ public class ExpenseControllerTest extends TestCase
 	public void tearDown() throws Exception
 	{
 		expenselist.clear();
+	}
+	
+	@Test
+	public void testAddExpense()
+	{
+		expenseController.addExpense(expense);
+		
+		expenselist = expenseController.getExpenseList();
+		int listSize = expenselist.size();
+		assertEquals(1,listSize);
 	}
 }

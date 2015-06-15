@@ -28,8 +28,12 @@ public class StockControllerTest extends TestCase
 	}
 
 	@Test
-	public void test()
+	public void testAddProduct()
 	{
+		stockController.addProduct(product);
 		
+		productList = stockController.getProductList();
+		int listSize = productList.size();
+		assertEquals(1,listSize);
 	}
 }

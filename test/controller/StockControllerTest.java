@@ -46,7 +46,6 @@ public class StockControllerTest extends TestCase
 		
 		productList = stockController.getProductList();
 		stockController.removeProduct(product);
-		
 		int listSize = productList.size();
 		assertEquals(0,listSize);
 	}

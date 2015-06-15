@@ -11,20 +11,20 @@ import org.junit.Test;
 public class ExpenseControllerTest extends TestCase
 {
 	Expense expense;
-	ArrayList<Expense> expenselist;
+	ArrayList<Expense> expenseList;
 	ExpenseController expenseController = new ExpenseController(); 
 
 	@Before
 	public void setUp() throws Exception
 	{
 		expense = new Expense("Foi necessária a compra extra de 50 cadeiras", "Todas as 50 cadeiras são de boa qualidade!", 1000, 15, 6, 2015);
-		expenselist = new ArrayList<Expense>();
+		expenseList = new ArrayList<Expense>();
 	}
 
 	@After
 	public void tearDown() throws Exception
 	{
-		expenselist.clear();
+		expenseList.clear();
 	}
 	
 	@Test
@@ -32,8 +32,19 @@ public class ExpenseControllerTest extends TestCase
 	{
 		expenseController.addExpense(expense);
 		
-		expenselist = expenseController.getExpenseList();
-		int listSize = expenselist.size();
+		expenseList = expenseController.getExpenseList();
+		int listSize = expenseList.size();
 		assertEquals(1,listSize);
+	}
+	
+	@Test
+	public void testRemoveExpense()
+	{
+		expenseController.addExpense(expense);
+		
+		expenseList = expenseController.getExpenseList();
+		expenseController.removeExpense(expense);
+		int listSize = expenseList.size();
+		assertEquals(0,listSize);
 	}
 }

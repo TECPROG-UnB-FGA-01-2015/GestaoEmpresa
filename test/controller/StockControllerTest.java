@@ -50,6 +50,7 @@ public class StockControllerTest extends TestCase
 		int listSize = productList.size();
 		assertEquals(0,listSize);
 	}
+	
 	@Test
 	public void testProductNotNull()
 	{

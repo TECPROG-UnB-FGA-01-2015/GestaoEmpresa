@@ -2,6 +2,8 @@ package controller;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import junit.framework.TestCase;
 import model.Product;
 import org.junit.After;
@@ -48,4 +50,11 @@ public class StockControllerTest extends TestCase
 		int listSize = productList.size();
 		assertEquals(0,listSize);
 	}
+	@Test
+	public void testProductNotNull()
+	{
+		product = new Product("1", "Mesas", 900, 5, 1000);
+		assertNotNull(product);
+	}
+		
 }

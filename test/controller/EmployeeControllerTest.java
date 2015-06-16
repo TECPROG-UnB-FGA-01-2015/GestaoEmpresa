@@ -63,6 +63,17 @@ public class EmployeeControllerTest extends TestCase
 		int listSize = employeeList.size();
 		assertEquals(0,listSize);
 	}
+	
+	@Test
+	public void testSearchEmployee()
+	{
+		employeeController.addEmployee(employee);
+	
+		Employee employeeTest = employeeController.searchEmployee("Teste", true);
+		String nameEmployeeTest = employeeTest.getName();
+		
+		assertEquals("Teste", nameEmployeeTest);
+	}
 
 
 }

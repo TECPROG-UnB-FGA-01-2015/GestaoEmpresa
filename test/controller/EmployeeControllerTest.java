@@ -31,6 +31,18 @@ public class EmployeeControllerTest extends TestCase
 	}
 	
 	@Test
+	public void testSetEmployeeList()
+	{
+		employeeController.addEmployee(employee);
+		employeeList = employeeController.getEmployeeList();
+		EmployeeController.setEmployeeList(employeeList);
+		
+		ArrayList<Employee> employeeListTest = employeeController.getEmployeeList();
+		
+		assertEquals(employeeList, employeeListTest);	
+	}
+	
+	@Test
 	public void testAddEmployee()
 	{
 		employeeController.addEmployee(employee);

@@ -10,40 +10,39 @@ import model.Expense;
 
 public class ExpenseController
 {
-	private ArrayList<Expense> expenseList; // Maintains a list of spent of Expense object
+	private ArrayList<Expense> expenseList; // Describes a list of spent of Expense object
 
-	// Constructor to instance ControleDespesa with the attribute expenseList
+	// Constructor to initialize the controller of expenses with an expense list
 	public ExpenseController()
 	{
 		this.expenseList = new ArrayList<Expense>();
 	}
 
-	// Method to return the content of attribute expenseList
+    // Access and returns the property expenseList
 	public ArrayList<Expense> getExpenseList()
 	{
 		return expenseList;
 	}
 
-	// Method to set a content on variable expenseList
+    // Sets a new value for the expenseList property
 	public void setExpenseList(ArrayList<Expense> expenseList)
 	{
 		this.expenseList = expenseList;
 	}
 
-	// Method to insert an element which is a Expense type
+    // Adds an expense to the expenseList 
 	public void addExpense(Expense objectExpense)
 	{
 		expenseList.add(objectExpense);
 	}
 
-	// Method to remove an element which is a Expense type
+    // Removes an expense of the expenseList
 	public void removeExpense(Expense objectExpense)
 	{
 		expenseList.remove(objectExpense);
 	}
 
-	/* Method to search an element which is a Expense type by passing as a
-	 * parameter a name */
+    // Search for an expense in the expenseList with a given name
 	public Expense searchExpense(String name)
 	{
 		// Search for the expense

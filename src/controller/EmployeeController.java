@@ -47,10 +47,10 @@ public class EmployeeController
         employeeList.remove(employee);
     }
 
-    // Search for an employee in the clientList with a given name
+    // Search for an employee in the employeeList with a given name
     public Employee searchEmployee(String name, boolean ignoreCase)
     {
-    	Employee returned = null; // Used to return the employee matching the given name (not Case Sensitive)
+    	Employee returned = null; // Usedclient to return the employee matching the given name (not Case Sensitive)
     	Employee exactReturned = null; // Used to return the employee matching the given name (Case Sensitive)
     	
         // Search for the employee 

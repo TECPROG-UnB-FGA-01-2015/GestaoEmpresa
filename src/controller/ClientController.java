@@ -16,7 +16,7 @@ public class ClientController
     	clientList = new ArrayList<Client>();
     }
 
-    // Constructor to initialize the controller
+    // Constructor to initialize the controller of clients
     public ClientController()
     {
     	// Just initialize the object

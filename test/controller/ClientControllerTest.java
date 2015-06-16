@@ -26,6 +26,18 @@ public class ClientControllerTest extends TestCase
 	{
 		clientList.clear();
 	}
+	
+	@Test
+	public void testSetClientList()
+	{
+		clientController.addClient(client);
+		clientList = clientController.getClientList();
+		ClientController.setClientList(clientList);
+		
+		ArrayList<Client> clientListTest = clientController.getClientList();
+		
+		assertEquals(clientList, clientListTest);	
+	}
 
 	@Test
 	public void testAddClient()

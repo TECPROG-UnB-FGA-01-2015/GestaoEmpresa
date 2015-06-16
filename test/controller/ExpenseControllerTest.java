@@ -47,4 +47,11 @@ public class ExpenseControllerTest extends TestCase
 		int listSize = expenseList.size();
 		assertEquals(0,listSize);
 	}
+	
+	@Test
+	public void testExpenseNotNull()
+	{
+		expense = new Expense("Foi necessária a compra extra de 50 cadeiras", "Todas as 50 cadeiras são de boa qualidade!", 1000, 15, 6, 2015);
+		assertNotNull(expense);
+	}
 }

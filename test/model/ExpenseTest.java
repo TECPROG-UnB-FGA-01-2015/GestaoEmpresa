@@ -43,4 +43,13 @@ public class ExpenseTest extends TestCase
 						
 		assertSame("Todas as 250 mesas são de boa qualidade!", expense.getDescription());
 	}
+	
+	@Test
+	public void testExpenseValue()
+	{
+		expense = new Expense("Foi necessária a compra extra de 50 cadeiras", "Todas as 50 cadeiras são de boa qualidade!", 1000, 15, 6, 2015);
+		expense.setValue(1500.0);
+						
+		assertEquals(1500.0, expense.getValue());
+	}
 }

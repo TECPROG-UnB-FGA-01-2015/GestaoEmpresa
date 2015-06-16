@@ -11,13 +11,13 @@ import model.Employee;
 
 public class EmployeeController 
 {
-    private static ArrayList<Employee> employeeList; // Holds all the employees registered on the system
+    private static ArrayList<Employee> employeeList; // Describes all the employees registered on the system
     
     static {
     	employeeList = new ArrayList<Employee>();
     }
 
-    // Constructor default of the EmployeeController's class
+    // Constructor to initialize the controller of employees
     public EmployeeController() 
     {
         
@@ -56,13 +56,13 @@ public class EmployeeController
         // Search for the employee 
         for(Employee employee: employeeList)
         {
-        	// Variable to get the name of current employee
+        	// Describes the name of current employee
         	String employeeName = employee.getName();
         	
-        	// Variable to return the comparison of current employee name with the name parameter  
+        	// Describes the result of the comparison of current employee name with the name parameter  
         	boolean employeeNameEquals = employeeName.equalsIgnoreCase(name);
         	
-        	// Variable to pass the employee name to lowercase
+        	// Converts the employee name to lowercase
         	String employeeNameToLowerCase = employeeName.toLowerCase();
         	
             if(employeeNameEquals == true)

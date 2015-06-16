@@ -34,4 +34,13 @@ public class ExpenseTest extends TestCase
 						
 		assertSame("Foi necessária a compra de 250 mesas.", expense.getName());
 	}
+	
+	@Test
+	public void testExpenseDescription()
+	{
+		expense = new Expense("Foi necessária a compra extra de 50 cadeiras", "Todas as 50 cadeiras são de boa qualidade!", 1000, 15, 6, 2015);
+		expense.setDescription("Todas as 250 mesas são de boa qualidade!");
+						
+		assertSame("Todas as 250 mesas são de boa qualidade!", expense.getDescription());
+	}
 }

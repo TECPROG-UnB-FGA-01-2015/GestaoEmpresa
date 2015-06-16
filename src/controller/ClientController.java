@@ -10,16 +10,16 @@ import model.Client;
 
 public class ClientController
 {
-    private static ArrayList<Client> clientList; // Holds all the clients registered on the system
+    private static ArrayList<Client> clientList; // Describes all the clients registered on the system
     
     static {
     	clientList = new ArrayList<Client>();
     }
 
-    // Constructor default of the ClientController's class
+    // Constructor to initialize the controller
     public ClientController()
     {
-      
+    	// Just initialize the object
     }
 
     // Access and returns the property clientList
@@ -54,13 +54,13 @@ public class ClientController
         
         for(Client client: clientList)
         {
-        	// Variable to get the name of current supplier
+        	// Describes the name of current supplier
         	String clientName = client.getName();
         	
-        	// Variable to return the comparison of current client name with the name parameter  
+        	// Describes the comparison of current client name with the name parameter  
         	boolean clientNameEquals = clientName.equalsIgnoreCase(name);
         	
-        	// Variable to pass the client name to lowercase
+        	// Converts the client name to lowercase
         	String clientNameToLowerCase = clientName.toLowerCase();
         	
             if(clientNameEquals == true)

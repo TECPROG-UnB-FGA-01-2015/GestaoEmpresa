@@ -61,4 +61,15 @@ public class ClientControllerTest extends TestCase
 		assertEquals(0,listSize);
 	}
 	
+	@Test
+	public void testSearchEmployee()
+	{
+		clientController.addClient(client);
+	
+		Client clientTest = clientController.searchClient("Teste", true);
+		String nameClientTest = clientTest.getName();
+		
+		assertEquals("Teste", nameClientTest);
+	}
+	
 }

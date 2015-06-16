@@ -53,11 +53,30 @@ public class ExpenseTest extends TestCase
 		assertEquals(1500.0, expense.getValue());
 	}
 	
+	@Test
 	public void testExpenseDay()
 	{
 		expense = new Expense("Foi necessária a compra extra de 50 cadeiras", "Todas as 50 cadeiras são de boa qualidade!", 1000, 15, 6, 2015);
 		expense.setDay(20);
 						
 		assertEquals(20, expense.getDay());
+	}
+	
+	@Test
+	public void testExpenseMonth()
+	{
+		expense = new Expense("Foi necessária a compra extra de 50 cadeiras", "Todas as 50 cadeiras são de boa qualidade!", 1000, 15, 6, 2015);
+		expense.setMonth(9);
+						
+		assertEquals(9, expense.getMonth());
+	}
+	
+	@Test
+	public void testExpenseYear()
+	{
+		expense = new Expense("Foi necessária a compra extra de 50 cadeiras", "Todas as 50 cadeiras são de boa qualidade!", 1000, 15, 6, 2015);
+		expense.setYear(2017);
+						
+		assertEquals(2017, expense.getYear());
 	}
 }

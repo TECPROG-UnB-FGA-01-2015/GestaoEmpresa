@@ -6,9 +6,11 @@
 package view;
 
 import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+
 import model.Client;
 import model.PhysicalClient;
 import model.JuridicalClient;
@@ -146,7 +148,15 @@ public class ContactView extends javax.swing.JFrame
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton_AdicionarContatoActionPerformed(evt);
+                try
+				{
+					jButton_AdicionarContatoActionPerformed(evt);
+				}
+				catch (Exception e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -458,7 +468,7 @@ public class ContactView extends javax.swing.JFrame
     }
 
     // Calls the form to register new contact
-    private void jButton_AdicionarContatoActionPerformed(java.awt.event.ActionEvent evt)
+    private void jButton_AdicionarContatoActionPerformed(java.awt.event.ActionEvent evt) throws Exception
     {
         editMode = false;
         
@@ -470,7 +480,7 @@ public class ContactView extends javax.swing.JFrame
 	   	catch (Exception e)
 		{
 	   		log.error("Error opening the view ContactDataView. Exception: ", e);
-			throw e;
+	   		throw e;
 		}
 	     
         this.setVisible(false);

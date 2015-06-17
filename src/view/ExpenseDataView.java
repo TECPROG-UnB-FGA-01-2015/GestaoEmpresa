@@ -5,8 +5,11 @@
 package view;
 
 import controller.ExpenseController;
+
 import javax.swing.JOptionPane;
+
 import model.Expense;
+
 import java.util.Date; 
 import java.text.DateFormat; 
 import java.text.SimpleDateFormat; 
@@ -235,7 +238,7 @@ public class ExpenseDataView extends javax.swing.JFrame
         pack();
     }
 
-    private void jButton_SairActionPerformed(java.awt.event.ActionEvent evt)
+    private void jButton_SairActionPerformed(java.awt.event.ActionEvent evt) throws Exception
     {
     	try
     	{
@@ -250,7 +253,7 @@ public class ExpenseDataView extends javax.swing.JFrame
         }
     }
 
-    private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt)
+    private void jButton_SalvarActionPerformed(java.awt.event.ActionEvent evt) throws Exception
     {
     	try
     	{
@@ -347,7 +350,15 @@ public class ExpenseDataView extends javax.swing.JFrame
             	catch(Exception e)
             	{
             		log.error("Error when running ExpenseDataView. Exception: ", e);
-            		throw e;   
+            		try
+					{
+						throw e;
+					}
+					catch (Exception e1)
+					{
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}   
             	}
             }
         });

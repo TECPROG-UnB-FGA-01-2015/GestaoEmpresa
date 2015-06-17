@@ -991,7 +991,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 					Employee employee = ContactDataView.objectEmployeeController.searchEmployee(nameEmployee, false);
 					objectSale = new Sale(client, productTableList, transactionPrice, employee, Integer.parseInt(CURRENT_DAY), 
 					                      Integer.parseInt(CURRENT_MONTH), Integer.parseInt(CURRENT_YEAR));
-					objectTransactionController.addSale(objectSale);
+					objectTransactionController.addTransaction(objectSale);
 					
 					log.info("Sale operation to client '" + nameClientSupplier + "' finalized successfully!");
 				}
@@ -1002,7 +1002,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 					
 					objectPurchase = new Purchase(purchaseSupplier, productTableList, transactionPrice, employeeSupplier, Integer.parseInt(CURRENT_DAY),
 					                              Integer.parseInt(CURRENT_MONTH), Integer.parseInt(CURRENT_YEAR));
-					objectTransactionController.addSale(objectPurchase);
+					objectTransactionController.addTransaction(objectPurchase);
 	
 					String expenseDescription = "Compra de Produto do Fornecedor'" + purchaseSupplier.getName() + "'";
 					

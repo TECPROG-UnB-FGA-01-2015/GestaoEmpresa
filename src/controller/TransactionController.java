@@ -1,7 +1,7 @@
 /***********************************************************
  * File: TransactionController.java
  * Purpose: Gets the Transaction's info to add, remove and 
- * 			list Products sales and purchases.
+ * 			list products' sales and purchases.
  ***********************************************************/
 
 package controller;
@@ -11,35 +11,35 @@ import model.Transaction;
 
 public class TransactionController
 {
-	private ArrayList<Transaction> saleList; // Stores the Transaction's sale list
+	private ArrayList<Transaction> transactionList; // Stores the Transaction's sale list
 
 	// Constructor to instance TransactionController initializing the attribute saleList
 	public TransactionController()
 	{
-		this.saleList = new ArrayList<Transaction>();
+		this.transactionList = new ArrayList<Transaction>();
 	}
 
 	// Access the saleList and return all the sales and purchases
-	public ArrayList<Transaction> getSaleList()
+	public ArrayList<Transaction> getTransactionList()
 	{
-		return saleList;
+		return transactionList;
 	}
 
-	// Sets a new list for the saleList
-	public void setSaleList(ArrayList<Transaction> saleList)
+	// Sets a new list for the saleList or purchaseList
+	public void setTransactionList(ArrayList<Transaction> transactionList)
 	{
-		this.saleList = saleList;
+		this.transactionList = transactionList;
 	}
 
-	// Adds sale to the saleList
-	public void addSale(Transaction sale)
+	// Adds sale or purchase to the saleList or purchaseList
+	public void addTransaction(Transaction transaction)
 	{
-		saleList.add(sale);
+		transactionList.add(transaction);
 	}
 
-	// Deletes sales from the saleList
-	public void removeSale(Transaction sale)
+	// Deletes sale or purchase from the saleList or purchaseList
+	public void removeTransaction(Transaction transaction)
 	{
-		saleList.remove(sale);
+		transactionList.remove(transaction);
 	}
 }

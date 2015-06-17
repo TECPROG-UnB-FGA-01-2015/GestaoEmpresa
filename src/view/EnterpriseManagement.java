@@ -6,11 +6,14 @@
 package view;
 
 import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
+
 import model.Client;
 import model.Supplier;
 import model.Employee;
 import model.Product;
+
 import javax.swing.*;
 
 import org.apache.log4j.Logger;
@@ -191,7 +194,14 @@ public class EnterpriseManagement extends javax.swing.JFrame
     // Opens Stock's form
     private void jButton_EstoqueActionPerformed(java.awt.event.ActionEvent evt)
     {
-       new StockView().setVisible(true);
+       try
+		{
+			new StockView().setVisible(true);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
        log.debug("Open StockView");
     }
 

@@ -15,7 +15,7 @@ public class StockController
 	StockView stockView; // Calls StockView view
 	private ArrayList<Product> productList; // Describes a list of products
 
-	// Constructor to initialize the controller of expenses with a product list
+	// Constructor to initialize the controller of products with a product list
 	public StockController()
 	{
 		this.productList = new ArrayList<Product>();
@@ -44,6 +44,12 @@ public class StockController
 	{
 		productList.remove(product);
 	}
+	
+	/* Parameter code:
+	 * receives the info of code of the Supplier class's object 
+	 * Parameter searchContains:
+	 * receives the boolean info of search
+	 */
 
 	// Search for a product in the productList with a given name
 	public Product searchProduct(String code, boolean searchContains)

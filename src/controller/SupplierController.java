@@ -12,34 +12,34 @@ import view.ContactView;
 	
 public class SupplierController
 {
-	private static ArrayList<Supplier> supplierList; // maintains a list of objects of type Supplier
+	private static ArrayList<Supplier> supplierList; // Describes a list of suppliers
 	ContactView contactView;
 
-	// Constructor to instance SupplierController with the attribute supplierList
+	// Constructor to initialize the controller of suppliers with a supplier list
 	public SupplierController()
 	{
 		SupplierController.supplierList = new ArrayList<Supplier>();
 	}
 
-	// Method to return the content of attribute supplierList
+    // Access and returns the property supplierList
 	public ArrayList<Supplier> getSupplierList()
 	{
 		return supplierList;
 	}
 
-	// Method to set a content on variable listaForncedor
+    // Sets a new value for the supplierList property
 	public void setSupplierList(ArrayList<Supplier> supplierList)
 	{
 		SupplierController.supplierList = supplierList;
 	}
 
-	// Method to insert a supplier to attribute supplierList
+	// Adds a supplier to the supplierList
 	public void addSupplier(Supplier supplier)
 	{
 		supplierList.add(supplier);
 	}
 
-	// Method for removing an attribute provider supplierList
+	// Removes a supplier of the supplierList
 	public void removeSupplier(Supplier supplier)
 	{
 		supplierList.remove(supplier);
@@ -48,28 +48,28 @@ public class SupplierController
 	/* Parameter name:
 	 * receives the info of name of the Supplier class's object 
 	 * Parameter search:
-	 * receives the boolean info of search*/
+	 * receives the boolean info of search
+	 */
 	
-	// Method to find a supplier from the parameter name
+	// Search for a supplier in the supplierList with a given name
 	public Supplier searchSupplier(String name, boolean search)
 	{
-		// Receives an object from the Fornecedor class if the name is equal to received name and the research equals true
+		// Returns the supplier matching the given name (not Case Sensitive)
 		Supplier returned = null;
 		
-		// Receives a Object from the Fornecedor Class if the name is equal to received name
-		Supplier exactReturned = null; 
+		// Returns the suppler matching the given name (Case Sensitive)
+		Supplier exactReturned = null;
 		
-		/* Parameter supplier:
-		 * Object from the Supplier Class that receives supplier's info and updates the list */
+		// Search for the supplier
 		for(Supplier supplier : supplierList)
 		{
-			// Name of the supplier
+			// Describes the name of the supplier
 			String nameSupplier = supplier.getName();
 			
-			// Result of supplier name comparison
+			// Describes result of supplier name comparison
 			boolean nameSupplierEquals = nameSupplier.equalsIgnoreCase(name);
 			
-			// Changing the name of the supplier to lower case
+			// Converts the name of the supplier to lowercase
 			String nameSupplierLowerCase = nameSupplier.toLowerCase();
 			
 			if(nameSupplierEquals == true)

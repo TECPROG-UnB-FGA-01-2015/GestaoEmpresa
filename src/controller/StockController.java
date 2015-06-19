@@ -13,21 +13,21 @@ import view.StockView;
 public class StockController
 {
 	StockView stockView; // Calls StockView view
-	private ArrayList<Product> productList; // Maintains a list of Product object
+	private ArrayList<Product> productList; // Describes a list of products
 
-	// Constructor to instantiate StockController with the attribute productList
+	// Constructor to initialize the controller of expenses with a product list
 	public StockController()
 	{
 		this.productList = new ArrayList<Product>();
 	}
 
-	// Method to return the content of attribute productList
+    // Access and returns the property productList
 	public ArrayList<Product> getProductList()
 	{
 		return productList;
 	}
 
-	// Method to set a content on variable productList
+    // Sets a new value for the productList property
 	public void setProductList(ArrayList<Product> productList)
 	{
 		this.productList = productList;
@@ -49,10 +49,10 @@ public class StockController
 	public Product searchProduct(String code, boolean searchContains)
 	{
 		int productCounter = 0;
-		Product returned = null; // Used to return the product matching the given name (not Case Sensitive)
-		Product exactReturned = null; // Used to return the product matching the given name (Case Sensitive)
+		Product returned = null; // Returns the product matching the given name (not Case Sensitive)
+		Product exactReturned = null; // Returns the product matching the given name (Case Sensitive)
 
-		// Search for the employee
+		// Search for the product
 		for (Product product : productList)
 		{
 			String productCode = product.getCode();

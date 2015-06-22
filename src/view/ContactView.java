@@ -30,13 +30,13 @@ import org.apache.log4j.Logger;
 public class ContactView extends javax.swing.JFrame
 {
 	// Variables declaration of Buttons, ComboBox, Labels, Panel, ScrollPane, Table and TextField
-    private javax.swing.JButton jButton_AdicionarContato; // Button that adds a New Contact (Client, Supplier or Employee) on the system
-    private javax.swing.JButton jButton_Cancelar; // Button that exits "Contact Register" Screen
-    private javax.swing.JButton jButton_ConfirmarContato; // Button that adds and saves the new contact on the system
-    private javax.swing.JButton jButton_Editar; // Button that edits the added contact on the system
-    private javax.swing.JButton jButton_Excluir; // Button that deletes the added contact on the system
-    private javax.swing.JButton jButton_Pesquisar; // Button that searches the added contact on the system
-    private javax.swing.JComboBox jComboBox1; // Button that shows a drop-down list with Client/Supplier/Employee options
+    private javax.swing.JButton jButton_AdicionarContato; // Adds a New Contact (Client, Supplier or Employee) on the system
+    private javax.swing.JButton jButton_Cancelar; // Exits "Contact Register" Screen
+    private javax.swing.JButton jButton_ConfirmarContato; // Adds and saves the new contact on the system
+    private javax.swing.JButton jButton_Editar; // Edits the added contact on the system
+    private javax.swing.JButton jButton_Excluir; // Deletes the added contact on the system
+    private javax.swing.JButton jButton_Pesquisar; // Searches the added contact on the system
+    private javax.swing.JComboBox jComboBox1; // Shows a drop-down list with Client/Supplier/Employee options
     private javax.swing.JLabel jLabel1; // Shows the "Name" word on the Screen 
     private javax.swing.JLabel jLabel2; // Shows the "Contact Register" sentence on the Screen 
     private javax.swing.JPanel jPanel1; // Shows the entire "Contact Register" Screen Layout
@@ -70,7 +70,7 @@ public class ContactView extends javax.swing.JFrame
     
     static Logger log = Logger.getLogger(ContactView.class.getName());
 
-    // Constructor of the ContactView's class
+    // Constructor to initialize the ContactView
     public ContactView()
     {
         initComponents();

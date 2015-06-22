@@ -11,9 +11,9 @@ import model.Transaction;
 
 public class TransactionController
 {
-	private ArrayList<Transaction> transactionList; // Stores the Transaction's sale list
+	private ArrayList<Transaction> transactionList; // Describes a list of transactions
 
-	// Constructor to instance TransactionController initializing the attribute saleList
+	// Constructor to initialize the controller of transactions with a transaction list
 	public TransactionController()
 	{
 		this.transactionList = new ArrayList<Transaction>();
@@ -37,7 +37,7 @@ public class TransactionController
 		transactionList.add(transaction);
 	}
 
-	// Deletes sale or purchase from the saleList or purchaseList
+	// Removes sale or purchase from the saleList or purchaseList
 	public void removeTransaction(Transaction transaction)
 	{
 		transactionList.remove(transaction);

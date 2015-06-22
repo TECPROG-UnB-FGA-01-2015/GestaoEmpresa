@@ -20,14 +20,14 @@ import org.apache.log4j.Logger;
 public class ExpenseDataView extends javax.swing.JFrame
 {
 	// Variables declaration of Buttons, ComboBox, Label and TextFields
-    private javax.swing.JButton jButton_Sair; // Button that exits "New Expense" Screen
-    private javax.swing.JButton jButton_Salvar; // Button that adds and saves a New Expense on the screen
+    private javax.swing.JButton jButton_Sair; // Exits "New Expense" Screen
+    private javax.swing.JButton jButton_Salvar; // Adds and saves a New Expense on the screen
     @SuppressWarnings("rawtypes")
-	private javax.swing.JComboBox jComboBox_Ano; // Button that shows a drop-down list from the years 2013 until 2017 on the date's option
+	private javax.swing.JComboBox jComboBox_Ano; // Shows a drop-down list from the years 2013 until 2017 on the date's option
     @SuppressWarnings("rawtypes")
-	private javax.swing.JComboBox jComboBox_Dia; // Button that shows a drop-down list from the days 1 until 31 on the date's option
+	private javax.swing.JComboBox jComboBox_Dia; // Shows a drop-down list from the days 1 until 31 on the date's option
     @SuppressWarnings("rawtypes")
-	private javax.swing.JComboBox jComboBox_Mes; // Button that shows a drop-down list from the months January until December on the date's option
+	private javax.swing.JComboBox jComboBox_Mes; // Shows a drop-down list from the months January until December on the date's option
     private javax.swing.JLabel jLabel1; // Shows the "Historic" word on the Screen 
     private javax.swing.JLabel jLabel2; // Shows the "Date" word on the Screen 
     private javax.swing.JLabel jLabel3; // Shows the "Value" word on the Screen 
@@ -39,14 +39,14 @@ public class ExpenseDataView extends javax.swing.JFrame
     private javax.swing.JTextField jTextField_Valor; // Keeps and adds the Expense's value 
     
     Expense objectExpense; // Expense type object
-    Date date = new Date(); // Contains the date of an expense (dd/MM/yyyy)
-    DateFormat dateFormat; // Gets the expense date on format of date
+    Date date = new Date(); // Describes the date of an expense (dd/MM/yyyy)
+    DateFormat dateFormat; // Describes the format of expense date
     
     // ExpenseController type object
     static ExpenseController objectExpenseController = new ExpenseController();
     static Logger log = Logger.getLogger(ExpenseDataView.class.getName());
     
-    // Constructor to initialize components on ExpenseDataView
+    // Constructor to initialize the ExpenseDataView
     public ExpenseDataView()
     {
         initComponents();
@@ -57,27 +57,27 @@ public class ExpenseDataView extends javax.swing.JFrame
         jComboBox_Ano.setSelectedItem(getYear());
     }
     
-    // Method to show a message to user by passing as a parameter a String info
+    // Shows a message to user by passing as a parameter a String info
     public void showMessage(String info)
     {
         JOptionPane.showMessageDialog(this, info, "Atenção" , JOptionPane.INFORMATION_MESSAGE);
     }
     
-    // Method to return the content of attribute day
+    // Returns the content of attribute day
     public String getDay() 
     { 
         dateFormat = new SimpleDateFormat("dd"); 
         return dateFormat.format(date);
     }
     
-    // Method to return the content of attribute month
+    // Returns the content of attribute month
     public String getMonth() 
     { 
         dateFormat = new SimpleDateFormat("MM"); 
         return dateFormat.format(date);
     }
     
-    // Method to return the content of attribute year
+    // Returns the content of attribute year
     public String getYear()
     {
         dateFormat = new SimpleDateFormat("yyyy"); 

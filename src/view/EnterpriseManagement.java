@@ -35,7 +35,7 @@ public class EnterpriseManagement extends javax.swing.JFrame
     ArrayList<Product> productList; // Instantiates a product List
     static Logger log = Logger.getLogger(EnterpriseManagement.class.getName());
 
-    // Constructor of the EnterpriseManagement's class
+    // Constructor to initialize the EnterpriseManagement
     public EnterpriseManagement()
     {
         initComponents();

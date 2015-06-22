@@ -23,56 +23,56 @@ import org.apache.log4j.Logger;
 
 public class ContactDataView extends javax.swing.JFrame
 {
-	// Object from the ClientController Class that is instantiated to maintenance of the customer
+	// Describes the controller of clients
 	static ClientController objectClientController = new ClientController();
 	
-    // Object from the SupplierController Class that is instantiated to maintenance of the supplier
+	// Describes the controller of suppliers
 	static SupplierController objectSupplierController = new SupplierController();
 	
-	// Object from the EmployeeController Class that is instantiated to maintenance of the employee
+	// Describes the controller of employees
 	static EmployeeController objectEmployeeController = new EmployeeController();
 	
-	EnterpriseManagement principal; // Object from the GestãoEmpresa Class that instantiates the main view
+	EnterpriseManagement principal; // Describes the main view
 	
-	// Object from the PhysicalClient Class that  is instantiated to receives the information of the customer
+	// Describes the model of physical client
 	PhysicalClient objectPhysicalClient;
 	
-	// Object from the JuridicalClient Class that  is instantiated to receives the information of the customer
+	// Describes the model of juridical client
 	JuridicalClient objectJuridicalClient;
 	
-	// Object from the PhysicalSupplier Class that  is instantiated to receives the information of the supplier
+	// Describes the model of physical supplier
 	PhysicalSupplier objectPhysicalSupplier;
 	
-	// Object from the JuridicalSupplier Class that  is instantiated to receives the information of the supplier
+	// Describes the model of juridical client
 	JuridicalSupplier objectJuridicalSupplier;
 	
-	// Object from the Employee Class that  is instantiated to receives the information of the employee
+	// Describes the model of employee
 	Employee objectEmployee;
 	
-	// Object from the PhysicalClient Class that  is instantiated to receive and update the information of the customer
+	// Describes the model of physical client to be edited
 	PhysicalClient editPhysicalClient;
 	
-	// Object from the JuridicalClient Class that  is instantiated to receive and update the information of the customer
+	// Describes the model of juridical client to be edited
 	JuridicalClient editJuridicalClient;
 	
-	// Object from the PhysicalSupplier Class that  is instantiated to receive and update the information of the supplier
+	// Describes the model of physical supplier to be edited
 	PhysicalSupplier editPhysicalSupplier;
 	
-	// Object from the JuridicalSupplier Class that  is instantiated to receive and update the information of the supplier
+	// Describes the model of juridical supplier to be edited
 	JuridicalSupplier editJuridicalSupplier;
 	
-	// Object from the Employee Class that  is instantiated to receive and update the information of the employee
+	// Describes the model of employee to be edited
 	Employee editEmployee;
 	
 	static Logger log = Logger.getLogger(ContactDataView.class.getName());
 
-	// Method to display a warning message to the user
+	// Displays a warning message to the user
 	public void showInfo(String info)
 	{
 		JOptionPane.showMessageDialog(this, info, "Atenção", JOptionPane.INFORMATION_MESSAGE);
 	}
 
-	// Constructor to initialize components on ContactDataView
+	// Constructor to initialize the ContactDataView
 	public ContactDataView()
 	{
 		initComponents();
@@ -133,7 +133,7 @@ public class ContactDataView extends javax.swing.JFrame
 		log.debug("Load ContactDataView");
 	}
 
-	// Method to populate text fields with customer information
+	// Populates text fields with customer information
 	private void populateFields()
 	{
 		if(ContactView.editMode == true)
@@ -238,7 +238,7 @@ public class ContactDataView extends javax.swing.JFrame
 		}
 	}
 
-	// Method to clear the text fields
+	// Clears the text fields
 	private void cleanFields()
 	{
 		jTextField_Nome.setText("");

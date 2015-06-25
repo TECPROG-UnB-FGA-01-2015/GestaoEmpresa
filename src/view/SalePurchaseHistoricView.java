@@ -38,8 +38,7 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 	
 	static Logger log = Logger.getLogger(SalePurchaseView.class.getName()); // Used to log debug, info, warning, error and fatal error
 
-	/* Constructor of SalePurchaseHistoricView 
-	 * Loads Purchase/Selling list on the screen */
+    // Constructor to initialize the SalePurchaseHistoricView
 	public SalePurchaseHistoricView()
 	{
 		initComponents();
@@ -47,9 +46,7 @@ public class SalePurchaseHistoricView extends javax.swing.JFrame
 		log.debug("Loaded Historic of Sale/Purchase");
 	}
 
-	/* This method is responsible to show the Shopping/Selling list info, as:
-	 * Client/Provider name, responsible employee, transaction value and date
-	 * (date/month/year) */
+    // Shows all the transactions added
 	private void loadList()
 	{
 		ArrayList<Transaction> transactionList = objectTransactionController.getTransactionList();

@@ -41,14 +41,14 @@ import org.apache.log4j.Logger;
 
 public class SalePurchaseView extends javax.swing.JFrame
 {
-	private JButton jButton_addProduct; // Button responsible to add product
-	private JButton jButton_exitScreen; // Button responsible to exit Main Screen
-	private JButton jButton_finishForm; // Button responsible to Finish and Complete the Screen's form
-	private JButton jButton_searchClientSupplier; // Button responsible to Search Client and Supplier Names
-	private JButton jButton_searchEmployee; // Button responsible search Employee
-	private JButton jButton_searchProduct; // Button responsible search Employee
-	private JButton jButton_removeProduct; // Button responsible to remove product
-	private JComboBox jComboBox_showSalePurchase; // Button that shows a drop-down list with Buying/Sale option
+	private JButton jButton_addProduct; // Adds a product
+	private JButton jButton_exitScreen; // Exits Main Screen
+	private JButton jButton_finishForm; // Finishs and Complete the Screen's form
+	private JButton jButton_searchClientSupplier; // Searches Client and Supplier Names
+	private JButton jButton_searchEmployee; // Searches an employee
+	private JButton jButton_searchProduct; // Searches a product
+	private JButton jButton_removeProduct; // Removes a product
+	private JComboBox jComboBox_showSalePurchase; // Shows a drop-down list with Buying/Sale option
 	private JLabel jLabel_showClientWord; // Shows the "Client" word with a chosen Sales option 
 	private JLabel jLabel_showSupplierWord; // Shows the "Supplier" word with a chosen Shopping option 
 	private JLabel jLabel_showProductWord; // Shows the "Product" word on the screen
@@ -82,12 +82,12 @@ public class SalePurchaseView extends javax.swing.JFrame
 	Sale objectSale; // Variable that adds a Product to Sell
 	Purchase objectPurchase; // Variable that adds a Product to Buy
 	double transactionPrice = 0; // Multiplies the product's quantity and the product's value (without discount)
-	final Date CURRENT_DATE = new Date(); // Stores the current date/month/year
-	final DateFormat DAY = new SimpleDateFormat("dd"); // Stores the day on the following format: dd
+	final Date CURRENT_DATE = new Date(); // Describes the current date/month/year
+	final DateFormat DAY = new SimpleDateFormat("dd"); // Describes the day on the following format: dd
 	final String CURRENT_DAY = DAY.format(CURRENT_DATE); // Receives the current day to save on the transaction
-	final DateFormat MONTH = new SimpleDateFormat("MM"); // Stores the month on the following format: mm
+	final DateFormat MONTH = new SimpleDateFormat("MM"); // Describes the month on the following format: mm
 	final String CURRENT_MONTH = MONTH.format(CURRENT_DATE); // Receives the current month to save on the transaction
-	final DateFormat YEAR = new SimpleDateFormat("yyyy"); // Stores the year on the following format: yyyy
+	final DateFormat YEAR = new SimpleDateFormat("yyyy"); // Describes the year on the following format: yyyy
 	final String CURRENT_YEAR = YEAR.format(CURRENT_DATE); // Receives the current year to save on the transaction
 
 	static ArrayList<Product> productTableList = new ArrayList<Product>(); // Stores the Product's info in a Product's table class
@@ -99,9 +99,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		JOptionPane.showMessageDialog(this, info, "Atenção", JOptionPane.INFORMATION_MESSAGE);
 	}
 
-	/* This method is responsible to display a GUI so that the User can choose
-	 * the Clients/Providers' names search products' names, add products, remove
-	 * products, buy and sell products according to their quantities */
+    // Constructor to initialize the SalePurchaseView
 	public SalePurchaseView()
 	{
 		initComponents();
@@ -741,9 +739,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		pack();
 	}
 
-	/* This method is responsible to load and show on the screen the Product's
-	 * list info (Code, Description, Quantity, Shopping/Sale Price and Total
-	 * Price) */
+    // Shows all the products saled or purchased
 	private void loadList()
 	{
 		transactionPrice = 0;
@@ -813,7 +809,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		log.debug("Refresh product list");
 	}
 
-	// This method is responsible to confirm the Screen's Cancel Button Action
+	// Confirms the Screen's Cancel Button Action
 	private void jButton_exitScreenActionPerformed(java.awt.event.ActionEvent evt)
 	{
 		StockView.returnProduct = false;
@@ -822,7 +818,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		this.dispose();
 	}
 
-	// This method is responsible to confirm the Screen's Search Client/Provider Button Action
+	// Confirms the Screen's Search Client/Provider Button Action
 	private void jButton_searchClientSupplierActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{
 		try
@@ -910,7 +906,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		}
 	}
 
-	// This method is responsible to confirm the Screen's Search Provider Button Action
+	// Confirms the Screen's Search Provider Button Action
 	private void jButton_searchEmployeeActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{
 		try
@@ -1035,7 +1031,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		}
 	}
 
-	// This method is responsible to confirm the Screen's Search Product Button Action
+	// Confirms the Screen's Search Product Button Action
 	private void jButton_searchProductActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{
 		try
@@ -1052,7 +1048,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		}
 	}
 
-	// This method is responsible to confirm the Screen's Add Product Button Action
+	// Confirms the Screen's Add Product Button Action
 	private void jButton_addProductActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{
 		try
@@ -1151,7 +1147,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		}
 	}
 
-	// This method is responsible to list and edit the registered Products
+	// Lists and edits the registered Products
 	private void jTable_showPurchaseSaleInfoTableMouseClicked(java.awt.event.MouseEvent evt) throws Exception
 	{
 		try
@@ -1197,7 +1193,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		}
 	}
 
-	// This method is responsible to confirm the Screen's Remove Product Button Action
+	// Confirms the Screen's Remove Product Button Action
 	private void jButton_removeProductActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{
 		try
@@ -1222,7 +1218,7 @@ public class SalePurchaseView extends javax.swing.JFrame
 		}
 	}
 
-	// This method is responsible to add (in percentage) the Product's discount
+	// Adds (in percentage) the Product's discount
 	private void jTextField_productDiscountFocusLost(java.awt.event.FocusEvent evt) throws Exception
 	{
 		try

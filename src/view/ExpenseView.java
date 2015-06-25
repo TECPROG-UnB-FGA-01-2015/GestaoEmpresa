@@ -19,33 +19,33 @@ import org.apache.log4j.Logger;
 public class ExpenseView extends javax.swing.JFrame
 {
 	// Variables declaration of Buttons, ComboBox, Labels, Panel, ScrollPane and Table
-    private javax.swing.JButton jButton1; // Button that adds a New Expense on the system
-    private javax.swing.JButton jButton_Sair; // Button that exits "Expenses Historic" Screen
+    private javax.swing.JButton jButton1; // Adds a New Expense on the system
+    private javax.swing.JButton jButton_Sair; // Exits "Expenses Historic" Screen
     @SuppressWarnings("rawtypes")
-	private javax.swing.JComboBox jComboBox_Ano1; // Button that shows a drop-down list from the years 2013 until 2017 on the first New Expense's period option
+	private javax.swing.JComboBox jComboBox_Ano1; // Shows a drop-down list from the years 2013 until 2017 on the first New Expense's period option
     @SuppressWarnings("rawtypes")
-	private javax.swing.JComboBox jComboBox_Ano2; // Button that shows a drop-down list from the years 2013 until 2017 on the second New Expense's period option
+	private javax.swing.JComboBox jComboBox_Ano2; // Shows a drop-down list from the years 2013 until 2017 on the second New Expense's period option
     @SuppressWarnings("rawtypes")
-	private javax.swing.JComboBox jComboBox_Mes1; // Button that shows a drop-down list from the months January until December on the first New Expense's period option
+	private javax.swing.JComboBox jComboBox_Mes1; // Shows a drop-down list from the months January until December on the first New Expense's period option
     @SuppressWarnings("rawtypes")
-	private javax.swing.JComboBox jComboBox_Mes2; // Button that shows a drop-down list from the months January until December on the second New Expense's period option
+	private javax.swing.JComboBox jComboBox_Mes2; // Shows a drop-down list from the months January until December on the second New Expense's period option
     private javax.swing.JLabel jLabel1; // Shows the "Expense Historic" word on the Screen 
     private javax.swing.JLabel jLabel2; // Shows the "Period" word on the Screen 
     private javax.swing.JLabel jLabel3; // Shows the "From" word on the Screen 
     private javax.swing.JLabel jLabel4; // Shows the "Until" word on the Screen 
     private javax.swing.JPanel jPanel1; // Shows the entire "Expenses Historic" Screen Layout
-    private javax.swing.JRadioButton jRadioButton1; // Button that shows all the accomplished Expenses (it disables the first and second option to choose)
+    private javax.swing.JRadioButton jRadioButton1; // Shows all the accomplished Expenses (it disables the first and second option to choose)
     private javax.swing.JScrollPane jScrollPane1; // Shows the "Expenses Historic" screen scroll 
     private javax.swing.JTable jTable_Despesa; // Shows a table with the Expense Historic, day, month, year, note and value
     
-    int firstMonth=1; // Holds the expense's month start
-    int firstYear=2013; // Holds the expense's year start
-    int secondMonth=7; // Holds the expense's month final
-    int secondYear=2014; // Holds the expense's year final
+    int firstMonth=1; // Describes the expense's month start
+    int firstYear=2013; // Describes the expense's year start
+    int secondMonth=7; // Describes the expense's month final
+    int secondYear=2014; // Describes the expense's year final
     
     static Logger log = Logger.getLogger(ExpenseView.class.getName());
     
-    // Constructor to initialize components on ProductDataView
+    // Constructor to initialize the ExpenseView
     public ExpenseView()
     {
         initComponents();
@@ -56,7 +56,7 @@ public class ExpenseView extends javax.swing.JFrame
         log.debug("Load ExpenseView");
     }
     
-    // Method to show all the expenses added
+    // Shows all the expenses added
     private void loadList()
     {
         boolean permission; // Boolean to allow or not the sequence of the expense creating

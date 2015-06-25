@@ -19,8 +19,8 @@ import static view.StockView.newProduct;
 public class ProductDataView extends javax.swing.JFrame
 {
 	// Variables declaration of Buttons, Labels and TextFields
-    private javax.swing.JButton jButton_Cancelar; // Button that exits New Product Screen
-    private javax.swing.JButton jButton_SalvarProduto; // Button that saves and adds a New Product on the system
+    private javax.swing.JButton jButton_Cancelar; // Exits New Product Screen
+    private javax.swing.JButton jButton_SalvarProduto; // Saves and adds a New Product on the system
     private javax.swing.JLabel jLabel1; // Shows the "Code" word on the Screen 
     private javax.swing.JLabel jLabel2; // Shows the "Description" word on the Screen 
     private javax.swing.JLabel jLabel3; // Shows the "Selling Price" word on the Screen 
@@ -44,7 +44,7 @@ public class ProductDataView extends javax.swing.JFrame
     static Logger log = Logger.getLogger(ProductDataView.class.getName());
 
     
-    // Constructor to initialize components on ProductDataView
+    // Constructor to initialize the ProductDataView
     public ProductDataView() throws Exception
     {
         initComponents();
@@ -231,20 +231,20 @@ public class ProductDataView extends javax.swing.JFrame
         pack();
     }
 
-    // Method to show a message to user by passing as a parameter a String info
+    // Shows a message to user by passing as a parameter a String info
     public void showMessage(String info)
     {
         JOptionPane.showMessageDialog(this, info,"Atenção" ,JOptionPane.INFORMATION_MESSAGE);
     }
     
-    // Method to add informations on the Product list
+    // Adds informations on the Product list
     private void fillCode() throws Exception
     {
     	try
     	{
     		if(newProduct == true)
     		{
-	        	// Variable to receive a list of Products
+	        	// Describes a list of Products
 	            ArrayList<Product> productList = objectStockController.getProductList();
 	            
 	            if(productList.isEmpty())
@@ -275,7 +275,7 @@ public class ProductDataView extends javax.swing.JFrame
     	}
     }
     
-    // Method to add one more on the attribute code if there is already a Product
+    // Adds one more on the attribute code if there is already a Product
     private void fillFields() throws Exception
     {
     	try
@@ -314,7 +314,7 @@ public class ProductDataView extends javax.swing.JFrame
 	    }
     }
     
-    // Method to clean up the textBox
+    // Cleans up the textBox
     private void cleanFields() throws Exception
     {
     	try
@@ -333,9 +333,7 @@ public class ProductDataView extends javax.swing.JFrame
     	}
     }
     
-    /* Method to cancel the action to add another product giving returning an
-     * information to user
-     */
+    // Cancels the action to add another product giving returning an information to user
     private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt) throws Exception
     {
     	try
@@ -360,9 +358,7 @@ public class ProductDataView extends javax.swing.JFrame
     	}
     }
 
-    /* Method to save all the informations provided by the user on a new object
-     * Product
-     */
+    // Saves all the informations provided by the user on a new object Product
     private void jButton_SalvarProdutoActionPerformed(java.awt.event.ActionEvent evt) throws Exception 
     {
     	try

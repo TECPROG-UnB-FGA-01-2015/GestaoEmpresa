@@ -42,7 +42,7 @@ public class StockView extends javax.swing.JFrame
 		}
 		else
 		{
-			// Do nothing
+			// Nothing to do
 		}
 		
 		if(purchaseSaleMode == true)
@@ -51,7 +51,7 @@ public class StockView extends javax.swing.JFrame
 		}
 		else
 		{
-			// Do nothing
+			// Nothing to do
 		}
 		
 		if(ProductDataView.loadInfo == true)
@@ -60,7 +60,7 @@ public class StockView extends javax.swing.JFrame
 		}
 		else
 		{
-			// Do nothing
+			// Nothing to do
 		}
 		
 		ProductDataView.loadInfo = false;
@@ -69,13 +69,13 @@ public class StockView extends javax.swing.JFrame
 		log.debug("Load StockView");
 	}
 
-	// Method to display a warning message to the user
+	// Displays a warning message to the user
 	public void showMessage(String info)
 	{
 		JOptionPane.showMessageDialog(this, info, "Atenção", JOptionPane.INFORMATION_MESSAGE);
 	}
 
-	// Method to load the table with product information
+	// Loads the table with product information
 	public void loadList() throws Exception
 	{
 		try
@@ -306,12 +306,12 @@ public class StockView extends javax.swing.JFrame
 		pack();
 	}// </editor-fold>//GEN-END:initComponents
 
-	// Method to search for a product from the name
+	// Searches for a product from the name
 	private void jButton_PesquisarProdutoActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{// GEN-FIRST:event_jButton_PesquisarProdutoActionPerformed
 		try
 		{
-			/// Result of product name and jTextField_NomeProduto text comparison
+			/// Describes the result of product name and jTextField_NomeProduto text comparison
 			boolean nameProductEquals = "".equals(jTextField_NomeProduto.getText());
 			
 			if(nameProductEquals == true)
@@ -366,7 +366,7 @@ public class StockView extends javax.swing.JFrame
 		}
 	}// GEN-LAST:event_jButton_PesquisarProdutoActionPerformed
 
-	// Method to open the view ProductDataView for add a new product
+	// Opens the view ProductDataView for add a new product
 	private void jButton_AdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{// GEN-FIRST:event_jButton_AdicionarProdutoActionPerformed
 		try
@@ -381,7 +381,7 @@ public class StockView extends javax.swing.JFrame
         }
 	}// GEN-LAST:event_jButton_AdicionarProdutoActionPerformed
 
-	// Method to cancel the operation and close the screen
+	// Cancels the operation and close the screen
 	private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{// GEN-FIRST:event_jButton_CancelarActionPerformed
 		try
@@ -405,7 +405,7 @@ public class StockView extends javax.swing.JFrame
         }
 	}// GEN-LAST:event_jButton_CancelarActionPerformed
 
-	// Method to open the view ProductDataView for edit the product information
+	// Opens the view ProductDataView for edit the product information
 	private void jButton_EditarProdutoActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{// GEN-FIRST:event_jButton_EditarProdutoActionPerformed
 		try
@@ -420,7 +420,7 @@ public class StockView extends javax.swing.JFrame
     	}
 	}// GEN-LAST:event_jButton_EditarProdutoActionPerformed
 
-	// Method for Selecting an item in the table and enable the options edit, delete and confirms
+	// Select an item in the table and enable the options edit, delete and confirms
 	private void jTable2MouseClicked(java.awt.event.MouseEvent evt) throws Exception
 	{// GEN-FIRST:event_jTable2MouseClicked
 		try
@@ -439,7 +439,7 @@ public class StockView extends javax.swing.JFrame
     	}
 	}// GEN-LAST:event_jTable2MouseClicked
 
-	// Method for removing a product from the table
+	// Removes a product from the table
 	private void jButton_ExcluirProdutoActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{// GEN-FIRST:event_jButton_ExcluirProdutoActionPerformed
 		try
@@ -457,7 +457,7 @@ public class StockView extends javax.swing.JFrame
     	}
 	}// GEN-LAST:event_jButton_ExcluirProdutoActionPerformed
 
-	// Method to confirm the operation
+	// Confirms the operation
 	private void jButton_ConfirmarProdutoActionPerformed(java.awt.event.ActionEvent evt) throws Exception
 	{// GEN-FIRST:event_jButton_ConfirmarProdutoActionPerformed
 		try

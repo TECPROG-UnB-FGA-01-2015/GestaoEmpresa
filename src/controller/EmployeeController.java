@@ -50,8 +50,8 @@ public class EmployeeController
     // Search for an employee in the employeeList with a given name
     public Employee searchEmployee(String name, boolean ignoreCase)
     {
-    	Employee returned = null; // Usedclient to return the employee matching the given name (not Case Sensitive)
-    	Employee exactReturned = null; // Used to return the employee matching the given name (Case Sensitive)
+    	Employee employeeReturned = null; // Used to return the employee matching the given name (not Case Sensitive)
+    	boolean exactReturned = false; // Used to return the employee matching the given name (Case Sensitive)
     	
         // Search for the employee 
         for(Employee employee: employeeList)
@@ -67,11 +67,19 @@ public class EmployeeController
         	
             if(employeeNameEquals == true)
             {
-                exactReturned = employee;
+                employeeReturned = employee;
+                exactReturned = true;
             }
             else if((employeeNameToLowerCase.contains(name.toLowerCase())) && ignoreCase == true)
             {
-                returned = employee;
+            	if(exactReturned != true)
+				{
+					employeeReturned = employee;
+				}
+				else
+				{
+					// Nothing to Do
+				}	
             }
             else
             {
@@ -79,17 +87,6 @@ public class EmployeeController
             }
         }
 
-        if(exactReturned != null)
-        {
-            return exactReturned;
-        }
-        else if(returned != null)
-        {
-            return returned;
-        }
-        else
-        {
-        	return null;
-        }
+       return employeeReturned;
     }
 }

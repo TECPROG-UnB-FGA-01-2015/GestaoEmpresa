@@ -6,19 +6,21 @@
 package controller;
 
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+
 import model.Supplier;
-import view.ContactView;
 	
 public class SupplierController
 {
 	private static ArrayList<Supplier> supplierList; // Describes a list of suppliers
-	ContactView contactView;
+	
+	static {
+		supplierList = new ArrayList<Supplier>();
+	}
 
 	// Constructor to initialize the controller of suppliers with a supplier list
 	public SupplierController()
 	{
-		SupplierController.supplierList = new ArrayList<Supplier>();
+		// Just initialize the object
 	}
 
     // Access and returns the property supplierList
@@ -28,7 +30,7 @@ public class SupplierController
 	}
 
     // Sets a new value for the supplierList property
-	public void setSupplierList(ArrayList<Supplier> supplierList)
+	public static void setSupplierList(ArrayList<Supplier> supplierList)
 	{
 		SupplierController.supplierList = supplierList;
 	}

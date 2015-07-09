@@ -57,10 +57,10 @@ public class SupplierController
 	public Supplier searchSupplier(String name, boolean search)
 	{
 		// Returns the supplier matching the given name (not Case Sensitive)
-		Supplier returned = null;
+		Supplier supplierReturned = null;
 		
 		// Returns the suppler matching the given name (Case Sensitive)
-		Supplier exactReturned = null;
+		boolean exactReturned = false;
 		
 		// Search for the supplier
 		for(Supplier supplier : supplierList)
@@ -76,29 +76,29 @@ public class SupplierController
 			
 			if(nameSupplierEquals == true)
 			{
-				exactReturned = supplier;
+				supplierReturned = supplier;
+				exactReturned = true;
+				
 			}
 			else if(nameSupplierLowerCase.contains(name.toLowerCase()) && search == true)
 			{
-				returned = supplier;
+				if(exactReturned != true)
+				{
+					supplierReturned = supplier;
+				}
+				else
+				{
+					// Nothing to Do
+				}	
+				
 			}
 			else
 			{
 				// Nothing to Do
 			}
 		}
+		
+		return supplierReturned;
 
-		if(exactReturned != null)
-		{
-			return exactReturned;
-		}
-		else if(returned != null)
-		{
-			return returned;
-		}
-		else
-		{
-			return null;
-		}
 	}
 }

@@ -49,8 +49,8 @@ public class ClientController
     // Search for a client in the clientList with a given name
     public Client searchClient(String name, boolean ignoreCase)
     {
-        Client returned = null; // Used to return the client matching the given name (not Case Sensitive)
-        Client exactReturned = null; // Used to return the client matching the given name (Case Sensitive)
+        Client clientReturned = null; // Used to return the client matching the given name (not Case Sensitive)
+        boolean exactReturned = false; // Used to return the client matching the given name (Case Sensitive)
         
         for(Client client: clientList)
         {
@@ -65,11 +65,19 @@ public class ClientController
         	
             if(clientNameEquals == true)
             {
-                exactReturned = client;
+                clientReturned = client;
+                exactReturned = true;
             }
             else if((clientNameToLowerCase.toLowerCase().contains(name.toLowerCase())) && ignoreCase == true)
             {
-                returned = client;
+            	if(exactReturned != true)
+				{
+					clientReturned = client;
+				}
+				else
+				{
+					// Nothing to Do
+				}	
             }
             else
             {
@@ -77,17 +85,6 @@ public class ClientController
             }
         }
         
-        if(exactReturned != null)
-        {
-            return exactReturned;
-        }
-        else if(returned != null)
-        {
-            return returned;
-        }
-        else
-        {
-        	return null;
-        }
+        return clientReturned;
     }
 }

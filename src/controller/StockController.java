@@ -55,8 +55,8 @@ public class StockController
 	public Product searchProduct(String code, boolean searchContains)
 	{
 		int productCounter = 0;
-		Product returned = null; // Returns the product matching the given name (not Case Sensitive)
-		Product exactReturned = null; // Returns the product matching the given name (Case Sensitive)
+		Product productReturned = null; // Returns the product matching the given name (not Case Sensitive)
+		boolean exactReturned = false; // Returns the product matching the given name (Case Sensitive)
 
 		// Search for the product
 		for (Product product : productList)
@@ -67,7 +67,8 @@ public class StockController
 			if (productCodeEquals == true)
 			{
 				productCounter++;
-				exactReturned = product;
+				productReturned = product;
+				exactReturned = true;
 			}
 			else
 			{
@@ -80,7 +81,15 @@ public class StockController
 			if (productCodeContains && searchContains == true)
 			{
 				productCounter++;
-				returned = product;
+				
+				if(exactReturned != true)
+				{
+					productReturned = product;
+				}
+				else
+				{
+					// Nothing to Do
+				}	
 			}
 			else
 			{
@@ -92,8 +101,17 @@ public class StockController
 
 			if (productDescriptionContains && searchContains == true)
 			{
-				returned = product;
+				
 				productCounter++;
+				
+				if(exactReturned != true)
+				{
+					productReturned = product;
+				}
+				else
+				{
+					// Nothing to Do
+				}
 			}
 			else
 			{
@@ -104,7 +122,9 @@ public class StockController
 			
 			if (productDescriptionEquals)
 			{
-				exactReturned = product;
+				productCounter++;
+				productReturned = product;
+				exactReturned = true;
 			}
 			else
 			{
@@ -122,18 +142,6 @@ public class StockController
 			// Nothing to do
 		}
 
-		if (exactReturned != null)
-		{
-			return exactReturned;
-		}
-
-		else if (returned != null)
-		{
-			return returned;
-		}
-		else
-		{
-			return null;
-		}
+		return productReturned;
 	}
 }

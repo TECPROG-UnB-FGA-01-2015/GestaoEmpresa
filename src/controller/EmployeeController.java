@@ -51,7 +51,7 @@ public class EmployeeController
     public Employee searchEmployee(String name, boolean ignoreCase)
     {
     	Employee employeeReturned = null; // Used to return the employee matching the given name (not Case Sensitive)
-    	boolean exactReturned = false; // Used to return the employee matching the given name (Case Sensitive)
+    	boolean exactReturned = false; // Indicates that the employee matching the given name (Case Sensitive)
     	
         // Search for the employee 
         for(Employee employee: employeeList)

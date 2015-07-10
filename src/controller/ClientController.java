@@ -50,7 +50,7 @@ public class ClientController
     public Client searchClient(String name, boolean ignoreCase)
     {
         Client clientReturned = null; // Used to return the client matching the given name (not Case Sensitive)
-        boolean exactReturned = false; // Used to return the client matching the given name (Case Sensitive)
+        boolean exactReturned = false; // Indicates that the client matching the given name (Case Sensitive)
         
         for(Client client: clientList)
         {

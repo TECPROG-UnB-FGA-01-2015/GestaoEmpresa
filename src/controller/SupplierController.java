@@ -59,7 +59,7 @@ public class SupplierController
 		// Returns the supplier matching the given name (not Case Sensitive)
 		Supplier supplierReturned = null;
 		
-		// Returns the suppler matching the given name (Case Sensitive)
+		// Indicates that the supplier matching the given name (Case Sensitive)
 		boolean exactReturned = false;
 		
 		// Search for the supplier

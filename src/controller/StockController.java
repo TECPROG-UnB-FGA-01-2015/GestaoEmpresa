@@ -56,7 +56,7 @@ public class StockController
 	{
 		int productCounter = 0;
 		Product productReturned = null; // Returns the product matching the given name (not Case Sensitive)
-		boolean exactReturned = false; // Returns the product matching the given name (Case Sensitive)
+		boolean exactReturned = false; // Indicates that the product matching the given name (Case Sensitive)
 
 		// Search for the product
 		for (Product product : productList)
